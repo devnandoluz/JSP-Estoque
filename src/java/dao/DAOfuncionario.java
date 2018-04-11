@@ -62,6 +62,7 @@ public class DAOfuncionario {
             
             while(rs.next()){
                 Funcionario funcionario = new Funcionario();
+                
                 funcionario.setId(rs.getInt("idFuncionario"));
                 funcionario.setCpf(rs.getString("cpf"));
                 funcionario.setNome(rs.getString("nome"));
@@ -71,6 +72,7 @@ public class DAOfuncionario {
                 funcionario.setCargo(rs.getString("cargo"));
                 funcionario.setTelefone(rs.getString("telefone"));
                 funcionario.setEmail(rs.getString("email"));
+                
                 listaDeFuncionario.add(funcionario);
                 
                 ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões

@@ -5,7 +5,9 @@
  */
 package model;
 
+import dao.DAOfuncionario;
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -129,4 +131,45 @@ public class Funcionario {
         this.id = id;
     }
     
+    /**
+     * 
+     * CHAMADA DA DAO 
+     * @throws Exception 
+     */
+    
+    
+    //Create
+    public void insert() throws Exception{
+        DAOfuncionario dao = new DAOfuncionario();
+        dao.save(this);
+    }
+    //Read
+    public ArrayList<Funcionario> findAll() throws Exception{   
+        DAOfuncionario dao = new DAOfuncionario();
+        return dao.findAll();
+    }
+    
+    public void findForID() throws Exception{
+        DAOfuncionario dao = new DAOfuncionario();
+        this.setId(dao.findForID(this.id).getId());
+        this.setUsuario(dao.findForID(this.id).getUsuario());
+        this.setCpf(dao.findForID(this.id).getCpf());
+        this.setNome(dao.findForID(this.id).getNome());
+        this.setRg(dao.findForID(this.id).getRg());
+        this.setDataDeNascimento(dao.findForID(this.id).getDataDeNascimento());
+        this.setSexo(dao.findForID(this.id).getSexo());
+        this.setCargo(dao.findForID(this.id).getCargo());
+        this.setTelefone(dao.findForID(this.id).getTelefone());
+        this.setEmail(dao.findForID(this.id).getEmail());
+    }
+    //Update
+    public void update() throws Exception{ 
+        DAOfuncionario dao = new DAOfuncionario();
+        dao.update(this);
+    }
+    //Delete
+    public void delete() throws Exception{
+        DAOfuncionario dao = new DAOfuncionario();
+        dao.delete(this);
+    }
 }

@@ -59,10 +59,12 @@ public class DAOtipoProduto {
                 tipoproduto.setCategoria(rs.getString("categoria"));
                 listaDeProdutos.add(tipoproduto);
             }
+            
+            ConnectionDB.closeConnection(con, pstm, rs); //close conections
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
         }
-        ConnectionDB.closeConnection(con);
+        
         return listaDeProdutos;
     }
     
@@ -78,11 +80,9 @@ public class DAOtipoProduto {
             
             tipoproduto.setId(rs.getInt("idTipoProduto"));
             tipoproduto.setCategoria(rs.getString("categoria"));
-            
+            ConnectionDB.closeConnection(con, pstm, rs);
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
-        }finally{
-            ConnectionDB.closeConnection(con, pstm);
         }
         
         return tipoproduto;

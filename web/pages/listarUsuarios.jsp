@@ -23,6 +23,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!--Stylo da pagina-->
         <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
+        <link rel="shortcut icon" href="../imagens/favicon/favicon.ico" type="image/x-icon" />
         <title>Lista de Usuarios</title>
     </head>
     <body>
@@ -31,8 +32,8 @@
         <% 
             ArrayList<Usuario> lista = new ArrayList();
                 try{
-                    Usuario u = new Usuario();                    
-                    lista = u.findAll();
+                    Usuario usuario = new Usuario();                    
+                    lista = usuario.findAll();
                 }catch(Exception e){
                     out.print("Erro:"+e);
                 }
@@ -53,9 +54,16 @@
                             <%=usuario1.getUsername() %>
                             <input type="hidden" value="<%= usuario1.getSenha() %>">
                         </td>
+                        
                         <td>
-                            <a class="btn btn-primary " href="alterarUsuario.jsp?id=<%=usuario1.getId()%>" >  Alterar  </a>
-                            <a class="btn btn-primary " href="#" onclick="excluir('<%= usuario1.getUsername()%>', <%= usuario1.getId() %>)">  Excluir  </a>
+                            <%
+                                if(usuario1.getId() != 1 ){
+                            %>
+                                    <a class="btn btn-primary " href="alterarUsuario.jsp?id=<%=usuario1.getId()%>" >  Alterar  </a>
+                                    <a class="btn btn-danger " href="#" onclick="excluir('<%= usuario1.getUsername()%>', <%= usuario1.getId() %>)">  Excluir  </a>
+                                <%
+                                }
+                                %>
                         </td>
                     </tr>  
             <%

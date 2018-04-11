@@ -9,8 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <!--Stylo da pagina-->
         <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
+        <link rel="shortcut icon" href="../imagens/favicon/favicon.ico" type="image/x-icon" />
         <!-- Bootstrap core CSS-->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom fonts for this template-->

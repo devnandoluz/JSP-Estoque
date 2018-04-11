@@ -26,22 +26,12 @@
     </head>
     
     
-    <body class="home blog geral">        
-        <header id="page-header">
-            <nav role="navigation" class="navbar">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <!-- THE LOGO -->
-                        <a target="_blank" class="navbar-brand " href="http://www.gentetelecom.com.br/" rel="home">
-                            <img src="imagens/logotipo.png">
-                        </a>
-                        <hr>
-                    </div><!-- fim da navbar-header -->
-                </div><!-- fim do container -->
-            </nav><!-- fim da navbar navbar-default navbar-fixed-top-->
-        </header>
-        
-        
+    <body class="home blog geral">     
+        <div class="nav navbar">
+            <h1 class="nav navbar-text"><img src="imagens/logotipo.png"></h1>
+        </div>
+        <hr>
+        <br>
         
         <div class="container-fluid">
             <div class="row">
@@ -66,8 +56,8 @@
                                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Entrar</button>
-                                    <p><a href="pages/home.jsp">home</a></p>
+                                    <!--<button type="submit" class="btn btn-primary">Entrar</button>-->
+                                    <center><p><a class="btn btn-primary " href="pages/home.jsp">home</a></p></center>
                               </form>
 
                       </divclass>
@@ -79,14 +69,14 @@
        
        
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron innerjumbotron"  id="large-header">
+<!--      <div class="jumbotron innerjumbotron"  id="large-header">
           <canvas id="demo-canvas"></canvas>
-      </div>
+      </div>-->
       <!-- /.jumbotron --> 
 
 
       <!-- Inicio animação -->
-      <script type='text/javascript' src='resources/js/animation/jquery.form.min.js'></script>
+<!--      <script type='text/javascript' src='resources/js/animation/jquery.form.min.js'></script>
       <script type='text/javascript' src='resources/js/animation/TweenLite.min.js'></script>
       <script type='text/javascript' src='resources/js/animation/EasePack.min.js'></script>
       <script type='text/javascript' src='resources/js/animation/device.min.js'></script>
@@ -101,10 +91,9 @@
       <script type='text/javascript' src='resources/js/animation/core.min.js'></script>
       <script type='text/javascript' src='resources/js/animation/datepicker.min.js'></script>
       <script type='text/javascript' src='resources/js/animation/wp-embed.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/jsanim.js'></script>
+      <script type='text/javascript' src='resources/js/animation/jsanim.js'></script>-->
       <!-- Fim animação-->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="resources/jquery.min.js"></script>
         <script src="resources/bootstrap/js/bootstrap.js"></script>
     </body>
 </html>

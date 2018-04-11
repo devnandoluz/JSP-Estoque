@@ -62,10 +62,12 @@ public class DAOusuario {
                 usuario.setSenha(rs.getString("senha"));
                 listaDeUsuarios.add(usuario);
             }
+            
+            ConnectionDB.closeConnection(con, pstm, rs);
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
         }
-        ConnectionDB.closeConnection(con);
+        
         return listaDeUsuarios;
     }
     
@@ -82,12 +84,11 @@ public class DAOusuario {
             usuario.setUsername(rs.getString("username"));
             usuario.setSenha(rs.getString("senha"));
             
+            ConnectionDB.closeConnection(con, pstm, rs); //fecha
+            
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
-        }finally{
-            ConnectionDB.closeConnection(con, pstm);
         }
-        
         return usuario;
     }
     
