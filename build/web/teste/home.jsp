@@ -245,7 +245,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5">26 Novas mensagens!</div>
+              <div class="mr-5"> Cliente </div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">Ver Detalhes</span>
@@ -261,7 +261,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">11 New Tasks!</div>
+              <div class="mr-5"> Funcionário </div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">Ver Detalhes</span>
@@ -277,7 +277,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5">123 Novas Orders!</div>
+              <div class="mr-5"> Estoque </div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">Ver Detalhes</span>
@@ -293,7 +293,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-support"></i>
               </div>
-              <div class="mr-5">13 Novos Tickets!</div>
+              <div class="mr-5"> Log de Ações </div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">Ver Detalhes</span>
@@ -307,7 +307,7 @@
       <!-- Area Chart Example-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
+          <i class="fa fa-area-chart"></i> Gráfico de Área </div>
         <div class="card-body">
           <canvas id="myAreaChart" width="100%" height="30"></canvas>
         </div>
@@ -318,7 +318,7 @@
           <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
+              <i class="fa fa-bar-chart"></i> Gráfico de Barra</div>
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-8 my-auto">
@@ -534,7 +534,7 @@
           <!-- Example Pie Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
+              <i class="fa fa-pie-chart"></i> Gráfico de Pizza </div>
             <div class="card-body">
               <canvas id="myPieChart" width="100%" height="100"></canvas>
             </div>
@@ -649,6 +649,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+    
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

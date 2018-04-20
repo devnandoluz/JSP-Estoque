@@ -1,4 +1,4 @@
-package org.apache.jsp.teste;
+package org.apache.jsp.pages;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
