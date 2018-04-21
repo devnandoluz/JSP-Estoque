@@ -23,6 +23,8 @@
     <link href="../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
+    <!--icon-->
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -34,94 +36,77 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
           <a class="nav-link" href="home.jsp">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Monitoramento</span>
+            <i class="fa fa-fw fa-home  "></i>
+            <span class="nav-link-text">Home</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Gráficos</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tabelas</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Componentes</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="navbar.html">Navbar</a>
-            </li>
-            <li>
-              <a href="cards.html">Cartão</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Páginas</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="login.html">Página de Login</a>
-            </li>
-            <li>
-              <a href="register.html">Página de Registro</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Página de Recuperação de Senha</a>
-            </li>
-            <li>
-              <a href="blank.html">Página Branca</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu de Nível</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">T Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Monitoramento">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Monitorameto</span>
           </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instalacao">
+          <a class="nav-link" href="#">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Instalação</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Adicionar">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAdicinar" data-parent="#collapseAdicinar">
+            <i class="fa fa-fw fa-plus-square"></i>
+            <span class="nav-link-text">Adicionar</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseAdicinar">
+            <li>
+                <a href="navbar.html">
+                    <i class="fa fa-fw fa-user-plus"></i>
+                    <span class="nav-link-text">Cliente</span>
+                </a>
+            </li>
+            <li>
+                <a href="cards.html">
+                    <i class="fa fa-fw fa-plus-square-o"></i>
+                    <span class="nav-link-text">Funcionário</span>
+                </a>
+            </li>
+            <li>
+                <a href="cards.html">
+                    <i class="fa fa-fw fa-cart-plus"></i>
+                    <span class="nav-link-text">Produto</span>
+                </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gerar Contrato">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseGerarContrato" data-parent="#collapseGerarContrato">
+            <i class="fa fa-fw fa-file-text"></i>
+            <span class="nav-link-text">Gerar Contrato</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseGerarContrato">
+            <li>
+              <a href="#">VoIP</a>
+            </li>
+            <li>
+              <a href="#">Internet</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pagina Root">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRoot" data-parent="#collapseRoot">
+            <i class="fa fa-fw fa-hashtag"></i>
+            <span class="nav-link-text">Root</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseRoot">
+            <li>
+              <a href="#">Menu</a>
+            </li>
+            <li>
+              <a href="#">Perfil</a>
+            </li>
+          </ul>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
@@ -233,9 +218,8 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Monitoramento</a>
+          <a href="#">Home</a>
         </li>
-        <li class="breadcrumb-item active">Meu monitoramento</li>
       </ol>
       <!-- Icon Cards-->
       <div class="row">
@@ -244,7 +228,7 @@
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-comments"></i>
+                <i class="fa fa-fw fa-users"></i>
               </div>
               <div class="mr-5"> Cliente </div>
             </div>
@@ -262,7 +246,7 @@
           <div class="card text-white bg-warning o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-list"></i>
+                <i class="fa fa-fw fa-id-badge"></i>
               </div>
               <div class="mr-5"> Funcionário </div>
             </div>
@@ -296,7 +280,7 @@
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-support"></i>
+                <i class="fa fa-fw fa-history"></i>
               </div>
               <div class="mr-5"> Log de Ações </div>
             </div>
@@ -320,7 +304,41 @@
         </div>
         <div class="row">
             <div class="col-lg-8">
-
+            <!-- Example Bar Chart Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-8 my-auto">
+                          <canvas id="myBarChart" width="100" height="50"></canvas>
+                        </div>
+                        <div class="col-sm-4 text-center my-auto">
+                             <div class="h4 mb-0 text-primary">$34,693</div>
+                            <div class="small text-muted">YTD Revenue</div>
+                            <hr>
+                            <div class="h4 mb-0 text-warning">$18,474</div>
+                            <div class="small text-muted">YTD Expenses</div>
+                            <hr>
+                            <div class="h4 mb-0 text-success">$16,219</div>
+                            <div class="small text-muted">YTD Margin</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <!-- Example Pie Chart Card-->
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
+                  <div class="card-body">
+                    <canvas id="myPieChart" width="100%" height="100"></canvas>
+                  </div>
+                  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+            </div>
                     <!-- /.container-fluid-->
                     <!-- /.content-wrapper-->
                     <footer class="sticky-footer">
@@ -353,21 +371,20 @@
                         </div>
                       </div>
                     </div>
-                <!-- Bootstrap core JavaScript-->
-                <script src="../resources/vendor/jquery/jquery.min.js"></script>
-                <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <!-- Core plugin JavaScript-->
-                <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-                <!-- Page level plugin JavaScript-->
-                <script src="../resources/vendor/chart.js/Chart.min.js"></script>
-                <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
-                <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
-                <!-- Custom scripts for all pages-->
-                <script src="../resources/js/sb-admin.min.js"></script>
-                <!-- Custom scripts for this page-->
-                <script src="../resources/js/sb-admin-datatables.min.js"></script>
-                <script src="../resources/js/sb-admin-charts.min.js"></script>
-            </div>
-        </div>
-    </body>
+            <!-- Bootstrap core JavaScript-->
+            <script src="../resources/vendor/jquery/jquery.min.js"></script>
+            <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Page level plugin JavaScript-->
+            <script src="../resources/vendor/chart.js/Chart.min.js"></script>
+            <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
+            <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="../resources/js/sb-admin.min.js"></script>
+            <!-- Custom scripts for this page-->
+            <script src="../resources/js/sb-admin-datatables.min.js"></script>
+            <script src="../resources/js/sb-admin-charts.min.js"></script>
+    </div>
+</body>
 </html>
