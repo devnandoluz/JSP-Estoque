@@ -45,13 +45,13 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Monitoramento">
           <a class="nav-link" href="#">
             <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Monitorameto</span>
+            <span class="nav-link-text">Monitoramento</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instalacao">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Instalação</span>
+            <i class="fa fa-fw fa-history"></i>
+            <span class="nav-link-text">Log de Ações</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Adicionar">
@@ -280,9 +280,9 @@
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-history"></i>
+                <i class="fa fa-fw fa-wrench"></i>
               </div>
-              <div class="mr-5"> Log de Ações </div>
+              <div class="mr-5"> Instalação </div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">Ver Detalhes</span>
