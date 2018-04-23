@@ -43,13 +43,13 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Monitoramento">
-          <a class="nav-link" href="#">
+            <a class="nav-link" href="monitoramento.jsp">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Monitoramento</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instalacao">
-          <a class="nav-link" href="#">
+            <a class="nav-link" href="log.jsp">
             <i class="fa fa-fw fa-history"></i>
             <span class="nav-link-text">Log de Ações</span>
           </a>
@@ -61,19 +61,19 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseAdicinar">
             <li>
-                <a href="navbar.html">
+                <a href="cadastra_cliente.jsp">
                     <i class="fa fa-fw fa-user-plus"></i>
                     <span class="nav-link-text">Cliente</span>
                 </a>
             </li>
             <li>
-                <a href="cards.html">
+                <a href="cadastra_funcionario.jsp">
                     <i class="fa fa-fw fa-plus-square-o"></i>
                     <span class="nav-link-text">Funcionário</span>
                 </a>
             </li>
             <li>
-                <a href="cards.html">
+                <a href="cadastra_produto.jsp">
                     <i class="fa fa-fw fa-cart-plus"></i>
                     <span class="nav-link-text">Produto</span>
                 </a>
@@ -101,10 +101,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseRoot">
             <li>
-              <a href="#">Menu</a>
+              <a href="menu.jsp">Menu</a>
             </li>
             <li>
-              <a href="#">Perfil</a>
+              <a href="perfil.jsp">Perfil</a>
             </li>
           </ul>
         </li>
@@ -276,7 +276,7 @@
             <footer class="sticky-footer">
               <div class="container">
                 <div class="text-center">
-                  <small>Copyright © Gente Telecom do Brasil 2018</small>
+                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
                 </div>
               </div>
             </footer>

@@ -49,7 +49,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instalacao">
-          <a class="nav-link" href="#">
+            <a class="nav-link" href="log.jsp">
             <i class="fa fa-fw fa-history"></i>
             <span class="nav-link-text">Log de Ações</span>
           </a>
@@ -61,19 +61,19 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseAdicinar">
             <li>
-                <a href="navbar.html">
+                <a href="cadastra_cliente.jsp">
                     <i class="fa fa-fw fa-user-plus"></i>
                     <span class="nav-link-text">Cliente</span>
                 </a>
             </li>
             <li>
-                <a href="cards.html">
+                <a href="cadastra_funcionario.jsp">
                     <i class="fa fa-fw fa-plus-square-o"></i>
                     <span class="nav-link-text">Funcionário</span>
                 </a>
             </li>
             <li>
-                <a href="cards.html">
+                <a href="cadastra_produto.jsp">
                     <i class="fa fa-fw fa-cart-plus"></i>
                     <span class="nav-link-text">Produto</span>
                 </a>
@@ -87,10 +87,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseGerarContrato">
             <li>
-              <a href="#">VoIP</a>
+                <a href="contrato_voip.jsp">VoIP</a>
             </li>
             <li>
-              <a href="#">Internet</a>
+                <a href="contrato_internet.jsp">Internet</a>
             </li>
           </ul>
         </li>
@@ -101,10 +101,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseRoot">
             <li>
-              <a href="#">Menu</a>
+              <a href="menu.jsp">Menu</a>
             </li>
             <li>
-              <a href="#">Perfil</a>
+              <a href="perfil.jsp">Perfil</a>
             </li>
           </ul>
         </li>
@@ -230,7 +230,7 @@
               </div>
               <div class="mr-5"> Cliente </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="cliente.jsp">
               <span class="float-left">Ver Detalhes</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -248,7 +248,7 @@
               </div>
               <div class="mr-5"> Funcionário </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="funcionario.jsp">
               <span class="float-left">Ver Detalhes</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -265,7 +265,7 @@
               </div>
               <div class="mr-5"> Estoque </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="estoque.jsp">
               <span class="float-left">Ver Detalhes</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -282,7 +282,7 @@
               </div>
               <div class="mr-5"> Instalação </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="instalacao.jsp">
               <span class="float-left">Ver Detalhes</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -292,51 +292,64 @@
         </div>
       </div>
       
-      <!-- Carousel -->
+      
       <div class="row">
-            <div class="col-sm-12 mb-3">
-                <div id="carouselSlide" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="../img/carousel/cabos.jpg" class="img-fluid d-block">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../img/carousel/parede.jpg" class="img-fluid d-block">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../img/carousel/satelite_antena.jpg" class="img-fluid d-block">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../img/carousel/torres.jpg" class="img-fluid d-block">
+          <!-- Carousel -->
+          <div class="col-sm-6">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-image"></i>
+                        Galeria
+                    </div>
+                    <div class="card-body">
+                        <div id="carouselSlide" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="carouselSlide" data-slide="0" class="active"></li>
+                                <li data-target="carouselSlide" data-slide="1"></li>
+                                <li data-target="carouselSlide" data-slide="2"></li>
+                            </ol>
+                            
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="../img/carousel/parede.png" class="img-fluid d-block">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/carousel/couro.png" class="img-fluid d-block">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/carousel/satelite_antena.png" class="img-fluid d-block">
+                                </div>
+                            </div>
+                            
+                            <a class="carousel-control-prev" href="#carouselSlide" role="bottom" data-slide="prev">
+                                <span class="fa fa-chevron-left"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselSlide" role="bottom" data-slide="next">
+                                <span class="fa fa-chevron-right"></span>
+                            </a>
+                            
                         </div>
                     </div>
                 </div>
-            </div>
+          </div>
+          <div class="col-sm-6">
+              <!--notepad-->
+              <div class="card mb-3">
+                  <div class="card-header">
+                      <i class="fa fa-pencil"></i>
+                      Agendar
+                  </div>                  
+                  <div class="card-body">
+                      <div>
+                          <form class="form-check">
+                            <textarea class="col-sm-12" style="height: 249px;" type="text" placeholder="Digite aqui..."></textarea>                            
+                            <center><input class="btn btn-primary" type="submit" value="Agendar"></center>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-      
-      
-<!--      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img class="d-block w-100" src="../img/carousel/parede.jpg" alt="First slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="../img/carousel/parede.jpg" alt="Second slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="../img/carousel/parede.jpg" alt="Third slide">
-              </div>
-            </div>
-    </div>-->
-      <!-- Area Chart Example-->
-        <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-area-chart"></i> Gráfico de Área </div>
-            <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Atualizado ontem às 11:59 PM</div>
-        </div>
         
     </div>
             <!-- /.container-fluid-->
@@ -344,7 +357,7 @@
             <footer class="sticky-footer">
               <div class="container">
                 <div class="text-center">
-                  <small>Copyright © Gente Telecom do Brasil 2018</small>
+                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
                 </div>
               </div>
             </footer>
