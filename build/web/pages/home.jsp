@@ -30,7 +30,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-      <a class="navbar-brand" href="home.jsp"><img src="../imagens/logotipo.png"></a>
+      <a class="navbar-brand" href="home.jsp"><img src="../img/logotipo.png"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,7 +43,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Monitoramento">
-          <a class="nav-link" href="#">
+            <a class="nav-link" href="monitoramento.jsp">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Monitoramento</span>
           </a>
@@ -217,9 +217,7 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Home</a>
-        </li>
+        <li class="breadcrumb-item active">Home</li>
       </ol>
       <!-- Icon Cards-->
       <div class="row">
@@ -293,6 +291,43 @@
           </div>
         </div>
       </div>
+      
+      <!-- Carousel -->
+      <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div id="carouselSlide" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../img/carousel/cabos.jpg" class="img-fluid d-block">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../img/carousel/parede.jpg" class="img-fluid d-block">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../img/carousel/satelite_antena.jpg" class="img-fluid d-block">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../img/carousel/torres.jpg" class="img-fluid d-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      
+      
+<!--      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="../img/carousel/parede.jpg" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="../img/carousel/parede.jpg" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="../img/carousel/parede.jpg" alt="Third slide">
+              </div>
+            </div>
+    </div>-->
       <!-- Area Chart Example-->
         <div class="card mb-3">
             <div class="card-header">
@@ -302,75 +337,40 @@
             </div>
             <div class="card-footer small text-muted">Atualizado ontem às 11:59 PM</div>
         </div>
-        <div class="row">
-            <div class="col-lg-8">
-            <!-- Example Bar Chart Card-->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-8 my-auto">
-                          <canvas id="myBarChart" width="100" height="50"></canvas>
-                        </div>
-                        <div class="col-sm-4 text-center my-auto">
-                             <div class="h4 mb-0 text-primary">$34,693</div>
-                            <div class="small text-muted">YTD Revenue</div>
-                            <hr>
-                            <div class="h4 mb-0 text-warning">$18,474</div>
-                            <div class="small text-muted">YTD Expenses</div>
-                            <hr>
-                            <div class="h4 mb-0 text-success">$16,219</div>
-                            <div class="small text-muted">YTD Margin</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        
+    </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+              <div class="container">
+                <div class="text-center">
+                  <small>Copyright © Gente Telecom do Brasil 2018</small>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <!-- Example Pie Chart Card-->
-                <div class="card mb-3">
-                  <div class="card-header">
-                    <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
-                  <div class="card-body">
-                    <canvas id="myPieChart" width="100%" height="100"></canvas>
-                  </div>
-                  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                </div>
-            </div>
-                    <!-- /.container-fluid-->
-                    <!-- /.content-wrapper-->
-                    <footer class="sticky-footer">
-                      <div class="container">
-                        <div class="text-center">
-                          <small>Copyright © Gente Telecom do Brasil 2018</small>
-                        </div>
-                      </div>
-                    </footer>
-                    <!-- Scroll to Top Button-->
-                    <a class="scroll-to-top rounded" href="#page-top">
-                      <i class="fa fa-angle-up"></i>
-                    </a>
+              </div>
+            </footer>
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+              <i class="fa fa-angle-up"></i>
+            </a>
 
-                    <!-- Logout Modal-->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">×</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
-                          <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                            <a class="btn btn-primary" href="login.jsp">Sair</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+            <!-- Logout Modal-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="login.jsp">Sair</a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- Bootstrap core JavaScript-->
             <script src="../resources/vendor/jquery/jquery.min.js"></script>
             <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
