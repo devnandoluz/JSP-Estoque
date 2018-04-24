@@ -74,9 +74,8 @@ public class DAOfuncionario {
                 funcionario.setEmail(rs.getString("email"));
                 
                 listaDeFuncionario.add(funcionario);
-                
-                ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
             }
+            ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
         }

@@ -4,6 +4,8 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="model.Estoque"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -223,9 +225,45 @@
         <li class="breadcrumb-item active">Estoque</li>
       </ol>
             
-      
+      <div class="row">
+          <div class="col-sm-12">
+                <div class="card mb-3">
+                    <div class="card-header bg-success text-white">
+                        <i class="fa fa-shopping-cart"></i>
+                        Estoque
+                    </div>
+                    <div class="card-body">
+                        <!--aqui vai a tabela-->
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                <tr>
+                                  <th>Nome</th>
+                                  <th>CNPJ</th>
+                                  <th><center>Opção</center></th>
+                                </tr>
+                              </thead>
+                              <tfoot>
+                                  <tr>
+                                  <th>Nome</th>
+                                  <th>CNPJ</th>
+                                  <th><center>Opção</center></th>
+                                </tr>
+                              </tfoot>
+                              <tbody>                                  
+                                    
+                                  
+                                  
+                                  
+                                  
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+          </div>
         
-    </div>
+        </div>
             <!-- /.container-fluid-->
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">

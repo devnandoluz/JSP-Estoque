@@ -19,15 +19,17 @@ public class Cliente {
     private String cnpj;
     private String servicoContratado;
     private String telefone;
+    private String endereco;
     private String email;
     private String descricao;
 
-    public Cliente(int id, String nomeFantasia, String cnpj, String servicoContratado, String telefone, String email, String descricao) {
+    public Cliente(int id, String nomeFantasia, String cnpj, String servicoContratado, String telefone, String endereco, String email, String descricao) {
         this.id = id;
         this.nomeFantasia = nomeFantasia;
         this.cnpj = cnpj;
         this.servicoContratado = servicoContratado;
         this.telefone = telefone;
+        this.endereco = endereco;
         this.email = email;
         this.descricao = descricao;
     }
@@ -90,6 +92,14 @@ public class Cliente {
     public void setId(int id) {
         this.id = id;
     }
+    
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
     /**
      * 
      * CHAMADA DA DAO
@@ -104,11 +114,11 @@ public class Cliente {
         dao.save(this);
     }
     //Read
-    public ArrayList<Cliente> findAll() throws Exception{   
+    public ArrayList<Cliente> findAll() throws Exception{
         DAOcliente dao = new DAOcliente();
         return dao.findAll();
     }
-    //////////////////////////////////////////////////////////////AQUI PAREI
+    
     public void findForID() throws Exception{
         DAOcliente dao = new DAOcliente();
         this.setNomeFantasia(dao.findForID(this.id).getNomeFantasia());
@@ -128,4 +138,5 @@ public class Cliente {
         DAOcliente dao = new DAOcliente();
         dao.delete(this);
     }
+
 }

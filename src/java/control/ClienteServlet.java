@@ -7,10 +7,13 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cliente;
 
 /**
  *
@@ -39,7 +42,68 @@ public class ClienteServlet extends HttpServlet {
             out.println("<title>Servlet ClienteServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ClienteServlet at " + request.getContextPath() + "</h1>");
+            //declaração de variaveis que recebem por parametro os valores.
+            String option = request.getParameter("option");
+            String id = request.getParameter("id");
+            String nomeFantasia = request.getParameter("nomeFantasia");
+            String cnpj = request.getParameter("cnpj");
+            String servicoContratado = request.getParameter("servicoContratado");
+            String telefone = request.getParameter("telefone");
+            String endereco = request.getParameter("endereco");
+            String email = request.getParameter("email");
+            String descricao = request.getParameter("descricao");
+            
+            
+            
+            Cliente cliente = new Cliente();
+            
+            cliente.setId(Integer.parseInt(id));
+            cliente.setNomeFantasia(nomeFantasia);
+            cliente.setCnpj(cnpj);
+            cliente.setServicoContratado(servicoContratado);
+            cliente.setTelefone(telefone);
+            cliente.setEndereco(endereco);
+            cliente.setEmail(email);
+            cliente.setDescricao(descricao);
+            
+            
+            //Decisão de qual metodo CRUD usar.
+            switch(option){
+                case "insert":{
+                try {
+                    cliente.insert();
+                } catch (Exception ex) {
+                    Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    response.sendRedirect("clientes.jsp");
+                }
+                break;
+                
+                
+                case "update":{
+                    cliente.setId(Integer.parseInt(id));
+                try {
+                    cliente.update();
+                } catch (Exception ex) {
+                    Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    response.sendRedirect("cliente.jsp");
+                }
+                break;
+                
+                
+                case "delete":{
+                    cliente.setId(Integer.parseInt(id));
+                try {
+                    cliente.delete();
+                } catch (Exception ex) {
+                    Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    response.sendRedirect("cliente.jsp");
+                }
+                break;
+                        
+            }
             
             
             

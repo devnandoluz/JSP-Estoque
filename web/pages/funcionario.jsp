@@ -4,6 +4,8 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +27,14 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+        <script type="text/javascript">
+            function excluir(nome,id){
+                var url = "gerenciar_funcionario.do?option=delete&id="+id;
+                    if(confirm("Tem certeza que deseja excluir o perfil: "+nome+"?")){
+                        window.open(url,"_self");
+                }
+            }
+        </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -223,7 +233,68 @@
         <li class="breadcrumb-item active">Funcionário</li>
       </ol>
             
-      
+      <div class="row">
+          <div class="col-sm-12">
+                <div class="card mb-3">
+                    <div class="card-header bg-warning text-white">
+                        <i class="fa fa-id-badge"></i>
+                        Funcionários
+                    </div>
+                    <div class="card-body">
+                        <!--aqui vai a tabela-->
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                <tr>
+                                  <th>Nome</th>
+                                  <th>CNPJ</th>
+                                  <th><center>Opção</center></th>
+                                </tr>
+                              </thead>
+                              <tfoot>
+                                  <tr>
+                                  <th>Nome</th>
+                                  <th>CNPJ</th>
+                                  <th><center>Opção</center></th>
+                                </tr>
+                              </tfoot>
+                              <tbody>                                  
+                                    <% 
+                                        ArrayList<Funcionario> lista = new ArrayList();
+                                            try{
+                                                Funcionario funcionario = new Funcionario();   
+
+                                                lista = funcionario.findAll();
+                                            }catch(Exception e){
+                                                out.print("Erro:"+e);
+                                            }
+                                                
+                                        for(Funcionario funcionario:lista){
+                                            %>
+                                            <tr>
+                                                <td>
+                                                    <%= funcionario.getNome() %>
+                                                </td>
+                                                <td>
+                                                    <%= funcionario.getCpf() %>
+                                                </td>
+                                                <td>
+                                                    <center>
+                                                        <a class="btn btn-primary " href="funcinarioFullView.jsp?id=<%= funcionario.getId() %>&nome=<%= funcionario.getNome() %>" >  Ver  </a>
+                                                        <a class="btn btn-primary " href="alterarFuncionario.jsp?id=<%= funcionario.getId() %>" >  Alterar  </a>
+                                                        <a class="btn btn-danger " href="#" onclick="excluir('<%= funcionario.getNome() %>', <%= funcionario.getId() %>)">  Excluir  </a>
+                                                    </center>
+                                                </td>
+                                            </tr>  
+                                    <%
+                                        }
+                                    %>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+          </div>
         
     </div>
             <!-- /.container-fluid-->

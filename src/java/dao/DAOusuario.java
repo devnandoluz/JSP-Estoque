@@ -16,8 +16,7 @@ import model.Usuario;
  * CRUD
  * @author Nando Luzy
  */
-public class DAOusuario {
-    
+public class DAOusuario {    
     private final Connection con;
     private PreparedStatement pstm = null;
     
@@ -57,6 +56,7 @@ public class DAOusuario {
             
             while(rs.next()){
                 Usuario usuario = new Usuario();
+                
                 usuario.setId(rs.getInt("idUsuario"));
                 usuario.setUsername(rs.getString("username"));
                 usuario.setSenha(rs.getString("senha"));

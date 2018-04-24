@@ -3,7 +3,11 @@
     Created on : 23/04/2018, 13:32:31
     Author     : Nando Luz
 --%>
+<%@page import="model.Cliente"%>
+<%@page import="java.util.ArrayList"%>
 
+
+    
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +29,16 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    
+        <script type="text/javascript">
+            function excluir(nome,id){
+                var url = "gerenciar_cliente.do?option=delete&id="+id;
+                    if(confirm("Tem certeza que deseja excluir o perfil: "+nome+"?")){
+                        window.open(url,"_self");
+                }
+            }
+        </script>
+    
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -222,7 +236,7 @@
         </li>
         <li class="breadcrumb-item active">Cliente</li>
       </ol>
-            
+
       <div class="row">
           <div class="col-sm-12">
                 <div class="card mb-3">
@@ -232,10 +246,58 @@
                     </div>
                     <div class="card-body">
                         <!--aqui vai a tabela-->
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                <tr>
+                                  <th>Nome</th>
+                                  <th>CNPJ</th>
+                                  <th><center>Opção</center></th>
+                                </tr>
+                              </thead>
+                              <tfoot>
+                                  <tr>
+                                  <th>Nome</th>
+                                  <th>CNPJ</th>
+                                  <th><center>Opção</center></th>
+                                </tr>
+                              </tfoot>
+                              <tbody>                                  
+                                    <% 
+                                        ArrayList<Cliente> lista = new ArrayList();
+                                            try{
+                                                Cliente cliente = new Cliente();   
+
+                                                lista = cliente.findAll();
+                                            }catch(Exception e){
+                                                out.print("Erro:"+e);
+                                            }                                                
+                                        for(Cliente cliente:lista){
+                                            %>
+                                            <tr>
+                                                <td>
+                                                    <%= cliente.getNomeFantasia() %>
+                                                </td>
+                                                <td>
+                                                    <%= cliente.getCnpj() %>
+                                                </td>
+                                                <td>
+                                                    <center>
+                                                        <a class="btn btn-primary " href="funcinarioFullView.jsp?id=<%= cliente.getId() %>&nome=<%= cliente.getNomeFantasia() %>" >  Ver  </a>
+                                                        <a class="btn btn-primary " href="alterarFuncionario.jsp?id=<%= cliente.getId() %>" >  Alterar  </a>
+                                                        <a class="btn btn-danger " href="#" onclick="excluir('<%= cliente.getNomeFantasia() %>', <%= cliente.getId() %>)">  Excluir  </a>
+                                                    </center>
+                                                </td>
+                                            </tr>  
+                                    <%
+                                        }
+                                    %>
+                              </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
           </div>
-      </div>
         
     </div>
             <!-- /.container-fluid-->

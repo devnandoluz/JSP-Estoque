@@ -27,7 +27,7 @@ public class DAOcliente {
     //Create (Salvar)
     public boolean save(Cliente cliente){
         
-        String sql = "INSERT INTO cliente (nome_fantasia, cnpj, servico_contratado, telefone, email, descricao) VALUES (?,?,?,?,?,?);";
+        String sql = "INSERT INTO cliente (nome_fantasia, cnpj, servico_contratado, telefone, endereco, email, descricao) VALUES (?,?,?,?,?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
@@ -35,8 +35,9 @@ public class DAOcliente {
             pstm.setString(2, cliente.getCnpj());
             pstm.setString(3, cliente.getServicoContratado());
             pstm.setString(4, cliente.getTelefone());
-            pstm.setString(5, cliente.getEmail());
-            pstm.setString(6, cliente.getDescricao());
+            pstm.setString(5, cliente.getEndereco());
+            pstm.setString(6, cliente.getEmail());
+            pstm.setString(7, cliente.getDescricao());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -50,7 +51,7 @@ public class DAOcliente {
     //Read (Ler)
     public ArrayList<Cliente> findAll(){
         
-        ArrayList<Cliente> listaDeClientes = new ArrayList();
+        ArrayList<Cliente> listaDeFuncionario = new ArrayList();
         
         String sql = "SELECT * FROM cliente;";
         
@@ -59,22 +60,25 @@ public class DAOcliente {
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
-                Cliente cliente = new Cliente();
-                cliente.setId(rs.getInt("idCliente"));
-                cliente.setNomeFantasia(rs.getString("nome_fantasia"));
-                cliente.setCnpj(rs.getString("cnpj"));
-                cliente.setServicoContratado(rs.getString("servico_contratado"));
-                cliente.setTelefone(rs.getString("telefone"));
-                cliente.setEmail(rs.getString("email"));
-                cliente.setDescricao(rs.getString("descricao"));
+                Cliente funcionario = new Cliente();
                 
-                listaDeClientes.add(cliente);
+                funcionario.setId(rs.getInt("idCLIENTE"));
+                funcionario.setNomeFantasia(rs.getString("NOME_FANTASIA"));
+                funcionario.setCnpj(rs.getString("CNPJ"));
+                funcionario.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));
+                funcionario.setTelefone(rs.getString("TELEFONE"));
+                //funcionario.setEndereco(rs.getString("ENDERECO"));
+                funcionario.setEmail(rs.getString("EMAIL"));
+                funcionario.setDescricao(rs.getString("DESCRICAO"));
+                
+                listaDeFuncionario.add(funcionario);
             }
+            ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
         }
-        ConnectionDB.closeConnection(con);
-        return listaDeClientes;
+        
+        return listaDeFuncionario;
     }
     
     public Cliente findForID(int id){
@@ -85,12 +89,13 @@ public class DAOcliente {
             
             pstm.setInt(1, id);
             
-            ResultSet rs = pstm.executeQuery();            
+            ResultSet rs = pstm.executeQuery();
             cliente.setId(rs.getInt("idCliente"));
             cliente.setNomeFantasia(rs.getString("nome_fantasia"));
             cliente.setCnpj(rs.getString("cnpj"));
             cliente.setServicoContratado(rs.getString("servico_contratado"));
             cliente.setTelefone(rs.getString("telefone"));
+            cliente.setEndereco(rs.getString("endereco"));
             cliente.setEmail(rs.getString("email"));
             cliente.setDescricao(rs.getString("descricao"));
             
@@ -110,6 +115,7 @@ public class DAOcliente {
                 + "cnpj = ?,"
                 + "servico_contratado = ?,"
                 + "telefone = ?,"
+                + "endereco = ?,"
                 + "email = ?,"
                 + "descricao = ?"
                 + "WHERE idcliente = ?;";
@@ -119,9 +125,10 @@ public class DAOcliente {
             pstm.setString(2, cliente.getCnpj());
             pstm.setString(3, cliente.getServicoContratado());
             pstm.setString(4, cliente.getTelefone());
-            pstm.setString(5, cliente.getEmail());
-            pstm.setString(6, cliente.getDescricao());
-            pstm.setInt(7, cliente.getId());
+            pstm.setString(5, cliente.getEndereco());
+            pstm.setString(6, cliente.getEmail());
+            pstm.setString(7, cliente.getDescricao());
+            pstm.setInt(8, cliente.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
