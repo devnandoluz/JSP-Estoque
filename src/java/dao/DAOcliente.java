@@ -17,9 +17,9 @@ import model.Cliente;
  * @author Nando Luzy
  */
 public class DAOcliente {
-        private final Connection con;
-        private PreparedStatement pstm = null;
-    
+    private final Connection con;
+    private PreparedStatement pstm = null;
+
     public DAOcliente(){
         con = ConnectionDB.openConnection();
     }
@@ -90,6 +90,7 @@ public class DAOcliente {
             pstm.setInt(1, id);
             
             ResultSet rs = pstm.executeQuery();
+            
             cliente.setId(rs.getInt("idCliente"));
             cliente.setNomeFantasia(rs.getString("nome_fantasia"));
             cliente.setCnpj(rs.getString("cnpj"));

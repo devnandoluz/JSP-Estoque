@@ -240,14 +240,17 @@
       <div class="row">
           <div class="col-sm-12">
                 <div class="card mb-3">
-                    <div class="card-header bg-primary text-white">
-                        <i class="fa fa-users"></i>
-                        Clientes Cadastrados
+                    <div class="card-header bg-primary text-white form-inline">
+                            <i class="fa fa-users" style="margin-right: 4px"></i>
+                            CLIENTES CADASTRADOS
+                            <div class="navbar-nav ml-auto">
+                                <a class="btn btn-success" style="width: 40px; height: 40px;" href="cadastra_cliente.jsp"><b>+</b></a>
+                            </div>
                     </div>
                     <div class="card-body">
                         <!--aqui vai a tabela-->
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                               <thead>
                                 <tr>
                                   <th>Nome</th>
@@ -262,7 +265,7 @@
                                   <th><center>Opção</center></th>
                                 </tr>
                               </tfoot>
-                              <tbody>                                  
+                              <tbody class="">                                  
                                     <% 
                                         ArrayList<Cliente> lista = new ArrayList();
                                             try{
@@ -276,17 +279,21 @@
                                             %>
                                             <tr>
                                                 <td>
-                                                    <%= cliente.getNomeFantasia() %>
+                                                    <center><%= cliente.getNomeFantasia() %></center>
                                                 </td>
                                                 <td>
-                                                    <%= cliente.getCnpj() %>
+                                                    <center><%= cliente.getCnpj() %></center>
                                                 </td>
                                                 <td>
-                                                    <center>
-                                                        <a class="btn btn-primary " href="funcinarioFullView.jsp?id=<%= cliente.getId() %>&nome=<%= cliente.getNomeFantasia() %>" >  Ver  </a>
-                                                        <a class="btn btn-primary " href="alterarFuncionario.jsp?id=<%= cliente.getId() %>" >  Alterar  </a>
-                                                        <a class="btn btn-danger " href="#" onclick="excluir('<%= cliente.getNomeFantasia() %>', <%= cliente.getId() %>)">  Excluir  </a>
-                                                    </center>
+                                                    <a class="btn btn-primary " href="visualizar_cliente.jsp?id=<%= cliente.getId() %>&nome=<%= cliente.getNomeFantasia() %>" style="margin: 2px;">
+                                                        <span class="fa fa-eye"></span>
+                                                    </a>
+                                                    <a class="btn btn-primary " href="alterar_cliente.jsp?id=<%= cliente.getId() %>" style=" margin: 2px;">
+                                                        <span class="fa fa-pencil"></span>
+                                                    </a>
+                                                    <a class="btn btn-danger " href="#" onclick="excluir('<%= cliente.getNomeFantasia() %>', <%= cliente.getId() %>)" style="margin: 2px;">
+                                                        <span class="fa fa-trash"></span>
+                                                    </a>
                                                 </td>
                                             </tr>  
                                     <%

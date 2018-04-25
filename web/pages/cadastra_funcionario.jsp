@@ -220,9 +220,16 @@
         <li class="breadcrumb-item">
           <a href="home.jsp">Home</a>
         </li>
-        <li class="breadcrumb-item active">Adicionar Funcionário</li>
+        <li class="breadcrumb-item active">Cadastrar funcionario</li>
       </ol>
-            
+      <div class="card mb-3">
+           <div class="card-header bg-warning text-white ">
+                <div class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <i class="fa fa-id-badge" style="margin-right: 4px"></i>
+                    NOVO FUNCIONARIO                      
+                </div>
+           </div> 
+      </div>      
       
         
     </div>

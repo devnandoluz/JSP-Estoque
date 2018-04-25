@@ -41,8 +41,7 @@ public class UsuarioServlet extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet Usuario</title>");            
             out.println("</head>");
-            out.println("<body>");
-            
+            out.println("<body>");            
             //declaração de variaveis que recebem por parametro os valores.
             String option = request.getParameter("option");
             String username = request.getParameter("username");

@@ -236,14 +236,17 @@
       <div class="row">
           <div class="col-sm-12">
                 <div class="card mb-3">
-                    <div class="card-header bg-warning text-white">
-                        <i class="fa fa-id-badge"></i>
-                        Funcionários
+                    <div class="card-header bg-warning text-white form-inline">
+                        <i class="fa fa-id-badge" style="margin-right: 4px"></i>
+                        FUNCIONÁRIOS
+                        <div class="navbar-nav ml-auto">
+                            <a class="btn btn-success" style="width: 40px; height: 40px;" href="cadastra_funcionario.jsp"><b>+</b></a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <!--aqui vai a tabela-->
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                               <thead>
                                 <tr>
                                   <th>Nome</th>
@@ -279,11 +282,15 @@
                                                     <%= funcionario.getCpf() %>
                                                 </td>
                                                 <td>
-                                                    <center>
-                                                        <a class="btn btn-primary " href="funcinarioFullView.jsp?id=<%= funcionario.getId() %>&nome=<%= funcionario.getNome() %>" >  Ver  </a>
-                                                        <a class="btn btn-primary " href="alterarFuncionario.jsp?id=<%= funcionario.getId() %>" >  Alterar  </a>
-                                                        <a class="btn btn-danger " href="#" onclick="excluir('<%= funcionario.getNome() %>', <%= funcionario.getId() %>)">  Excluir  </a>
-                                                    </center>
+                                                    <a class="btn btn-primary " href="funcinarioFullView.jsp?id=<%= funcionario.getId() %>&nome=<%= funcionario.getNome() %>" style="margin: 2px;">
+                                                        <span class="fa fa-eye"></span>
+                                                    </a>
+                                                    <a class="btn btn-primary " href="alterarFuncionario.jsp?id=<%= funcionario.getId() %>" style=" margin: 2px;">
+                                                        <span class="fa fa-pencil"></span>
+                                                    </a>
+                                                    <a class="btn btn-danger " href="#" onclick="excluir('<%= funcionario.getNome() %>', <%= funcionario.getId() %>)" style="margin: 2px;">
+                                                        <span class="fa fa-trash"></span>
+                                                    </a>
                                                 </td>
                                             </tr>  
                                     <%

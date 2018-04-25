@@ -220,10 +220,70 @@
         <li class="breadcrumb-item">
           <a href="home.jsp">Home</a>
         </li>
-        <li class="breadcrumb-item active">Adicionar Cliente</li>
+        <li class="breadcrumb-item active">Cadastrar cliente</li>
       </ol>
-            
-      
+      <div class="card mb-3">
+            <div class="card-header bg-primary text-white ">
+                <div class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <i class="fa fa-users" style="margin-right: 4px"></i>
+                    NOVO CLIENTE                      
+                </div>
+            </div> 
+          <div class="col-md-12">
+              <div>
+                  <hr>
+                  <center><h3 class="h5">PREENCHA O FORMULARIO ABAIXO</h3></center>
+                  <hr>
+                  <br>
+              </div>
+                  
+              <form id="formCliente" data-toggle="validator" role="form" method="post" action="gerenciar_cliente.do">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">NOME FANTASIA</label>
+                            <input name="nome_fantasia"  type="text" class="form-control" placeholder="Nome fantasia da empresa..." data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="form-label">CNPJ</label>
+                            <input name="cnpj" type="text" class="form-control" placeholder="CNPJ da empresa..." data-error="Por favor, informe um CNPJ válido."data-minlength="17" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">SERVIÇO CONTRATADO</label>
+                        <input name="servico_contratado" type="text" class="form-control" placeholder="Qual serviço?" data-error="Este campo é necessário." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">ENDEREÇO</label>
+                        <input name="endereco" type="text" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo é necessário." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">TELEFONE</label>
+                            <input name="telefone" type="text" class="form-control" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="form-label">E-MAIL</label>
+                            <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label class="form-label">DESCRIÇÃO</label>
+                        <textarea name="descricao" type="text" class="form-control" placeholder="Mais informações..."></textarea>
+                    </div>
+                    <div class="form-group align-content-center">
+                        <center><button class="btn btn-success" name="option" value="insert">CADASTRAR</button></center>
+                    </div>
+                </form>
+          </div>
+          
+          
+      </div>
         
     </div>
             <!-- /.container-fluid-->
@@ -272,6 +332,7 @@
             <!-- Custom scripts for this page-->
             <script src="../resources/js/sb-admin-datatables.min.js"></script>
             <script src="../resources/js/sb-admin-charts.min.js"></script>
+            <script src="../resources/js/validator.min.js"></script>
     </div>
 </body>
 </html>

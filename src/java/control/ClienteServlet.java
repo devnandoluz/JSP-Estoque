@@ -7,9 +7,8 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +16,9 @@ import model.Cliente;
 
 /**
  *
- * @author 281549
+ * @author Nando Luzy
  */
+@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
 public class ClienteServlet extends HttpServlet {
 
     /**
@@ -31,7 +31,7 @@ public class ClienteServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -39,72 +39,57 @@ public class ClienteServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ClienteServlet</title>");            
+            out.println("<title>Servlet Usuario</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body>");            
             //declaração de variaveis que recebem por parametro os valores.
             String option = request.getParameter("option");
-            String id = request.getParameter("id");
-            String nomeFantasia = request.getParameter("nomeFantasia");
+            
+            String nome_fatasia = request.getParameter("nome_fantasia");
             String cnpj = request.getParameter("cnpj");
-            String servicoContratado = request.getParameter("servicoContratado");
-            String telefone = request.getParameter("telefone");
+            String servico_contratado = request.getParameter("servico_contratado");
             String endereco = request.getParameter("endereco");
+            String telefone = request.getParameter("telefone");
             String email = request.getParameter("email");
             String descricao = request.getParameter("descricao");
             
-            
+            String id = request.getParameter("id");
             
             Cliente cliente = new Cliente();
             
-            cliente.setId(Integer.parseInt(id));
-            cliente.setNomeFantasia(nomeFantasia);
+            cliente.setNomeFantasia(nome_fatasia);
             cliente.setCnpj(cnpj);
-            cliente.setServicoContratado(servicoContratado);
-            cliente.setTelefone(telefone);
+            cliente.setServicoContratado(servico_contratado);
             cliente.setEndereco(endereco);
+            cliente.setTelefone(telefone);
             cliente.setEmail(email);
             cliente.setDescricao(descricao);
-            
             
             //Decisão de qual metodo CRUD usar.
             switch(option){
                 case "insert":{
-                try {
                     cliente.insert();
-                } catch (Exception ex) {
-                    Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                    response.sendRedirect("clientes.jsp");
+                    response.sendRedirect("cliente.jsp");
                 }
                 break;
                 
                 
                 case "update":{
                     cliente.setId(Integer.parseInt(id));
-                try {
                     cliente.update();
-                } catch (Exception ex) {
-                    Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                    response.sendRedirect("cliente.jsp");
+                    response.sendRedirect("clientes.jsp");
                 }
                 break;
                 
                 
                 case "delete":{
                     cliente.setId(Integer.parseInt(id));
-                try {
                     cliente.delete();
-                } catch (Exception ex) {
-                    Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
                     response.sendRedirect("cliente.jsp");
                 }
                 break;
                         
             }
-            
             
             
             out.println("</body>");
@@ -124,7 +109,11 @@ public class ClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            System.err.println("Servlet erro: " + ex);
+        }
     }
 
     /**
@@ -138,7 +127,11 @@ public class ClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            System.err.println("Servlet erro: " + ex);
+        }
     }
 
     /**

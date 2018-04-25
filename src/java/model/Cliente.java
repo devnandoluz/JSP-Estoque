@@ -113,17 +113,19 @@ public class Cliente {
         DAOcliente dao = new DAOcliente();
         dao.save(this);
     }
+    
     //Read
     public ArrayList<Cliente> findAll() throws Exception{
         DAOcliente dao = new DAOcliente();
         return dao.findAll();
     }
     
-    public void findForID() throws Exception{
+    public void findForID(int id) throws Exception{
         DAOcliente dao = new DAOcliente();
         this.setNomeFantasia(dao.findForID(this.id).getNomeFantasia());
         this.setCnpj(dao.findForID(this.id).getCnpj());
         this.setServicoContratado(dao.findForID(this.id).getServicoContratado());
+        this.setEndereco(dao.findForID(this.id).getEndereco());
         this.setTelefone(dao.findForID(this.id).getTelefone());
         this.setEmail(dao.findForID(this.id).getEmail());
         this.setDescricao(dao.findForID(this.id).getDescricao());
