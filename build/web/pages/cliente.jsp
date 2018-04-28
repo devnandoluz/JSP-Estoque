@@ -276,7 +276,7 @@
                                                 out.print("Erro:"+e);
                                             }                                                
                                         for(Cliente cliente:lista){
-                                            %>
+                                    %>
                                             <tr>
                                                 <td>
                                                     <center><%= cliente.getNomeFantasia() %></center>

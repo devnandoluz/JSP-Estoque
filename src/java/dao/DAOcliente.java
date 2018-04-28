@@ -82,24 +82,26 @@ public class DAOcliente {
     }
     
     public Cliente findForID(int id){
+        
+        String sql = "SELECT * FROM cliente WHERE idCLIENTE = ?;";
         Cliente cliente = new Cliente();
-        String sql = "SELECT * FROM cliente WHERE idCliente = ?;";
+        
         try {
             pstm = con.prepareStatement(sql);
-            
-            pstm.setInt(1, id);
-            
+            pstm.setInt(1, id);            
             ResultSet rs = pstm.executeQuery();
             
-            cliente.setId(rs.getInt("idCliente"));
-            cliente.setNomeFantasia(rs.getString("nome_fantasia"));
-            cliente.setCnpj(rs.getString("cnpj"));
-            cliente.setServicoContratado(rs.getString("servico_contratado"));
-            cliente.setTelefone(rs.getString("telefone"));
-            cliente.setEndereco(rs.getString("endereco"));
-            cliente.setEmail(rs.getString("email"));
-            cliente.setDescricao(rs.getString("descricao"));
-            
+            while(rs.next()){
+                
+                cliente.setId(rs.getInt("idCLIENTE"));
+                cliente.setNomeFantasia(rs.getString("NOME_FANTASIA"));
+                cliente.setCnpj(rs.getString("CNPJ"));
+                cliente.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));
+                cliente.setTelefone(rs.getString("TELEFONE"));
+                //cliente.setEndereco(rs.getString("endereco"));
+                cliente.setEmail(rs.getString("EMAIL"));
+                cliente.setDescricao(rs.getString("DESCRICAO"));
+            }
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
         }finally{

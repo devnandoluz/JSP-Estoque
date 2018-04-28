@@ -77,7 +77,7 @@ public class ClienteServlet extends HttpServlet {
                 case "update":{
                     cliente.setId(Integer.parseInt(id));
                     cliente.update();
-                    response.sendRedirect("clientes.jsp");
+                    response.sendRedirect("cliente.jsp");
                 }
                 break;
                 

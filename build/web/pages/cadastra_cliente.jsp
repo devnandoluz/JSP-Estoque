@@ -223,20 +223,22 @@
         <li class="breadcrumb-item active">Cadastrar cliente</li>
       </ol>
       <div class="card mb-3">
-            <div class="card-header bg-primary text-white ">
+            <div class="card-header bg-primary text-white form-inline">
                 <div class="form-inline my-2 my-lg-0 mr-lg-2">
                     <i class="fa fa-users" style="margin-right: 4px"></i>
-                    NOVO CLIENTE                      
-                </div>
+                    NOVO CLIENTE   
+                    <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
+                    </div>
+                </div>                
             </div> 
+        <div class="card-body">
           <div class="col-md-12">
               <div>
                   <hr>
                   <center><h3 class="h5">PREENCHA O FORMULARIO ABAIXO</h3></center>
                   <hr>
                   <br>
-              </div>
-                  
+              </div>                  
               <form id="formCliente" data-toggle="validator" role="form" method="post" action="gerenciar_cliente.do">
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -281,7 +283,7 @@
                     </div>
                 </form>
           </div>
-          
+      </div>      
           
       </div>
         

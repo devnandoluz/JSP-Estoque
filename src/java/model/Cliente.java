@@ -120,15 +120,9 @@ public class Cliente {
         return dao.findAll();
     }
     
-    public void findForID(int id) throws Exception{
+    public Cliente findForID(int id) throws Exception{
         DAOcliente dao = new DAOcliente();
-        this.setNomeFantasia(dao.findForID(this.id).getNomeFantasia());
-        this.setCnpj(dao.findForID(this.id).getCnpj());
-        this.setServicoContratado(dao.findForID(this.id).getServicoContratado());
-        this.setEndereco(dao.findForID(this.id).getEndereco());
-        this.setTelefone(dao.findForID(this.id).getTelefone());
-        this.setEmail(dao.findForID(this.id).getEmail());
-        this.setDescricao(dao.findForID(this.id).getDescricao());
+        return dao.findForID(id);
     }
     //Update
     public void update() throws Exception{ 
