@@ -11,25 +11,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.SaidaProduto;
-import model.SaidaProduto;
 
 /**
  *
  * @author Nando Luzy
  */
 public class DAOsaidaProduto {
-     private final Connection con;
+
+    private final Connection con;
     private PreparedStatement pstm = null;
-    
-    public DAOsaidaProduto(){
+
+    public DAOsaidaProduto() {
         con = ConnectionDB.openConnection();
     }
-       
+
     //Create (Salvar)
-    public boolean save(SaidaProduto saidaproduto){
-        
+    public boolean save(SaidaProduto saidaproduto) {
+
         String sql = "INSERT INTO SAIDA_PRODUTO (QUANT,VALOR_UNIT,DATA_SAIDA) VALUES (?,?,?);";
-        
+
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, saidaproduto.getQuantidade());
@@ -40,79 +40,89 @@ public class DAOsaidaProduto {
         } catch (SQLException ex) {
             System.err.println("Erro ao salvar: " + ex);
             return false;
-        } finally{
+        } finally {
             ConnectionDB.closeConnection(con, pstm);
         }
     }
-    
+
     //Read (Ler)
-    public ArrayList<SaidaProduto> findAll(){
-        
+    public ArrayList<SaidaProduto> findAll() {
+
         ArrayList<SaidaProduto> listaDeProdutos = new ArrayList();
-        
+
         String sql = "SELECT * FROM SAIDA_PRODUTO;";
-        
+
         try {
             pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 SaidaProduto saidaproduto = new SaidaProduto();
                 
+                saidaproduto.setId(rs.getInt("idSAIDA_PRODUTO"));
                 saidaproduto.setDataSaida(rs.getDate("DATA_SAIDA"));
                 saidaproduto.setValorUnitario(rs.getDouble("VALOR_UNITARIO"));
                 saidaproduto.setQuantidade(rs.getInt("VALOR_UNITARIO"));
+                
                 listaDeProdutos.add(saidaproduto);
             }
-            
+
             ConnectionDB.closeConnection(con, pstm, rs); //close conections
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
         }
-        
+
         return listaDeProdutos;
     }
-    
-    public SaidaProduto findForID(int id){
-        
+
+    public SaidaProduto findForID(int id) {
+
         SaidaProduto saidaproduto = new SaidaProduto();
-        String sql = "SELECT * FROM SAIDA_PRODUTO WHERE idSaidaProduto = ?;";
+        String sql = "SELECT * FROM SAIDA_PRODUTO WHERE idSAIDA_PRODUTO = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, id);
-            
+
             ResultSet rs = pstm.executeQuery();
-            
-            saidaproduto.setId(rs.getInt("idSaidaProduto"));
-            saidaproduto.setCategoria(rs.getString("categoria"));
+
+         saidaproduto.setId(rs.getInt("idSAIDA_PRODUTO"));
+                saidaproduto.setDataSaida(rs.getDate("DATA_SAIDA"));
+                saidaproduto.setValorUnitario(rs.getDouble("VALOR_UNITARIO"));
+                saidaproduto.setQuantidade(rs.getInt("VALOR_UNITARIO"));
             ConnectionDB.closeConnection(con, pstm, rs);
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
         }
-        
+
         return saidaproduto;
     }
-    
+
     //Update (Alterar)
-    public boolean update(SaidaProduto saidaproduto){
-        String sql = "UPDATE saidaproduto SET categoria = ? WHERE idTipoPorduto = ?;";
+    public boolean update(SaidaProduto saidaproduto) {
+         String sql = "UPDATE cliente SET "
+                + "QUANT = ?,"
+                + "VALOR_UNIT = ?,"
+                + "DATA_ENTRADA = ?"
+                + "WHERE idSAIDA_PRODUTO = ?;";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, saidaproduto.getCategoria());
+       pstm.setInt(1, saidaproduto.getQuantidade());
+            pstm.setDouble(2, saidaproduto.getValorUnitario());
+            pstm.setDate(3, saidaproduto.getDataSaida());
             pstm.setInt(2, saidaproduto.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
             System.err.println("Erro ao alterar: " + ex);
             return false;
-        }finally{
+        } finally {
             ConnectionDB.closeConnection(con, pstm);
         }
     }
-    
+
     //Delete (Apagar)
-    public boolean delete(SaidaProduto saidaproduto){
-        String sql = "DELETE FROM SAIDA_PRODUTO WHERE idSaidaProduto = ?;";
+    public boolean delete(SaidaProduto saidaproduto) {
+        String sql = "DELETE FROM SAIDA_PRODUTO WHERE idSAIDA_PRODUTO = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, saidaproduto.getId());
@@ -121,9 +131,9 @@ public class DAOsaidaProduto {
         } catch (SQLException ex) {
             System.err.println("Erro ao deletar: " + ex);
             return false;
-        }finally{
+        } finally {
             ConnectionDB.closeConnection(con, pstm);
         }
-        
+
     }
 }
