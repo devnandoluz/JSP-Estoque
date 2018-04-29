@@ -24,74 +24,101 @@
             <!--titulo da pagina-->
             <title>Gente Telecom</title>
             
+            
             <style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
 
+input[type=text], input[type=password] {
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    background-color: #dddddd
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100;
 }
 
+button:hover {
+    opacity: 0.8;
+}
 
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100;
+    }
+}
 </style>
     </head>
     
     
-    <body class="home blog geral">     
-        <div class="nav navbar">
-            <h1 class="nav navbar-text"><img src="imagens/logotipo.png"></h1>
-        </div>
-        <hr>
-        <br>
+    
+
+<form action="/action_page.php">
+  <div class="imgcontainer">
+    <img src="img/logotipo.png">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form> 
+      
         
        
-
-<div class="container-fluid">
-            <div class="row">
-                  <div class='col-md-4'></div>
-                  <div class="col-md-4">
-                      <div class="login-box well">
-                          <div class="text-center">
-                              <br><br>
-                          </div>
- <form>
-<table>
-  
-    <td>             <label for="exampleInputEmail1">Endereço de Email</label></td>
-    <td><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="exemplo@servico.com"></td>
-   
-  </tr>
-  <tr>
-    <td> <label for="exampleInputPassword1">Senha</label></td>
-    <td><input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha"></td>
-   
-  </tr>
-  <tr>
-    <td>  <label class="form-check-label" for="exampleCheck1">Check me out</label> </td>
-    <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-    
-  </tr>
-                        
-                                      
-                                 
-
-                 
-     
-
-</table>
-     <small id="emailHelp" class="form-text text-muted">Nunca Iremos pedir seu E-mail ou senha.</small>
-                                    </div>
-                                    
-                                    <left><p><a class="btn btn-primary " href="pages/home.jsp">home</a></p></left>
-                              </form>
-   </div>
-
        
        
       <!-- Main jumbotron for a primary marketing message or call to action -->

@@ -11,17 +11,11 @@ package model;
  */
 public class Estoque {
     
-    private Produto produto;
+    private String produto;
     private int quantidade;
     private double valorUnitario;
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
+ 
 
     public int getQuantidade() {
         return quantidade;
@@ -37,5 +31,19 @@ public class Estoque {
 
     public void setValorUnitario(double valorUnitario) {
         this.valorUnitario = valorUnitario;
+    }
+
+    /**
+     * @return the produto
+     */
+    public String getProduto() {
+        return produto;
+    }
+
+    /**
+     * @param produto the produto to set
+     */
+    public void setProduto(String produto) {
+        this.produto = produto;
     }
 }
