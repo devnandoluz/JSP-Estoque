@@ -15,8 +15,11 @@ public class Produto {
     private EntradaProduto entradaProduto;
     private SaidaProduto saidaProduto;
     
+    private int id;
     private String nome;
     private String status;
+    private String categoria;
+   
 
     public String getNome() {
         return nome;
@@ -56,5 +59,33 @@ public class Produto {
 
     public void setSaidaProduto(SaidaProduto saidaProduto) {
         this.saidaProduto = saidaProduto;
+    }
+
+    /**
+     * @return the categoria
+     */
+    public String getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }
