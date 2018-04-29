@@ -69,10 +69,9 @@ public class Usuario {
         return dao.findAll();
     }
     
-    public void findForID() throws Exception{
+    public Usuario findForID() throws Exception{
         DAOusuario dao = new DAOusuario();
-        this.setUsername(dao.findForID(this.id).getUsername());
-        this.setSenha(dao.findForID(this.id).getSenha());
+        return dao.findForID(id);
     }
     //Update
     public void update() throws Exception{ 
