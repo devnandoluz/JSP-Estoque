@@ -10,8 +10,8 @@ package model;
  * @author Nando Luzy
  */
 public class Estoque {
-    
-    private String produto;
+    private int id;
+
     private int quantidade;
     private double valorUnitario;
 
@@ -33,17 +33,19 @@ public class Estoque {
         this.valorUnitario = valorUnitario;
     }
 
+   
+
     /**
-     * @return the produto
+     * @return the id
      */
-    public String getProduto() {
-        return produto;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param produto the produto to set
+     * @param id the id to set
      */
-    public void setProduto(String produto) {
-        this.produto = produto;
+    public void setId(int id) {
+        this.id = id;
     }
 }

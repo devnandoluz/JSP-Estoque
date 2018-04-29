@@ -73,7 +73,7 @@ public class DAOusuario {
     
     public Usuario findForID(int id){
         Usuario usuario = new Usuario();
-        String sql = "SELECT * FROM usuario WHERE idUSUARIO = ?;";
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, id);
