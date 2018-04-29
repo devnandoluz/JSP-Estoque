@@ -223,13 +223,79 @@
         <li class="breadcrumb-item active">Cadastrar funcionario</li>
       </ol>
       <div class="card mb-3">
-           <div class="card-header bg-warning text-white ">
+           <div class="card-header bg-warning text-white form-inline">
                 <div class="form-inline my-2 my-lg-0 mr-lg-2">
                     <i class="fa fa-id-badge" style="margin-right: 4px"></i>
-                    NOVO FUNCIONARIO                      
+                    NOVO FUNCIONARIO   
+                    <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
+                    </div>
                 </div>
            </div> 
-      </div>      
+          <div class="card-body">
+          <div class="col-md-12">
+              <div>
+                  <hr>
+                  <center><h3 class="h5">PREENCHA O FORMULARIO ABAIXO</h3></center>
+                  <hr>
+                  <br>
+              </div>
+              <form id="formCliente" data-toggle="validator" role="form" method="post" action="gerenciar_funcionario.do">
+                    
+                    <div class="form-group">
+                        <label class="form-label">NOME</label>
+                        <input name="nome"  type="text" class="form-control" placeholder="Nome do funcionário.." data-error="Este campo é necessário." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">CPF</label>
+                                <input name="cpf" type="text" class="form-control" placeholder="CPF do funcionário..." data-error="Por favor, informe um CPF válido."data-minlength="14" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="form-label">RG</label>
+                            <input name="rg" type="text" class="form-control" placeholder="RG do funcionário..." data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">SEXO</label>
+                                <input name="sexo" type="text" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="form-label">CARGO</label>
+                            <input name="cargo" type="text" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">DATA DE NASCIMENTO</label>
+                        <input name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo é necessário." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                  
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">TELEFONE</label>
+                            <input name="telefone" type="text" class="form-control" placeholder="(00)00000-0000">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="form-label">E-MAIL</label>
+                            <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                        </div>
+                    </div>
+                    <div class="form-group align-content-center">
+                        <center><button class="btn btn-success" name="option" value="insert">CADASTRAR</button></center>
+                    </div>
+                </form>
+          </div>
+      </div>
+          
+    </div>      
       
         
     </div>
@@ -279,6 +345,7 @@
             <!-- Custom scripts for this page-->
             <script src="../resources/js/sb-admin-datatables.min.js"></script>
             <script src="../resources/js/sb-admin-charts.min.js"></script>
+            <script src="../resources/js/validator.min.js"></script>
     </div>
 </body>
 </html>

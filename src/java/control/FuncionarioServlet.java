@@ -7,15 +7,20 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Funcionario;
 
 /**
  *
  * @author Nando Luz
  */
+@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
 public class FuncionarioServlet extends HttpServlet {
 
     /**
@@ -28,7 +33,7 @@ public class FuncionarioServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -39,7 +44,6 @@ public class FuncionarioServlet extends HttpServlet {
             out.println("<title>Servlet FuncionarioServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet FuncionarioServlet at " + request.getContextPath() + "</h1>");
             
             //declaração de variaveis que recebem por parametro os valores.
             String option = request.getParameter("option");
@@ -53,9 +57,42 @@ public class FuncionarioServlet extends HttpServlet {
             String telefone = request.getParameter("telefone");
             String email = request.getParameter("email");
             
+            Funcionario funcionario = new Funcionario();
             
+            funcionario.setCpf(cpf);
+            funcionario.setNome(nome);
+            funcionario.setRg(rg);
+            //funcionario.setDataDeNascimento(dataDeNascimento);
+            funcionario.setSexo(sexo);
+            funcionario.setCargo(cargo);
+            funcionario.setTelefone(telefone);
+            funcionario.setEmail(email);
             
-            
+            //Decisão de qual metodo CRUD usar.
+            switch(option){
+                case "insert":{
+                    funcionario.insert();
+                    response.sendRedirect("funcionario.jsp");
+                }
+                break;
+                
+                
+                case "update":{
+                    funcionario.setId(Integer.parseInt(id));
+                    funcionario.update();
+                    response.sendRedirect("funcionario.jsp");
+                }
+                break;
+                
+                
+                case "delete":{
+                    funcionario.setId(Integer.parseInt(id));
+                    funcionario.delete();
+                    response.sendRedirect("funcionario.jsp");
+                }
+                break;
+                        
+            }
             
             out.println("</body>");
             out.println("</html>");
@@ -74,7 +111,11 @@ public class FuncionarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -88,7 +129,11 @@ public class FuncionarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -288,21 +288,7 @@
                                     </div> 
                                     <div class="form-group">
                                         <label class="form-label">DESCRIÇÃO</label>
-                                        <textarea name="descricao" type="text" class="form-control" 
-                                            <% 
-                                               String descricao = cliente2.getDescricao();
-                                               if(descricao ==  null){
-                                                    %>
-                                                    placeholder="Mais informações..."
-                                                    <%
-                                                }else{
-                                                    %>
-                                                    <%= descricao %>
-                                                    <%
-                                                };
-                                            %>
-                                        >
-                                        </textarea>
+                                        <textarea name="descricao" type="text" class="form-control" placeholder="Mais informações..."><%= cliente2.getDescricao() %></textarea>
                                     </div>
                                     <div class="form-group align-content-center">
                                         <input type="hidden" name="id" value="<%= id %>">

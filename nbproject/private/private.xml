@@ -4,12 +4,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/model/Cliente.java</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/cliente.jsp</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/off/alterarUsuario.jsp</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/alterar_cliente.jsp</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/control/ClienteServlet.java</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/dao/DAOcliente.java</file>
+            <file>file:/C:/Users/Nando%20Luz/Estudo-Java-web-com-bootstrap/web/pages/cadastra_funcionario.jsp</file>
+            <file>file:/C:/Users/Nando%20Luz/Estudo-Java-web-com-bootstrap/src/java/control/FuncionarioServlet.java</file>
+            <file>file:/C:/Users/Nando%20Luz/Estudo-Java-web-com-bootstrap/src/java/model/Funcionario.java</file>
+            <file>file:/C:/Users/Nando%20Luz/Estudo-Java-web-com-bootstrap/web/pages/cadastra_cliente.jsp</file>
+            <file>file:/C:/Users/Nando%20Luz/Estudo-Java-web-com-bootstrap/src/java/dao/DAOfuncionario.java</file>
+            <file>file:/C:/Users/Nando%20Luz/Estudo-Java-web-com-bootstrap/src/java/dao/DAOcliente.java</file>
         </group>
     </open-files>
 </project-private>

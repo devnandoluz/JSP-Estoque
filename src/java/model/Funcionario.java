@@ -149,18 +149,9 @@ public class Funcionario {
         return dao.findAll();
     }
     
-    public void findForID() throws Exception{
+    public Funcionario findForID(int id) throws Exception{
         DAOfuncionario dao = new DAOfuncionario();
-        this.setId(dao.findForID(this.id).getId());
-        this.setUsuario(dao.findForID(this.id).getUsuario());
-        this.setCpf(dao.findForID(this.id).getCpf());
-        this.setNome(dao.findForID(this.id).getNome());
-        this.setRg(dao.findForID(this.id).getRg());
-        this.setDataDeNascimento(dao.findForID(this.id).getDataDeNascimento());
-        this.setSexo(dao.findForID(this.id).getSexo());
-        this.setCargo(dao.findForID(this.id).getCargo());
-        this.setTelefone(dao.findForID(this.id).getTelefone());
-        this.setEmail(dao.findForID(this.id).getEmail());
+        return dao.findForID(id);
     }
     //Update
     public void update() throws Exception{ 

@@ -27,7 +27,7 @@ public class DAOfuncionario {
     //Create (Salvar)
     public boolean save(Funcionario funcionario){
         
-        String sql = "INSERT INTO funcionario (cpf, nome, rg, data_de_nascimento, sexo, cargo, telefone, email) VALUES (?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO funcionario (cpf, nome, rg, sexo, cargo, telefone, email) VALUES (?,?,?,?,?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
@@ -35,10 +35,10 @@ public class DAOfuncionario {
             pstm.setString(2, funcionario.getNome());
             pstm.setString(3, funcionario.getRg());
             //pstm.setString(4, funcionario.getDataDeNascimento());
-            pstm.setString(5, funcionario.getSexo());
-            pstm.setString(6, funcionario.getCargo());
-            pstm.setString(7, funcionario.getTelefone());
-            pstm.setString(8, funcionario.getEmail());
+            pstm.setString(4, funcionario.getSexo());
+            pstm.setString(5, funcionario.getCargo());
+            pstm.setString(6, funcionario.getTelefone());
+            pstm.setString(7, funcionario.getEmail());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -91,17 +91,17 @@ public class DAOfuncionario {
             pstm.setInt(1, id);
             
             ResultSet rs = pstm.executeQuery();
-            
-            funcionario.setId(rs.getInt("idFuncionario"));
-            funcionario.setCpf(rs.getString("cpf"));
-            funcionario.setNome(rs.getString("nome"));
-            funcionario.setRg(rs.getString("rg"));
-//            funcionario.setDataDeNascimento(rs.getString("data_de_nascimento"));
-            funcionario.setSexo(rs.getString("sexo"));
-            funcionario.setCargo(rs.getString("cargo"));
-            funcionario.setTelefone(rs.getString("telefone"));
-            funcionario.setEmail(rs.getString("email"));
-            
+            while(rs.next()){
+                funcionario.setId(rs.getInt("idFuncionario"));
+                funcionario.setCpf(rs.getString("cpf"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setRg(rs.getString("rg"));
+    //            funcionario.setDataDeNascimento(rs.getString("data_de_nascimento"));
+                funcionario.setSexo(rs.getString("sexo"));
+                funcionario.setCargo(rs.getString("cargo"));
+                funcionario.setTelefone(rs.getString("telefone"));
+                funcionario.setEmail(rs.getString("email"));
+            }
             ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
             
         } catch (SQLException ex) {
@@ -117,7 +117,6 @@ public class DAOfuncionario {
                 + "cpf = ?,"
                 + "nome = ?,"
                 + "rg = ?,"
-                + "data_de_nascimento = ?,"
                 + "sexo = ?,"
                 + "cargo = ?,"
                 + "telefone = ?,"
@@ -129,11 +128,11 @@ public class DAOfuncionario {
             pstm.setString(2, funcinario.getNome());
             pstm.setString(3, funcinario.getRg());
 //            pstm.setString(4, funcinario.getDataDeNascimento());
-            pstm.setString(5, funcinario.getSexo());
-            pstm.setString(6, funcinario.getCargo());
-            pstm.setString(7, funcinario.getTelefone());
-            pstm.setString(8, funcinario.getEmail());
-            pstm.setInt(9, funcinario.getId());
+            pstm.setString(4, funcinario.getSexo());
+            pstm.setString(5, funcinario.getCargo());
+            pstm.setString(6, funcinario.getTelefone());
+            pstm.setString(7, funcinario.getEmail());
+            pstm.setInt(8, funcinario.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
