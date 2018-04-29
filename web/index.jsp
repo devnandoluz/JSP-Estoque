@@ -44,7 +44,7 @@
 
                               <form>
                                     <div class="form-group">
-                                      <label for="exampleInputEmail1">Endereço de Email</label>
+                                      <label for="exampleInputEmail1">Endereço de Emaiiiiiiiiiiiiiiiiiiiiil</label>
                                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="exemplo@servico.com">
                                       <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu e-mail com mais ninguém.</small>
                                     </div>
