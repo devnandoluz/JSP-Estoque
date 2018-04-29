@@ -26,13 +26,13 @@ public class DAOentradaProduto {
     }
        
     //Create (Salvar)
-    public boolean save(EntradaProduto entradaProduto){
-        
+    public boolean save(EntradaProduto entradaproduto){
+          String sql = "INSERT INTO ENTRADA_PRODUTO (QUANT,VALOR_UNIT,DATA_SAIDA) VALUES (?,?,?);";
          try {
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, entradaProduto.getQuantidade());
-            pstm.setDouble(2, entradaProduto.getValorUnitario());
-            pstm.setDate(3, entradaProduto.getDataEntrada());
+            pstm.setInt(1, entradaproduto.getQuantidade());
+            pstm.setDouble(2, entradaproduto.getValorUnitario());
+            pstm.setDate(3, entradaproduto.getDataEntrada());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -55,14 +55,14 @@ public class DAOentradaProduto {
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
-              Produto entradaProduto = new Produto();
+              Produto entradaproduto = new Produto();
                 
-                entradaProduto.setId(rs.getInt("idENTRADA_PRODUTO"));
-                entradaProduto.setNome(rs.getString("QUANT"));
-                entradaProduto.setStatus(rs.getString("VALOR_UNIT"));
-                entradaProduto.setCategoria(rs.getString("DATA_ENTRADA"));
+                entradaproduto.setId(rs.getInt("idENTRADA_PRODUTO"));
+                entradaproduto.setNome(rs.getString("QUANT"));
+                entradaproduto.setStatus(rs.getString("VALOR_UNIT"));
+                entradaproduto.setCategoria(rs.getString("DATA_ENTRADA"));
               
-                listaDeProdutos.add(entradaProduto);
+                listaDeProdutos.add(entradaproduto);
             }
             
             ConnectionDB.closeConnection(con, pstm, rs); //close conections
@@ -75,7 +75,7 @@ public class DAOentradaProduto {
     
     public Produto findForID(int id){
         
-        Produto entradaProduto = new Produto();
+        Produto entradaproduto = new Produto();
         String sql = "SELECT * FROM ENTRADA_PRODUTO WHERE idENTRADA_PRODUTO = ?;";
         try {
             pstm = con.prepareStatement(sql);
@@ -83,20 +83,20 @@ public class DAOentradaProduto {
             
             ResultSet rs = pstm.executeQuery();
             
-           entradaProduto.setId(rs.getInt("idENTRADA_PRODUTO"));
-                entradaProduto.setNome(rs.getString("QUANT"));
-                entradaProduto.setStatus(rs.getString("VALOR_UNIT"));
-                entradaProduto.setCategoria(rs.getString("DATA_ENTRADA"));
+           entradaproduto.setId(rs.getInt("idENTRADA_PRODUTO"));
+                entradaproduto.setNome(rs.getString("QUANT"));
+                entradaproduto.setStatus(rs.getString("VALOR_UNIT"));
+                entradaproduto.setCategoria(rs.getString("DATA_ENTRADA"));
             ConnectionDB.closeConnection(con, pstm, rs);
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar: " + ex);
         }
         
-        return entradaProduto;
+        return entradaproduto;
     }
     
     //Update (Alterar)
-    public boolean update(Produto entradaProduto){
+    public boolean update(Produto entradaproduto){
         String sql = "UPDATE cliente SET "
                 + "QUANT = ?,"
                 + "VALOR_UNIT = ?,"
@@ -104,10 +104,10 @@ public class DAOentradaProduto {
                 + "WHERE idENTRADA_PRODUTO = ?;";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, entradaProduto.getNome());
-            pstm.setString(2, entradaProduto.getStatus());
-            pstm.setString(3, entradaProduto.getCategoria());
-              pstm.setInt(4, entradaProduto.getId());
+            pstm.setString(1, entradaproduto.getNome());
+            pstm.setString(2, entradaproduto.getStatus());
+            pstm.setString(3, entradaproduto.getCategoria());
+              pstm.setInt(4, entradaproduto.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -119,11 +119,11 @@ public class DAOentradaProduto {
     }
     
     //Delete (Apagar)
-    public boolean delete(Produto entradaProduto){
+    public boolean delete(Produto entradaproduto){
         String sql = "DELETE FROM ENTRADA_PRODUTO WHERE idENTRADA_PRODUTO = ?;";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, entradaProduto.getId());
+            pstm.setInt(1, entradaproduto.getId());
             pstm.execute();
             return true;
         } catch (SQLException ex) {
