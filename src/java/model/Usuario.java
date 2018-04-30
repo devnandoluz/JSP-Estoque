@@ -83,4 +83,10 @@ public class Usuario {
         DAOusuario dao = new DAOusuario();
         dao.delete(this);
     }
+    
+    //Validar Login
+    public void validarLogin(String username, String senha) throws Exception{
+        DAOusuario dao = new DAOusuario();
+        dao.validar(username, senha);
+    }
 }

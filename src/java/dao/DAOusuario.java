@@ -126,4 +126,27 @@ public class DAOusuario {
         }
         
     }
+    
+    public boolean validar(String username, String senha){
+        
+        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ? AND SENHA = ?;";
+        Usuario usuario = new Usuario();
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, username);
+            pstm.setString(2, senha);
+            
+            ResultSet rs = pstm.executeQuery();
+            
+            usuario.setId(rs.getInt("id"));
+            usuario.setUsername(rs.getString("username"));
+            usuario.setSenha(rs.getString("senha"));
+            ConnectionDB.closeConnection(con, pstm, rs); //fecha
+            return true;           
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar buscar" + ex);
+            return false;
+        }
+        
+    }
 }

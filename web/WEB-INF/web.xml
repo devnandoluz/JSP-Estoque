@@ -17,9 +17,10 @@
         <servlet-name>FuncionarioServlet</servlet-name>
         <servlet-class>control.FuncionarioServlet</servlet-class>
     </servlet>
-    
-    
-    
+    <servlet>
+        <servlet-name>ServletValidaLogin</servlet-name>
+        <servlet-class>control.ServletValidaLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/pages/gerenciar_usuario.do</url-pattern>
@@ -36,11 +37,10 @@
         <servlet-name>FuncionarioServlet</servlet-name>
         <url-pattern>/pages/gerenciar_funcionario.do</url-pattern>
     </servlet-mapping>
-    
-    
-    
-    
-    
+    <servlet-mapping>
+        <servlet-name>ServletValidaLogin</servlet-name>
+        <url-pattern>/ServletValidaLogin.do</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             1000

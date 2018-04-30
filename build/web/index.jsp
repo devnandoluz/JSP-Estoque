@@ -11,89 +11,63 @@
     <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=devicre-width, initial-scale=1">
-            <link rel="shortcut icon" href="imagens/favicon/favicon.ico" type="image/x-icon" />
-            
-            <!--Stylos da pagina-->
-            <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
-            <link rel="stylesheet" href="resources/css/style.css">
-            
-            
-            <!--Scripts da pagina-->
-            <script src="bootstrap/js/bootstrap.js"></script>
-            
+            <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
+            <!-- Bootstrap core CSS-->
+            <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <!-- Custom fonts for this template-->
+            <link href="resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            <!-- Page level plugin CSS-->
+            <link href="resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+            <!-- Custom styles for this template-->
+            <link href="resources/css/sb-admin.css" rel="stylesheet">
+            <!--icon-->
+            <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
             <!--titulo da pagina-->
             <title>Gente Telecom</title>
     </head>
-    
-    
-    <body class="home blog geral">     
-        <div class="nav navbar">
-            <h1 class="nav navbar-text"><img src="imagens/logotipo.png"></h1>
+    <body class="home blog geral" style="background-image: url('img/background/login_background.jpg'); background-size: 100%; background-color: black">     
+        <div class="nav navbar bg-dark" style="top: -8px">
+            <h1 class="nav navbar-text"><img src="img/logotipo.png"></h1>
         </div>
-        <hr>
-        <br>
-        
-        <div class="container-fluid">
-            <div class="row">
-                  <div class='col-md-4'></div>
-                  <div class="col-md-4">
-                      <div class="login-box well">
-                          <div class="text-center">
-                              <br><br>
-                          </div>
-
-                              <form>
-                                    <div class="form-group">
-                                      <label for="exampleInputEmail1">Endereço de Emaiiiiiiiiiiiiiiiiiiiiil</label>
-                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="exemplo@servico.com">
-                                      <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu e-mail com mais ninguém.</small>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Senha</label>
-                                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
-                                    </div>
-                                    <div class="form-check">
-                                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                    </div>
-                                    <!--<button type="submit" class="btn btn-primary">Entrar</button>-->
-                                    <center><p><a class="btn btn-primary " href="pages/home.jsp">home</a></p></center>
-                              </form>
-
-                      </divclass>
-                  </div>
-              </div>
-
+        <div class="container-fluid col-md-4" style="margin-top: 5%;">
+            
+            <div class="card text-white mb-3">
+                <div class="card-header bg-dark text-white form-inline">
+                    <div class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <i class="fa fa-user-o" style="margin-right: 10px"></i>
+                        LOGIN
+                        <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
+                        </div>
+                    </div>                
+                </div> 
+                <div class="card-body" >
+                    <form style="color: black">
+                        <div class="form-group">
+                            <i class="fa fa-fw fa-user"></i>
+                            <label for="InputUsername" style="margin: 0px">USERNAME</label>
+                            <input type="text" class="form-control" id="InputUsername" aria-describedby="emailHelp" placeholder="Username">
+                            <small id="emailHelp" class="form-text text-muted">Não compartilhe seus dados de acesso.</small>
+                        </div>
+                        <div class="form-group">
+                            <i class="fa fa-fw fa-lock"></i>
+                            <label for="InputSenha" style="margin: 0px">SENHA</label>
+                            <input type="password" class="form-control" id="InputSenha" placeholder="*****">
+                        </div>
+                        <div class="form-group form-check">
+                          <input type="checkbox" class="form-check-input" id="Check">
+                          <label class="form-check-label" for="Check">Lembre-se</label>
+                        </div>
+                        <center><button type="submit" class="btn btn-primary"><a href="pages/home.jsp">Entrar</a></button></center>
+                    </form>
+                </div>
+                
             </div>
         </div>
-       
-       
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-<!--      <div class="jumbotron innerjumbotron"  id="large-header">
-          <canvas id="demo-canvas"></canvas>
-      </div>-->
-      <!-- /.jumbotron --> 
-
-
-      <!-- Inicio animação -->
-<!--      <script type='text/javascript' src='resources/js/animation/jquery.form.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/TweenLite.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/EasePack.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/device.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/isotope.pkgd.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/jquery.ba-bbq.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/bootstrap.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/bootstrap-hover-dropdown.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/jquery.bxslider.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/classie.js?ver=2.3.0'></script>
-      <script type='text/javascript' src='resources/js/animation/jquery.viewportchecker.js'></script>
-      <script type='text/javascript' src='resources/js/animation/main.js'></script>
-      <script type='text/javascript' src='resources/js/animation/core.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/datepicker.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/wp-embed.min.js'></script>
-      <script type='text/javascript' src='resources/js/animation/jsanim.js'></script>-->
-      <!-- Fim animação-->
-        <script src="resources/jquery.min.js"></script>
-        <script src="resources/bootstrap/js/bootstrap.js"></script>
+      
+        <!-- Bootstrap core JavaScript-->
+        <script src="resources/vendor/jquery/jquery.min.js"></script>
+        <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
     </body>
 </html>
