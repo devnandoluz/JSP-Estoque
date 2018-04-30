@@ -24,6 +24,7 @@
             <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
             <!--titulo da pagina-->
             <title>Gente Telecom</title>
+    </head>
     <body class="home blog geral" style="background-image: url('img/background/login_background.jpg'); background-size: 100%; background-color: black">     
         <div class="nav navbar bg-dark" style="top: -8px">
             <h1 class="nav navbar-text"><img src="img/logotipo.png"></h1>
@@ -38,25 +39,27 @@
                         <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
                         </div>
                     </div>                
-                </div> 
-                <div class="card-body" >
-                    <form style="color: black">
+                </div>
+                <div class="card-body">
+                    <form data-toggle="validator" role="form" action="pages/gerenciar_usuario.do" method="post" style="color: black">
                         <div class="form-group">
                             <i class="fa fa-fw fa-user"></i>
-                            <label for="InputUsername" style="margin: 0px">USERNAME</label>
-                            <input type="text" class="form-control" id="InputUsername" aria-describedby="emailHelp" placeholder="Username">
+                            <label style="margin: 0px">USERNAME</label>
+                            <input name="username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Username" autofocus required>
                             <small id="emailHelp" class="form-text text-muted">Não compartilhe seus dados de acesso.</small>
                         </div>
                         <div class="form-group">
                             <i class="fa fa-fw fa-lock"></i>
-                            <label for="InputSenha" style="margin: 0px">SENHA</label>
-                            <input type="password" class="form-control" id="InputSenha" placeholder="*****">
+                            <label style="margin: 0px">SENHA</label>
+                            <input name="senha" type="password" class="form-control" placeholder="*****" data-error="Informe sua senha." required>
+                            <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group form-check">
                           <input type="checkbox" class="form-check-input" id="Check">
                           <label class="form-check-label" for="Check">Lembre-se</label>
                         </div>
-                        <center><button type="submit" class="btn btn-primary"><a href="pages/home.jsp">Entrar</a></button></center>
+                        <input type="hidden" name="id" value="0">
+                        <center><button class="btn btn-primary" name="option" value="login">Entrar</button></center>
                     </form>
                 </div>
                 
@@ -68,5 +71,6 @@
         <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Core plugin JavaScript-->
         <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="resources/js/validator.min.js"></script>
     </body>
 </html>

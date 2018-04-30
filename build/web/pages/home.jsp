@@ -29,7 +29,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <%@include file="menu/menu.jsp" %>
+  <%@include file="menu/menu_completo.jsp" %>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Usuario;
 
 /**
@@ -42,41 +43,63 @@ public class UsuarioServlet extends HttpServlet {
             out.println("<title>Servlet Usuario</title>");            
             out.println("</head>");
             out.println("<body>");            
+            
+            
             //declaração de variaveis que recebem por parametro os valores.
             String option = request.getParameter("option");
             String username = request.getParameter("username");
-            String pass = request.getParameter("pass");
+            String senha = request.getParameter("senha");
             String id = request.getParameter("id");
             
             Usuario usuario = new Usuario();
             
+            usuario.setId(Integer.parseInt(id));
             usuario.setUsername(username);
-            usuario.setSenha(pass);
+            usuario.setSenha(senha);
             
             //Decisão de qual metodo CRUD usar.
             switch(option){
                 case "insert":{
                     usuario.insert();
-                    response.sendRedirect("listarUsuarios.jsp");
+                    response.sendRedirect("usuario.jsp");
                 }
                 break;
-                
                 
                 case "update":{
                     usuario.setId(Integer.parseInt(id));
                     usuario.update();
-                    response.sendRedirect("listarUsuarios.jsp");
+                    response.sendRedirect("usuario.jsp");
                 }
                 break;
-                
                 
                 case "delete":{
+                    out.println("entrou"); 
                     usuario.setId(Integer.parseInt(id));
                     usuario.delete();
-                    response.sendRedirect("listarUsuarios.jsp");
+                    response.sendRedirect("usuario.jsp");
                 }
                 break;
-                        
+                
+                case "login":{
+                    Usuario usuarioLogado = usuario.validarLogin(username, senha);
+                    try {
+                        if(usuarioLogado != null){
+                            HttpSession sessao = request.getSession();
+                            sessao.setAttribute("usuario", usuarioLogado);
+                            response.sendRedirect("home.jsp");
+                        }else{
+                            out.println("<script>alert('USERNAME ou SENHA inválido!');location.href='../index.jsp';</script>");
+                        }
+                    } catch (IOException ex) {
+                        System.err.println("Erro ao validar!" + ex);
+                    }
+                }
+                break;
+               
+                case "logout":{
+                    response.sendRedirect("/index.jsp");
+                }
+                break;
             }
             
             

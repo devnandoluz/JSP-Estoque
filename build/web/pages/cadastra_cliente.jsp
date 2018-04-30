@@ -29,7 +29,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <%@include file="menu.jsp" %>
+  <%@include file="menu/menu_completo.jsp" %>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -132,7 +132,7 @@
                   <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
                   <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="login.jsp">Sair</a>
+                    <a class="btn btn-primary" href="/index.jsp">Sair</a>
                   </div>
                 </div>
               </div>

@@ -127,7 +127,7 @@ public class DAOusuario {
         
     }
     
-    public boolean validar(String username, String senha){
+    public Usuario validar(String username, String senha){
         
         String sql = "SELECT * FROM USUARIO WHERE USERNAME = ? AND SENHA = ?;";
         Usuario usuario = new Usuario();
@@ -138,15 +138,18 @@ public class DAOusuario {
             
             ResultSet rs = pstm.executeQuery();
             
-            usuario.setId(rs.getInt("id"));
-            usuario.setUsername(rs.getString("username"));
-            usuario.setSenha(rs.getString("senha"));
-            ConnectionDB.closeConnection(con, pstm, rs); //fecha
-            return true;           
+            if(rs.next()){
+                usuario.setId(rs.getInt("id"));
+                usuario.setUsername(rs.getString("username"));
+                usuario.setSenha(rs.getString("senha"));
+                ConnectionDB.closeConnection(con, pstm, rs); //fecha
+            }else{
+                usuario = null;
+            }
+                       
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar buscar" + ex);
-            return false;
         }
-        
+        return usuario;
     }
 }
