@@ -10,18 +10,12 @@ package model;
  * @author Nando Luzy
  */
 public class Estoque {
-    
-    private Produto produto;
+    private int id;
+
     private int quantidade;
     private double valorUnitario;
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
+ 
 
     public int getQuantidade() {
         return quantidade;
@@ -37,5 +31,21 @@ public class Estoque {
 
     public void setValorUnitario(double valorUnitario) {
         this.valorUnitario = valorUnitario;
+    }
+
+   
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }
