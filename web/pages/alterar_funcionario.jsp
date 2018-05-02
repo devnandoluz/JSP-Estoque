@@ -4,7 +4,13 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    String id = request.getParameter("id");
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,29 +35,114 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <%@include file="menu.jsp" %>
-  <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="home.jsp">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Alterar Funcionário</li>
-      </ol>
-            
-      
-        
-    </div>
-            <!-- /.container-fluid-->
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                </div>
-              </div>
-            </footer>
+  <%@include file="menu/menu_completo.jsp" %>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="home.jsp">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="funcionario.jsp">Funcionário</a>
+            </li>
+            <li class="breadcrumb-item active">Alterar Funcionário</li>
+          </ol>
+            <div class="card mb-3">
+                <div class="card-header bg-warning text-white form-inline">
+                    <div class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <i class="fa fa-id-badge" style="margin-right: 4px"></i>
+                        <i class="fa fa-pencil" style="margin-right: 4px"></i>
+                        ALTERAR FUNCIONARIO   
+                        <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
+                        </div>
+                    </div>
+                </div> 
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <div>
+                            <hr>
+                            <center><h3 class="h5">ALTERE O FORMULARIO ABAIXO</h3></center>
+                            <hr>
+                            <br>
+                        </div>
+                        <form id="formCliente" data-toggle="validator" role="form" method="post" action="gerenciar_funcionario.do">
+                            <%
+                              Funcionario buscar = new Funcionario();
+                              Funcionario funcionario = buscar.findForID(Integer.parseInt(id));
+                            %>
+                            <div class="form-group">
+                                <label class="form-label">NOME</label>
+                                <input value="<%= funcionario.getNome() %>" name="nome"  type="text" class="form-control" placeholder="Nome do funcionário..." data-error="Este campo é necessário." required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">CPF</label>
+                                        <input  value="<%= funcionario.getCpf() %>" name="cpf" type="text" class="form-control" placeholder="CPF do funcionário..." data-error="Por favor, informe um CPF válido." data-minlength="14" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">RG</label>
+                                    <input  value="<%= funcionario.getRg() %>" name="rg" type="text" class="form-control" placeholder="RG do funcionário..." data-error="Este campo é necessário." required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">SEXO</label>
+                                        <input  value="<%= funcionario.getSexo() %>" name="sexo" type="text" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">CARGO</label>
+                                    <input  value="<%= funcionario.getCargo() %>" name="cargo" type="text" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">DATA DE NASCIMENTO</label>
+                                <input  value="<%= funcionario.getDataDeNascimento() %>" name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo é necessário.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">TELEFONE</label>
+                                    <input  value="<%= funcionario.getTelefone() %>" name="telefone" type="text" class="form-control" placeholder="(00)00000-0000">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">E-MAIL</label>
+                                    <input  value="<%= funcionario.getEmail() %>" name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                                </div>
+                            </div>
+                            <div class="form-group align-content-center">
+                                <center>
+                                    <button class="btn btn-success col-md-3" name="option" value="update">
+                                        <i class="fa fa-pencil"></i>
+                                        ALTERAR
+                                    </button>
+                                    <a class="btn btn-primary col-md-3" href="funcionario.jsp" name="cancelar" style="margin: 2px;">
+                                        <i class="fa fa-reply"></i>
+                                        CANCELAR
+                                    </a>
+                                </center>
+                            </div>
+                        </form>
+                    </div>
+                </div>          
+            </div>
+        </div>
+                <!-- /.content-wrapper-->
+                <footer class="sticky-footer">
+                  <div class="container">
+                    <div class="text-center">
+                      <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
+                    </div>
+                  </div>
+                </footer>
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>
@@ -75,20 +166,10 @@
                 </div>
               </div>
             </div>
-            <!-- Bootstrap core JavaScript-->
-            <script src="../resources/vendor/jquery/jquery.min.js"></script>
-            <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Page level plugin JavaScript-->
-            <script src="../resources/vendor/chart.js/Chart.min.js"></script>
-            <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
-            <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
-            <!-- Custom scripts for this page-->
-            <script src="../resources/js/sb-admin-datatables.min.js"></script>
-            <script src="../resources/js/sb-admin-charts.min.js"></script>
     </div>
 </body>
 </html>

@@ -67,7 +67,7 @@ public class DAOcliente {
                 funcionario.setCnpj(rs.getString("CNPJ"));
                 funcionario.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));
                 funcionario.setTelefone(rs.getString("TELEFONE"));
-                //funcionario.setEndereco(rs.getString("ENDERECO"));
+                funcionario.setEndereco(rs.getString("ENDERECO"));
                 funcionario.setEmail(rs.getString("EMAIL"));
                 funcionario.setDescricao(rs.getString("DESCRICAO"));
                 
@@ -98,7 +98,7 @@ public class DAOcliente {
                 cliente.setCnpj(rs.getString("CNPJ"));
                 cliente.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));
                 cliente.setTelefone(rs.getString("TELEFONE"));
-                //cliente.setEndereco(rs.getString("endereco"));
+                cliente.setEndereco(rs.getString("endereco"));
                 cliente.setEmail(rs.getString("EMAIL"));
                 cliente.setDescricao(rs.getString("DESCRICAO"));
             }

@@ -7,6 +7,9 @@
 <%@page import="model.Cliente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String id = request.getParameter("id");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,14 +30,11 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-<%
-    String id = request.getParameter("id");
-%>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <%@include file="menu.jsp" %>
+  <%@include file="menu/menu_completo.jsp" %>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -42,24 +42,25 @@
         <li class="breadcrumb-item">
           <a href="home.jsp">Home</a>
         </li>
-        <li class="breadcrumb-item active">Cliente</li>
-      </ol>
-      
+        <li class="breadcrumb-item">
+          <a href="cliente.jsp">Cliente</a>
+        </li>
+        <li class="breadcrumb-item active">Alterar cliente</li>
+      </ol>      
                 <div class="card mb-3">
                     <div class="card-header bg-primary text-white form-inline">
                         <div class="form-inline my-2 my-lg-0 mr-lg-2">
-                            <i class="fa fa-users" style="margin-right: 4px"></i>
-                            ALTERAR CADASTRADOS
+                            <i class="fa fa-user" style="margin-right: 4px"></i>
+                            <i class="fa fa-pencil" style="margin-right: 4px"></i>
+                            ALTERAR CLIENTE
                             <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
                             </div>
                         </div>
                     </div>
-            <%
-                
-                    Cliente cliente = new Cliente();
-                    Cliente cliente2 = cliente.findForID(Integer.parseInt(id));
-                
-            %>
+                <%
+                    Cliente buscar = new Cliente();
+                    Cliente cliente2 = buscar.findForID(Integer.parseInt(id));
+                %>
                     <div class="card-body">
                            <div class="col-md-12">
                               <div>
@@ -109,22 +110,30 @@
                                     </div>
                                     <div class="form-group align-content-center">
                                         <input type="hidden" name="id" value="<%= id %>">
-                                        <center><button class="btn btn-success" name="option" value="update">ALTERAR</button></center>
+                                        <center>
+                                            <button class="btn btn-success col-md-3" name="option" value="update" style="margin: 2px;">
+                                                <i class="fa fa-pencil"></i>
+                                                ALTERAR
+                                            </button>
+                                            <a class="btn btn-primary col-md-3" href="cliente.jsp" name="cancelar" style="margin: 2px;">
+                                                <i class="fa fa-reply"></i>
+                                                CANCELAR</a>
+                                        </center>
+                                        
                                     </div>
                                 </form>
                           </div>
                     </div>
             
                 </div>
-            <!-- /.container-fluid-->
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                </div>
-              </div>
-            </footer>
+                <!-- /.content-wrapper-->
+                <footer class="sticky-footer">
+                  <div class="container">
+                    <div class="text-center">
+                      <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
+                    </div>
+                  </div>
+                </footer>
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>
@@ -148,21 +157,11 @@
                 </div>
               </div>
             </div>
-            <!-- Bootstrap core JavaScript-->
-            <script src="../resources/vendor/jquery/jquery.min.js"></script>
-            <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            </div>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Page level plugin JavaScript-->
-            <script src="../resources/vendor/chart.js/Chart.min.js"></script>
-            <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
-            <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
-            <!-- Custom scripts for this page-->
-            <script src="../resources/js/sb-admin-datatables.min.js"></script>
-            <script src="../resources/js/sb-admin-charts.min.js"></script>
-            <script src="../resources/js/validator.min.js"></script>
     </div>
 </body>
 </html>

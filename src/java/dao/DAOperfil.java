@@ -27,11 +27,12 @@ public class DAOperfil {
     //Create (Salvar)
     public boolean save(Perfil perfil){
         
-        String sql = "INSERT INTO perfil (perfil) VALUES (?);";
+        String sql = "INSERT INTO perfil (perfil, status) VALUES (?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, perfil.getPerfil());
+            pstm.setInt(2, perfil.getStatus());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -47,7 +48,7 @@ public class DAOperfil {
         
         ArrayList<Perfil> listaDePerfil = new ArrayList();
         
-        String sql = "SELECT * FROM usuario;";
+        String sql = "SELECT * FROM perfil;";
         
         try {
             pstm = con.prepareStatement(sql);
@@ -58,6 +59,7 @@ public class DAOperfil {
                 
                 perfil.setId(rs.getInt("idPerfil"));
                 perfil.setPerfil(rs.getString("PERFIL"));
+                perfil.setStatus(rs.getInt("STATUS"));
                 listaDePerfil.add(perfil);
             }
             
@@ -80,6 +82,7 @@ public class DAOperfil {
             
             perfil.setId(rs.getInt("idPerfil"));
             perfil.setPerfil(rs.getString("PERFIL"));
+            perfil.setStatus(rs.getInt("STATUS"));
             
             ConnectionDB.closeConnection(con, pstm, rs); //fecha
             

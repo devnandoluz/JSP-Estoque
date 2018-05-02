@@ -3,6 +3,13 @@
     Created on : 29/04/2018, 13:58:26
     Author     : Nando Luzy
 --%>
+
+<!--
+    ATENÇÃO!
+    Neste Menu está:
+    *Bootstrap core JavaScript
+-->
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <a class="navbar-brand" href="home.jsp"><img src="../img/logotipo.png"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,3 +194,8 @@
       </ul>
     </div>
   </nav>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../resources/vendor/jquery/jquery.min.js"></script>
+    <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+            

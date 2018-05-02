@@ -6,10 +6,6 @@
         <servlet-class>control.UsuarioServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EnderecoServlet</servlet-name>
-        <servlet-class>control.EnderecoServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ClienteServlet</servlet-name>
         <servlet-class>control.ClienteServlet</servlet-class>
     </servlet>
@@ -17,13 +13,13 @@
         <servlet-name>FuncionarioServlet</servlet-name>
         <servlet-class>control.FuncionarioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>control.MenuServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/pages/gerenciar_usuario.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EnderecoServlet</servlet-name>
-        <url-pattern>/pages/gerenciar_endereco.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
@@ -32,6 +28,10 @@
     <servlet-mapping>
         <servlet-name>FuncionarioServlet</servlet-name>
         <url-pattern>/pages/gerenciar_funcionario.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/pages/gerenciar_menu.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

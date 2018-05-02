@@ -4,6 +4,8 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="model.Perfil"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,7 +31,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <%@include file="menu.jsp" %>
+  <%@include file="menu/menu_completo.jsp" %>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -39,11 +41,76 @@
         </li>
         <li class="breadcrumb-item active">Perfil</li>
       </ol>
-            
-      
-        
+        <div class="row">
+            <div class="col-sm-12">
+                  <div class="card mb-3">
+                      <div class="card-header bg-dark text-white form-inline">
+                              <i class="fa fa-vcard" style="margin-right: 4px"></i>
+                              PERFIS CADASTRADOS
+                              <div class="navbar-nav ml-auto">
+                                  <a class="btn btn-success" style="width: 40px; height: 40px;" href="cadastra_menu.jsp"><b>+</b></a>
+                              </div>
+                      </div>
+                      <div class="card-body">
+                          <!--aqui vai a tabela-->
+                          <div class="table-responsive">
+                              <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                  <tr>
+                                    <th>Nome</th>
+                                    <th>Status</th>
+                                    <th><center>Opção</center></th>
+                                  </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                    <th>Nome</th>
+                                    <th>Status</th>
+                                    <th><center>Opção</center></th>
+                                  </tr>
+                                </tfoot>
+                                <tbody>                                  
+                                      <% 
+                                          ArrayList<Perfil> lista = new ArrayList();
+                                              try{
+                                                  Perfil perfil = new Perfil();   
+
+                                                  lista = perfil.findAll();
+                                              }catch(Exception e){
+                                                  out.print("Erro:"+e);
+                                              }                                                
+                                          for(Perfil perfil:lista){
+                                      %>
+                                              <tr>
+                                                  <td>
+                                                      <center><%= perfil.getPerfil() %></center>
+                                                  </td>
+                                                  <td>
+                                                      <center><%= perfil.getStatus() %></center>
+                                                  </td>
+                                                  <td>
+                                                      <a class="btn btn-primary col-md-3" href="visualizar_cliente.jsp?id=<%= perfil.getId() %>&nome=<%= perfil.getPerfil()%>" style="margin: 2px;">
+                                                          <span class="fa fa-eye"></span>
+                                                      </a>
+                                                      <a class="btn btn-primary col-md-3" href="alterar_cliente.jsp?id=<%= perfil.getId() %>" style=" margin: 2px;">
+                                                          <span class="fa fa-pencil"></span>
+                                                      </a>
+                                                      <a class="btn btn-danger col-md-3" href="#" onclick="excluir('<%= perfil.getPerfil()%>', <%= perfil.getId() %>)" style="margin: 2px;">
+                                                          <span class="fa fa-trash"></span>
+                                                      </a>
+                                                  </td>
+                                              </tr>  
+                                      <%
+                                          }
+                                      %>
+                                </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+      </div>       
     </div>
-            <!-- /.container-fluid-->
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">
               <div class="container">
@@ -75,20 +142,15 @@
                 </div>
               </div>
             </div>
-            <!-- Bootstrap core JavaScript-->
-            <script src="../resources/vendor/jquery/jquery.min.js"></script>
-            <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
             <!-- Page level plugin JavaScript-->
-            <script src="../resources/vendor/chart.js/Chart.min.js"></script>
             <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
             <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
             <!-- Custom scripts for this page-->
             <script src="../resources/js/sb-admin-datatables.min.js"></script>
-            <script src="../resources/js/sb-admin-charts.min.js"></script>
     </div>
 </body>
 </html>

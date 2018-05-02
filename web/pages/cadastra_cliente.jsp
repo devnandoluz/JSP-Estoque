@@ -37,12 +37,15 @@
         <li class="breadcrumb-item">
           <a href="home.jsp">Home</a>
         </li>
+        <li class="breadcrumb-item">
+          <a href="cliente.jsp">Cliente</a>
+        </li>
         <li class="breadcrumb-item active">Cadastrar cliente</li>
       </ol>
       <div class="card mb-3">
             <div class="card-header bg-primary text-white form-inline">
                 <div class="form-inline my-2 my-lg-0 mr-lg-2">
-                    <i class="fa fa-users" style="margin-right: 4px"></i>
+                    <i class="fa fa-user-plus" style="margin-right: 4px"></i>
                     NOVO CLIENTE   
                     <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
                     </div>
@@ -96,7 +99,13 @@
                         <textarea name="descricao" type="text" class="form-control" placeholder="Mais informações..."></textarea>
                     </div>
                     <div class="form-group align-content-center">
-                        <center><button class="btn btn-success" name="option" value="insert">CADASTRAR</button></center>
+                        <center>
+                            <button class="btn btn-success col-md-3" name="option" value="insert" style="margin: 2px;"><i class="fa fa-plus"></i> CADASTRAR</button>
+                            <a class="btn btn-primary col-md-3" href="cliente.jsp" name="cancelar" style="margin: 2px;">
+                                <i class="fa fa-reply"></i>
+                                CANCELAR
+                            </a>
+                        </center>
                     </div>
                 </form>
           </div>
@@ -105,7 +114,7 @@
       </div>
         
     </div>
-            <!-- /.container-fluid-->
+            
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">
               <div class="container">
@@ -132,26 +141,15 @@
                   <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
                   <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="/index.jsp">Sair</a>
+                    <a class="btn btn-primary" href="login.jsp">Sair</a>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Bootstrap core JavaScript-->
-            <script src="../resources/vendor/jquery/jquery.min.js"></script>
-            <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Page level plugin JavaScript-->
-            <script src="../resources/vendor/chart.js/Chart.min.js"></script>
-            <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
-            <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
-            <!-- Custom scripts for this page-->
-            <script src="../resources/js/sb-admin-datatables.min.js"></script>
-            <script src="../resources/js/sb-admin-charts.min.js"></script>
-            <script src="../resources/js/validator.min.js"></script>
     </div>
 </body>
 </html>

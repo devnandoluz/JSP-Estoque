@@ -16,8 +16,7 @@ public class Menu {
     private int id;;
     private String menu;
     private String link;
-    private String status;
-    private String icon;
+    private int status;
 
     public String getMenu() {
         return menu;
@@ -35,20 +34,12 @@ public class Menu {
         this.link = link;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
     }
 
     public int getId() {
@@ -88,9 +79,9 @@ public class Menu {
         dao.update(this);
     }
     //Delete
-    public void delete() throws Exception{
+    public boolean delete() throws Exception{
         DAOmenu dao = new DAOmenu();
-        dao.delete(this);
+        return dao.delete(this);
     }
     
     

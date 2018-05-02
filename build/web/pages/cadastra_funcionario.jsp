@@ -29,7 +29,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <%@include file="menu.jsp" %>
+  <%@include file="menu/menu_completo.jsp" %>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -37,12 +37,15 @@
         <li class="breadcrumb-item">
           <a href="home.jsp">Home</a>
         </li>
-        <li class="breadcrumb-item active">Cadastrar funcionario</li>
+        <li class="breadcrumb-item">
+          <a href="funcionario.jsp">Funcionário</a>
+        </li>
+        <li class="breadcrumb-item active">Novo funcionario</li>
       </ol>
       <div class="card mb-3">
            <div class="card-header bg-warning text-white form-inline">
                 <div class="form-inline my-2 my-lg-0 mr-lg-2">
-                    <i class="fa fa-id-badge" style="margin-right: 4px"></i>
+                    <i class="fa fa-plus-square-o" style="margin-right: 4px"></i>
                     NOVO FUNCIONARIO   
                     <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
                     </div>
@@ -60,7 +63,7 @@
                     
                     <div class="form-group">
                         <label class="form-label">NOME</label>
-                        <input name="nome"  type="text" class="form-control" placeholder="Nome do funcionário.." data-error="Este campo é necessário." required>
+                        <input name="nome"  type="text" class="form-control" placeholder="Nome do funcionário..." data-error="Este campo é necessário." required>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="row">
@@ -90,7 +93,7 @@
                     
                     <div class="form-group">
                         <label class="form-label">DATA DE NASCIMENTO</label>
-                        <input name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo é necessário." required>
+                        <input name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo é necessário.">
                         <div class="help-block with-errors"></div>
                     </div>
                   
@@ -106,17 +109,22 @@
                         </div>
                     </div>
                     <div class="form-group align-content-center">
-                        <center><button class="btn btn-success" name="option" value="insert">CADASTRAR</button></center>
+                        <center>
+                            <button class="btn btn-success col-md-3" name="option" value="insert">
+                                <i class="fa fa-plus"></i>
+                                CADASTRAR
+                            </button>
+                            <a class="btn btn-primary col-md-3" href="funcionario.jsp" name="cancelar" style="margin: 2px;">
+                                <i class="fa fa-reply"></i>
+                                CANCELAR
+                            </a>
+                        </center>
                     </div>
                 </form>
           </div>
       </div>
-          
-    </div>      
-      
-        
+    </div>   
     </div>
-            <!-- /.container-fluid-->
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">
               <div class="container">
@@ -148,21 +156,10 @@
                 </div>
               </div>
             </div>
-            <!-- Bootstrap core JavaScript-->
-            <script src="../resources/vendor/jquery/jquery.min.js"></script>
-            <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Page level plugin JavaScript-->
-            <script src="../resources/vendor/chart.js/Chart.min.js"></script>
-            <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
-            <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
-            <!-- Custom scripts for this page-->
-            <script src="../resources/js/sb-admin-datatables.min.js"></script>
-            <script src="../resources/js/sb-admin-charts.min.js"></script>
-            <script src="../resources/js/validator.min.js"></script>
     </div>
 </body>
 </html>

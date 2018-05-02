@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Funcionario;
+import model.Usuario;
 
 /**
  *
@@ -46,6 +47,8 @@ public class FuncionarioServlet extends HttpServlet {
             out.println("<body>");
             
             //declaração de variaveis que recebem por parametro os valores.
+            
+            //funcionário
             String option = request.getParameter("option");
             String id = request.getParameter("id");
             String cpf = request.getParameter("cpf");
@@ -67,6 +70,18 @@ public class FuncionarioServlet extends HttpServlet {
             funcionario.setCargo(cargo);
             funcionario.setTelefone(telefone);
             funcionario.setEmail(email);
+            
+            //usuario
+            String perfil = request.getParameter("perfil");
+            String senha = request.getParameter("senha");
+            String username = request.getParameter("username");
+            Usuario usuario = new Usuario();
+            
+            usuario.setPerfil(perfil);
+            usuario.setSenha(senha);
+            usuario.setUsername(username);
+            
+            
             
             //Decisão de qual metodo CRUD usar.
             switch(option){

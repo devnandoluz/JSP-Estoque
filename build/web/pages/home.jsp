@@ -55,7 +55,6 @@
             </a>
           </div>
         </div>
-          
         <!--          2-->
         <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-warning o-hidden h-100">
@@ -108,8 +107,6 @@
           </div>
         </div>
       </div>
-      
-      
       <div class="row">
           <!-- Carousel -->
           <div class="col-sm-6">
@@ -124,8 +121,7 @@
                                 <li data-target="carouselSlide" data-slide="0" class="active"></li>
                                 <li data-target="carouselSlide" data-slide="1"></li>
                                 <li data-target="carouselSlide" data-slide="2"></li>
-                            </ol>
-                            
+                            </ol>                            
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img src="../img/carousel/parede.png" class="img-fluid d-block">
@@ -136,15 +132,13 @@
                                 <div class="carousel-item">
                                     <img src="../img/carousel/satelite_antena.png" class="img-fluid d-block">
                                 </div>
-                            </div>
-                            
+                            </div>                            
                             <a class="carousel-control-prev" href="#carouselSlide" role="bottom" data-slide="prev">
                                 <span class="fa fa-chevron-left"></span>
                             </a>
                             <a class="carousel-control-next" href="#carouselSlide" role="bottom" data-slide="next">
                                 <span class="fa fa-chevron-right"></span>
-                            </a>
-                            
+                            </a>                            
                         </div>
                     </div>
                 </div>
@@ -166,10 +160,8 @@
                   </div>
               </div>
           </div>
-      </div>
-        
+      </div>        
     </div>
-            <!-- /.container-fluid-->
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">
               <div class="container">
@@ -177,7 +169,7 @@
                   <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
                 </div>
               </div>
-            </footer>
+            </footer> 
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>
@@ -200,21 +192,11 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- Bootstrap core JavaScript-->
-            <script src="../resources/vendor/jquery/jquery.min.js"></script>
-            <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            </div>           
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Page level plugin JavaScript-->
-            <script src="../resources/vendor/chart.js/Chart.min.js"></script>
-            <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
-            <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
-            <!-- Custom scripts for this page-->
-            <script src="../resources/js/sb-admin-datatables.min.js"></script>
-            <script src="../resources/js/sb-admin-charts.min.js"></script>
     </div>
 </body>
 </html>

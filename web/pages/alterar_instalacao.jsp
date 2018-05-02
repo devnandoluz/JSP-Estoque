@@ -1,6 +1,6 @@
 <%-- 
     Document   : alterar_instalacao
-    Created on : 23/04/2018, 13:31:38
+    Created on : 23/04/2018, 10:31:22
     Author     : Nando Luz
 --%>
 
@@ -43,7 +43,6 @@
       
         
     </div>
-            <!-- /.container-fluid-->
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">
               <div class="container">
@@ -75,20 +74,10 @@
                 </div>
               </div>
             </div>
-            <!-- Bootstrap core JavaScript-->
-            <script src="../resources/vendor/jquery/jquery.min.js"></script>
-            <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Page level plugin JavaScript-->
-            <script src="../resources/vendor/chart.js/Chart.min.js"></script>
-            <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
-            <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
-            <!-- Custom scripts for all pages-->
+            <!-- script customizado para todas as páginas-->
             <script src="../resources/js/sb-admin.min.js"></script>
-            <!-- Custom scripts for this page-->
-            <script src="../resources/js/sb-admin-datatables.min.js"></script>
-            <script src="../resources/js/sb-admin-charts.min.js"></script>
     </div>
 </body>
 </html>

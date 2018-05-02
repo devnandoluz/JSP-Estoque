@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
@@ -27,14 +22,13 @@ public class DAOmenu {
     //Create (Salvar)
     public boolean save(Menu menu){
         
-        String sql = "INSERT INTO menu (menu, link, status, icon) VALUES (?,?,?,?);";
+        String sql = "INSERT INTO menu (menu, link, status) VALUES (?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, menu.getMenu());
             pstm.setString(2, menu.getLink());
-            pstm.setString(3, menu.getStatus());
-            pstm.setString(4, menu.getIcon());
+            pstm.setInt(3, menu.getStatus());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -62,8 +56,9 @@ public class DAOmenu {
                 menu.setId(rs.getInt("idMENU"));
                 menu.setMenu(rs.getString("MENU"));
                 menu.setLink(rs.getString("LINK"));
-                menu.setStatus(rs.getString("STATUS"));
-                menu.setIcon(rs.getString("ICON"));
+                menu.setStatus(rs.getInt("STATUS"));
+                
+                listaDeMenu.add(menu);
             }
             
             ConnectionDB.closeConnection(con, pstm, rs);
@@ -87,8 +82,7 @@ public class DAOmenu {
                 menu.setId(rs.getInt("idMENU"));
                 menu.setMenu(rs.getString("MENU"));
                 menu.setLink(rs.getString("LINK"));
-                menu.setStatus(rs.getString("STATUS"));
-                menu.setIcon(rs.getString("ICON"));
+                menu.setStatus(rs.getInt("STATUS"));
             }
             
             ConnectionDB.closeConnection(con, pstm, rs); //fecha
@@ -101,14 +95,13 @@ public class DAOmenu {
     
     //Update (Alterar)
     public boolean update(Menu menu){
-        String sql = "UPDATE menu SET MENU = ?, LINK = ?, STATUS = ?, ICON = ? WHERE idMENU = ?;";
+        String sql = "UPDATE menu SET MENU = ?, LINK = ?, STATUS = ? WHERE idMENU = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, menu.getMenu());
             pstm.setString(2, menu.getLink());
-            pstm.setString(3, menu.getStatus());
-            pstm.setString(4, menu.getIcon());
-            pstm.setInt(5, menu.getId());
+            pstm.setInt(3, menu.getStatus());
+            pstm.setInt(4, menu.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {

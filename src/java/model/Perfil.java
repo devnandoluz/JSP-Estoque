@@ -13,9 +13,14 @@ import java.util.ArrayList;
  * @author Nando Luzy
  */
 public class Perfil {
+    
     private int id;
+    private int status;
     private String perfil;
-
+    private Menu menu;
+    
+    
+    
     public String getPerfil() {
         return perfil;
     }
@@ -30,6 +35,22 @@ public class Perfil {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+    
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
     /**
      * 
@@ -64,4 +85,6 @@ public class Perfil {
         DAOperfil dao = new DAOperfil();
         dao.delete(this);
     }
+
+
 }

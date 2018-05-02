@@ -16,7 +16,13 @@ public class Usuario {
     
     private int id;
     private String username, senha;
+    private Perfil perfil;
    
+    
+    public Usuario() {
+        
+    }
+    
     public String getUsername() {
         return username;
     }
@@ -47,9 +53,17 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Usuario() {
+    
+    public Perfil getPerfil() {
+        return perfil;
     }
-               
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+    public void setPerfil(String perfil) {
+        
+    }
     /**
      * 
      * CHAMADA DA DAO
@@ -71,7 +85,7 @@ public class Usuario {
     
     public Usuario findForID() throws Exception{
         DAOusuario dao = new DAOusuario();
-        return dao.findForID(id);
+        return dao.findForID(getId());
     }
     //Update
     public void update() throws Exception{ 
@@ -89,4 +103,7 @@ public class Usuario {
         DAOusuario dao = new DAOusuario();
         return dao.validar(username, senha);
     }
+
+    
+
 }

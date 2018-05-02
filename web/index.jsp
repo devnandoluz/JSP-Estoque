@@ -25,7 +25,7 @@
             <!--titulo da pagina-->
             <title>Gente Telecom</title>
     </head>
-    <body class="home blog geral" style="background-image: url('img/background/login_background.jpg'); background-size: 100%; background-color: black">     
+    <body class="home blog geral bg-dark" style="background-image: url('img/background/login_background.jpg'); background-size: 100%;">     
         <div class="nav navbar bg-dark" style="top: -8px">
             <h1 class="nav navbar-text"><img src="img/logotipo.png"></h1>
         </div>
