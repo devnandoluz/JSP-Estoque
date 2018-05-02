@@ -27,6 +27,15 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    
+            <script type="text/javascript">
+                function excluir(nome,id){
+                    var url = "gerenciar_cliente.do?option=delete&id="+id;
+                        if(confirm("Tem certeza que deseja excluir o perfil: "+nome+"?")){
+                            window.open(url,"_self");
+                    }
+                }
+            </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -48,7 +57,7 @@
                               <i class="fa fa-vcard" style="margin-right: 4px"></i>
                               PERFIS CADASTRADOS
                               <div class="navbar-nav ml-auto">
-                                  <a class="btn btn-success" style="width: 40px; height: 40px;" href="cadastra_menu.jsp"><b>+</b></a>
+                                  <a class="btn btn-success" style="width: 40px; height: 40px;" href="cadastra_perfil.jsp"><b>+</b></a>
                               </div>
                       </div>
                       <div class="card-body">
@@ -86,13 +95,32 @@
                                                       <center><%= perfil.getPerfil() %></center>
                                                   </td>
                                                   <td>
-                                                      <center><%= perfil.getStatus() %></center>
+                                                      <center><% 
+                                                            if(perfil.getStatus() == 1){
+                                                                %>
+                                                                <i class="fa fa-thumbs-up" style="color: green"></i>
+                                                                <%
+                                                                out.println("ATIVADO");
+                                                            }else{
+                                                                if(perfil.getStatus() == 0){
+                                                                %>
+                                                                <i class="fa fa-ban" style="color: red"></i>
+                                                                <%
+                                                                    out.println("BLOQUEADO");
+                                                                }else{
+                                                                %>
+                                                                <i class="fa fa-question" style="color: yellow"></i>
+                                                                <%
+                                                                    out.println("Desconhecido");
+                                                                }                                                                
+                                                            }
+                                                          %></center>
                                                   </td>
                                                   <td>
-                                                      <a class="btn btn-primary col-md-3" href="visualizar_cliente.jsp?id=<%= perfil.getId() %>&nome=<%= perfil.getPerfil()%>" style="margin: 2px;">
+                                                      <a class="btn btn-primary col-md-3" href="visualizar_perfil.jsp?id=<%= perfil.getId() %>&nome=<%= perfil.getPerfil()%>" style="margin: 2px;">
                                                           <span class="fa fa-eye"></span>
                                                       </a>
-                                                      <a class="btn btn-primary col-md-3" href="alterar_cliente.jsp?id=<%= perfil.getId() %>" style=" margin: 2px;">
+                                                      <a class="btn btn-primary col-md-3" href="alterar_perfil.jsp?id=<%= perfil.getId() %>" style=" margin: 2px;">
                                                           <span class="fa fa-pencil"></span>
                                                       </a>
                                                       <a class="btn btn-danger col-md-3" href="#" onclick="excluir('<%= perfil.getPerfil()%>', <%= perfil.getId() %>)" style="margin: 2px;">

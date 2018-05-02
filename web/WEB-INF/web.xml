@@ -17,6 +17,10 @@
         <servlet-name>MenuServlet</servlet-name>
         <servlet-class>control.MenuServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PerfilServlet</servlet-name>
+        <servlet-class>control.PerfilServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/pages/gerenciar_usuario.do</url-pattern>
@@ -32,6 +36,10 @@
     <servlet-mapping>
         <servlet-name>MenuServlet</servlet-name>
         <url-pattern>/pages/gerenciar_menu.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PerfilServlet</servlet-name>
+        <url-pattern>/pages/gerenciar_perfil.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -17,7 +17,6 @@ public class Perfil {
     private int id;
     private int status;
     private String perfil;
-    private Menu menu;
     
     
     
@@ -35,14 +34,6 @@ public class Perfil {
 
     public void setId(int id) {
         this.id = id;
-    }
-    
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
     }
     
     public int getStatus() {

@@ -43,9 +43,10 @@
         <li class="breadcrumb-item active">Cadastrar menu</li>
       </ol>
       <div class="card mb-3">
-            <div class="card-header bg-primary text-white form-inline">
+            <div class="card-header bg-dark text-white form-inline">
                 <div class="form-inline my-2 my-lg-0 mr-lg-2">
-                    <i class="fa fa-user-plus" style="margin-right: 4px"></i>
+                    <i class="fa fa-link" style="margin-right: 4px"></i>
+                    <i class="fa fa-plus" style="margin-right: 4px"></i>
                     NOVO MENU  
                     <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
                     </div>
@@ -137,6 +138,7 @@
             </div>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <script src="../resources/js/validator.min.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
     </div>

@@ -13,11 +13,12 @@ import java.util.ArrayList;
  * @author Nando Luzy
  */
 public class Menu {
-    private int id;;
+    private int id;
     private String menu;
     private String link;
     private int status;
-
+    
+    
     public String getMenu() {
         return menu;
     }

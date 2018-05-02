@@ -8,7 +8,6 @@ package control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import model.Cliente;
  *
  * @author Nando Luzy
  */
-@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
 public class ClienteServlet extends HttpServlet {
 
     /**
@@ -57,17 +55,18 @@ public class ClienteServlet extends HttpServlet {
             
             Cliente cliente = new Cliente();
             
-            cliente.setNomeFantasia(nome_fatasia);
-            cliente.setCnpj(cnpj);
-            cliente.setServicoContratado(servico_contratado);
-            cliente.setEndereco(endereco);
-            cliente.setTelefone(telefone);
-            cliente.setEmail(email);
-            cliente.setDescricao(descricao);
+            
             
             //Decisão de qual metodo CRUD usar.
             switch(option){
                 case "insert":{
+                    cliente.setNomeFantasia(nome_fatasia);
+                    cliente.setCnpj(cnpj);
+                    cliente.setServicoContratado(servico_contratado);
+                    cliente.setEndereco(endereco);
+                    cliente.setTelefone(telefone);
+                    cliente.setEmail(email);
+                    cliente.setDescricao(descricao);
                     cliente.insert();
                     response.sendRedirect("cliente.jsp");
                 }
@@ -75,6 +74,13 @@ public class ClienteServlet extends HttpServlet {
                 
                 
                 case "update":{
+                    cliente.setNomeFantasia(nome_fatasia);
+                    cliente.setCnpj(cnpj);
+                    cliente.setServicoContratado(servico_contratado);
+                    cliente.setEndereco(endereco);
+                    cliente.setTelefone(telefone);
+                    cliente.setEmail(email);
+                    cliente.setDescricao(descricao);
                     cliente.setId(Integer.parseInt(id));
                     cliente.update();
                     response.sendRedirect("cliente.jsp");

@@ -45,33 +45,30 @@ public class MenuServlet extends HttpServlet {
             
             Menu menu = new Menu();
             
-            menu.setMenu(nome);
-            menu.setLink(link);
-            menu.setStatus(Integer.parseInt(status));
-            
-            //Decisão de qual metodo CRUD usar.
             switch(option){
                 case "insert":{
+                    menu.setMenu(nome);
+                    menu.setLink(link);
+                    menu.setStatus(Integer.parseInt(status));
                     menu.insert();
                     response.sendRedirect("menu.jsp");
                 }
-                break;
-                
+                break;                
                 case "update":{
+                    menu.setMenu(nome);
+                    menu.setLink(link);
+                    menu.setStatus(Integer.parseInt(status));
                     menu.setId(Integer.parseInt(id));
                     menu.update();
                     response.sendRedirect("menu.jsp");
                 }
                 break;
-                
-                
                 case "delete":{
                     menu.setId(Integer.parseInt(id));
                     menu.delete();
                     response.sendRedirect("menu.jsp");
                 }
                 break;
-                        
             }
             
             out.println("</body>");

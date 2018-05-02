@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label">CNPJ</label>
-                                            <input name="cnpj" type="text" class="form-control" value="<%= cliente2.getCnpj()%>" placeholder="CNPJ da empresa..." data-error="Por favor, informe um CNPJ válido."data-minlength="17" required>
+                                            <input name="cnpj" type="text" class="form-control" value="<%= cliente2.getCnpj()%>" placeholder="CNPJ da empresa..." data-error="Por favor, informe um CNPJ válido." data-minlength="17" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -160,6 +160,7 @@
             </div>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <script src="../resources/js/validator.min.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
     </div>

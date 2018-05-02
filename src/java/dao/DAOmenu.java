@@ -114,7 +114,7 @@ public class DAOmenu {
     
     //Delete (Apagar)
     public boolean delete(Menu menu){
-        String sql = "DELETE FROM menu WHERE idMENU = ?;";
+        String sql = "DELETE FROM menu WHERE menu.idMENU = ? ;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, menu.getId());

@@ -28,8 +28,8 @@
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
             <script type="text/javascript">
-                function excluir(nome,id){
-                    var url = "gerenciar_menu.do?option=delete&id="+id;
+                function excluir(nome,i){
+                    var url = "gerenciar_menu.do?option=delete&id="+i;
                         if(confirm("Tem certeza que deseja excluir o menu "+nome+"?")){
                             window.open(url,"_self");
                     }
