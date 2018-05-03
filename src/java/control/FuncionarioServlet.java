@@ -5,6 +5,7 @@
  */
 package control;
 
+import dao.DAOperfil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -48,52 +49,57 @@ public class FuncionarioServlet extends HttpServlet {
             
             //declaração de variaveis que recebem por parametro os valores.
             
-            //funcionário
-            String option = request.getParameter("option");
-            String id = request.getParameter("id");
-            String cpf = request.getParameter("cpf");
-            String nome = request.getParameter("nome");
-            String rg = request.getParameter("rg");
-            String data_de_nascimento = request.getParameter("data_de_nascimento");
-            String sexo = request.getParameter("sexo");
-            String cargo = request.getParameter("cargo");
-            String telefone = request.getParameter("telefone");
-            String email = request.getParameter("email");
+            //opção escolhida
+            String option = request.getParameter("option");            
             
+            //init
             Funcionario funcionario = new Funcionario();
-            
-            funcionario.setCpf(cpf);
-            funcionario.setNome(nome);
-            funcionario.setRg(rg);
-            //funcionario.setDataDeNascimento(dataDeNascimento);
-            funcionario.setSexo(sexo);
-            funcionario.setCargo(cargo);
-            funcionario.setTelefone(telefone);
-            funcionario.setEmail(email);
-            
-            //usuario
-            String perfil = request.getParameter("perfil");
-            String senha = request.getParameter("senha");
-            String username = request.getParameter("username");
             Usuario usuario = new Usuario();
-            
-            usuario.setPerfil(perfil);
-            usuario.setSenha(senha);
-            usuario.setUsername(username);
-            
-            
             
             //Decisão de qual metodo CRUD usar.
             switch(option){
                 case "insert":{
+                    DAOperfil dao = new DAOperfil();
+                    
+                    usuario.setPerfil(dao.findForID(Integer.parseInt(request.getParameter("perfil"))));
+                    usuario.setSenha(request.getParameter("senha"));
+                    usuario.setUsername(request.getParameter("username"));
+                    usuario.insert();
+                    
+                    funcionario.setCpf(request.getParameter("cpf"));
+                    funcionario.setNome(request.getParameter("nome"));
+                    funcionario.setRg(request.getParameter("rg"));
+                    //funcionario.setDataDeNascimento(request.getParameter("data_de_nascimento"));
+                    funcionario.setEndereco(request.getParameter("endereco"));
+                    funcionario.setSexo(request.getParameter("sexo"));
+                    funcionario.setCargo(request.getParameter("cargo"));
+                    funcionario.setTelefone(request.getParameter("telefone"));
+                    funcionario.setEmail(request.getParameter("email"));
+                    
+                    funcionario.setUsuario(usuario);
+                    
                     funcionario.insert();
+                    
                     response.sendRedirect("funcionario.jsp");
                 }
                 break;
                 
                 
                 case "update":{
-                    funcionario.setId(Integer.parseInt(id));
+                    usuario.setPerfil(request.getParameter("perfil"));
+                    usuario.setSenha(request.getParameter("senha"));
+                    usuario.setUsername(request.getParameter("username"));
+                    
+                    funcionario.setCpf(request.getParameter("cpf"));
+                    funcionario.setNome(request.getParameter("nome"));
+                    funcionario.setRg(request.getParameter("rg"));
+                    //funcionario.setDataDeNascimento(request.getParameter("data_de_nascimento"));
+                    funcionario.setEndereco(request.getParameter("endereco"));
+                    funcionario.setSexo(request.getParameter("sexo"));
+                    funcionario.setCargo(request.getParameter("cargo"));
+                    funcionario.setTelefone(request.getParameter("telefone"));
+                    funcionario.setEmail(request.getParameter("email"));
+                    funcionario.setId(Integer.parseInt(request.getParameter("id")));
                     funcionario.update();
                     response.sendRedirect("funcionario.jsp");
                 }
@@ -101,7 +107,7 @@ public class FuncionarioServlet extends HttpServlet {
                 
                 
                 case "delete":{
-                    funcionario.setId(Integer.parseInt(id));
+                    funcionario.setId(Integer.parseInt(request.getParameter("id")));
                     funcionario.delete();
                     response.sendRedirect("funcionario.jsp");
                 }

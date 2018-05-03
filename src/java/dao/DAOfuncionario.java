@@ -27,7 +27,7 @@ public class DAOfuncionario {
     //Create (Salvar)
     public boolean save(Funcionario funcionario){
         
-        String sql = "INSERT INTO funcionario (cpf, nome, rg, sexo, cargo, endereco, telefone, email) VALUES (?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO funcionario (cpf, nome, rg, sexo, cargo, endereco, telefone, email, usuario_idusuario) VALUES (?,?,?,?,?,?,?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
@@ -40,6 +40,7 @@ public class DAOfuncionario {
             pstm.setString(6, funcionario.getEndereco());
             pstm.setString(7, funcionario.getTelefone());
             pstm.setString(8, funcionario.getEmail());
+            pstm.setInt(9, funcionario.getUsuario().getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -63,6 +64,7 @@ public class DAOfuncionario {
             
             while(rs.next()){
                 Funcionario funcionario = new Funcionario();
+                DAOusuario dao = new DAOusuario();
                 
                 funcionario.setId(rs.getInt("idFuncionario"));
                 funcionario.setCpf(rs.getString("cpf"));
@@ -74,6 +76,7 @@ public class DAOfuncionario {
                 funcionario.setEndereco(rs.getString("endereco"));
                 funcionario.setTelefone(rs.getString("telefone"));
                 funcionario.setEmail(rs.getString("email"));
+                funcionario.setUsuario( dao.findForID(rs.getInt("usuario_idusuario")) );
                 
                 listaDeFuncionario.add(funcionario);
             }
@@ -87,7 +90,10 @@ public class DAOfuncionario {
     
     public Funcionario findForID(int id){
         Funcionario funcionario = new Funcionario();
+        DAOusuario dao = new DAOusuario();
+        
         String sql = "SELECT * FROM funcionario WHERE idFuncionario = ?;";
+        
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, id);
@@ -104,6 +110,7 @@ public class DAOfuncionario {
                 funcionario.setEndereco(rs.getString("endereco"));
                 funcionario.setTelefone(rs.getString("telefone"));
                 funcionario.setEmail(rs.getString("email"));
+                funcionario.setUsuario( dao.findForID(rs.getInt("usuario_idusuario")) );
             }
             ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
             
@@ -116,6 +123,7 @@ public class DAOfuncionario {
     
     //Update (Alterar)
     public boolean update(Funcionario funcinario){
+        
         String sql = "UPDATE funcionario SET"
                 + "cpf = ?,"
                 + "nome = ?,"
@@ -124,20 +132,22 @@ public class DAOfuncionario {
                 + "cargo = ?,"
                 + "endereco = ?,"
                 + "telefone = ?,"
-                + "email = ?"
+                + "email = ?,"
+                + "usuario_idusuario = ?"
                 + "WHERE idUSUARIO = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, funcinario.getCpf());
             pstm.setString(2, funcinario.getNome());
             pstm.setString(3, funcinario.getRg());
-//            pstm.setString(4, funcinario.getDataDeNascimento());
+//          pstm.setString(4, funcinario.getDataDeNascimento());
             pstm.setString(4, funcinario.getSexo());
             pstm.setString(5, funcinario.getCargo());
             pstm.setString(6, funcinario.getEndereco());
             pstm.setString(7, funcinario.getTelefone());
             pstm.setString(8, funcinario.getEmail());
-            pstm.setInt(9, funcinario.getId());
+            pstm.setInt(9, funcinario.getUsuario().getId());
+            pstm.setInt(10, funcinario.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {

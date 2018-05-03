@@ -148,6 +148,7 @@ public class Funcionario {
     
     //Create
     public void insert() throws Exception{
+        usuario.insert();
         DAOfuncionario dao = new DAOfuncionario();
         dao.save(this);
     }

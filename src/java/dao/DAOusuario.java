@@ -27,12 +27,13 @@ public class DAOusuario {
     //Create (Salvar)
     public boolean save(Usuario usuario){
         
-        String sql = "INSERT INTO usuario (username, senha) VALUES (?,?);";
+        String sql = "INSERT INTO usuario (username, senha, perfil_idperfil) VALUES (?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, usuario.getUsername());
             pstm.setString(2, usuario.getSenha());
+            pstm.setInt(3, usuario.getPerfil().getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -54,12 +55,14 @@ public class DAOusuario {
             pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             
+            
             while(rs.next()){
                 Usuario usuario = new Usuario();
-                
+                DAOperfil dao = new DAOperfil();
                 usuario.setId(rs.getInt("idUsuario"));
                 usuario.setUsername(rs.getString("username"));
                 usuario.setSenha(rs.getString("senha"));
+                usuario.setPerfil(dao.findForID(rs.getInt("perfil_idperfil")));
                 listaDeUsuarios.add(usuario);
             }
             
@@ -73,6 +76,8 @@ public class DAOusuario {
     
     public Usuario findForID(int id){
         Usuario usuario = new Usuario();
+        DAOperfil dao = new DAOperfil();
+        
         String sql = "SELECT * FROM usuario WHERE idUsuario = ?;";
         try {
             pstm = con.prepareStatement(sql);
@@ -83,6 +88,7 @@ public class DAOusuario {
             usuario.setId(rs.getInt("idUsuario"));
             usuario.setUsername(rs.getString("username"));
             usuario.setSenha(rs.getString("senha"));
+            usuario.setPerfil(dao.findForID(rs.getInt("perfil_idperfil")));
             
             ConnectionDB.closeConnection(con, pstm, rs); //fecha
             
@@ -94,12 +100,13 @@ public class DAOusuario {
     
     //Update (Alterar)
     public boolean update(Usuario usuario){
-        String sql = "UPDATE usuario SET USERNAME = ?, SENHA = ? WHERE idUSUARIO = ?;";
+        String sql = "UPDATE usuario SET USERNAME = ?, SENHA = ?, PERFIL_IDPERFIL = ? WHERE idUSUARIO = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, usuario.getUsername());
             pstm.setString(2, usuario.getSenha());
-            pstm.setInt(3, usuario.getId());
+            pstm.setInt(3, usuario.getPerfil().getId());
+            pstm.setInt(4, usuario.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {

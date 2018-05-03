@@ -4,13 +4,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/cadastra_perfil.jsp</file>
             <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/dao/DAOperfil.java</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/model/Perfil.java</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/alterar_menu.jsp</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/alterar_perfil.jsp</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/home.jsp</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/menu/menu_completo.jsp</file>
+            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/dao/DAOusuario.java</file>
+            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/model/Usuario.java</file>
+            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/dao/DAOfuncionario.java</file>
+            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/control/FuncionarioServlet.java</file>
         </group>
     </open-files>
 </project-private>

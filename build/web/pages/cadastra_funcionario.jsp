@@ -4,6 +4,8 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Perfil"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -54,59 +56,98 @@
           <div class="card-body">
           <div class="col-md-12">
               <div>
-                  <hr>
-                  <center><h3 class="h5">PREENCHA O FORMULARIO ABAIXO</h3></center>
-                  <hr>
+                  <center><h3 class="h5 bg-dark" style="color: white; width: 100%; padding: 20px">PREENCHA O FORMULARIO ABAIXO</h3></center>
                   <br>
               </div>
-              <form id="formCliente" data-toggle="validator" role="form" method="post" action="gerenciar_funcionario.do">
-                    
-                    <div class="form-group">
-                        <label class="form-label">NOME</label>
-                        <input name="nome"  type="text" class="form-control" placeholder="Nome do funcionário..." data-error="Este campo é necessário." required>
-                        <div class="help-block with-errors"></div>
+              
+                 
+              <form id="formCliente" data-toggle="validator" role="form" method="get" action="gerenciar_funcionario.do">
+                  <div class="row">
+                    <div class="col-md-9">
+                        <center><h3 class="h3">FUNCIONARIO</h3></center>
+                        <div class="form-group">
+                            <label class="form-label">NOME</label>
+                            <input name="nome"  type="text" class="form-control" placeholder="Nome do funcionário..." data-error="Este campo é necessário." autofocus required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="form-label">CPF</label>
+                                    <input name="cpf" type="text" class="form-control" placeholder="CPF do funcionário..." data-error="Por favor, informe um CPF válido."data-minlength="14" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="form-label">RG</label>
+                                <input name="rg" type="text" class="form-control" placeholder="RG do funcionário..." data-error="Este campo é necessário." required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="form-label">SEXO</label>
+                                    <input name="sexo" type="text" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="form-label">CARGO</label>
+                                <input name="cargo" type="text" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">DATA DE NASCIMENTO</label>
+                            <input name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo é necessário.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">ENDEREÇO</label>
+                            <input name="endereco" type="text" class="form-control" placeholder="Cidade, Rua..." data-error="Este campo é necessário.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="form-label">TELEFONE</label>
+                                <input name="telefone" type="text" class="form-control" placeholder="(00)00000-0000">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="form-label">E-MAIL</label>
+                                <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label class="form-label">CPF</label>
-                                <input name="cpf" type="text" class="form-control" placeholder="CPF do funcionário..." data-error="Por favor, informe um CPF válido."data-minlength="14" required>
+                  <div class="col-md-3">
+                      <center><h3 class="h3">USUARIO</h3></center>
+                      
+                        <div class="form-group">
+                            <label class="form-label">USERNAME</label>
+                            <input name="username"  type="text" class="form-control" placeholder="Username..." data-error="Este campo é necessário." required>
                             <div class="help-block with-errors"></div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label class="form-label">RG</label>
-                            <input name="rg" type="text" class="form-control" placeholder="RG do funcionário..." data-error="Este campo é necessário." required>
+                        <div class="form-group">
+                            <label class="form-label">SENHA</label>
+                            <input name="senha"  type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário." required>
                             <div class="help-block with-errors"></div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label class="form-label">SEXO</label>
-                                <input name="sexo" type="text" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
-                            <div class="help-block with-errors"></div>
+                        <div class="form-group">
+                            <label class="form-label">PERFIL</label><br>
+                            <select class="col-md-12">
+                                <option value="">Selecione um perfil</option>
+                                    <%
+                                    ArrayList<Perfil> lista = new ArrayList();
+                                    Perfil p = new Perfil();
+                                    lista = p.findAll();
+                                    for(Perfil perfil:lista){
+                                    %>
+                                        <option name="perfil" value="<%= perfil.getId() %>"> <%= perfil.getPerfil() %></option>  
+                                    <%
+                                    }
+                                    %>                  
+                            </select>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label class="form-label">CARGO</label>
-                            <input name="cargo" type="text" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">DATA DE NASCIMENTO</label>
-                        <input name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo é necessário.">
-                        <div class="help-block with-errors"></div>
-                    </div>
-                  
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label class="form-label">TELEFONE</label>
-                            <input name="telefone" type="text" class="form-control" placeholder="(00)00000-0000">
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="form-label">E-MAIL</label>
-                            <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
-                        </div>
+                  </div>
                     </div>
                     <div class="form-group align-content-center">
                         <center>
@@ -120,6 +161,7 @@
                             </a>
                         </center>
                     </div>
+                  
                 </form>
           </div>
       </div>
