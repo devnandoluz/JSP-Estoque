@@ -4,12 +4,12 @@
     Author     : Nando Luz
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
     <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -48,7 +48,7 @@
             <footer class="sticky-footer">
               <div class="container">
                 <div class="text-center">
-                  <small>Gente Telecom do Brasil Â© 2018 Todos os Direitos Reservados</small>
+                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
                 </div>
               </div>
             </footer>
@@ -64,10 +64,10 @@
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">Ã—</span>
+                      <span aria-hidden="true">×</span>
                     </button>
                   </div>
-                  <div class="modal-body">Selecione "Sair" abaixo, se vocÃª estiver pronto para encerrar sua sessÃ£o atual.</div>
+                  <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
                   <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="login.jsp">Sair</a>

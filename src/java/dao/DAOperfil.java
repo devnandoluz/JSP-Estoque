@@ -79,11 +79,11 @@ public class DAOperfil {
             pstm.setInt(1, id);
             
             ResultSet rs = pstm.executeQuery();
-            
-            perfil.setId(rs.getInt("idPerfil"));
-            perfil.setPerfil(rs.getString("PERFIL"));
-            perfil.setStatus(rs.getInt("STATUS"));
-            
+            if(rs.next()){
+                perfil.setId(rs.getInt("idPerfil"));
+                perfil.setPerfil(rs.getString("PERFIL"));
+                perfil.setStatus(rs.getInt("STATUS"));
+            }
             ConnectionDB.closeConnection(con, pstm, rs); //fecha
             
         } catch (SQLException ex) {

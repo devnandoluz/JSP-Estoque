@@ -4,17 +4,17 @@
     Author     : Nando Luz
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
     <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="Nando Luz" content="4I">
-    <title>Novo FuncionÃ¡rio - Gente Telecom</title>
+    <title>Novo Funcionário - Gente Telecom</title>
     <!-- Bootstrap core CSS-->
     <link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -38,7 +38,7 @@
           <a href="home.jsp">Home</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="funcionario.jsp">FuncionÃ¡rio</a>
+          <a href="funcionario.jsp">Funcionário</a>
         </li>
         <li class="breadcrumb-item active">Novo funcionario</li>
       </ol>
@@ -63,37 +63,37 @@
                     
                     <div class="form-group">
                         <label class="form-label">NOME</label>
-                        <input name="nome"  type="text" class="form-control" placeholder="Nome do funcionÃ¡rio..." data-error="Este campo Ã© necessÃ¡rio." required>
+                        <input name="nome"  type="text" class="form-control" placeholder="Nome do funcionário..." data-error="Este campo é necessário." required>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">CPF</label>
-                                <input name="cpf" type="text" class="form-control" placeholder="CPF do funcionÃ¡rio..." data-error="Por favor, informe um CPF vÃ¡lido."data-minlength="14" required>
+                                <input name="cpf" type="text" class="form-control" placeholder="CPF do funcionário..." data-error="Por favor, informe um CPF válido."data-minlength="14" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">RG</label>
-                            <input name="rg" type="text" class="form-control" placeholder="RG do funcionÃ¡rio..." data-error="Este campo Ã© necessÃ¡rio." required>
+                            <input name="rg" type="text" class="form-control" placeholder="RG do funcionário..." data-error="Este campo é necessário." required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">SEXO</label>
-                                <input name="sexo" type="text" class="form-control" placeholder="SEXO do funcionÃ¡rio..." data-error="Este campo Ã© necessÃ¡rio." required>
+                                <input name="sexo" type="text" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">CARGO</label>
-                            <input name="cargo" type="text" class="form-control" placeholder="CARGO do funcionÃ¡rio..." data-error="Este campo Ã© necessÃ¡rio." required>
+                            <input name="cargo" type="text" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">DATA DE NASCIMENTO</label>
-                        <input name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo Ã© necessÃ¡rio.">
+                        <input name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo é necessário.">
                         <div class="help-block with-errors"></div>
                     </div>
                   
@@ -105,7 +105,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">E-MAIL</label>
-                            <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL vÃ¡lido.">
+                            <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
                         </div>
                     </div>
                     <div class="form-group align-content-center">
@@ -129,7 +129,7 @@
             <footer class="sticky-footer">
               <div class="container">
                 <div class="text-center">
-                  <small>Gente Telecom do Brasil Â© 2018 Todos os Direitos Reservados</small>
+                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
                 </div>
               </div>
             </footer>
@@ -145,10 +145,10 @@
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">Ã—</span>
+                      <span aria-hidden="true">×</span>
                     </button>
                   </div>
-                  <div class="modal-body">Selecione "Sair" abaixo, se vocÃª estiver pronto para encerrar sua sessÃ£o atual.</div>
+                  <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
                   <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="login.jsp">Sair</a>

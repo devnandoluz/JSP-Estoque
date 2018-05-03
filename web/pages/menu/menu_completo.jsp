@@ -68,10 +68,16 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseGerarContrato">
             <li>
-                <a href="contrato_voip.jsp">VoIP</a>
+                <a href="contrato_voip.jsp">
+                    <i class="fa fa-fw fa-file-text"></i>
+                    VoIP
+                </a>
             </li>
             <li>
-                <a href="contrato_internet.jsp">Internet</a>
+                <a href="contrato_internet.jsp">
+                    <i class="fa fa-fw fa-file-text"></i>
+                    Internet
+                </a>
             </li>
           </ul>
         </li>
@@ -82,10 +88,16 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseRoot">
             <li>
-              <a href="menu.jsp">Menu</a>
+              <a href="menu.jsp">
+                  <i class="fa fa-fw fa-link"></i>
+                  Menu
+              </a>
             </li>
             <li>
-              <a href="perfil.jsp">Perfil</a>
+              <a href="perfil.jsp">
+                  <i class="fa fa-fw fa-vcard"></i>
+                  Perfil
+              </a>
             </li>
           </ul>
         </li>

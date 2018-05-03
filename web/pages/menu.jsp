@@ -136,7 +136,7 @@
                                                           <span class="fa fa-trash"></span>
                                                       </a>
                                                   </td>
-                                              </tr>  
+                                              </tr>
                                       <%
                                           }
                                       %>

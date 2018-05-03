@@ -33,12 +33,13 @@ public class PerfilServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
-            out.println("<html>");
+            out.println("<html pt-br>");
             out.println("<head>");
-            out.println("<title>Servlet PerfilServlet</title>");            
+            out.println("<title>Servlet PerfilServlet</title>");        
             out.println("</head>");
             out.println("<body>");
             
@@ -54,6 +55,7 @@ public class PerfilServlet extends HttpServlet {
                     perfil.setPerfil(nome);
                     perfil.setStatus(Integer.parseInt(status));
                     perfil.insert();
+                    response.sendRedirect("perfil.jsp");
                 }
                 break;
                 
@@ -62,12 +64,14 @@ public class PerfilServlet extends HttpServlet {
                     perfil.setStatus(Integer.parseInt(status));
                     perfil.setId(Integer.parseInt(id));
                     perfil.update();
+                    response.sendRedirect("perfil.jsp");
                 }
                 break;
                 
                 case "delete":{
                     perfil.setId(Integer.parseInt(id));
                     perfil.delete();
+                    response.sendRedirect("perfil.jsp");
                 }
                 break;
             }

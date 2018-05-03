@@ -3,13 +3,11 @@
     Created on : 23/04/2018, 13:29:42
     Author     : Nando Luz
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
     <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -37,7 +35,10 @@
         <li class="breadcrumb-item">
           <a href="home.jsp">Home</a>
         </li>
-        <li class="breadcrumb-item active">Perfil</li>
+        <li class="breadcrumb-item">
+          <a href="perfil.jsp">Perfil</a>
+        </li>
+        <li class="breadcrumb-item active">Novo perfil</li>
       </ol>
       <div class="card mb-3">
             <div class="card-header bg-dark text-white form-inline">
@@ -61,15 +62,15 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME</label>
-                            <input name="perfil"  type="text" class="form-control" placeholder="Nome do PERFIL..." data-error="Este campo Ã© necessÃ¡rio." required>
+                            <input name="perfil"  type="text" class="form-control" placeholder="Nome do PERFIL..." data-error="Este campo é necessário." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">STATUS</label>
-                            <input name="status" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo Ã© necessÃ¡rio." required>
-<!--                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo Ã© necessÃ¡rio." required>
+                            <input name="status" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo é necessário." required>
+<!--                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
                             Desativado
-                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo Ã© necessÃ¡rio." required>
+                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
                             Ativado-->
                             <div class="help-block with-errors"></div>
                         </div>
@@ -103,7 +104,7 @@
             <footer class="sticky-footer">
               <div class="container">
                 <div class="text-center">
-                  <small>Gente Telecom do Brasil Â© 2018 Todos os Direitos Reservados</small>
+                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
                 </div>
               </div>
             </footer>
@@ -119,10 +120,10 @@
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">Ã—</span>
+                      <span aria-hidden="true">×</span>
                     </button>
                   </div>
-                  <div class="modal-body">Selecione "Sair" abaixo, se vocÃª estiver pronto para encerrar sua sessÃ£o atual.</div>
+                  <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
                   <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="login.jsp">Sair</a>

@@ -30,7 +30,7 @@
     
             <script type="text/javascript">
                 function excluir(nome,id){
-                    var url = "gerenciar_cliente.do?option=delete&id="+id;
+                    var url = "gerenciar_perfil.do?option=delete&id="+id;
                         if(confirm("Tem certeza que deseja excluir o perfil: "+nome+"?")){
                             window.open(url,"_self");
                     }

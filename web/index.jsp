@@ -3,13 +3,12 @@
     Created on : 28/03/2018, 14:41:31
     Author     : Nando Luz
 --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 
 <html lang="pt-br">
     <head>
-            <meta charset="UTF-8">
             <meta name="viewport" content="width=devicre-width, initial-scale=1">
             <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
             <!-- Bootstrap core CSS-->
@@ -46,7 +45,7 @@
                             <i class="fa fa-fw fa-user"></i>
                             <label style="margin: 0px">USERNAME</label>
                             <input name="username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Username" autofocus required>
-                            <small id="emailHelp" class="form-text text-muted">NÃ£o compartilhe seus dados de acesso.</small>
+                            <small id="emailHelp" class="form-text text-muted">Não compartilhe seus dados de acesso.</small>
                         </div>
                         <div class="form-group">
                             <i class="fa fa-fw fa-lock"></i>
