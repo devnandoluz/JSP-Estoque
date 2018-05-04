@@ -10,7 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Funcionario;
+import model.Perfil;
 
 /**
  *
@@ -27,28 +30,45 @@ public class DAOfuncionario {
     //Create (Salvar)
     public boolean save(Funcionario funcionario){
         
-        String sql = "INSERT INTO funcionario (cpf, nome, rg, sexo, cargo, endereco, telefone, email, usuario_idusuario) VALUES (?,?,?,?,?,?,?,?,?);";
+        String sqlFuncionario = "INSERT INTO funcionario (cpf, nome, rg, sexo, cargo, endereco, telefone, email, usuario_idusuario) VALUES (?,?,?,?,?,?,?,?,?);";
+        String sqlUsuario = "INSERT INTO usuario (username, senha, perfil_idperfil) VALUES (?,?,?);";
         
         try {
-            pstm = con.prepareStatement(sql);
-            pstm.setString(1, funcionario.getCpf());
-            pstm.setString(2, funcionario.getNome());
-            pstm.setString(3, funcionario.getRg());
-            //pstm.setString(4, funcionario.getDataDeNascimento());
-            pstm.setString(4, funcionario.getSexo());
-            pstm.setString(5, funcionario.getCargo());
-            pstm.setString(6, funcionario.getEndereco());
-            pstm.setString(7, funcionario.getTelefone());
-            pstm.setString(8, funcionario.getEmail());
-            pstm.setInt(9, funcionario.getUsuario().getId());
+            pstm = con.prepareStatement(sqlUsuario);
+            pstm.setString(1, funcionario.getUsuario().getUsername());
+            pstm.setString(2, funcionario.getUsuario().getSenha());
+            pstm.setInt(3, funcionario.getUsuario().getPerfil().getId());
             pstm.executeUpdate();
-            return true;
+            
+            try {
+                pstm = con.prepareStatement(sqlFuncionario);
+                pstm.setString(1, funcionario.getCpf());
+                pstm.setString(2, funcionario.getNome());
+                pstm.setString(3, funcionario.getRg());
+                //pstm.setString(4, funcionario.getDataDeNascimento());
+                pstm.setString(4, funcionario.getSexo());
+                pstm.setString(5, funcionario.getCargo());
+                pstm.setString(6, funcionario.getEndereco());
+                pstm.setString(7, funcionario.getTelefone());
+                pstm.setString(8, funcionario.getEmail());
+                try {
+                    pstm.setInt(9, funcionario.getUsuario().validarLogin(funcionario.getUsuario().getUsername(), funcionario.getUsuario().getSenha()).getId());
+                } catch (Exception ex) {
+                    System.err.println("erro ao buscar id usuario"+ex);
+                }
+                pstm.executeUpdate();
+                return true;
+            } catch (SQLException ex) {
+                System.err.println("Erro ao salvar: " + ex);
+                return false;
+            } 
         } catch (SQLException ex) {
             System.err.println("Erro ao salvar: " + ex);
             return false;
-        } finally{
+        }finally{
             ConnectionDB.closeConnection(con, pstm);
         }
+        
     }
     
     //Read (Ler)

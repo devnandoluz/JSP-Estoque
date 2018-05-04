@@ -133,18 +133,18 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">PERFIL</label><br>
-                            <select class="col-md-12">
-                                <option value="">Selecione um perfil</option>
+                            <select name="perfil" class="form-control col-md-12" id="exampleFormControlSelect1" required>
+                                    <option title="Selecione">Selecione</option>
                                     <%
-                                    ArrayList<Perfil> lista = new ArrayList();
-                                    Perfil p = new Perfil();
-                                    lista = p.findAll();
-                                    for(Perfil perfil:lista){
+                                        ArrayList<Perfil> lista = new ArrayList();
+                                        Perfil p = new Perfil();
+                                        lista = p.findAll();
+                                        for(Perfil perfil:lista){
                                     %>
-                                        <option name="perfil" value="<%= perfil.getId() %>"> <%= perfil.getPerfil() %></option>  
+                                        <option value="<%=perfil.getId()%>"><%= perfil.getPerfil() %></option>
                                     <%
                                     }
-                                    %>                  
+                                    %>          
                             </select>
                         </div>
                   </div>

@@ -36,7 +36,7 @@ public class DAOperfil {
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao salvar: " + ex);
+            System.err.println("PERFIL Erro ao salvar: " + ex);
             return false;
         } finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -65,7 +65,7 @@ public class DAOperfil {
             
             ConnectionDB.closeConnection(con, pstm, rs);
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("PERFIL Erro ao buscar todos: " + ex);
         }
         
         return listaDePerfil;
@@ -79,7 +79,7 @@ public class DAOperfil {
             pstm.setInt(1, id);
             
             ResultSet rs = pstm.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 perfil.setId(rs.getInt("idPerfil"));
                 perfil.setPerfil(rs.getString("PERFIL"));
                 perfil.setStatus(rs.getInt("STATUS"));
@@ -87,7 +87,7 @@ public class DAOperfil {
             ConnectionDB.closeConnection(con, pstm, rs); //fecha
             
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("PERFIL Erro ao buscar por ID: " + ex);
         }
         return perfil;
     }
@@ -102,7 +102,7 @@ public class DAOperfil {
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao alterar: " + ex);
+            System.err.println("PERFIL Erro ao alterar: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -118,7 +118,7 @@ public class DAOperfil {
             pstm.execute();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao deletar: " + ex);
+            System.err.println("PERFIL Erro ao deletar: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);

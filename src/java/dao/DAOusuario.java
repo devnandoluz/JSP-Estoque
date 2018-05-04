@@ -37,7 +37,7 @@ public class DAOusuario {
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao salvar: " + ex);
+            System.err.println("USUARIO Erro ao salvar: " + ex);
             return false;
         } finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -68,7 +68,7 @@ public class DAOusuario {
             
             ConnectionDB.closeConnection(con, pstm, rs);
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("USUARIO Erro ao buscar todos: " + ex);
         }
         
         return listaDeUsuarios;
@@ -84,16 +84,16 @@ public class DAOusuario {
             pstm.setInt(1, id);
             
             ResultSet rs = pstm.executeQuery();
-            
+            while(rs.next()){
             usuario.setId(rs.getInt("idUsuario"));
             usuario.setUsername(rs.getString("username"));
             usuario.setSenha(rs.getString("senha"));
             usuario.setPerfil(dao.findForID(rs.getInt("perfil_idperfil")));
-            
+            }
             ConnectionDB.closeConnection(con, pstm, rs); //fecha
             
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("USUARIO Erro ao buscar por ID: " + ex);
         }
         return usuario;
     }
@@ -126,7 +126,7 @@ public class DAOusuario {
             pstm.execute();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao deletar: " + ex);
+            System.err.println("USUARIO Erro ao deletar: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -146,7 +146,7 @@ public class DAOusuario {
             ResultSet rs = pstm.executeQuery();
             
             if(rs.next()){
-                usuario.setId(rs.getInt("id"));
+                usuario.setId(rs.getInt("idUsuario"));
                 usuario.setUsername(rs.getString("username"));
                 usuario.setSenha(rs.getString("senha"));
                 ConnectionDB.closeConnection(con, pstm, rs); //fecha
@@ -155,7 +155,7 @@ public class DAOusuario {
             }
                        
         } catch (SQLException ex) {
-            System.err.println("Erro ao tentar buscar" + ex);
+            System.err.println("USUARIO Erro na validação:" + ex);
         }
         return usuario;
     }

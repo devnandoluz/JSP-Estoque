@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Funcionario;
+import model.Perfil;
 import model.Usuario;
 
 /**
@@ -60,11 +61,13 @@ public class FuncionarioServlet extends HttpServlet {
             switch(option){
                 case "insert":{
                     DAOperfil dao = new DAOperfil();
-                    
-                    usuario.setPerfil(dao.findForID(Integer.parseInt(request.getParameter("perfil"))));
+                    Perfil buscar = new Perfil();   
+                    String id = request.getParameter("perfil");              
+                    Perfil perfil = buscar.findForID(Integer.parseInt(id));
+                    usuario.setPerfil(perfil);
                     usuario.setSenha(request.getParameter("senha"));
                     usuario.setUsername(request.getParameter("username"));
-                    usuario.insert();
+                    funcionario.setUsuario(usuario);
                     
                     funcionario.setCpf(request.getParameter("cpf"));
                     funcionario.setNome(request.getParameter("nome"));
@@ -75,8 +78,6 @@ public class FuncionarioServlet extends HttpServlet {
                     funcionario.setCargo(request.getParameter("cargo"));
                     funcionario.setTelefone(request.getParameter("telefone"));
                     funcionario.setEmail(request.getParameter("email"));
-                    
-                    funcionario.setUsuario(usuario);
                     
                     funcionario.insert();
                     
