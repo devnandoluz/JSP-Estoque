@@ -3,13 +3,12 @@
     Created on : 23/04/2018, 13:29:42
     Author     : Nando Luz
 --%>
-
-<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
-<html>
+<html> 
     <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta charset="ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html;">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -63,40 +62,40 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME FANTASIA</label>
-                            <input name="nome_fantasia"  type="text" class="form-control" placeholder="Nome fantasia da empresa..." data-error="Este campo é necessário." required>
+                            <input name="nome_fantasia"  type="text" class="form-control" placeholder="Nome fantasia da empresa..." data-error="Este campo Ã© necessÃ¡rio." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">CNPJ</label>
-                            <input name="cnpj" type="text" class="form-control" placeholder="CNPJ da empresa..." data-error="Por favor, informe um CNPJ válido." data-minlength="17" required>
+                            <input name="cnpj" type="text" class="form-control" placeholder="CNPJ da empresa..." data-error="Por favor, informe um CNPJ vÃ¡lido." data-minlength="17" required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">SERVIÇO CONTRATADO</label>
-                        <input name="servico_contratado" type="text" class="form-control" placeholder="Qual serviço?" data-error="Este campo é necessário." required>
+                        <label class="form-label">SERVIÃ‡O CONTRATADO</label>
+                        <input name="servico_contratado" type="text" class="form-control" placeholder="Qual serviÃ§o?" data-error="Este campo Ã© necessÃ¡rio." required>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">ENDEREÇO</label>
-                        <input name="endereco" type="text" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo é necessário." required>
+                        <label class="form-label">ENDEREÃ‡O</label>
+                        <input name="endereco" type="text" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo Ã© necessÃ¡rio." required>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">TELEFONE</label>
-                            <input name="telefone" type="text" class="form-control" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
+                            <input name="telefone" type="text" class="form-control" placeholder="(00) 00000-0000" data-error="Este campo Ã© necessÃ¡rio." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">E-MAIL</label>
-                            <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                            <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL vÃ¡lido.">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div> 
                     <div class="form-group">
-                        <label class="form-label">DESCRIÇÃO</label>
-                        <textarea name="descricao" type="text" class="form-control" placeholder="Mais informações..."></textarea>
+                        <label class="form-label">DESCRIÃ‡ÃƒO</label>
+                        <textarea name="descricao" type="text" class="form-control" placeholder="Mais informaÃ§Ãµes..."></textarea>
                     </div>
                     <div class="form-group align-content-center">
                         <center>
@@ -119,7 +118,7 @@
             <footer class="sticky-footer">
               <div class="container">
                 <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
+                  <small>Gente Telecom do Brasil Â© 2018 Todos os Direitos Reservados</small>
                 </div>
               </div>
             </footer>
@@ -135,10 +134,10 @@
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
+                      <span aria-hidden="true">Ã—</span>
                     </button>
                   </div>
-                  <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
+                  <div class="modal-body">Selecione "Sair" abaixo, se vocÃª estiver pronto para encerrar sua sessÃ£o atual.</div>
                   <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="login.jsp">Sair</a>

@@ -151,6 +151,10 @@ public class Funcionario {
         DAOfuncionario dao = new DAOfuncionario();
         dao.save(this);
     }
+    public void insertSemUsuario() throws Exception{
+        DAOfuncionario dao = new DAOfuncionario();
+        dao.saveSemUsuario(this);
+    }
     //Read
     public ArrayList<Funcionario> findAll() throws Exception{   
         DAOfuncionario dao = new DAOfuncionario();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
@@ -10,14 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Funcionario;
-import model.Perfil;
-
 /**
  *
- * @author Nando Luzy
+ * @author Nando Luz
  */
 public class DAOfuncionario {
     private final Connection con;
@@ -66,6 +57,32 @@ public class DAOfuncionario {
             System.err.println("Erro ao salvar: " + ex);
             return false;
         }finally{
+            ConnectionDB.closeConnection(con, pstm);
+        }
+        
+    }
+    public boolean saveSemUsuario(Funcionario funcionario){
+        
+        String sqlFuncionario = "INSERT INTO funcionario (cpf, nome, rg, sexo, cargo, endereco, telefone, email) VALUES (?,?,?,?,?,?,?,?);";
+        
+            try {
+                pstm = con.prepareStatement(sqlFuncionario);
+                pstm.setString(1, funcionario.getCpf());
+                pstm.setString(2, funcionario.getNome());
+                pstm.setString(3, funcionario.getRg());
+                //pstm.setString(4, funcionario.getDataDeNascimento());
+                pstm.setString(4, funcionario.getSexo());
+                pstm.setString(5, funcionario.getCargo());
+                pstm.setString(6, funcionario.getEndereco());
+                pstm.setString(7, funcionario.getTelefone());
+                pstm.setString(8, funcionario.getEmail());
+                
+                pstm.executeUpdate();
+                return true;
+            } catch (SQLException ex) {
+                System.err.println("Erro ao salvar: " + ex);
+                return false;
+            }finally{
             ConnectionDB.closeConnection(con, pstm);
         }
         

@@ -60,15 +60,6 @@ public class FuncionarioServlet extends HttpServlet {
             //Decisão de qual metodo CRUD usar.
             switch(option){
                 case "insert":{
-                    DAOperfil dao = new DAOperfil();
-                    Perfil buscar = new Perfil();   
-                    String id = request.getParameter("perfil");              
-                    Perfil perfil = buscar.findForID(Integer.parseInt(id));
-                    usuario.setPerfil(perfil);
-                    usuario.setSenha(request.getParameter("senha"));
-                    usuario.setUsername(request.getParameter("username"));
-                    funcionario.setUsuario(usuario);
-                    
                     funcionario.setCpf(request.getParameter("cpf"));
                     funcionario.setNome(request.getParameter("nome"));
                     funcionario.setRg(request.getParameter("rg"));
@@ -79,7 +70,24 @@ public class FuncionarioServlet extends HttpServlet {
                     funcionario.setTelefone(request.getParameter("telefone"));
                     funcionario.setEmail(request.getParameter("email"));
                     
-                    funcionario.insert();
+                    int id = Integer.parseInt(request.getParameter("perfil"));
+                    
+                    if(id != 0){
+                        Perfil buscar = new Perfil();              
+                        Perfil perfil = buscar.findForID((id));
+                        usuario.setPerfil(perfil);
+                        usuario.setSenha(request.getParameter("senha"));
+                        usuario.setUsername(request.getParameter("username"));
+                        funcionario.setUsuario(usuario);
+                        funcionario.insert();
+                    }else{
+                        usuario = null;
+                        funcionario.setUsuario(usuario);
+                        funcionario.insertSemUsuario();
+                    }
+                    
+                    
+                    
                     
                     response.sendRedirect("funcionario.jsp");
                 }
