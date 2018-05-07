@@ -34,18 +34,80 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="home.jsp">Home</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="estoque.jsp">Estoque</a>
-        </li>
-        <li class="breadcrumb-item active">Novo produto</li>
+            <li class="breadcrumb-item">
+              <a href="home.jsp">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="estoque.jsp">Estoque</a>
+            </li>
+            <li class="breadcrumb-item active">Novo produto</li>
       </ol>
-            
-      
+      <div class="card mb-3">
+            <div class="card-header bg-success text-white form-inline">
+                <div class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <i class="fa fa-vcard" style="margin-right: 4px"></i>
+                    <i class="fa fa-plus" style="margin-right: 4px"></i>
+                    NOVO PRODUTO
+                    <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
+                    </div>
+                </div>                
+            </div> 
+        <div class="card-body">
+          <div class="col-md-12">
+              <div>
+                  <hr>
+                  <center><h3 class="h5">PREENCHA O FORMULARIO ABAIXO</h3></center>
+                  <hr>
+                  <br>
+              </div>                  
+              <form id="formCliente" data-toggle="validator" role="form" method="get" action="gerenciar_produto.do">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label">NOME</label>
+                            <input name="nome"  type="text" class="form-control" placeholder="Nome do PRODUTO..." data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label class="form-label">QUANTIDADE</label>
+                            <input name="quantidade"  type="number" class="form-control" placeholder="Quantidade do PRODUTO..." data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="form-label">VALOR UNITARIO</label>
+                            <input name="valor"  type="text" class="form-control" placeholder="Nome do PRODUTO..." data-error="Este campo é necessário.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="form-label">CATEGORIA</label>
+                            <select name="categoria" class="form-control" required>
+                                <option value="Outro">Selecione</option>
+                                <option value="Construção">Construção</option>
+                                <option value="Elétrico">Elétrico</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group align-content-center">
+                        <center>
+                            <button class="btn btn-success col-md-3" name="option" value="insert" style="margin: 2px;">
+                                <i class="fa fa-plus"></i> 
+                                CADASTRAR
+                            </button>
+                            <a class="btn btn-primary col-md-3" href="estoque.jsp" style="margin: 2px;">
+                                <i class="fa fa-reply"></i>
+                                CANCELAR
+                            </a>
+                        </center>
+                    </div>
+                </form>
+          </div>
+      </div>
+    </div>
         
     </div>
+            
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">
               <div class="container">

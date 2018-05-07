@@ -1,25 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
+
+import dao.DAOproduto;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
- * @author Nando Luzy
+ * @author Nando Luz
  */
 public class Produto {
-    
-    private TipoProduto tipoProduto;
-    private EntradaProduto entradaProduto;
-    private SaidaProduto saidaProduto;
     
     private int id;
     private String nome;
     private String status;
     private String categoria;
-   
+    private int quantidade;
+    private double valor;
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -37,55 +57,46 @@ public class Produto {
         this.status = status;
     }
 
-    public TipoProduto getTipoProduto() {
-        return tipoProduto;
-    }
-
-    public void setTipoProduto(TipoProduto tipoProduto) {
-        this.tipoProduto = tipoProduto;
-    }
-
-    public EntradaProduto getEntradaProduto() {
-        return entradaProduto;
-    }
-
-    public void setEntradaProduto(EntradaProduto entradaProduto) {
-        this.entradaProduto = entradaProduto;
-    }
-
-    public SaidaProduto getSaidaProduto() {
-        return saidaProduto;
-    }
-
-    public void setSaidaProduto(SaidaProduto saidaProduto) {
-        this.saidaProduto = saidaProduto;
-    }
-
-    /**
-     * @return the categoria
-     */
     public String getCategoria() {
         return categoria;
     }
 
-    /**
-     * @param categoria the categoria to set
-     */
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-
+    
     /**
-     * @return the id
+     * 
+     * CHAMADA DA DAO
+     * 
+     * @throws Exception 
      */
-    public int getId() {
-        return id;
+    
+    
+    //Create
+    public void insert() throws Exception{
+        DAOproduto dao = new DAOproduto();
+        dao.save(this);
     }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
+    //Read
+    public ArrayList<Produto> findAll() throws Exception{  
+        DAOproduto dao = new DAOproduto();
+        return dao.findAll();
     }
+    
+    public Produto findForID(int id) throws Exception{
+        DAOproduto dao = new DAOproduto();
+        return dao.findForID(id);
+    }
+    //Update
+    public void update() throws Exception{ 
+        DAOproduto dao = new DAOproduto();
+        dao.update(this);
+    }
+    //Delete
+    public void delete() throws Exception{
+        DAOproduto dao = new DAOproduto();
+        dao.delete(this);
+    }
+    
 }

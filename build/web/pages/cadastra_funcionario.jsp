@@ -19,7 +19,6 @@
     <title>Novo Funcionário - Gente Telecom</title>
     <!-- Bootstrap core CSS-->
     <link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/vendor/bootstrap/css/bootstrapValidator.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
     <link href="../resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
@@ -28,7 +27,7 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />    
-    <script src="../resources/vendor/bootstrap/js/bootstrapValidator.min.js" type="text/javascript"></script>
+    <script src="../resources/js/validator.min.js" type="text/javascript"></script>
     <script>
         function MudarForm() {          
             var x = document.getElementById('divFuncionario');

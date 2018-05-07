@@ -8,13 +8,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Menu;
+import model.Produto;
 
 /**
  *
- * @author Nando Luzy
+ * @author Nando Luz
  */
-public class MenuServlet extends HttpServlet {
+public class ProdutoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,41 +28,42 @@ public class MenuServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MenuServlet</title>");            
+            out.println("<title>Servlet ProdutoServlet</title>");            
             out.println("</head>");
             out.println("<body>");
             
             String option = request.getParameter("option");
             
-            Menu menu = new Menu();
+            Produto produto = new Produto();
             
             switch(option){
                 case "insert":{
-                    menu.setMenu(request.getParameter("nome"));
-                    menu.setLink(request.getParameter("link"));
-                    menu.setStatus(Integer.parseInt(request.getParameter("status")));
-                    menu.insert();
+                    produto.setNome(request.getParameter("nome"));
+                    produto.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+                    produto.setValor(Double.parseDouble("valor"));
+                    produto.setCategoria(request.getParameter("categoria"));
+                    produto.insert();
                     response.sendRedirect("menu.jsp");
                 }
                 break;                
                 case "update":{
-                    menu.setMenu(request.getParameter("nome"));
-                    menu.setLink(request.getParameter("link"));
-                    menu.setStatus(Integer.parseInt(request.getParameter("status")));
-                    menu.setId(Integer.parseInt(request.getParameter("id")));
-                    menu.update();
+                    produto.setNome(request.getParameter("nome"));
+                    produto.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+                    produto.setValor(Double.parseDouble("valor"));
+                    produto.setCategoria(request.getParameter("categoria"));
+                    produto.setId(Integer.parseInt(request.getParameter("id")));
+                    produto.update();
                     response.sendRedirect("menu.jsp");
                 }
                 break;
                 case "delete":{
-                    menu.setId(Integer.parseInt(request.getParameter("id")));
-                    menu.delete();
+                    produto.setId(Integer.parseInt(request.getParameter("id")));
+                    produto.delete();
                     response.sendRedirect("menu.jsp");
                 }
                 break;
@@ -88,7 +89,7 @@ public class MenuServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(MenuServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -106,7 +107,7 @@ public class MenuServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(MenuServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -12,8 +12,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;">
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
@@ -77,10 +77,10 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                    <th>Nome</th>
-                                    <th>CNPJ</th>
-                                    <th><center>Opção</center></th>
-                                  </tr>
+                                        <th>Nome</th>
+                                        <th>CNPJ</th>
+                                        <th><center>Opção</center></th>
+                                    </tr>
                                 </tfoot>
                                 <tbody class="">                                  
                                       <% 
