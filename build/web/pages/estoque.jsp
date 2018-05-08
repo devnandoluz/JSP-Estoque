@@ -5,7 +5,6 @@
 --%>
 
 <%@page import="model.Produto"%>
-<%@page import="model.Estoque"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,6 +35,7 @@
                             window.open(url,"_self");
                     }
                 }
+                
             </script>
 </head>
 

@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +9,7 @@ import model.Produto;
 
 /**
  *
- * @author Nando Luzy
+ * @author Nando Luz
  */
 public class DAOproduto {
      private final Connection con;
@@ -28,15 +22,14 @@ public class DAOproduto {
     //Create (Salvar)
     public boolean save(Produto produto){
         
-        String sql = "INSERT INTO PRODUTO (NOME,STATUS,CATEGORIA, QUANT_ENTRADA, VALOR_UNIT) VALUES (?,?,?,?,?);";
+        String sql = "INSERT INTO PRODUTO (NOME, QUANTIDADE, CATEGORIA, VALOR_UNIT) VALUES (?,?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, produto.getNome());
-            pstm.setString(2, produto.getStatus());
+            pstm.setInt(2, produto.getQuantidade());
             pstm.setString(3, produto.getCategoria());
-            pstm.setInt(4, produto.getQuantidade());
-            pstm.setDouble(5, produto.getValor());
+            pstm.setDouble(4, produto.getValor());
             
             pstm.executeUpdate();
             return true;
@@ -64,14 +57,12 @@ public class DAOproduto {
                 
                 produto.setId(rs.getInt("idPRODUTO"));
                 produto.setNome(rs.getString("NOME"));
-                produto.setStatus(rs.getString("STATUS"));
+                produto.setQuantidade(rs.getInt("QUANTIDADE"));
                 produto.setCategoria(rs.getString("CATEGORIA"));
-                produto.setQuantidade(rs.getInt("QUANT_ENTRADA"));
                 produto.setValor(rs.getDouble("VALOR_UNIT"));
               
                 listaDeProdutos.add(produto);
             }
-            
             ConnectionDB.closeConnection(con, pstm, rs); //close conections
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar PRODUTO: " + ex);
@@ -92,9 +83,8 @@ public class DAOproduto {
             while(rs.next()){
                 produto.setId(rs.getInt("idPRODUTO"));
                 produto.setNome(rs.getString("NOME"));
-                produto.setStatus(rs.getString("STATUS"));
+                produto.setQuantidade(rs.getInt("QUANTIDADE"));
                 produto.setCategoria(rs.getString("CATEGORIA"));
-                produto.setQuantidade(rs.getInt("QUANT_ENTRADA"));
                 produto.setValor(rs.getDouble("VALOR_UNIT"));
             }
             ConnectionDB.closeConnection(con, pstm, rs);
@@ -109,19 +99,17 @@ public class DAOproduto {
     public boolean update(Produto produto){
         String sql = "UPDATE PRODUTO SET "
                 + "NOME = ?,"
-                + "STATUS = ?,"
+                + "QUANTIDADE = ?,"
                 + "CATEGORIA = ?,"
-                + "QUANT_ENTRADA = ?,"
                 + "VALOR_UNIT = ?"
                 + "WHERE idPRODUTO = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, produto.getNome());
-            pstm.setString(2, produto.getStatus());
+            pstm.setInt(2, produto.getQuantidade());
             pstm.setString(3, produto.getCategoria());
-            pstm.setInt(4, produto.getQuantidade());
-            pstm.setDouble(5, produto.getValor());
-            pstm.setInt(6, produto.getId());
+            pstm.setDouble(4, produto.getValor());
+            pstm.setInt(5, produto.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {

@@ -37,7 +37,7 @@ public class DAOusuario {
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("USUARIO Erro ao salvar: " + ex);
+            System.err.println("Erro ao salvar USUARIO: " + ex);
             return false;
         } finally{
             ConnectionDB.closeConnection(con, pstm);

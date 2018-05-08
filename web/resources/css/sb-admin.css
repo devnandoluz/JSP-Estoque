@@ -518,6 +518,10 @@ footer.sticky-footer {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+.with-errors{
+    color: red;
+}
+
 @media (min-width: 992px) {
   footer.sticky-footer {
     width: calc(100% - 250px);

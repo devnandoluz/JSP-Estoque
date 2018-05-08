@@ -42,19 +42,19 @@ public class DAOfuncionario {
                 pstm.setString(6, funcionario.getEndereco());
                 pstm.setString(7, funcionario.getTelefone());
                 pstm.setString(8, funcionario.getEmail());
-                try {
-                    pstm.setInt(9, funcionario.getUsuario().validarLogin(funcionario.getUsuario().getUsername(), funcionario.getUsuario().getSenha()).getId());
-                } catch (Exception ex) {
-                    System.err.println("erro ao buscar id usuario"+ex);
-                }
+                    try {
+                        pstm.setInt(9, funcionario.getUsuario().validarLogin(funcionario.getUsuario().getUsername(), funcionario.getUsuario().getSenha()).getId());
+                    } catch (Exception ex) {
+                        System.err.println("erro ao buscar ID USUARIO: "+ex);
+                    }
                 pstm.executeUpdate();
                 return true;
             } catch (SQLException ex) {
-                System.err.println("Erro ao salvar: " + ex);
+                System.err.println("Erro ao salvar FUNCIONARIO: " + ex);
                 return false;
-            } 
+            }
         } catch (SQLException ex) {
-            System.err.println("Erro ao salvar: " + ex);
+            System.err.println("Erro ao salvar USUARIO e FUNCIONARIO: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -141,7 +141,7 @@ public class DAOfuncionario {
                 funcionario.setCpf(rs.getString("cpf"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setRg(rs.getString("rg"));
-    //            funcionario.setDataDeNascimento(rs.getString("data_de_nascimento"));
+                //funcionario.setDataDeNascimento(rs.getString("data_de_nascimento"));
                 funcionario.setSexo(rs.getString("sexo"));
                 funcionario.setCargo(rs.getString("cargo"));
                 funcionario.setEndereco(rs.getString("endereco"));
@@ -177,7 +177,7 @@ public class DAOfuncionario {
             pstm.setString(1, funcinario.getCpf());
             pstm.setString(2, funcinario.getNome());
             pstm.setString(3, funcinario.getRg());
-//          pstm.setString(4, funcinario.getDataDeNascimento());
+            //pstm.setString(4, funcinario.getDataDeNascimento());
             pstm.setString(4, funcinario.getSexo());
             pstm.setString(5, funcinario.getCargo());
             pstm.setString(6, funcinario.getEndereco());

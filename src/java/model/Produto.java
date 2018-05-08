@@ -2,8 +2,6 @@ package model;
 
 import dao.DAOproduto;
 import java.util.ArrayList;
-import java.util.Date;
-
 /**
  *
  * @author Nando Luz
@@ -12,27 +10,11 @@ public class Produto {
     
     private int id;
     private String nome;
-    private String status;
-    private String categoria;
     private int quantidade;
     private double valor;
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
+    private String categoria;
+    
+    
     public int getId() {
         return id;
     }
@@ -49,14 +31,6 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getCategoria() {
         return categoria;
     }
@@ -64,7 +38,22 @@ public class Produto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
     
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
     /**
      * 
      * CHAMADA DA DAO
@@ -98,5 +87,6 @@ public class Produto {
         DAOproduto dao = new DAOproduto();
         dao.delete(this);
     }
-    
+
+
 }

@@ -1,0 +1,37 @@
+NIVEL DAO----------------------------
+
+Home			0
+Monitoramento		0
+Log de Ações		0
+
+Adicionar
+	Cliente		0
+	Funcionário	0
+	Produto		0
+
+Gerar Contrato
+	Internet	0
+	Voip		0
+
+Root			1
+	Menu		1
+	Perfil		0
+
+NIVEL VIEW---------------------------
+
+Home			0
+Monitoramento		0
+Log de Ações		0
+
+Adicionar
+	Cliente		0
+	Funcionário	0
+	Produto		0
+
+Gerar Contrato
+	Internet	0
+	Voip		0
+
+Root			1
+	Menu		1
+	Perfil		0

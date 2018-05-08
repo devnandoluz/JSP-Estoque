@@ -27,21 +27,22 @@ public class DAOcliente {
     //Create (Salvar)
     public boolean save(Cliente cliente){
         
-        String sql = "INSERT INTO cliente (nome_fantasia, cnpj, servico_contratado, telefone, endereco, email, descricao) VALUES (?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO cliente (nome_fantasia, cnpj, servico_contratado, valor_servico, telefone, endereco, email, descricao) VALUES (?,?,?,?,?,?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, cliente.getNomeFantasia());
             pstm.setString(2, cliente.getCnpj());
             pstm.setString(3, cliente.getServicoContratado());
-            pstm.setString(4, cliente.getTelefone());
-            pstm.setString(5, cliente.getEndereco());
-            pstm.setString(6, cliente.getEmail());
-            pstm.setString(7, cliente.getDescricao());
+            pstm.setDouble(4, cliente.getValor_servico());
+            pstm.setString(5, cliente.getTelefone());
+            pstm.setString(6, cliente.getEndereco());
+            pstm.setString(7, cliente.getEmail());
+            pstm.setString(8, cliente.getDescricao());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao salvar: " + ex);
+            System.err.println("Erro ao salvar CLIENTE: " + ex);
             return false;
         } finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -60,22 +61,23 @@ public class DAOcliente {
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
-                Cliente funcionario = new Cliente();
+                Cliente cliente = new Cliente();
                 
-                funcionario.setId(rs.getInt("idCLIENTE"));
-                funcionario.setNomeFantasia(rs.getString("NOME_FANTASIA"));
-                funcionario.setCnpj(rs.getString("CNPJ"));
-                funcionario.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));
-                funcionario.setTelefone(rs.getString("TELEFONE"));
-                funcionario.setEndereco(rs.getString("ENDERECO"));
-                funcionario.setEmail(rs.getString("EMAIL"));
-                funcionario.setDescricao(rs.getString("DESCRICAO"));
+                cliente.setId(rs.getInt("idCLIENTE"));
+                cliente.setNomeFantasia(rs.getString("NOME_FANTASIA"));
+                cliente.setCnpj(rs.getString("CNPJ"));
+                cliente.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));                
+                cliente.setValor_servico(rs.getDouble("VALOR_SERVICO"));
+                cliente.setTelefone(rs.getString("TELEFONE"));
+                cliente.setEndereco(rs.getString("ENDERECO"));
+                cliente.setEmail(rs.getString("EMAIL"));
+                cliente.setDescricao(rs.getString("DESCRICAO"));
                 
-                listaDeFuncionario.add(funcionario);
+                listaDeFuncionario.add(cliente);
             }
             ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("Erro ao buscar CLIETE: " + ex);
         }
         
         return listaDeFuncionario;
@@ -97,13 +99,14 @@ public class DAOcliente {
                 cliente.setNomeFantasia(rs.getString("NOME_FANTASIA"));
                 cliente.setCnpj(rs.getString("CNPJ"));
                 cliente.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));
+                cliente.setValor_servico(rs.getDouble("VALOR_SERVICO"));
                 cliente.setTelefone(rs.getString("TELEFONE"));
                 cliente.setEndereco(rs.getString("endereco"));
                 cliente.setEmail(rs.getString("EMAIL"));
                 cliente.setDescricao(rs.getString("DESCRICAO"));
             }
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("Erro ao buscar CLIETNE: " + ex);
         }finally{
             ConnectionDB.closeConnection(con, pstm);
         }
@@ -117,6 +120,7 @@ public class DAOcliente {
                 + "nome_fantasia = ?,"
                 + "cnpj = ?,"
                 + "servico_contratado = ?,"
+                + "valor_servico = ?,"
                 + "telefone = ?,"
                 + "endereco = ?,"
                 + "email = ?,"
@@ -126,16 +130,17 @@ public class DAOcliente {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, cliente.getNomeFantasia());
             pstm.setString(2, cliente.getCnpj());
-            pstm.setString(3, cliente.getServicoContratado());
-            pstm.setString(4, cliente.getTelefone());
-            pstm.setString(5, cliente.getEndereco());
-            pstm.setString(6, cliente.getEmail());
-            pstm.setString(7, cliente.getDescricao());
-            pstm.setInt(8, cliente.getId());
+            pstm.setString(3, cliente.getServicoContratado());            
+            pstm.setDouble(4, cliente.getValor_servico());
+            pstm.setString(5, cliente.getTelefone());
+            pstm.setString(6, cliente.getEndereco());
+            pstm.setString(7, cliente.getEmail());
+            pstm.setString(8, cliente.getDescricao());
+            pstm.setInt(9, cliente.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao alterar: " + ex);
+            System.err.println("Erro ao alterar CLIENTE: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -151,7 +156,7 @@ public class DAOcliente {
             pstm.execute();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao deletar: " + ex);
+            System.err.println("Erro ao deletar CLIENTE: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);

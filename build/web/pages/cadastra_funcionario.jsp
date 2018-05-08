@@ -92,12 +92,12 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label class="form-label">CPF</label>
-                                        <input name="cpf" type="text" class="form-control" placeholder="CPF do funcionário..." data-error="Por favor, informe um CPF válido."data-minlength="14" required>
+                                        <input name="cpf" type="text" class="form-control cpf" placeholder="000.000.000-00" data-error="Por favor, informe um CPF válido." data-minlength="14" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="form-label">RG</label>
-                                    <input name="rg" type="text" class="form-control" placeholder="RG do funcionário..." data-error="Este campo é necessário." required>
+                                    <input name="rg" type="text" class="form-control rg" placeholder="0.000.000" data-error="Por favor, informe um RG válido." data-minlength="9" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -116,19 +116,19 @@
 
                             <div class="form-group">
                                 <label class="form-label">DATA DE NASCIMENTO</label>
-                                <input name="data_de_nascimento" type="text" class="form-control" placeholder="00/00/0000" data-error="Este campo é necessário.">
+                                <input name="data_de_nascimento" type="text" class="form-control data" placeholder="00/00/0000" data-error="Este campo é necessário.">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">ENDEREÇO</label>
-                                <input name="endereco" type="text" class="form-control" placeholder="Cidade, Rua..." data-error="Este campo é necessário.">
+                                <input name="endereco" type="text" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo é necessário.">
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label class="form-label">TELEFONE</label>
-                                    <input name="telefone" type="text" class="form-control" placeholder="(00)00000-0000">
+                                    <input name="telefone" type="text" class="form-control telefone" placeholder="(00)00000-0000">
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -196,7 +196,6 @@
                             </a>
                         </center>
                     </div>
-                  
                 </form>
           </div>
       </div>
@@ -233,12 +232,21 @@
                 </div>
               </div>
             </div>
-            
-            
-            <!-- Core plugin JavaScript-->
-            <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Custom scripts for all pages-->
-            <script src="../resources/js/sb-admin.min.js"></script>
+        <!--scripts da pagina-->
+        <!-- Core plugin JavaScript-->
+        <script src="../resources/js/validator.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="../resources/js/sb-admin.min.js"></script>
+        <script src="../resources/vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script src="../resources/vendor/jquery/jquery.mask.min.js"></script>
+        <script>
+            jQuery(document).ready(function (){
+                $(".cpf").mask("000.000.000-00");
+                $(".telefone").mask("(00) 00000-0000");
+                $(".rg").mask("0.000.000");
+                $(".data").mask("00/00/0000");
+            });
+        </script>
     </div>
 </body>
 </html>

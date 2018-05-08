@@ -18,24 +18,12 @@ public class Cliente {
     private String nomeFantasia;
     private String cnpj;
     private String servicoContratado;
+    private Double valor_servico;
     private String telefone;
     private String endereco;
     private String email;
     private String descricao;
 
-    public Cliente(int id, String nomeFantasia, String cnpj, String servicoContratado, String telefone, String endereco, String email, String descricao) {
-        this.id = id;
-        this.nomeFantasia = nomeFantasia;
-        this.cnpj = cnpj;
-        this.servicoContratado = servicoContratado;
-        this.telefone = telefone;
-        this.endereco = endereco;
-        this.email = email;
-        this.descricao = descricao;
-    }
-    public Cliente(){
-        
-    }
     
     public String getNomeFantasia() {
         return nomeFantasia;
@@ -100,6 +88,14 @@ public class Cliente {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+    
+    public Double getValor_servico() {
+        return valor_servico;
+    }
+
+    public void setValor_servico(Double valor_servico) {
+        this.valor_servico = valor_servico;
+    }
     /**
      * 
      * CHAMADA DA DAO
@@ -134,5 +130,6 @@ public class Cliente {
         DAOcliente dao = new DAOcliente();
         dao.delete(this);
     }
+
 
 }

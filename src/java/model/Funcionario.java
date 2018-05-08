@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import dao.DAOfuncionario;
@@ -11,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Nando Luzy
+ * @author Nando Luz
  */
 public class Funcionario {
     
@@ -28,23 +23,6 @@ public class Funcionario {
     private String telefone;
     private String email;
 
-    public Funcionario(int id, Usuario usuario, String cpf, String nome, String rg, Date dataDeNascimento, String sexo, String cargo, String telefone, String email) {
-        this.id = id;
-        this.usuario = usuario;
-        this.cpf = cpf;
-        this.nome = nome;
-        this.rg = rg;
-        this.dataDeNascimento = dataDeNascimento;
-        this.sexo = sexo;
-        this.cargo = cargo;
-        this.telefone = telefone;
-        this.email = email;
-    }
-
-    public Funcionario(){
-        
-    }
-    
     //get and set
     public String getCpf() {
         return cpf;

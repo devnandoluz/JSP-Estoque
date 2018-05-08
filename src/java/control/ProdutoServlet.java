@@ -40,31 +40,32 @@ public class ProdutoServlet extends HttpServlet {
             String option = request.getParameter("option");
             
             Produto produto = new Produto();
-            
             switch(option){
                 case "insert":{
+                    
                     produto.setNome(request.getParameter("nome"));
                     produto.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
                     produto.setValor(Double.parseDouble("valor"));
                     produto.setCategoria(request.getParameter("categoria"));
                     produto.insert();
-                    response.sendRedirect("menu.jsp");
+                    response.sendRedirect("estoque.jsp");
                 }
                 break;                
                 case "update":{
-                    produto.setNome(request.getParameter("nome"));
+                    
+                    produto.setNome(request.getParameter("nome"));                    
                     produto.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
                     produto.setValor(Double.parseDouble("valor"));
                     produto.setCategoria(request.getParameter("categoria"));
                     produto.setId(Integer.parseInt(request.getParameter("id")));
                     produto.update();
-                    response.sendRedirect("menu.jsp");
+                    response.sendRedirect("estoque.jsp");
                 }
                 break;
                 case "delete":{
                     produto.setId(Integer.parseInt(request.getParameter("id")));
                     produto.delete();
-                    response.sendRedirect("menu.jsp");
+                    response.sendRedirect("estoque.jsp");
                 }
                 break;
             }

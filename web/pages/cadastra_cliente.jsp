@@ -62,20 +62,34 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME FANTASIA</label>
-                            <input name="nome_fantasia"  type="text" class="form-control" placeholder="Nome fantasia da empresa..." data-error="Este campo é necessário." required>
+                            <input name="nome_fantasia"  type="text" class="form-control" placeholder="Nome fantasia da empresa." data-error="Este campo é necessário." autofocus required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">CNPJ</label>
-                            <input name="cnpj" type="text" class="form-control" placeholder="CNPJ da empresa..." data-error="Por favor, informe um CNPJ válido." data-minlength="17" required>
+                            <input name="cnpj" type="text" placeholder="00.000.000/0000-00" class="form-control cnpj" data-error="Por favor, informe um CNPJ válido." data-minlength="18" required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">SERVIÇO CONTRATADO</label>
-                        <input name="servico_contratado" type="text" class="form-control" placeholder="Qual serviço?" data-error="Este campo é necessário." required>
-                        <div class="help-block with-errors"></div>
+                    <div class="row">
+                          <!--select-->
+                          <div class="form-group col-md-6">
+                              <label class="form-label">SERVIÇO CONTRATADO</label>
+                              <select name="servico_contratado" class="form-control" data-error="Este campo é necessário." required>
+                                  <option disabled selected>Selecione</option>
+                                  <option>VoIP</option>
+                                  <option>Internet</option>
+                                  <option>VoIP e Internet</option>
+                                  <option>Outro</option>
+                              </select>
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label class="form-label ">VALOR</label>
+                              <input name="valor" type="text" placeholder="0.00" class="form-control" data-error="Por favor, informe um VALOR válido." required>
+                              <div class="help-block with-errors"></div>
+                          </div>
                     </div>
+                  
                     <div class="form-group">
                         <label class="form-label">ENDEREÇO</label>
                         <input name="endereco" type="text" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo é necessário." required>
@@ -84,7 +98,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">TELEFONE</label>
-                            <input name="telefone" type="text" class="form-control" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
+                            <input name="telefone" type="text" class="form-control telefone" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
@@ -109,11 +123,8 @@
                 </form>
           </div>
       </div>      
-          
       </div>
-        
     </div>
-            
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">
               <div class="container">
@@ -145,11 +156,19 @@
                 </div>
               </div>
             </div>
-            <!-- Core plugin JavaScript-->
-            <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <script src="../resources/js/validator.min.js"></script>
-            <!-- Custom scripts for all pages-->
-            <script src="../resources/js/sb-admin.min.js"></script>
     </div>
+    <!--scripts da pagina-->
+    <!-- Core plugin JavaScript-->
+    <script src="../resources/js/validator.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../resources/js/sb-admin.min.js"></script>
+    <script src="../resources/vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../resources/vendor/jquery/jquery.mask.min.js"></script>
+    <script>
+        jQuery(document).ready(function (){
+            $(".cnpj").mask("00.000.000/0000-00");
+            $(".telefone").mask("(00) 00000-0000");
+        });
+    </script>
 </body>
 </html>

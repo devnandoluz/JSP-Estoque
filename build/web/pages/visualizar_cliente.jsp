@@ -83,6 +83,9 @@
                                                 <th> Serviço Contratado: </th><td><%= cliente.getServicoContratado()%></td>
                                             </tr>
                                             <tr>
+                                                <th> Valor da Mensalidade: </th><td> R$ <%= cliente.getValor_servico() %></td>
+                                            </tr>
+                                            <tr>
                                                 <th> Telefone: </th><td><%= cliente.getTelefone()%></td>
                                             </tr>
                                             <tr>

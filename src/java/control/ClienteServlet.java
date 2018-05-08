@@ -43,45 +43,33 @@ public class ClienteServlet extends HttpServlet {
             //declaração de variaveis que recebem por parametro os valores.
             String option = request.getParameter("option");
             
-            String nome_fatasia = request.getParameter("nome_fantasia");
-            String cnpj = request.getParameter("cnpj");
-            String servico_contratado = request.getParameter("servico_contratado");
-            String endereco = request.getParameter("endereco");
-            String telefone = request.getParameter("telefone");
-            String email = request.getParameter("email");
-            String descricao = request.getParameter("descricao");
-            
-            String id = request.getParameter("id");
-            
             Cliente cliente = new Cliente();
-            
-            
-            
             //Decisão de qual metodo CRUD usar.
             switch(option){
                 case "insert":{
-                    cliente.setNomeFantasia(nome_fatasia);
-                    cliente.setCnpj(cnpj);
-                    cliente.setServicoContratado(servico_contratado);
-                    cliente.setEndereco(endereco);
-                    cliente.setTelefone(telefone);
-                    cliente.setEmail(email);
-                    cliente.setDescricao(descricao);
+                    cliente.setNomeFantasia(request.getParameter("nome_fantasia"));
+                    cliente.setCnpj(request.getParameter("cnpj"));
+                    cliente.setServicoContratado(request.getParameter("servico_contratado"));
+                    cliente.setValor_servico(Double.parseDouble(request.getParameter("valor")));
+                    cliente.setEndereco(request.getParameter("endereco"));
+                    cliente.setTelefone(request.getParameter("telefone"));
+                    cliente.setEmail(request.getParameter("email"));
+                    cliente.setDescricao(request.getParameter("descricao"));
                     cliente.insert();
                     response.sendRedirect("cliente.jsp");
                 }
                 break;
                 
-                
                 case "update":{
-                    cliente.setNomeFantasia(nome_fatasia);
-                    cliente.setCnpj(cnpj);
-                    cliente.setServicoContratado(servico_contratado);
-                    cliente.setEndereco(endereco);
-                    cliente.setTelefone(telefone);
-                    cliente.setEmail(email);
-                    cliente.setDescricao(descricao);
-                    cliente.setId(Integer.parseInt(id));
+                    cliente.setNomeFantasia(request.getParameter("nome_fantasia"));
+                    cliente.setCnpj(request.getParameter("cnpj"));
+                    cliente.setServicoContratado(request.getParameter("servico_contratado"));
+                    cliente.setValor_servico(Double.parseDouble(request.getParameter("valor")));
+                    cliente.setEndereco(request.getParameter("endereco"));
+                    cliente.setTelefone(request.getParameter("telefone"));
+                    cliente.setEmail(request.getParameter("email"));
+                    cliente.setDescricao(request.getParameter("descricao"));
+                    cliente.setId(Integer.parseInt(request.getParameter("id")));
                     cliente.update();
                     response.sendRedirect("cliente.jsp");
                 }
@@ -89,14 +77,13 @@ public class ClienteServlet extends HttpServlet {
                 
                 
                 case "delete":{
-                    cliente.setId(Integer.parseInt(id));
+                    cliente.setId(Integer.parseInt(request.getParameter("id")));
                     cliente.delete();
                     response.sendRedirect("cliente.jsp");
                 }
                 break;
                         
             }
-            
             
             out.println("</body>");
             out.println("</html>");

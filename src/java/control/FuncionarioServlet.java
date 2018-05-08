@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 
-import dao.DAOperfil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -73,7 +67,7 @@ public class FuncionarioServlet extends HttpServlet {
                     int id = Integer.parseInt(request.getParameter("perfil"));
                     
                     if(id != 0){
-                        Perfil buscar = new Perfil();              
+                        Perfil buscar = new Perfil();           
                         Perfil perfil = buscar.findForID((id));
                         usuario.setPerfil(perfil);
                         usuario.setSenha(request.getParameter("senha"));
@@ -86,19 +80,12 @@ public class FuncionarioServlet extends HttpServlet {
                         funcionario.insertSemUsuario();
                     }
                     
-                    
-                    
-                    
                     response.sendRedirect("funcionario.jsp");
                 }
                 break;
                 
                 
                 case "update":{
-                    usuario.setPerfil(request.getParameter("perfil"));
-                    usuario.setSenha(request.getParameter("senha"));
-                    usuario.setUsername(request.getParameter("username"));
-                    
                     funcionario.setCpf(request.getParameter("cpf"));
                     funcionario.setNome(request.getParameter("nome"));
                     funcionario.setRg(request.getParameter("rg"));
@@ -109,7 +96,22 @@ public class FuncionarioServlet extends HttpServlet {
                     funcionario.setTelefone(request.getParameter("telefone"));
                     funcionario.setEmail(request.getParameter("email"));
                     funcionario.setId(Integer.parseInt(request.getParameter("id")));
-                    funcionario.update();
+                    int id = Integer.parseInt(request.getParameter("perfil"));
+                    
+                    if(id != 0){
+                        Perfil buscar = new Perfil();           
+                        Perfil perfil = buscar.findForID((id));
+                        usuario.setPerfil(perfil);
+                        usuario.setSenha(request.getParameter("senha"));
+                        usuario.setUsername(request.getParameter("username"));
+                        funcionario.setUsuario(usuario);
+                        funcionario.update();
+                    }else{
+                        usuario = null;
+                        funcionario.setUsuario(usuario);
+                        funcionario.updateSemUsuario();
+                    }
+                    
                     response.sendRedirect("funcionario.jsp");
                 }
                 break;
