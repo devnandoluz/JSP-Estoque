@@ -103,16 +103,11 @@ public class Funcionario {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    /**
-     * @return the id
-     */
+    
     public int getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(int id) {
         this.id = id;
     }
@@ -129,10 +124,12 @@ public class Funcionario {
         DAOfuncionario dao = new DAOfuncionario();
         dao.save(this);
     }
+    
     public void insertSemUsuario() throws Exception{
         DAOfuncionario dao = new DAOfuncionario();
         dao.saveSemUsuario(this);
     }
+    
     //Read
     public ArrayList<Funcionario> findAll() throws Exception{   
         DAOfuncionario dao = new DAOfuncionario();
@@ -143,11 +140,18 @@ public class Funcionario {
         DAOfuncionario dao = new DAOfuncionario();
         return dao.findForID(id);
     }
+    
     //Update
     public void update() throws Exception{ 
         DAOfuncionario dao = new DAOfuncionario();
         dao.update(this);
     }
+    
+    public void updateSemUsuario() throws Exception{
+        DAOfuncionario dao = new DAOfuncionario();
+        dao.updateSemUsuario(this);
+    }
+    
     //Delete
     public void delete() throws Exception{
         DAOfuncionario dao = new DAOfuncionario();

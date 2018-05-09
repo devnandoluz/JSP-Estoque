@@ -5,7 +5,7 @@ Monitoramento		0
 Log de Ações		0
 
 Adicionar
-	Cliente		0
+	Cliente		1
 	Funcionário	0
 	Produto		0
 
@@ -24,7 +24,7 @@ Monitoramento		0
 Log de Ações		0
 
 Adicionar
-	Cliente		0
+	Cliente		1
 	Funcionário	0
 	Produto		0
 

@@ -119,7 +119,7 @@ public class DAOfuncionario {
             }
             ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("Erro ao buscar FUNCIONARIO: " + ex);
         }
         
         return listaDeFuncionario;
@@ -152,7 +152,7 @@ public class DAOfuncionario {
             ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
             
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("Erro ao buscar FUNCIONARIO: " + ex);
         }
         
         return funcionario;
@@ -171,7 +171,7 @@ public class DAOfuncionario {
                 + "telefone = ?,"
                 + "email = ?,"
                 + "usuario_idusuario = ?"
-                + "WHERE idUSUARIO = ?;";
+                + "WHERE idFuncionario = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, funcinario.getCpf());
@@ -188,11 +188,69 @@ public class DAOfuncionario {
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao alterar: " + ex);
+            System.err.println("Erro ao alterar FUNCIONARIO: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);
         }
+    }
+    
+    public boolean updateSemUsuario(Funcionario funcionario){
+        
+        String sqlFuncionario = "UPDATE funcionario SET "
+                                + "cpf = ?,"
+                                + " nome = ?,"
+                                + " rg = ?,"
+                                + " sexo = ?,"
+                                + " cargo = ?,"
+                                + " endereco = ?,"
+                                + " telefone = ?,"
+                                + " email = ?,"
+                                + " usuario_idusuario = ?"
+                                + "WHERE idFuncionario = ?;";
+        
+        String sqlUsuario = "UPDATE usuario SET "
+                            + "username = ?,"
+                            + " senha = ?,"
+                            + " perfil_idperfil = ?"
+                            + " WHERE idUsuario = ?;";
+        
+        try {
+            pstm = con.prepareStatement(sqlUsuario);
+            pstm.setString(1, funcionario.getUsuario().getUsername());
+            pstm.setString(2, funcionario.getUsuario().getSenha());
+            pstm.setInt(3, funcionario.getUsuario().getPerfil().getId());
+            pstm.executeUpdate();
+            
+            try {
+                pstm = con.prepareStatement(sqlFuncionario);
+                pstm.setString(1, funcionario.getCpf());
+                pstm.setString(2, funcionario.getNome());
+                pstm.setString(3, funcionario.getRg());
+                //pstm.setString(4, funcionario.getDataDeNascimento());
+                pstm.setString(4, funcionario.getSexo());
+                pstm.setString(5, funcionario.getCargo());
+                pstm.setString(6, funcionario.getEndereco());
+                pstm.setString(7, funcionario.getTelefone());
+                pstm.setString(8, funcionario.getEmail());
+                    try {
+                        pstm.setInt(9, funcionario.getUsuario().validarLogin(funcionario.getUsuario().getUsername(), funcionario.getUsuario().getSenha()).getId());
+                    } catch (Exception ex) {
+                        System.err.println("erro ao buscar ID USUARIO: "+ex);
+                    }
+                pstm.executeUpdate();
+                return true;
+            } catch (SQLException ex) {
+                System.err.println("Erro ao salvar FUNCIONARIO: " + ex);
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao salvar USUARIO e FUNCIONARIO: " + ex);
+            return false;
+        }finally{
+            ConnectionDB.closeConnection(con, pstm);
+        }
+        
     }
     
     //Delete (Apagar)
@@ -204,7 +262,7 @@ public class DAOfuncionario {
             pstm.execute();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao deletar: " + ex);
+            System.err.println("Erro ao deletar FUNCIONARIO: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);

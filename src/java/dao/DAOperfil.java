@@ -94,11 +94,15 @@ public class DAOperfil {
     
     //Update (Alterar)
     public boolean update(Perfil perfil){
-        String sql = "UPDATE perfil SET PERFIL = ? WHERE idPERFIL = ?;";
+        String sql = "UPDATE perfil SET "
+                    + " PERFIL = ?,"
+                    + " STATUS = ?,"
+                    + " WHERE idPERFIL = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, perfil.getPerfil());
-            pstm.setInt(2, perfil.getId());
+            pstm.setInt(2, perfil.getStatus());
+            pstm.setInt(3, perfil.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {

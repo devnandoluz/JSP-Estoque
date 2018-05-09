@@ -4,6 +4,8 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="model.Perfil"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -31,9 +33,27 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <script>
+        function MudarForm() {          
+            var x = document.getElementById('divFuncionario');
+            if(x.className === 'col-md-12'){
+                x.className='col-md-9';
+                document.getElementById('divUsuario').style.display = 'block';
+                document.getElementById('foo').checked = true;
+                $('html, body').stop().animate({
+                  scrollTo: $('#page-top').offset().top
+                }, 1000, 'easeInOutExpo' );
+                document.getElementById('inputUsername').focus();
+            }else{
+                x.className='col-md-12';  
+                document.getElementById('divUsuario').style.display = 'none';                
+            }
+        }
+    </script>
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body  class="fixed-nav sticky-footer bg-dark" id="page-top">
+    
   <!-- Navigation-->
   <%@include file="menu/menu_completo.jsp" %>
     <div class="content-wrapper">
@@ -67,13 +87,116 @@
                             <br>
                         </div>
                         <form id="formCliente" data-toggle="validator" role="form" method="post" action="gerenciar_funcionario.do">
-                            <%
-                              Funcionario buscar = new Funcionario();
-                              Funcionario funcionario = buscar.findForID(Integer.parseInt(id));
-                            %>
+                             <%
+                                Funcionario buscar = new Funcionario();
+                                Funcionario funcionario = buscar.findForID(Integer.parseInt(id));
+                              %> 
+                    <div class="row">
+                        <div id="divFuncionario" class="col-md-12" ><!--Funcionnario Form-->
+                            <center><h3 class="card-header bg-dark h3" style="color: white; border-radius: 0px 0px 20px 20px;">FUNCIONARIO</h3></center>
+                            <div class="form-group">
+                                <label for="inputNome" class="control-label">NOME</label>
+                                <input id="inputNome" name="nome"  value="<%= funcionario.getNome() %>" type="text" class="form-control" placeholder="Nome do funcionário..." autofocus required>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">CPF</label>
+                                        <input name="cpf" type="text" value="<%= funcionario.getCpf()%>" class="form-control cpf" placeholder="000.000.000-00" data-error="Por favor, informe um CPF válido." data-minlength="14" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">RG</label>
+                                    <input name="rg" type="text" value="<%= funcionario.getRg()%>" class="form-control rg" placeholder="0.000.000" data-error="Por favor, informe um RG válido." data-minlength="9" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">SEXO</label>
+                                    <input name="sexo" type="text" value="<%= funcionario.getSexo()%>" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">CARGO</label>
+                                    <input name="cargo" type="text" value="<%= funcionario.getCargo()%>" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">DATA DE NASCIMENTO</label>
+                                <input name="data_de_nascimento" type="text" value="<%= funcionario.getDataDeNascimento()%>" class="form-control data" placeholder="00/00/0000" data-error="Este campo é necessário.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">ENDEREÇO</label>
+                                <input name="endereco" type="text" value="<%= funcionario.getEndereco()%>" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo é necessário.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">TELEFONE</label>
+                                    <input name="telefone" type="text" value="<%= funcionario.getTelefone()%>" class="form-control telefone" placeholder="(00)00000-0000">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="form-label">E-MAIL</label>
+                                    <input name="email" type="email" value="<%= funcionario.getEmail() %>" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                                </div>
+                            </div>
+                                
+                            
+                                <div class="form-inline" onload="MudarForm();">
+                                <div class="toggle form-inline">
+                                    ACESSO AO SISTEMA
+                                    <input id="foo"  data-on="Ready" data-off="Not Ready" type="checkbox" onclick="MudarForm();">
+                                    <label for="foo"></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card col-md-3" id="divUsuario" style="display: none;border-radius: 2%;"> <!--Usuario Form-->
+                            <center><h3 class="card-header bg-dark h3" style="color: white; border-radius: 0px 0px 20px 20px;">USUARIO</h3></center>
+
+                              <div class="form-group">
+                                  <label class="form-label">USERNAME</label>
+                                  <input id="inputUsername" name="username"  type="text" value="<%= funcionario.getUsuario().getUsername() %>" class="form-control" placeholder="Username..." data-error="Este campo é necessário.">
+                                  <div class="help-block with-errors"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="form-label">SENHA</label>
+                                  <input name="senha"  type="password" value="<%= funcionario.getUsuario().getSenha() %>" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
+                                  <div class="help-block with-errors"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="form-label">CONFIRMAR SENHA</label>
+                                  <input type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
+                                  <div class="help-block with-errors"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="form-label">PERFIL</label><br>
+                                  <select name="perfil" class="form-control col-md-12" id="FormControlSelect1">
+                                          <option value="0"title="Selecione">Selecione</option>
+                                          <%
+                                              ArrayList<Perfil> lista = new ArrayList();
+                                              Perfil p = new Perfil();
+                                              lista = p.findAll();
+                                              for(Perfil perfil:lista){
+                                          %>
+                                          <option value="<%=perfil.getId()%>" <% if( funcionario.getUsuario().getPerfil().getId() == perfil.getId() ){ %> selected <% } %> > <%= perfil.getPerfil() %> </option>
+                                          <%
+                                          }
+                                          %>
+                                  </select>
+                              </div>
+                        </div>
+                    </div>
+                            
+<!-- ------------------AQUI                   -->
                             <div class="form-group">
                                 <label class="form-label">NOME</label>
-                                <input value="<%= funcionario.getNome() %>" name="nome"  type="text" class="form-control" placeholder="Nome do funcionário..." data-error="Este campo é necessário." required>
+                                <input value="" name="nome"  type="text" class="form-control" placeholder="Nome do funcionário..." data-error="Este campo é necessário." required>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="row">

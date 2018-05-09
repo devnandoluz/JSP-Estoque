@@ -6,11 +6,10 @@
         <group>
             <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/model/Funcionario.java</file>
             <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/cadastra_funcionario.jsp</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/dao/DAOusuario.java</file>
+            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/alterar_cliente.jsp</file>
             <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/dao/DAOfuncionario.java</file>
             <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/alterar_funcionario.jsp</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/src/java/control/FuncionarioServlet.java</file>
-            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/visualizar_funcionario.jsp</file>
+            <file>file:/C:/Users/Nando%20Luz/Documents/GitHub/Estudo-Java-web-com-bootstrap/web/pages/funcionario.jsp</file>
         </group>
     </open-files>
 </project-private>

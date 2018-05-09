@@ -73,8 +73,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label class="form-label">NOME FANTASIA</label>
-                                            <input name="nome_fantasia"  type="text" class="form-control" value="<%= cliente2.getNomeFantasia() %>" placeholder="Nome fantasia da empresa..." data-error="Este campo é necessário." required>
-                                            <div class="help-block with-errors"></div>
+                                            <input name="nome_fantasia"  type="text" class="form-control" value="<%= cliente2.getNomeFantasia() %>" placeholder="Nome fantasia da empresa..."  required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label">CNPJ</label>
@@ -86,11 +85,10 @@
                                         <div class="form-group col-md-6">
                                             <label class="form-label">SERVIÇO CONTRATADO</label>
                                             <select name="servico_contratado" class="form-control">
-                                                <option disabled selected><%= cliente2.getServicoContratado() %></option>
-                                                <option>VoIP</option>
-                                                <option>Internet</option>
-                                                <option>VoIP e Internet</option>
-                                                <option>Outro</option>
+                                                <option <% if(cliente2.getServicoContratado().equals("VoIP")){ %> selected <% } %>> VoIP </option>
+                                                <option <% if(cliente2.getServicoContratado().equals("Internet")){ %> selected <% } %>> Internet </option>
+                                                <option <% if(cliente2.getServicoContratado().equals("VoIP e Internet")){ %> selected <% } %>> VoIP e Internet </option>
+                                                <option <% if(cliente2.getServicoContratado().equals("Outro")){ %> selected <% } %>> Outro </option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">

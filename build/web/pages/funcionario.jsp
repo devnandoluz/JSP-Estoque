@@ -67,14 +67,14 @@
                               <thead>
                                 <tr>
                                   <th>Nome</th>
-                                  <th>CNPJ</th>
+                                  <th>CPF</th>
                                   <th><center>Opção</center></th>
                                 </tr>
                               </thead>
                               <tfoot>
                                   <tr>
                                   <th>Nome</th>
-                                  <th>CNPJ</th>
+                                  <th>CPF</th>
                                   <th><center>Opção</center></th>
                                 </tr>
                               </tfoot>
@@ -119,7 +119,6 @@
                     </div>
                 </div>
           </div>
-        
     </div>
             <!-- /.content-wrapper-->
             <footer class="sticky-footer">
