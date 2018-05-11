@@ -96,12 +96,14 @@ public class FuncionarioServlet extends HttpServlet {
                     funcionario.setTelefone(request.getParameter("telefone"));
                     funcionario.setEmail(request.getParameter("email"));
                     funcionario.setId(Integer.parseInt(request.getParameter("id")));
-                    int id = Integer.parseInt(request.getParameter("perfil"));
+          
                     
-                    if(id != 0){
-                        Perfil buscar = new Perfil();           
-                        Perfil perfil = buscar.findForID((id));
+                    if((request.getParameter("perfil")) != null){
+                        Perfil buscar = new Perfil();
+                        Perfil perfil = buscar.findForID((Integer.parseInt(request.getParameter("perfil"))));
+                        
                         usuario.setPerfil(perfil);
+                        usuario.setId(Integer.parseInt(request.getParameter("idUsuario")));
                         usuario.setSenha(request.getParameter("senha"));
                         usuario.setUsername(request.getParameter("username"));
                         funcionario.setUsuario(usuario);
@@ -115,7 +117,6 @@ public class FuncionarioServlet extends HttpServlet {
                     response.sendRedirect("funcionario.jsp");
                 }
                 break;
-                
                 
                 case "delete":{
                     funcionario.setId(Integer.parseInt(request.getParameter("id")));

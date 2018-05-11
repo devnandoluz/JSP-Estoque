@@ -81,7 +81,7 @@ public class UsuarioServlet extends HttpServlet {
                 break;
                 
                 case "login":{
-                    Usuario usuarioLogado = usuario.validarLogin(username, senha);
+                    Usuario usuarioLogado = usuario.validar(username, senha);
                     try {
                         if(usuarioLogado != null){
                             HttpSession sessao = request.getSession();

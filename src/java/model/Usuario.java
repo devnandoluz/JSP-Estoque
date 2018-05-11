@@ -100,7 +100,7 @@ public class Usuario {
     }
     
     //Validar Login
-    public Usuario validarLogin(String username, String senha) throws Exception{
+    public Usuario validar(String username, String senha) throws Exception{
         DAOusuario dao = new DAOusuario();
         return dao.validar(username, senha);
     }

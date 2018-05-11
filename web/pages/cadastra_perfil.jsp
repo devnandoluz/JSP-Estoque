@@ -27,7 +27,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <%@include file="menu/menu_completo.jsp" %>
+  <%@include file="menu/navigation.jsp" %>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -62,7 +62,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME</label>
-                            <input name="perfil"  type="text" class="form-control" placeholder="Nome do PERFIL..." data-error="Este campo é necessário." required>
+                            <input name="perfil"  type="text" class="form-control" placeholder="Nome do PERFIL..." data-error="Este campo é necessário." autofocus required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">

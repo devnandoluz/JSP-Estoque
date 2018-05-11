@@ -100,7 +100,11 @@ public class DAOusuario {
     
     //Update (Alterar)
     public boolean update(Usuario usuario){
-        String sql = "UPDATE usuario SET USERNAME = ?, SENHA = ?, PERFIL_IDPERFIL = ? WHERE idUSUARIO = ?;";
+        String sql = "UPDATE usuario SET "
+                    + "USERNAME = ?, "
+                    + "SENHA = ?, "
+                    + "PERFIL_IDPERFIL = ? "
+                    + "WHERE idUSUARIO = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, usuario.getUsername());
@@ -110,7 +114,7 @@ public class DAOusuario {
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao alterar: " + ex);
+            System.err.println("Erro ao alterar USUARIO: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);

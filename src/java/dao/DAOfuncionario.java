@@ -30,29 +30,24 @@ public class DAOfuncionario {
             pstm.setString(2, funcionario.getUsuario().getSenha());
             pstm.setInt(3, funcionario.getUsuario().getPerfil().getId());
             pstm.executeUpdate();
-            
-            try {
-                pstm = con.prepareStatement(sqlFuncionario);
-                pstm.setString(1, funcionario.getCpf());
-                pstm.setString(2, funcionario.getNome());
-                pstm.setString(3, funcionario.getRg());
-                //pstm.setString(4, funcionario.getDataDeNascimento());
-                pstm.setString(4, funcionario.getSexo());
-                pstm.setString(5, funcionario.getCargo());
-                pstm.setString(6, funcionario.getEndereco());
-                pstm.setString(7, funcionario.getTelefone());
-                pstm.setString(8, funcionario.getEmail());
-                    try {
-                        pstm.setInt(9, funcionario.getUsuario().validarLogin(funcionario.getUsuario().getUsername(), funcionario.getUsuario().getSenha()).getId());
-                    } catch (Exception ex) {
-                        System.err.println("erro ao buscar ID USUARIO: "+ex);
-                    }
-                pstm.executeUpdate();
-                return true;
-            } catch (SQLException ex) {
-                System.err.println("Erro ao salvar FUNCIONARIO: " + ex);
-                return false;
-            }
+
+            pstm = con.prepareStatement(sqlFuncionario);
+            pstm.setString(1, funcionario.getCpf());
+            pstm.setString(2, funcionario.getNome());
+            pstm.setString(3, funcionario.getRg());
+            //pstm.setString(4, funcionario.getDataDeNascimento());
+            pstm.setString(4, funcionario.getSexo());
+            pstm.setString(5, funcionario.getCargo());
+            pstm.setString(6, funcionario.getEndereco());
+            pstm.setString(7, funcionario.getTelefone());
+            pstm.setString(8, funcionario.getEmail());
+                try {
+                    pstm.setInt(9, funcionario.getUsuario().validar(funcionario.getUsuario().getUsername(), funcionario.getUsuario().getSenha()).getId());
+                } catch (Exception ex) {
+                    System.err.println("erro ao buscar ID USUARIO: "+ex);
+                }
+            pstm.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             System.err.println("Erro ao salvar USUARIO e FUNCIONARIO: " + ex);
             return false;
@@ -80,7 +75,7 @@ public class DAOfuncionario {
                 pstm.executeUpdate();
                 return true;
             } catch (SQLException ex) {
-                System.err.println("Erro ao salvar: " + ex);
+                System.err.println("Erro ao salvar FUNCIONARIO: " + ex);
                 return false;
             }finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -150,78 +145,38 @@ public class DAOfuncionario {
                 funcionario.setUsuario( dao.findForID(rs.getInt("usuario_idusuario")) );
             }
             ConnectionDB.closeConnection(con, pstm, rs);//fecha conexões
-            
         } catch (SQLException ex) {
             System.err.println("Erro ao buscar FUNCIONARIO: " + ex);
         }
-        
         return funcionario;
     }
     
     //Update (Alterar)
-    public boolean update(Funcionario funcinario){
-        
-        String sql = "UPDATE funcionario SET"
-                + "cpf = ?,"
-                + "nome = ?,"
-                + "rg = ?,"
-                + "sexo = ?,"
-                + "cargo = ?,"
-                + "endereco = ?,"
-                + "telefone = ?,"
-                + "email = ?,"
-                + "usuario_idusuario = ?"
-                + "WHERE idFuncionario = ?;";
-        try {
-            pstm = con.prepareStatement(sql);
-            pstm.setString(1, funcinario.getCpf());
-            pstm.setString(2, funcinario.getNome());
-            pstm.setString(3, funcinario.getRg());
-            //pstm.setString(4, funcinario.getDataDeNascimento());
-            pstm.setString(4, funcinario.getSexo());
-            pstm.setString(5, funcinario.getCargo());
-            pstm.setString(6, funcinario.getEndereco());
-            pstm.setString(7, funcinario.getTelefone());
-            pstm.setString(8, funcinario.getEmail());
-            pstm.setInt(9, funcinario.getUsuario().getId());
-            pstm.setInt(10, funcinario.getId());
-            pstm.executeUpdate();
-            return true;
-        } catch (SQLException ex) {
-            System.err.println("Erro ao alterar FUNCIONARIO: " + ex);
-            return false;
-        }finally{
-            ConnectionDB.closeConnection(con, pstm);
-        }
-    }
-    
-    public boolean updateSemUsuario(Funcionario funcionario){
+    public boolean update(Funcionario funcionario){
         
         String sqlFuncionario = "UPDATE funcionario SET "
-                                + "cpf = ?,"
+                                + " cpf = ?,"
                                 + " nome = ?,"
                                 + " rg = ?,"
                                 + " sexo = ?,"
                                 + " cargo = ?,"
                                 + " endereco = ?,"
                                 + " telefone = ?,"
-                                + " email = ?,"
-                                + " usuario_idusuario = ?"
-                                + "WHERE idFuncionario = ?;";
+                                + " email = ?"
+                                + " WHERE idFuncionario = ?;";
         
-        String sqlUsuario = "UPDATE usuario SET "
-                            + "username = ?,"
-                            + " senha = ?,"
-                            + " perfil_idperfil = ?"
-                            + " WHERE idUsuario = ?;";
-        
+        String sqlUsuario = "UPDATE `usuario` SET "
+                            + "`USERNAME` = ?, "
+                            + "`SENHA` = ?, "
+                            + "`PERFIL_idPERFIL` = ? "
+                            + "WHERE `usuario`.`idUSUARIO` = ?;";        
         try {
             pstm = con.prepareStatement(sqlUsuario);
             pstm.setString(1, funcionario.getUsuario().getUsername());
             pstm.setString(2, funcionario.getUsuario().getSenha());
             pstm.setInt(3, funcionario.getUsuario().getPerfil().getId());
-            pstm.executeUpdate();
-            
+            pstm.setInt(4, funcionario.getUsuario().getId());
+            pstm.executeUpdate();            
             try {
                 pstm = con.prepareStatement(sqlFuncionario);
                 pstm.setString(1, funcionario.getCpf());
@@ -233,25 +188,55 @@ public class DAOfuncionario {
                 pstm.setString(6, funcionario.getEndereco());
                 pstm.setString(7, funcionario.getTelefone());
                 pstm.setString(8, funcionario.getEmail());
-                    try {
-                        pstm.setInt(9, funcionario.getUsuario().validarLogin(funcionario.getUsuario().getUsername(), funcionario.getUsuario().getSenha()).getId());
-                    } catch (Exception ex) {
-                        System.err.println("erro ao buscar ID USUARIO: "+ex);
-                    }
+                pstm.setInt(9, funcionario.getId());
                 pstm.executeUpdate();
                 return true;
             } catch (SQLException ex) {
-                System.err.println("Erro ao salvar FUNCIONARIO: " + ex);
+                System.err.println("Erro ao alterar FUNCIONARIO: " + ex);
                 return false;
             }
         } catch (SQLException ex) {
-            System.err.println("Erro ao salvar USUARIO e FUNCIONARIO: " + ex);
+            System.err.println("Erro ao alterar USUARIO e FUNCIONARIO: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);
         }
         
     }
+    public boolean updateSemUsuario(Funcionario funcionario){
+        
+        String sql = "UPDATE funcionario SET"
+                    + " cpf = ?,"
+                    + " nome = ?,"
+                    + " rg = ?,"
+                    + " sexo = ?,"
+                    + " cargo = ?,"
+                    + " endereco = ?,"
+                    + " telefone = ?,"
+                    + " email = ?"
+                    + " WHERE idFuncionario = ?;";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, funcionario.getCpf());
+            pstm.setString(2, funcionario.getNome());
+            pstm.setString(3, funcionario.getRg());
+            //pstm.setString(4, funcionario.getDataDeNascimento());
+            pstm.setString(4, funcionario.getSexo());
+            pstm.setString(5, funcionario.getCargo());
+            pstm.setString(6, funcionario.getEndereco());
+            pstm.setString(7, funcionario.getTelefone());
+            pstm.setString(8, funcionario.getEmail());
+            pstm.setInt(9, funcionario.getId());
+            pstm.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao alterar FUNCIONARIO sem USUARIO: " + ex);
+            return false;
+        }finally{
+            ConnectionDB.closeConnection(con, pstm);
+        }
+    }
+        
     
     //Delete (Apagar)
     public boolean delete(Funcionario funcionario){
