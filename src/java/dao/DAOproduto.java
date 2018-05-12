@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Produto;
-
 /**
  *
  * @author Nando Luz
@@ -34,7 +33,8 @@ public class DAOproduto {
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao salvar PRODUTO: " + ex);
+            
+            System.out.print("Erro ao salvar PRODUTO: " + ex);
             return false;
         } finally{
             ConnectionDB.closeConnection(con, pstm);

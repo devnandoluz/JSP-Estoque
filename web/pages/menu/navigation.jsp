@@ -19,8 +19,6 @@
     } else {
         usuario = new Usuario();
         usuario = (Usuario)sessao.getAttribute("usuario");
-    }
-
 %>
 
 
@@ -174,8 +172,8 @@
                     <%= usuario.getUsername() %>
               </h6>
             <div class="dropdown-divider"></div>
-            <div class="row form-inline mb-3">
-                <div>
+            <div class="row form-inline ">
+                <div class="ml-auto">
                     <a class="dropdown-item" href="#">
                         <span class="text-muted">
                           <strong>
@@ -183,7 +181,7 @@
                         </span>
                       </a>
                 </div>
-                <div>
+                <div class="mr-auto">
                     <a class="dropdown-item" href="#">
                         <span class="text-muted">
                           <strong>
@@ -253,15 +251,37 @@
             </div>
           </form>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+          <a class="nav-link" data-toggle="modal" data-target="#Modal">
             <i class="fa fa-fw fa-sign-out"></i>Sair</a>
         </li>
       </ul>
     </div>
   </nav>
+  <!-- Logout Modal-->
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalLabel">Pronto para partir?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Selecione "Sair" abaixo, se você estiver pronto para encerrar sua sessão atual.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="gerenciar_seguranca.do?option=logout">Sair</a>
+          </div>
+        </div>
+      </div>
+    </div> 
     <!-- Bootstrap core JavaScript-->
     <script src="../resources/vendor/jquery/jquery.min.js"></script>
     <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
             
+<%
+    }
+%>

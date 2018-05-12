@@ -45,7 +45,7 @@ public class ProdutoServlet extends HttpServlet {
                     
                     produto.setNome(request.getParameter("nome"));
                     produto.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
-                    produto.setValor(Double.parseDouble("valor"));
+                    produto.setValor(Double.parseDouble(request.getParameter("valor")));
                     produto.setCategoria(request.getParameter("categoria"));
                     produto.insert();
                     response.sendRedirect("estoque.jsp");
@@ -60,6 +60,7 @@ public class ProdutoServlet extends HttpServlet {
                     produto.setId(Integer.parseInt(request.getParameter("id")));
                     produto.update();
                     response.sendRedirect("estoque.jsp");
+                    
                 }
                 break;
                 case "delete":{

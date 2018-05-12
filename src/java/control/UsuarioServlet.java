@@ -79,30 +79,7 @@ public class UsuarioServlet extends HttpServlet {
                     response.sendRedirect("usuario.jsp");
                 }
                 break;
-                
-                case "login":{
-                    Usuario usuarioLogado = usuario.validar(username, senha);
-                    try {
-                        if(usuarioLogado != null){
-                            HttpSession sessao = request.getSession();
-                            sessao.setAttribute("usuario", usuarioLogado);
-                            response.sendRedirect("home.jsp");
-                        }else{
-                            out.println("<script>alert('USERNAME ou SENHA inválido!');location.href='../index.jsp';</script>");
-                        }
-                    } catch (IOException ex) {
-                        System.err.println("Erro ao validar!" + ex);
-                    }
-                }
-                break;
-               
-                case "logout":{
-                    response.sendRedirect("/index.jsp");
-                }
-                break;
             }
-            
-            
             out.println("</body>");
             out.println("</html>");
         }
