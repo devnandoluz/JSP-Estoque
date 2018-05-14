@@ -27,6 +27,7 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />    
+    <link href="../resources/vendor/bootstrap/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="../resources/js/validator.min.js" type="text/javascript"></script>
     <script>
         function MudarForm() {          
@@ -108,19 +109,19 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="form-label">CARGO</label>
-                                    <input name="cargo" type="text" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
-                                    <div class="help-block with-errors"></div>
+                                    <label class="form-label">DATA DE NASCIMENTO</label>
+                                    <div class="input-group" id="datetimepicker1">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                        </div>
+                                        <input name="data_de_nascimento" type="text" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário.">                                <div class="help-block with-errors"></div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">DATA DE NASCIMENTO</label>
-                                <div class="input-group" id="datetimepicker1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
-                                    </div>
-                                    <input name="data_de_nascimento" type="text" class="form-control data" placeholder="00/00/0000" data-error="Este campo é necessário.">                                <div class="help-block with-errors"></div>
-                                </div>
+                                <label class="form-label">CARGO</label>
+                                <input name="cargo" type="text" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
+                                <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">ENDEREÇO</label>
@@ -246,12 +247,19 @@
         <script src="../resources/js/sb-admin.min.js"></script>
         <script src="../resources/vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
         <script src="../resources/vendor/jquery/jquery.mask.min.js"></script>
+        <!--datepicker-->
+        <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>
+        <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.pt-BR.min.js"></script>
         <script>
             jQuery(document).ready(function (){
                 $(".cpf").mask("000.000.000-00");
                 $(".telefone").mask("(00) 00000-0000");
                 $(".rg").mask("0.000.000");
                 $(".data").mask("00/00/0000");
+            });
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                language: "pt-BR"
             });
         </script>
     </div>

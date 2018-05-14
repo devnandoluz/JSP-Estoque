@@ -3,6 +3,7 @@
     Created on : 25/04/2018, 16:11:09
     Author     : Nando Luz
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -81,7 +82,10 @@
                                                 <th> Cargo: </th><td><%= funcionario.getCargo()%></td>
                                             </tr>
                                             <tr>
-                                                <th> Data de Nascimento: </th><td><%= funcionario.getDataDeNascimento()%></td>
+                                                <%
+                                                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                                %>
+                                                <th> Data de Nascimento: </th><td><%= sdf.format(funcionario.getDataDeNascimento())%></td>
                                             </tr>
                                             <tr>
                                                 <th> Sexo: </th><td><%= funcionario.getSexo()%></td>

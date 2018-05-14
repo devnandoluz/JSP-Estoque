@@ -29,7 +29,7 @@
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
         <script type="text/javascript">
             function excluir(nome,id){
-                var url = "gerenciar_funcionario.do?option=delete&id="+id;
+                var url = "gerenciar_funcionario.do?option=delete&id="+id+"&nome="+nome;
                     if(confirm("Tem certeza que deseja excluir o perfil: "+nome+"?")){
                         window.open(url,"_self");
                 }
@@ -68,14 +68,14 @@
                                 <tr>
                                   <th>Nome</th>
                                   <th>CPF</th>
-                                  <th><center>Opção</center></th>
+                                  <th>Opção</th>
                                 </tr>
                               </thead>
                               <tfoot>
                                   <tr>
                                   <th>Nome</th>
                                   <th>CPF</th>
-                                  <th><center>Opção</center></th>
+                                  <th>Opção</th>
                                 </tr>
                               </tfoot>
                               <tbody>                                  

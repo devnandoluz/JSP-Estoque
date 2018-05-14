@@ -1,7 +1,7 @@
 package model;
 
 import dao.DAOfuncionario;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 /**
@@ -141,6 +141,11 @@ public class Funcionario {
         return dao.findForID(id);
     }
     
+    public Funcionario findForUser(Usuario usuario) throws Exception{
+        DAOfuncionario dao = new DAOfuncionario();
+        return dao.findForUser(usuario);
+    }
+    
     //Update
     public void update() throws Exception{ 
         DAOfuncionario dao = new DAOfuncionario();
@@ -156,6 +161,10 @@ public class Funcionario {
     public void delete() throws Exception{
         DAOfuncionario dao = new DAOfuncionario();
         dao.delete(this);
+    }
+
+    public void setData(Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -12,7 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
+import java.sql.Date;
+import javax.servlet.http.HttpSession;
 import model.Cliente;
+import model.Funcionario;
+import model.Log;
+import model.Usuario;
 
 /**
  *
@@ -61,6 +66,16 @@ public class ClienteServlet extends HttpServlet {
                     cliente.setDescricao(request.getParameter("descricao"));
                     cliente.insert();
                     response.sendRedirect("cliente.jsp");
+                    
+                    //gera log
+                    Log log = new Log();                    
+                    log.setNome("Cadastro Cliente: " + request.getParameter("nome_fantasia"));
+                    Date data = new Date(System.currentTimeMillis());  
+                    log.setData(data);
+                    HttpSession sessao = request.getSession();
+                    Funcionario funcionario = new Funcionario();
+                    log.setFuncionario(funcionario.findForUser((Usuario) sessao.getAttribute("usuario")));
+                    log.gerarLog();
                 }
                 break;
                 
@@ -79,6 +94,16 @@ public class ClienteServlet extends HttpServlet {
                     cliente.setId(Integer.parseInt(request.getParameter("id")));
                     cliente.update();
                     response.sendRedirect("cliente.jsp");
+                    
+                    //gera log
+                    Log log = new Log();                    
+                    log.setNome("Alteração Cliente: " + request.getParameter("nome_fantasia"));
+                    Date data = new Date(System.currentTimeMillis());  
+                    log.setData(data);
+                    HttpSession sessao = request.getSession();
+                    Funcionario funcionario = new Funcionario();
+                    log.setFuncionario(funcionario.findForUser((Usuario) sessao.getAttribute("usuario")));
+                    log.gerarLog();
                 }
                 break;
                 
@@ -87,6 +112,16 @@ public class ClienteServlet extends HttpServlet {
                     cliente.setId(Integer.parseInt(request.getParameter("id")));
                     cliente.delete();
                     response.sendRedirect("cliente.jsp");
+                    
+                    //gera log
+                    Log log = new Log();                    
+                    log.setNome("Exclusão Cliente: " + request.getParameter("nome_fantasia"));
+                    Date data = new Date(System.currentTimeMillis());  
+                    log.setData(data);
+                    HttpSession sessao = request.getSession();
+                    Funcionario funcionario = new Funcionario();
+                    log.setFuncionario(funcionario.findForUser((Usuario) sessao.getAttribute("usuario")));
+                    log.gerarLog();
                 }
                 break;
                         

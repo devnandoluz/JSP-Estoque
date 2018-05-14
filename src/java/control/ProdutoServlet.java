@@ -2,13 +2,18 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Funcionario;
+import model.Log;
 import model.Produto;
+import model.Usuario;
 
 /**
  *
@@ -49,6 +54,16 @@ public class ProdutoServlet extends HttpServlet {
                     produto.setCategoria(request.getParameter("categoria"));
                     produto.insert();
                     response.sendRedirect("estoque.jsp");
+                    
+                    //gera log
+                    Log log = new Log();                    
+                    log.setNome("Cadastro Produto: " + request.getParameter("nome"));
+                    Date data = new Date(System.currentTimeMillis());  
+                    log.setData(data);
+                    HttpSession sessao = request.getSession();
+                    Funcionario f = new Funcionario();
+                    log.setFuncionario(f.findForUser((Usuario) sessao.getAttribute("usuario")));
+                    log.gerarLog();
                 }
                 break;                
                 case "update":{
@@ -61,12 +76,33 @@ public class ProdutoServlet extends HttpServlet {
                     produto.update();
                     response.sendRedirect("estoque.jsp");
                     
+                    //gera log
+                    Log log = new Log();                    
+                    log.setNome("Alteração Produto: " + request.getParameter("nome"));
+                    Date data = new Date(System.currentTimeMillis());  
+                    log.setData(data);
+                    HttpSession sessao = request.getSession();
+                    Funcionario f = new Funcionario();
+                    log.setFuncionario(f.findForUser((Usuario) sessao.getAttribute("usuario")));
+                    log.gerarLog();
+                    
                 }
                 break;
                 case "delete":{
                     produto.setId(Integer.parseInt(request.getParameter("id")));
                     produto.delete();
                     response.sendRedirect("estoque.jsp");
+                    
+                    
+                    //gera log
+                    Log log = new Log();                    
+                    log.setNome("Exclusão Produto: " + request.getParameter("nome"));
+                    Date data = new Date(System.currentTimeMillis());  
+                    log.setData(data);
+                    HttpSession sessao = request.getSession();
+                    Funcionario f = new Funcionario();
+                    log.setFuncionario(f.findForUser((Usuario) sessao.getAttribute("usuario")));
+                    log.gerarLog();
                 }
                 break;
             }

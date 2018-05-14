@@ -46,15 +46,7 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
-    
-    public Usuario(int id, String username, String senha, Perfil perfil) {
-        this.id = id;
-        this.username = username;
-        this.senha = senha;
-        this.perfil = perfil;
-    }
-
-    
+        
     public Perfil getPerfil() {
         return perfil;
     }

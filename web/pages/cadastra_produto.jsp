@@ -75,15 +75,22 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label class="form-label">VALOR UNITARIO</label>
-                            <input name="valor"  type="text" class="form-control" placeholder="Nome do PRODUTO..." data-error="Este campo é necessário.">
-                            <div class="help-block with-errors"></div>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </span>
+                                <input name="valor"  type="text" class="form-control" placeholder="0.00" data-error="Este campo é necessário.">
+                                <div class="help-block with-errors"></div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label class="form-label">CATEGORIA</label>
                             <select name="categoria" class="form-control" required>
-                                <option value="Outro">Selecione</option>
+                                <option value="Outro" selected disabled>Selecione</option>
                                 <option value="Construção">Construção</option>
                                 <option value="Elétrico">Elétrico</option>
+                                <option value="Telecom">Telecom</option>
+                                <option value="Informática">Informática</option>
                                 <option value="Outro">Outro</option>
                             </select>
                         </div>

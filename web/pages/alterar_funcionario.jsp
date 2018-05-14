@@ -4,6 +4,7 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.Perfil"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Funcionario"%>
@@ -33,6 +34,7 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <link href="../resources/vendor/bootstrap/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
     <script>
         function MudarForm() {          
             var x = document.getElementById('divFuncionario');
@@ -110,22 +112,30 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
+                                    
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label class="form-label">SEXO</label>
-                                            <input name="sexo" type="text" value="<%= funcionario.getSexo()%>" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
+                                            <input name="sexo" type="text" value="<%= funcionario.getSexo() %>" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="form-label">CARGO</label>
-                                            <input name="cargo" type="text" value="<%= funcionario.getCargo()%>" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
-                                            <div class="help-block with-errors"></div>
+                                            <label class="form-label">DATA DE NASCIMENTO</label>
+                                            <div class="input-group" id="datetimepicker1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                                </div>
+                                                <%
+                                                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                                %>
+                                                <input name="data_de_nascimento" type="text" value="<%= sdf.format(funcionario.getDataDeNascimento())%>" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="form-label">DATA DE NASCIMENTO</label>
-                                        <input name="data_de_nascimento" type="text" value="<%= funcionario.getDataDeNascimento()%>" class="form-control data" placeholder="00/00/0000" data-error="Este campo é necessário.">
+                                        <label class="form-label">CARGO</label>
+                                        <input name="cargo" type="text" value="<%= funcionario.getCargo()%>" class="form-control" placeholder="CARGO do funcionário..." data-error="Este campo é necessário." required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="form-group">
@@ -137,12 +147,21 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label class="form-label">TELEFONE</label>
-                                            <input name="telefone" type="text" value="<%= funcionario.getTelefone()%>" class="form-control telefone" placeholder="(00)00000-0000">
-                                            <div class="help-block with-errors"></div>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-fw fa-phone"></i></span>
+                                                </div>
+                                                <input name="telefone" type="text" value="<%= funcionario.getTelefone()%>" class="form-control telefone" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label">E-MAIL</label>
-                                            <input name="email" type="email" value="<%= funcionario.getEmail() %>" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                                             <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-fw fa-envelope"></i></span>
+                                                </div>
+                                                <input name="email" type="email" value="<%= funcionario.getEmail()%>" class="form-control" placeholder="exemplo@email.com">
+                                             </div>
                                         </div>
                                     </div>
                                         <div class="form-inline" onload="MudarForm();">
@@ -232,6 +251,21 @@
             <script src="../resources/js/validator.min.js"></script>
             <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
+            <!--datepicker-->
+            <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>
+            <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.pt-BR.min.js"></script>
+            <script>
+                jQuery(document).ready(function (){
+                    $(".cpf").mask("000.000.000-00");
+                    $(".telefone").mask("(00) 00000-0000");
+                    $(".rg").mask("0.000.000");
+                    $(".data").mask("00/00/0000");
+                });
+                $('.datepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    language: "pt-BR"
+                });
+            </script>
     </div>
 </body>
 </html>

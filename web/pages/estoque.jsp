@@ -30,7 +30,7 @@
 
             <script type="text/javascript">
                 function excluir(nome,id){
-                    var url = "gerenciar_produto.do?option=delete&id="+id;
+                    var url = "gerenciar_produto.do?option=delete&id="+id+"&nome="+nome;
                         if(confirm("Tem certeza que deseja excluir o estoque: "+nome+"?")){
                             window.open(url,"_self");
                     }
@@ -100,7 +100,7 @@
                                                         <center><%= produto.getQuantidade() %></center>
                                                     </td>
                                                     <td>
-                                                        <center><%= produto.getValor() %></center>
+                                                        <center>R$ <%= produto.getValor() %></center>
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-primary col-md-3" href="visualizar_produto.jsp?id=<%= produto.getId() %>&nome=<%= produto.getNome() %>" style="margin: 2px;">

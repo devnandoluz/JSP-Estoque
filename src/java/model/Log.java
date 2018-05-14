@@ -1,5 +1,7 @@
 package model;
 
+import dao.DAOlog;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -44,4 +46,21 @@ public class Log {
         this.funcionario = funcionario;
     }
     
+    /**
+     * 
+     * CHAMADA DA DAO
+     * 
+     * @throws Exception 
+     */
+    
+    //Create
+    public void gerarLog() throws Exception{
+        DAOlog dao = new DAOlog();
+        dao.save(this);
+    }
+    //Read
+    public ArrayList<Log> findAll() throws Exception{   
+        DAOlog dao = new DAOlog();
+        return dao.findAll();
+    }
 }
