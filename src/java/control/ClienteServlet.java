@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
 import model.Cliente;
 
 /**
@@ -47,10 +48,13 @@ public class ClienteServlet extends HttpServlet {
             //Decisão de qual metodo CRUD usar.
             switch(option){
                 case "insert":{
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    
                     cliente.setNomeFantasia(request.getParameter("nome_fantasia"));
                     cliente.setCnpj(request.getParameter("cnpj"));
                     cliente.setServicoContratado(request.getParameter("servico_contratado"));
                     cliente.setValor_servico(Double.parseDouble(request.getParameter("valor")));
+                    cliente.setData_adesao(sdf.parse(request.getParameter("data_adesao")));
                     cliente.setEndereco(request.getParameter("endereco"));
                     cliente.setTelefone(request.getParameter("telefone"));
                     cliente.setEmail(request.getParameter("email"));
@@ -61,10 +65,13 @@ public class ClienteServlet extends HttpServlet {
                 break;
                 
                 case "update":{
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    
                     cliente.setNomeFantasia(request.getParameter("nome_fantasia"));
                     cliente.setCnpj(request.getParameter("cnpj"));
                     cliente.setServicoContratado(request.getParameter("servico_contratado"));
                     cliente.setValor_servico(Double.parseDouble(request.getParameter("valor")));
+                    cliente.setData_adesao(sdf.parse(request.getParameter("data_adesao")));
                     cliente.setEndereco(request.getParameter("endereco"));
                     cliente.setTelefone(request.getParameter("telefone"));
                     cliente.setEmail(request.getParameter("email"));

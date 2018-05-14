@@ -33,7 +33,7 @@
             <script type="text/javascript">
                 function excluir(nome,id){
                     var url = "gerenciar_cliente.do?option=delete&id="+id;
-                        if(confirm("Tem certeza que deseja excluir o perfil: "+nome+"?")){
+                        if(confirm("Tem certeza que deseja excluir o cliente: "+nome+"?")){
                             window.open(url,"_self");
                     }
                 }
@@ -86,9 +86,9 @@
                                       <% 
                                           ArrayList<Cliente> lista = new ArrayList();
                                               try{
-                                                  Cliente cliente = new Cliente();   
+                                                  Cliente buscar = new Cliente();   
 
-                                                  lista = cliente.findAll();
+                                                  lista = buscar.findAll();
                                               }catch(Exception e){
                                                   out.print("Erro:"+e);
                                               }                                                

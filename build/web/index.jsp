@@ -76,7 +76,7 @@
                                         <i class="fa fa-fw fa-user"></i>
                                     </li>
                                 </span>
-                                <input name="username" type="text" class="form-control" autofocus required>
+                                <input name="username" type="text" class="form-control" autofocus required autocomplete="off" >
                             </div>
                         </div>
                         <div class="form-group">

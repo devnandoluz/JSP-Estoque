@@ -24,6 +24,7 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <link href="../resources/vendor/bootstrap/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -83,10 +84,24 @@
                                   <option>Outro</option>
                               </select>
                           </div>
-                          <div class="form-group col-md-6">
-                              <label class="form-label ">VALOR</label>
-                              <input name="valor" type="text" placeholder="0.00" class="form-control" data-error="Por favor, informe um VALOR válido." required>
-                              <div class="help-block with-errors"></div>
+                         <div class="form-group col-md-3">
+                            <label class="form-label ">VALOR</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <input name="valor" type="text" placeholder="0.00" class="form-control" data-error="Por favor, informe um VALOR válido." required>
+                            </div>
+                        </div>
+                          <div class="form-group col-md-3">
+                                <label class="form-label">DATA DE ADESÃO</label>
+                                <div class="input-group" id="datetimepicker1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                    </div>
+                                <input name="data_adesao" type="text" class="form-control data datepicker" data-provide="datepicker" placeholder="00/00/0000" data-error="Este campo é necessário.">
+                                <div class="help-block with-errors"></div>
+                                </div>
                           </div>
                     </div>
                   
@@ -98,13 +113,23 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">TELEFONE</label>
-                            <input name="telefone" type="text" class="form-control telefone" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
-                            <div class="help-block with-errors"></div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-fw fa-phone"></i></span>
+                                </div>
+                                <input name="telefone" type="text" class="form-control telefone" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
+                                <div class="help-block with-errors"></div>
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">E-MAIL</label>
-                            <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
-                            <div class="help-block with-errors"></div>
+                             <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-fw fa-envelope"></i></span>
+                                </div>
+                                <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                                <div class="help-block with-errors"></div>
+                             </div>
                         </div>
                     </div> 
                     <div class="form-group">
@@ -145,10 +170,18 @@
     <script src="../resources/js/sb-admin.min.js"></script>
     <script src="../resources/vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="../resources/vendor/jquery/jquery.mask.min.js"></script>
+    <!--datepicker-->
+    <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.pt-BR.min.js"></script>
     <script>
         jQuery(document).ready(function (){
             $(".cnpj").mask("00.000.000/0000-00");
             $(".telefone").mask("(00) 00000-0000");
+            $(".data").mask("00/00/0000");
+        });
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            language: "pt-BR"
         });
     </script>
 </body>

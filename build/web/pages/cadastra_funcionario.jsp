@@ -113,11 +113,14 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="form-label">DATA DE NASCIMENTO</label>
-                                <input name="data_de_nascimento" type="text" class="form-control data" placeholder="00/00/0000" data-error="Este campo é necessário.">
-                                <div class="help-block with-errors"></div>
+                                <div class="input-group" id="datetimepicker1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                    </div>
+                                    <input name="data_de_nascimento" type="text" class="form-control data" placeholder="00/00/0000" data-error="Este campo é necessário.">                                <div class="help-block with-errors"></div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">ENDEREÇO</label>
@@ -128,18 +131,26 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label class="form-label">TELEFONE</label>
-                                    <input name="telefone" type="text" class="form-control telefone" placeholder="(00)00000-0000">
-                                    <div class="help-block with-errors"></div>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-fw fa-phone"></i></span>
+                                        </div>
+                                        <input name="telefone" type="text" class="form-control telefone" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="form-label">E-MAIL</label>
-                                    <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" data-error="Por favor, informe um E-MAIL válido.">
+                                     <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-fw fa-envelope"></i></span>
+                                        </div>
+                                        <input name="email" type="email" class="form-control" placeholder="exemplo@email.com">
+                                     </div>
                                 </div>
                             </div>
                             
                         
-                            <div class="form-inline">
-                                
+                            <div class="form-inline">                                
                                 <div class="toggle form-inline">
                                     ACESSO AO SISTEMA
                                     <input id="foo"  data-on="Ready" data-off="Not Ready" type="checkbox" onclick="MudarForm();">
@@ -153,18 +164,33 @@
 
                               <div class="form-group">
                                   <label class="form-label">USERNAME</label>
-                                  <input id="inputUsername" name="username"  type="text" class="form-control" placeholder="Username..." data-error="Este campo é necessário.">
-                                  <div class="help-block with-errors"></div>
+                                  <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-fw fa-user"></i></span>
+                                        </div>
+                                        <input id="inputUsername" name="username"  type="text" class="form-control" placeholder="Username..." data-error="Este campo é necessário.">
+                                        <div class="help-block with-errors"></div>
+                                  </div>
                               </div>
                               <div class="form-group">
                                   <label class="form-label">SENHA</label>
-                                  <input name="senha"  type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
-                                  <div class="help-block with-errors"></div>
+                                  <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
+                                        </div>
+                                        <input name="senha"  type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
+                                        <div class="help-block with-errors"></div>
+                                  </div>
                               </div>
                               <div class="form-group">
                                   <label class="form-label">CONFIRMAR SENHA</label>
-                                  <input type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
-                                  <div class="help-block with-errors"></div>
+                                  <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
+                                        <div class="help-block with-errors"></div>
+                                  </div>
                               </div>
                               <div class="form-group">
                                   <label class="form-label">PERFIL</label><br>

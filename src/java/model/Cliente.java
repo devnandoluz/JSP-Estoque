@@ -7,6 +7,7 @@ package model;
 
 import dao.DAOcliente;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Cliente {
     private String endereco;
     private String email;
     private String descricao;
+    private Date data_adesao;
 
     
     public String getNomeFantasia() {
@@ -96,6 +98,15 @@ public class Cliente {
     public void setValor_servico(Double valor_servico) {
         this.valor_servico = valor_servico;
     }
+    
+    public Date getData_adesao() {
+        return data_adesao;
+    }
+
+    public void setData_adesao(Date data_adesao) {
+        this.data_adesao = data_adesao;
+    }
+
     /**
      * 
      * CHAMADA DA DAO
