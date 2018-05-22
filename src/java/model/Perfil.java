@@ -12,6 +12,7 @@ public class Perfil {
     private int id;
     private int status;
     private String perfil;
+    private int[] menu;
         
     public String getPerfil() {
         return perfil;
@@ -36,6 +37,19 @@ public class Perfil {
     public void setStatus(int status) {
         this.status = status;
     }
+    
+    public int[] getMenu() {
+        return menu;
+    }
+
+    public void setMenu(int[] menu) {
+        this.menu = menu;
+    }
+    
+    public void adicionarMenu(int menu, int posicao){
+        this.menu[posicao] = menu;
+    }
+
     /**
      * 
      * CHAMADA DA DAO
@@ -58,6 +72,10 @@ public class Perfil {
     public Perfil findForID(int id) throws Exception{
         DAOperfil dao = new DAOperfil();
         return dao.findForID(id);
+    }
+    public int getID(String nome) throws Exception{
+        DAOperfil dao = new DAOperfil();
+        return dao.getID(nome);
     }
     //Update
     public void update() throws Exception{ 

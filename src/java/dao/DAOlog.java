@@ -46,7 +46,7 @@ public class DAOlog {
         
         ArrayList<Log> listaDeLog = new ArrayList();
         
-        String sql = "SELECT * FROM Log;";
+        String sql = "SELECT * FROM Log order by idlog desc;";
         
         try {
             pstm = con.prepareStatement(sql);

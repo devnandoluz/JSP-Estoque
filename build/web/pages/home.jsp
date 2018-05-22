@@ -15,19 +15,70 @@
     <meta name="description" content="">
     <meta name="author" content="4I">
     <title>Home - Gente Telecom</title>
-    <!-- Bootstrap core CSS-->
+    <!-- Bootstrap CSS-->
     <link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom fonts for this template-->
     <link href="../resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Page level plugin CSS-->
     <link href="../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    <!-- Custom styles for this template-->
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    
+    <script type="text/javascript">
+        function relogio(){
+            var data = new Date();
+            var hora = data.getHours();
+            var minuto = data.getMinutes();
+            var segundo = data.getSeconds();
+
+            var dia = data.getDate();
+            var mes = data.getMonth();
+            var ano = data.getFullYear();
+            
+            //formatação do relógio
+            if(hora < 10){
+                hora = "0"+hora;
+            }
+            if(minuto < 10){
+                minuto = "0"+minuto;
+            }
+            if(segundo < 10){
+                segundo = "0"+segundo;
+            }
+            //formatação do data
+            if(dia < 10){
+                dia = "0"+dia;
+            }
+            if(mes < 10){
+                mes = "0"+mes;
+            }
+            
+            document.getElementById("data").innerHTML = "Dia " + dia + " do " + mes + " de " + ano;
+            document.getElementById("relogio").innerHTML = hora + ":" + minuto + ":" + segundo;
+        }
+        window.setInterval("relogio();",1000);
+    </script>
+    <style type="text/css">
+        #relogio{
+            font-family: arial;
+            font-size: 40pt;
+            color: #f58634;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10%;
+            margin-bottom: 12%;
+        }
+        #data{
+            font-family: arial;
+            font-size: 15pt;
+            color: #f58634;
+            text-align: right;
+            font-weight: bold;
+        }
+    </style>
+    
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body onload="relogio();" class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <%@include file="menu/navigation.jsp" %>
   <div class="content-wrapper">
@@ -45,7 +96,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-users"></i>
               </div>
-              <div class="mr-5"> Cliente </div>
+                <div class="mr-5"> <strong>CLIENTE</strong> </div>
             </div>
               <a class="card-footer text-white clearfix small z-1" href="cliente.jsp">
               <span class="float-left">Ver Detalhes</span>
@@ -62,7 +113,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-id-badge"></i>
               </div>
-              <div class="mr-5"> Funcionário </div>
+                <div class="mr-5"> <strong>FUNCIONÁRIO</strong> </div>
             </div>
               <a class="card-footer text-white clearfix small z-1" href="funcionario.jsp">
               <span class="float-left">Ver Detalhes</span>
@@ -79,7 +130,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5"> Estoque </div>
+              <div class="mr-5"> <strong>ESTOQUE</strong> </div>
             </div>
               <a class="card-footer text-white clearfix small z-1" href="estoque.jsp">
               <span class="float-left">Ver Detalhes</span>
@@ -96,7 +147,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-wrench"></i>
               </div>
-              <div class="mr-5"> Instalação </div>
+              <div class="mr-5"> <strong>INSTALAÇÃO</strong> </div>
             </div>
               <a class="card-footer text-white clearfix small z-1" href="instalacao.jsp">
               <span class="float-left">Ver Detalhes</span>
@@ -108,76 +159,66 @@
         </div>
       </div>
       <div class="row">
-          <!-- Carousel -->
-          <div class="col-sm-6">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-image"></i>
-                        Galeria
-                    </div>
-                    <div class="card-body">
-                        <div id="carouselSlide" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="carouselSlide" data-slide="0" class="active"></li>
-                                <li data-target="carouselSlide" data-slide="1"></li>
-                                <li data-target="carouselSlide" data-slide="2"></li>
-                            </ol>                            
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="../img/carousel/parede.png" class="img-fluid d-block">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../img/carousel/couro.png" class="img-fluid d-block">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../img/carousel/satelite_antena.png" class="img-fluid d-block">
-                                </div>
-                            </div>                            
-                            <a class="carousel-control-prev" href="#carouselSlide" role="bottom" data-slide="prev">
-                                <span class="fa fa-chevron-left"></span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselSlide" role="bottom" data-slide="next">
-                                <span class="fa fa-chevron-right"></span>
-                            </a>                            
-                        </div>
-                    </div>
-                </div>
-          </div>
-          <div class="col-sm-6">
-              <!--notepad-->
-              <div class="card mb-3">
-                  <div class="card-header">
-                      <i class="fa fa-pencil"></i>
-                      Agendar
-                  </div>                  
-                  <div class="card-body">
-                      <div>
-                          <form class="form-check">
-                            <textarea class="col-sm-12" style="height: 249px;" type="text" placeholder="Digite aqui..."></textarea>                            
-                            <center><input class="btn btn-primary" type="submit" value="Agendar"></center>
-                          </form>
+            <!-- Carousel -->
+            <div class="col-sm-6">
+                  <div class="card mb-3">
+                      <div class="card-header bg-dark" style="color: white;">
+                          <i class="fa fa-image"></i>
+                          <strong>Galeria</strong>
+                      </div>
+                      <div class="card-body">
+                          <div id="carouselSlide" class="carousel slide" data-ride="carousel">
+                              <ol class="carousel-indicators">
+                                  <li data-target="carouselSlide" data-slide="0" class="active"></li>
+                                  <li data-target="carouselSlide" data-slide="1"></li>
+                                  <li data-target="carouselSlide" data-slide="2"></li>
+                              </ol>                            
+                              <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                      <img src="../img/carousel/parede.png" class="img-fluid d-block">
+                                  </div>
+                                  <div class="carousel-item">
+                                      <img src="../img/carousel/couro.png" class="img-fluid d-block">
+                                  </div>
+                                  <div class="carousel-item">
+                                      <img src="../img/carousel/satelite_antena.png" class="img-fluid d-block">
+                                  </div>
+                              </div>                            
+                              <a class="carousel-control-prev" href="#carouselSlide" role="bottom" data-slide="prev">
+                                  <span class="fa fa-chevron-left"></span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselSlide" role="bottom" data-slide="next">
+                                  <span class="fa fa-chevron-right"></span>
+                              </a>                            
+                          </div>
                       </div>
                   </div>
-              </div>
-          </div>
+            </div>
+            <div class="col-sm-6">
+                <!--relogio e data-->
+                <div class="card mb-3">
+                    <div class="card-header bg-dark" style="color: white;">
+                        <i class="fa fa-clock-o"></i>
+                        <strong>Relógio</strong>
+                    </div>                  
+                    <div class="card-body">
+                        <!--relogio-->
+                        <div class="navbar-nav container" id="relogio"></div>
+                        <hr>
+                        <div id="data"></div>
+                    </div>
+                </div>
+            </div>
       </div>        
     </div>
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                </div>
-              </div>
-            </footer> 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-              <i class="fa fa-angle-up"></i>
-            </a>   
-            <!-- Core plugin JavaScript-->
-            <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Custom scripts for all pages-->
-            <script src="../resources/js/sb-admin.min.js"></script>
+        <%@include file="rodape.jsp"%>
+        <!-- Top -->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fa fa-angle-up"></i>
+        </a>   
+        <!--JavaScript-->
+        <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../resources/js/sb-admin.min.js"></script>
     </div>
 </body>
 </html>

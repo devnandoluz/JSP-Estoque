@@ -97,6 +97,7 @@
                                 <div id="divFuncionario" class="col-md-12" ><!--Funcionnario Form-->
                                     <center><h3 class="card-header bg-dark h3" style="color: white; border-radius: 0px 0px 20px 20px;">FUNCIONARIO</h3></center>
                                     <div class="form-group">
+                                        <br>
                                         <label for="inputNome" class="control-label">NOME</label>
                                         <input id="inputNome" name="nome"  value="<%= funcionario.getNome() %>" type="text" class="form-control" placeholder="Nome do funcionário..." autofocus required>
                                     </div>
@@ -104,21 +105,21 @@
                                         <div class="form-group col-md-6">
                                             <label class="form-label">CPF</label>
                                                 <input name="cpf" type="text" value="<%= funcionario.getCpf()%>" class="form-control cpf" placeholder="000.000.000-00" data-error="Por favor, informe um CPF válido." data-minlength="14" required>
-                                            <div class="help-block with-errors"></div>
                                         </div>
+                                        <div class="help-block with-errors"></div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label">RG</label>
                                             <input name="rg" type="text" value="<%= funcionario.getRg()%>" class="form-control rg" placeholder="0.000.000" data-error="Por favor, informe um RG válido." data-minlength="9" required>
-                                            <div class="help-block with-errors"></div>
                                         </div>
+                                        <div class="help-block with-errors"></div>
                                     </div>
                                     
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label class="form-label">SEXO</label>
                                             <input name="sexo" type="text" value="<%= funcionario.getSexo() %>" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
-                                            <div class="help-block with-errors"></div>
                                         </div>
+                                        <div class="help-block with-errors"></div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label">DATA DE NASCIMENTO</label>
                                             <div class="input-group" id="datetimepicker1">
@@ -128,9 +129,9 @@
                                                 <%
                                                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                                                 %>
-                                                <input name="data_de_nascimento" type="text" value="<%= sdf.format(funcionario.getDataDeNascimento())%>" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário.">
-                                                <div class="help-block with-errors"></div>
+                                                <input name="data_de_nascimento" type="text" value="<%= sdf.format(funcionario.getDataDeNascimento())%>" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário." required>
                                             </div>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -141,8 +142,8 @@
                                     <div class="form-group">
                                         <label class="form-label">ENDEREÇO</label>
                                         <input name="endereco" type="text" value="<%= funcionario.getEndereco()%>" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo é necessário.">
-                                        <div class="help-block with-errors"></div>
                                     </div>
+                                    <div class="help-block with-errors"></div>
 
                                     <div class="row">
                                         <div class="form-group col-md-6">
@@ -177,19 +178,35 @@
                                     <center><h3 class="card-header bg-dark h3" style="color: white; border-radius: 0px 0px 20px 20px;">USUARIO</h3></center>
                                           <input type="hidden" value="<%= funcionario.getUsuario().getId() %>" name="idUsuario">
                                       <div class="form-group">
+                                          <br>
                                           <label class="form-label">USERNAME</label>
-                                          <input id="inputUsername" name="username"  type="text" value="<%= funcionario.getUsuario().getUsername() %>" class="form-control" placeholder="Username..." data-error="Este campo é necessário.">
+                                          <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-fw fa-user"></i></span>
+                                                </div>
+                                                <input id="inputUsername" name="username"  type="text" value="<%= funcionario.getUsuario().getUsername() %>" class="form-control" placeholder="Username..." data-error="Este campo é necessário." <%if(funcionario.getUsuario().getPerfil() != null){ %> required <% } %>>
+                                          </div>
                                           <div class="help-block with-errors"></div>
                                       </div>
                                       <div class="form-group">
-                                          <label class="form-label">SENHA</label>
-                                          <input name="senha"  type="password" value="<%= funcionario.getUsuario().getSenha() %>" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
-                                          <div class="help-block with-errors"></div>
+                                            <label class="form-label">SENHA</label>
+                                            <div class="input-group">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
+                                                  </div>
+                                                <input name="senha"  type="password" value="<%= funcionario.getUsuario().getSenha() %>" class="form-control" placeholder="*****" data-error="Este campo é necessário."  <%if(funcionario.getUsuario().getPerfil() != null){ %> required <% } %> >
+                                            </div>
+                                            <div class="help-block with-errors"></div>
                                       </div>
                                       <div class="form-group">
-                                          <label class="form-label">CONFIRMAR SENHA</label>
-                                          <input type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
-                                          <div class="help-block with-errors"></div>
+                                            <label class="form-label">CONFIRMAR SENHA</label>
+                                            <div class="input-group">
+                                                  <div class="input-group-prepend">
+                                                      <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
+                                                  </div>
+                                                  <input type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário."  <%if(funcionario.getUsuario().getPerfil() != null){ %> required <% } %> >
+                                            </div>
+                                            <div class="help-block with-errors"></div>
                                       </div>
                                       <div class="form-group">
                                           <label class="form-label">PERFIL</label><br>
@@ -234,14 +251,7 @@
                 </div>          
             </div>
         </div>
-                <!-- /.content-wrapper-->
-                <footer class="sticky-footer">
-                  <div class="container">
-                    <div class="text-center">
-                      <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                    </div>
-                  </div>
-                </footer>
+            <%@include file="rodape.jsp" %>
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>

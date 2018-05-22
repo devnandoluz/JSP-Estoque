@@ -22,17 +22,18 @@ public class DAOmenu {
     //Create (Salvar)
     public boolean save(Menu menu){
         
-        String sql = "INSERT INTO menu (menu, link, status) VALUES (?,?,?);";
+        String sql = "INSERT INTO menu (menu, link, icone, status) VALUES (?,?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, menu.getMenu());
             pstm.setString(2, menu.getLink());
-            pstm.setInt(3, menu.getStatus());
+            pstm.setString(3, menu.getIcone());
+            pstm.setInt(4, menu.getStatus());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao salvar: " + ex);
+            System.err.println("Erro ao salvar MENU: " + ex);
             return false;
         } finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -56,6 +57,7 @@ public class DAOmenu {
                 menu.setId(rs.getInt("idMENU"));
                 menu.setMenu(rs.getString("MENU"));
                 menu.setLink(rs.getString("LINK"));
+                menu.setIcone(rs.getString("icone"));
                 menu.setStatus(rs.getInt("STATUS"));
                 
                 listaDeMenu.add(menu);
@@ -82,6 +84,7 @@ public class DAOmenu {
                 menu.setId(rs.getInt("idMENU"));
                 menu.setMenu(rs.getString("MENU"));
                 menu.setLink(rs.getString("LINK"));
+                menu.setIcone(rs.getString("icone"));
                 menu.setStatus(rs.getInt("STATUS"));
             }
             
@@ -95,13 +98,14 @@ public class DAOmenu {
     
     //Update (Alterar)
     public boolean update(Menu menu){
-        String sql = "UPDATE menu SET MENU = ?, LINK = ?, STATUS = ? WHERE idMENU = ?;";
+        String sql = "UPDATE menu SET MENU = ?, LINK = ?, ICONE = ?, STATUS = ? WHERE idMENU = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, menu.getMenu());
             pstm.setString(2, menu.getLink());
-            pstm.setInt(3, menu.getStatus());
-            pstm.setInt(4, menu.getId());
+            pstm.setString(3, menu.getIcone());
+            pstm.setInt(4, menu.getStatus());
+            pstm.setInt(5, menu.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {

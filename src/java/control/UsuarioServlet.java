@@ -7,17 +7,21 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Funcionario;
+import model.Log;
+import model.Perfil;
 import model.Usuario;
 
 /**
  *
- * @author Nando Luzy
+ * @author Nando Luz
  */
 @WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
 public class UsuarioServlet extends HttpServlet {
@@ -47,36 +51,31 @@ public class UsuarioServlet extends HttpServlet {
             
             //declaração de variaveis que recebem por parametro os valores.
             String option = request.getParameter("option");
-            String username = request.getParameter("username");
-            String senha = request.getParameter("senha");
-            String id = request.getParameter("id");
             
             Usuario usuario = new Usuario();
             
-            usuario.setId(Integer.parseInt(id));
-            usuario.setUsername(username);
-            usuario.setSenha(senha);
-            
             //Decisão de qual metodo CRUD usar.
             switch(option){
-                case "insert":{
-                    usuario.insert();
-                    response.sendRedirect("usuario.jsp");
-                }
-                break;
-                
                 case "update":{
-                    usuario.setId(Integer.parseInt(id));
-                    usuario.update();
-                    response.sendRedirect("usuario.jsp");
-                }
-                break;
-                
-                case "delete":{
-                    out.println("entrou"); 
-                    usuario.setId(Integer.parseInt(id));
-                    usuario.delete();
-                    response.sendRedirect("usuario.jsp");
+                    Perfil buscar = new Perfil();
+                        Perfil perfil = buscar.findForID((Integer.parseInt(request.getParameter("perfil"))));
+                        
+                        usuario.setPerfil(perfil);
+                        usuario.setId(Integer.parseInt(request.getParameter("idUsuario")));
+                        usuario.setSenha(request.getParameter("senha"));
+                        usuario.setUsername(request.getParameter("username"));
+                        usuario.update();
+                    response.sendRedirect("home.jsp");
+                    
+                    //gera log
+                    Log log = new Log();                    
+                    log.setNome("Alteração Usuário: " + request.getParameter("username"));
+                    Date data = new Date(System.currentTimeMillis());  
+                    log.setData(data);
+                    HttpSession sessao = request.getSession();
+                    Funcionario f = new Funcionario();
+                    log.setFuncionario(f.findForUser((Usuario) sessao.getAttribute("usuario")));
+                    log.gerarLog();
                 }
                 break;
             }

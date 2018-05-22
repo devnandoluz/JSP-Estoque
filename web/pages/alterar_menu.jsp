@@ -78,15 +78,16 @@
                         <div class="form-group col-md-6">
                             <label class="form-label">STATUS</label>
                             <input value="<%= menu.getStatus() %>" name="status" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo é necessário." required>
-<!--                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
-                            Desativado
-                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
-                            Ativado-->
                             <div class="help-block with-errors"></div>
                         </div>
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">ICONE</label>
+                            <input value="<%= menu.getIcone() %>" name="link" type="text" class="form-control" placeholder="font-awesome(Ex: fa-icon)" data-error="Por favor, informe um CNPJ válido." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-6">
                             <label class="form-label">LINK</label>
-                            <input value="<%= menu.getLink() %>" name="link" type="text" class="form-control" placeholder="Link do MENU..." data-error="Por favor, informe um CNPJ válido." required>
+                            <input value="<%= menu.getLink()%>" name="link" type="text" class="form-control" placeholder="pagina.jsp" data-error="Por favor, informe um CNPJ válido." required>
                             <div class="help-block with-errors"></div>
                         </div>
                             <input type="hidden" name="id" value="<%= id %>">
@@ -112,15 +113,7 @@
       </div>
         
     </div>
-            
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                </div>
-              </div>
-            </footer>
+            <%@include  file="rodape.jsp"%>
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>

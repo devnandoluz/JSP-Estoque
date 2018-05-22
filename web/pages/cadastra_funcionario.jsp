@@ -87,6 +87,7 @@
                         <div id="divFuncionario" class="col-md-12" ><!--Funcionnario Form-->
                             <center><h3 class="card-header bg-dark h3" style="color: white; border-radius: 0px 0px 20px 20px;">FUNCIONARIO</h3></center>
                             <div class="form-group">
+                                <br>
                                 <label for="inputNome" class="control-label">NOME</label>
                                 <input id="inputNome" name="nome"  type="text" class="form-control" placeholder="Nome do funcionário..." autofocus required>
                             </div>
@@ -114,8 +115,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
                                         </div>
-                                        <input name="data_de_nascimento" type="text" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário.">                                <div class="help-block with-errors"></div>
+                                        <input name="data_de_nascimento" type="text" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário." required>                                <div class="help-block with-errors"></div>
                                     </div>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -128,6 +130,7 @@
                                 <input name="endereco" type="text" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo é necessário.">
                                 <div class="help-block with-errors"></div>
                             </div>
+                            
 
                             <div class="row">
                                 <div class="form-group col-md-6">
@@ -164,14 +167,15 @@
                             <center><h3 class="card-header bg-dark h3" style="color: white; border-radius: 0px 0px 20px 20px;">USUARIO</h3></center>
 
                               <div class="form-group">
+                                  <br>
                                   <label class="form-label">USERNAME</label>
                                   <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-fw fa-user"></i></span>
                                         </div>
                                         <input id="inputUsername" name="username"  type="text" class="form-control" placeholder="Username..." data-error="Este campo é necessário.">
-                                        <div class="help-block with-errors"></div>
                                   </div>
+                                  <div class="help-block with-errors"></div>
                               </div>
                               <div class="form-group">
                                   <label class="form-label">SENHA</label>
@@ -180,8 +184,8 @@
                                             <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
                                         </div>
                                         <input name="senha"  type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
-                                        <div class="help-block with-errors"></div>
                                   </div>
+                                  <div class="help-block with-errors"></div>
                               </div>
                               <div class="form-group">
                                   <label class="form-label">CONFIRMAR SENHA</label>
@@ -190,8 +194,8 @@
                                             <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
                                         </div>
                                         <input type="password" class="form-control" placeholder="*****" data-error="Este campo é necessário.">
-                                        <div class="help-block with-errors"></div>
                                   </div>
+                                  <div class="help-block with-errors"></div>
                               </div>
                               <div class="form-group">
                                   <label class="form-label">PERFIL</label><br>

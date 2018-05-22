@@ -25,15 +25,30 @@ public class DAOperfil {
     }
        
     //Create (Salvar)
-    public boolean save(Perfil perfil){
+    public boolean save(Perfil perfil) throws Exception{
         
         String sql = "INSERT INTO perfil (perfil, status) VALUES (?,?);";
+        String sqlMenuPerfil = "INSERT INTO menu_perfil (idmenu, idperfil) VALUES (?,?);";
+        
         
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, perfil.getPerfil());
             pstm.setInt(2, perfil.getStatus());
             pstm.executeUpdate();
+            pstm.close();
+            try{
+                for(int i = 1; i < perfil.getMenu().length; i++){
+                    pstm = con.prepareStatement(sqlMenuPerfil);
+                    pstm.setInt(1, perfil.getMenu()[i]);
+                    pstm.setInt(2, perfil.getID(perfil.getPerfil()));
+                    pstm.executeUpdate();
+                    pstm.close();
+                    
+                }
+            }catch(SQLException e){
+                System.err.println("erro ao salvar MENU " + e);
+            }
             return true;
         } catch (SQLException ex) {
             System.err.println("PERFIL Erro ao salvar: " + ex);
@@ -92,12 +107,28 @@ public class DAOperfil {
         return perfil;
     }
     
+    public int getID(String nome){
+        Perfil perfil = new Perfil();
+        String sql = "SELECT * FROM perfil WHERE perfil = ?;";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, nome);
+            
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                perfil.setId(rs.getInt("idPerfil"));
+            }
+            ConnectionDB.closeConnection(con, pstm, rs); //fecha
+            
+        } catch (SQLException ex) {
+            System.err.println("PERFIL Erro ao buscar por NOME: " + ex);
+        }
+        return perfil.getId();
+    }
+    
     //Update (Alterar)
     public boolean update(Perfil perfil){
-        String sql = "UPDATE perfil SET "
-                    + " PERFIL = ?,"
-                    + " STATUS = ?,"
-                    + " WHERE idPERFIL = ?;";
+        String sql = "UPDATE perfil SET PERFIL = ?, STATUS = ? WHERE idPERFIL = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, perfil.getPerfil());

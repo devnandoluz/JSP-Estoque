@@ -3,6 +3,10 @@
     Created on : 23/04/2018, 13:29:42
     Author     : Nando Luz
 --%>
+<%@page import="java.util.AbstractList"%>
+<%@page import="java.util.List"%>
+<%@page import="model.Menu"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -23,6 +27,46 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    
+    <script>
+        var cont = 0;
+        function moverItemSelecionado(objnome, de, para, acao) {
+	para = jQuery('#' + para);
+        
+	jQuery('#' + de).find('option:selected').each(function(i, fromel) {
+		var notApp = true;
+		para.find('option').each(function(j, toel) {
+			if (toel.innerHTML.toLowerCase() > fromel.innerHTML.toLowerCase()) {
+				jQuery(toel).before(fromel);
+				notApp = false;
+				return false;
+			}
+		});
+		if (notApp) {
+			para.append(fromel);
+		}
+		fromel = jQuery(fromel);
+		if (acao.toLowerCase() === 'add') {
+                        if(cont < fromel.val()){
+                            cont = fromel.val();
+                        }
+			jQuery(this)
+				.closest('form')
+				.append("<input name='" + objnome + fromel.val() + "' id='" + objnome + '_' + fromel.val()
+					+ "' value='" + fromel.val() + "' type='hidden'>"
+				);
+                                document.getElementById('cont').value = cont;
+		}
+		else if (acao.toLowerCase() === 'rmv') {
+			jQuery('#' + objnome + '_' + fromel.val()).remove();
+		}
+	});
+
+	return true;
+}
+   
+    </script>
+    
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -62,25 +106,52 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME</label>
-                            <input name="perfil"  type="text" class="form-control" placeholder="Nome do PERFIL..." data-error="Este campo é necessário." autofocus required>
-                            <div class="help-block with-errors"></div>
+                            <input name="perfil"  type="text" class="form-control" placeholder="Nome do PERFIL..." autofocus required>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">STATUS</label>
                             <input name="status" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo é necessário." required>
-<!--                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
-                            Desativado
-                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
-                            Ativado-->
-                            <div class="help-block with-errors"></div>
                         </div>
-                        <div class="form-group col-md-12">
-                            <label class="form-label">MENU</label>
-                            <input name="menu" type="text" class="form-control" placeholder="Nome do MENU...">
-                            <div class="help-block with-errors"></div>
-                        </div>
+                        <!-------------------------------- MENU ------------------------------------>
+                        <div class="col-md-12"><strong><i class="fa fa-link" style="margin-left: 14px"></i> MENU</strong></div>
+                            <div class="form-inline form-group col-md-12 text-center">
+                                <div class="form-group col-md-5">
+                                    <label class="form-label small">DISPONÍVEL</label>
+                                    <select class="form-control col-md-12" name="menudireita" id="menudireita" size="6" autocomplete="off" multiple="multiple">
+                                        <%
+                                            ArrayList<Menu> lista = new ArrayList();
+
+                                            Menu buscar = new Menu();
+                                            lista = buscar.findAll();
+
+                                            for(Menu menu:lista){
+                                        %>
+                                        <option value="<%= menu.getId() %>"><%= menu.getMenu() %></option>
+                                        <%
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                                    
+                                    
+                                    
+                                <div class="col-md-2" style="color: white;">
+                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menu', 'menudireita', 'menuesquerda', 'add' )" style="width: 90px; margin-top: 12%;">adicionar</a>
+                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menu', 'menuesquerda', 'menudireita', 'rmv' )" style="width: 90px; margin-top: 8px;">remover</a>
+                                </div>
+                                    
+                                    
+                                <div class="form-group col-md-5">
+                                    <label class="form-label small">ADICIONADO</label>
+                                    <select class="form-control  col-md-12" id="menuesquerda" size="6" autocomplete="off" multiple="multiple">
+                                    </select>
+                                </div>
+                                    
+                                    
+                                    
+                            </div>
                     </div>
-                    
+                    <input type="hidden" name="cont" id="cont" value="0">
                     <div class="form-group align-content-center">
                         <center>
                             <button class="btn btn-success col-md-3" name="option" value="insert" style="margin: 2px;">
@@ -99,15 +170,7 @@
     </div>
         
     </div>
-            
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                </div>
-              </div>
-            </footer>
+    <%@include file="rodape.jsp" %>
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>

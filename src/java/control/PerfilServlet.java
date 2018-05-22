@@ -7,12 +7,15 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Menu;
 import model.Perfil;
 
 /**
@@ -44,32 +47,40 @@ public class PerfilServlet extends HttpServlet {
             out.println("<body>");
             
             String option = request.getParameter("option");
-            String nome = request.getParameter("perfil");
-            String status = request.getParameter("status");
-            String id = request.getParameter("id");
             
             Perfil perfil = new Perfil();
             
             switch(option){
                 case "insert":{
-                    perfil.setPerfil(nome);
-                    perfil.setStatus(Integer.parseInt(status));
+                    
+                    int cont = (Integer.parseInt(request.getParameter("cont")));
+                    out.print(request.getParameter("menu"+1));//pagar
+                    int posicao = 0;
+                    int[] menu = new int[cont];
+                    for(int i = 1; i <= cont + 1; i++){
+                        if(((request.getParameter("menu"+i)) != null)){
+                            menu[posicao] = (Integer.parseInt(request.getParameter("menu"+i)));
+                        }
+                    }
+                    perfil.setMenu(menu);
+                    perfil.setPerfil(request.getParameter("perfil"));
+                    perfil.setStatus(Integer.parseInt(request.getParameter("status")));
                     perfil.insert();
                     response.sendRedirect("perfil.jsp");
                 }
                 break;
                 
                 case "update":{
-                    perfil.setPerfil(nome);
-                    perfil.setStatus(Integer.parseInt(status));
-                    perfil.setId(Integer.parseInt(id));
+                    perfil.setPerfil(request.getParameter("perfil"));
+                    perfil.setStatus(Integer.parseInt(request.getParameter("status")));
+                    perfil.setId(Integer.parseInt(request.getParameter("id")));
                     perfil.update();
                     response.sendRedirect("perfil.jsp");
                 }
                 break;
                 
                 case "delete":{
-                    perfil.setId(Integer.parseInt(id));
+                    perfil.setId(Integer.parseInt(request.getParameter("id")));
                     perfil.delete();
                     response.sendRedirect("perfil.jsp");
                 }

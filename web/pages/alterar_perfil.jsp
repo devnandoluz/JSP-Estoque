@@ -63,7 +63,7 @@
                   <hr>
                   <br>
               </div>                  
-              <form id="formCliente" data-toggle="validator" role="form" method="get" action="gerenciar_perfil.do">
+              <form id="formCliente" data-toggle="validator" role="form" method="post" action="gerenciar_perfil.do">
                     <%
                         Perfil buscar = new Perfil();                        
                         Perfil perfil = buscar.findForID(Integer.parseInt(id));
@@ -92,7 +92,8 @@
                     
                     <div class="form-group align-content-center">
                         <center>
-                            <button class="btn btn-success col-md-3" name="option" value="insert" style="margin: 2px;">
+                            <input name="id" type="hidden" value="<%=id%>">
+                            <button class="btn btn-success col-md-3" name="option" value="update" style="margin: 2px;">
                                 <i class="fa fa-pencil"></i> 
                                 ALTERAR
                             </button>
@@ -108,15 +109,7 @@
     </div>
         
     </div>
-            
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                </div>
-              </div>
-            </footer>
+            <%@include file="rodape.jsp" %>
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>

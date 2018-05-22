@@ -16,6 +16,7 @@ public class Menu {
     private int id;
     private String menu;
     private String link;
+    private String icone;
     private int status;
     
     
@@ -51,6 +52,15 @@ public class Menu {
         this.id = id;
     }
     
+    public String getIcone() {
+        return icone;
+    }
+
+    public void setIcone(String icone) {
+        this.icone = icone;
+    }
+    
+    
     /**
      * 
      * CHAMADA DA DAO
@@ -84,7 +94,7 @@ public class Menu {
         DAOmenu dao = new DAOmenu();
         return dao.delete(this);
     }
-    
+
     
     
 }

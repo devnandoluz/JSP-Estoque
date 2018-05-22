@@ -142,6 +142,7 @@ public class DAOusuario {
         
         String sql = "SELECT * FROM USUARIO WHERE USERNAME = ? AND SENHA = ?;";
         Usuario usuario = new Usuario();
+        DAOperfil dao = new DAOperfil();
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, username);
@@ -153,6 +154,7 @@ public class DAOusuario {
                 usuario.setId(rs.getInt("idUsuario"));
                 usuario.setUsername(rs.getString("username"));
                 usuario.setSenha(rs.getString("senha"));
+                usuario.setPerfil(dao.findForID(rs.getInt("perfil_IdPerfil")));
                 ConnectionDB.closeConnection(con, pstm, rs); //fecha
             }else{
                 usuario = null;

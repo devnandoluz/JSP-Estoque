@@ -92,16 +92,17 @@
                                 </div>
                                 <input name="valor" type="text" placeholder="0.00" class="form-control" data-error="Por favor, informe um VALOR válido." required>
                             </div>
+                            <div class="help-block with-errors"></div>
                         </div>
                           <div class="form-group col-md-3">
                                 <label class="form-label">DATA DE ADESÃO</label>
                                 <div class="input-group" id="datetimepicker1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
-                                    </div>
-                                <input name="data_adesao" type="text" class="form-control data datepicker" data-provide="datepicker" placeholder="00/00/0000" data-error="Este campo é necessário.">
-                                <div class="help-block with-errors"></div>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                        </div>
+                                    <input name="data_adesao" type="text" class="form-control data datepicker" data-provide="datepicker" placeholder="00/00/0000" data-error="Este campo é necessário." required>
                                 </div>
+                                <div class="help-block with-errors"></div>
                           </div>
                     </div>
                   
@@ -118,8 +119,8 @@
                                     <span class="input-group-text"><i class="fa fa-fw fa-phone"></i></span>
                                 </div>
                                 <input name="telefone" type="text" class="form-control telefone" placeholder="(00) 00000-0000" data-error="Este campo é necessário." required>
-                                <div class="help-block with-errors"></div>
                             </div>
+                            <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">E-MAIL</label>

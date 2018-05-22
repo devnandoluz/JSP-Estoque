@@ -76,9 +76,14 @@
                             Ativado-->
                             <div class="help-block with-errors"></div>
                         </div>
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">ICONE</label>
+                            <input name="link" type="text" class="form-control" placeholder="font-awesome(Ex: fa-icon)" data-error="Por favor, informe um CNPJ válido." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-6">
                             <label class="form-label">LINK</label>
-                            <input name="link" type="text" class="form-control" placeholder="Link do MENU..." data-error="Por favor, informe um CNPJ válido." required>
+                            <input name="link" type="text" class="form-control" placeholder="pagina.jsp" data-error="Por favor, informe um CNPJ válido." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <input type="hidden" name="id" value="0">

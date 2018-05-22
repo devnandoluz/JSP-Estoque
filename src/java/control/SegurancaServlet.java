@@ -51,6 +51,8 @@ public class SegurancaServlet extends HttpServlet {
                             if(usuarioLogado != null){
                                 HttpSession sessao = request.getSession();
                                 sessao.setAttribute("usuario", usuarioLogado);
+                                
+                                
                                 response.sendRedirect("home.jsp");
                             }else{
                                  out.print("<script>alert('Usuário ou Senha inválido(s)!');location.href='../index.jsp';</script>");
@@ -63,6 +65,7 @@ public class SegurancaServlet extends HttpServlet {
 
                     case "logout":{
                         HttpSession sessao = request.getSession();
+                        sessao.removeAttribute("usuario");
                         sessao.invalidate();
                         response.sendRedirect("../index.jsp");
                     }
