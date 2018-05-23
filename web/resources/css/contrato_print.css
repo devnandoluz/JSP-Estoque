@@ -9,12 +9,12 @@ page {
     text-align: justify;
     color: black;
     font-family: areal, sans-serif;
-    font-size: 13pt;
+    font-size: 10pt;
     
-    padding-top: 2.79cm;
-    padding-left: 2.57cm;
-    padding-bottom: 0.49cm;
-    padding-right: 2.79cm;
+    padding-top: 3cm;
+    padding-left: 3cm;
+    padding-bottom: 2cm;
+    padding-right: 2cm;
     background: white;
     display: block;
     margin: 0 auto;
@@ -22,11 +22,11 @@ page {
     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
 }
 page[size="A4"] {
-    width: 24cm;
-    height: 29.7cm;
+    width: 21cm;
+    height: 31.7cm;
 }
 page[size="A4"][layout="portrait"] {
-    width: 29.7cm;
+    width: 31.7cm;
     height: 21cm;
 }
 
@@ -35,15 +35,25 @@ page[size="A4"][layout="portrait"] {
     text-align: center;
     border: 2px solid #ddd;
 }
+#assinatura table tr td{
+    border: none;
+}
 table {
     border-collapse: collapse;
     width: 100%;
     font-size: 80%;
 }
 table th {
-    background-color: #4caf50;
+    background-color: #808080;
     color: white;
     text-align: center;
+    font-size: 11pt;
+}
+td{
+    font-size: 9pt;
+}
+td b{
+    font-size: 10pt;
 }
 th,
 td {
@@ -56,25 +66,22 @@ tr:nth-child(even) {
 @media print {
     
     body, page {
-        width: 100%;
-        box-shadow: 0;
-        color: black;
         margin: 0;
-        font-size: 17pt;
+        margin-top: 0;
+        margin-bottom: 0;
+        box-shadow: 0;
         padding-top: 0;
-        padding-left: 0;
-        padding-bottom: 0;
-        padding-right: 0;
-        margin-top: 0cm;
-        margin-left: 1.57cm;
-        margin-bottom: 0.49cm;
-        margin-right: 1.79cm;
-        
+    }
+    .primeirop{
+         margin-top: -1.81cm;
     }
     .container-fluid{
         display: none;
     }
     #rodape{
         display: none;
+    }
+    table th {
+        color: black;
     }
 }

@@ -51,8 +51,6 @@ public class SegurancaServlet extends HttpServlet {
                             if(usuarioLogado != null){
                                 HttpSession sessao = request.getSession();
                                 sessao.setAttribute("usuario", usuarioLogado);
-                                
-                                
                                 response.sendRedirect("home.jsp");
                             }else{
                                  out.print("<script>alert('Usuário ou Senha inválido(s)!');location.href='../index.jsp';</script>");

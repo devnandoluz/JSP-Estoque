@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-    <footer class="sticky-footer">
+    <footer id="rodape" class="sticky-footer">
       <div class="container">
         <div class="text-center">
           <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
