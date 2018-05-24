@@ -114,9 +114,10 @@ public class FuncionarioServlet extends HttpServlet {
                     funcionario.setTelefone(request.getParameter("telefone"));
                     funcionario.setEmail(request.getParameter("email"));
                     funcionario.setId(Integer.parseInt(request.getParameter("id")));
-          
                     
-                    if((request.getParameter("perfil")) != null){
+                    int id = Integer.parseInt(request.getParameter("perfil"));
+                    
+                    if(id != 0){
                         Perfil buscar = new Perfil();
                         Perfil perfil = buscar.findForID((Integer.parseInt(request.getParameter("perfil"))));
                         

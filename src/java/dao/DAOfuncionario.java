@@ -196,7 +196,7 @@ public class DAOfuncionario {
     }
     
     //Update (Alterar)
-    public boolean update(Funcionario funcionario){
+    public boolean update(Funcionario funcionario) throws Exception{
         
         String sqlFuncionario = "UPDATE funcionario SET "
                                 + " cpf = ?,"
@@ -207,8 +207,10 @@ public class DAOfuncionario {
                                 + " cargo = ?,"
                                 + " endereco = ?,"
                                 + " telefone = ?,"
-                                + " email = ?"
+                                + " email = ?,"
+                                + " usuario_idusuario = ?"
                                 + " WHERE idFuncionario = ?;";
+        
         
         String sqlUsuario = "UPDATE `usuario` SET "
                             + "`USERNAME` = ?, "
@@ -221,7 +223,7 @@ public class DAOfuncionario {
             pstm.setString(2, funcionario.getUsuario().getSenha());
             pstm.setInt(3, funcionario.getUsuario().getPerfil().getId());
             pstm.setInt(4, funcionario.getUsuario().getId());
-            pstm.executeUpdate();            
+            pstm.executeUpdate();
             try {
                 pstm = con.prepareStatement(sqlFuncionario);
                 pstm.setString(1, funcionario.getCpf());
@@ -233,7 +235,8 @@ public class DAOfuncionario {
                 pstm.setString(7, funcionario.getEndereco());
                 pstm.setString(8, funcionario.getTelefone());
                 pstm.setString(9, funcionario.getEmail());
-                pstm.setInt(10, funcionario.getId());
+                pstm.setInt(10, funcionario.getUsuario().validar(funcionario.getUsuario().getUsername(), funcionario.getUsuario().getSenha()).getId());
+                pstm.setInt(11, funcionario.getId());
                 pstm.executeUpdate();
                 return true;
             } catch (SQLException ex) {
@@ -267,12 +270,12 @@ public class DAOfuncionario {
             pstm.setString(2, funcionario.getNome());
             pstm.setString(3, funcionario.getRg());
             pstm.setDate(4, new Date(funcionario.getDataDeNascimento().getTime()));
-            pstm.setString(4, funcionario.getSexo());
-            pstm.setString(5, funcionario.getCargo());
-            pstm.setString(6, funcionario.getEndereco());
-            pstm.setString(7, funcionario.getTelefone());
-            pstm.setString(8, funcionario.getEmail());
-            pstm.setInt(9, funcionario.getId());
+            pstm.setString(5, funcionario.getSexo());
+            pstm.setString(6, funcionario.getCargo());
+            pstm.setString(7, funcionario.getEndereco());
+            pstm.setString(8, funcionario.getTelefone());
+            pstm.setString(9, funcionario.getEmail());
+            pstm.setInt(10, funcionario.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -292,10 +295,11 @@ public class DAOfuncionario {
             pstm = con.prepareStatement(sqlf);
             pstm.setInt(1, funcionario.getId());
             pstm.execute();
-            
-            pstm = con.prepareStatement(sqlu);
-            pstm.setInt(1, funcionario.getUsuario().getId());
-            pstm.execute();
+            if((funcionario.getUsuario() != (null))){
+                pstm = con.prepareStatement(sqlu);
+                pstm.setInt(1, funcionario.getUsuario().getId());
+                pstm.execute();
+            }
             return true;
         } catch (SQLException ex) {
             System.err.println("Erro ao deletar FUNCIONARIO: " + ex);

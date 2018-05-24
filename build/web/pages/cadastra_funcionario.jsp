@@ -106,7 +106,7 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label class="form-label">SEXO</label>
-                                        <input name="sexo" type="text" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
+                                     <input name="sexo" type="text" class="form-control" placeholder="SEXO do funcionário..." data-error="Este campo é necessário." required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -115,7 +115,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
                                         </div>
-                                        <input name="data_de_nascimento" type="text" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário." required>                                <div class="help-block with-errors"></div>
+                                        <input name="data_de_nascimento" type="text" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário." required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -153,7 +153,6 @@
                                 </div>
                             </div>
                             
-                        
                             <div class="form-inline">                                
                                 <div class="toggle form-inline">
                                     ACESSO AO SISTEMA
@@ -200,7 +199,7 @@
                               <div class="form-group">
                                   <label class="form-label">PERFIL</label><br>
                                   <select name="perfil" class="form-control col-md-12" id="exampleFormControlSelect1">
-                                          <option value="0"title="Selecione">Selecione</option>
+                                          <option value="0" title="Selecione">Selecione</option>
                                           <%
                                               ArrayList<Perfil> lista = new ArrayList();
                                               Perfil p = new Perfil();

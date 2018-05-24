@@ -18,10 +18,16 @@ public class Cliente {
     private int id;
     private String nomeFantasia;
     private String cnpj;
+    private String InscricaoEstadual;
     private String servicoContratado;
     private Double valor_servico;
     private String telefone;
+    private String cep;
+    private String quantidade;
     private String endereco;
+    private String bairro;
+    private String cidade;
+    private String estado;
     private String email;
     private String descricao;
     private Date data_adesao;
@@ -106,6 +112,56 @@ public class Cliente {
     public void setData_adesao(Date data_adesao) {
         this.data_adesao = data_adesao;
     }
+    
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getInscricaoEstadual() {
+        return InscricaoEstadual;
+    }
+
+    public void setInscricaoEstadual(String EscricaoEstadual) {
+        this.InscricaoEstadual = EscricaoEstadual;
+    }
+
+    public String getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(String quantidade) {
+        this.quantidade = quantidade;
+    }
+
+
 
     /**
      * 
@@ -141,6 +197,5 @@ public class Cliente {
         DAOcliente dao = new DAOcliente();
         dao.delete(this);
     }
-
 
 }

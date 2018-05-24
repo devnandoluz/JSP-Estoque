@@ -173,6 +173,18 @@
                                             </div>
                                         </div>
                                 </div>
+                                             
+                                <%
+                                    if(funcionario.getUsuario() == null){
+                                        %>
+                                        <input type="hidden" name="acesso" value="sem"> 
+                                        <%
+                                    }else{
+                                        %>
+                                        <input type="hidden" name="acesso" value="com"> 
+                                        <%
+                                    }
+                                %>
 
                                 <div class="card col-md-3" id="divUsuario" style="display: none;border-radius: 2%;"> <!--Usuario Form-->
                                     <center><h3 class="card-header bg-dark h3" style="color: white; border-radius: 0px 0px 20px 20px;">USUARIO</h3></center>
@@ -211,7 +223,7 @@
                                       <div class="form-group">
                                           <label class="form-label">PERFIL</label><br>
                                           <select name="perfil" class="form-control col-md-12" id="FormControlSelect1">
-                                              <option value="0" title="Selecione" disabled selected>Selecione</option>
+                                              <option value="0" title="Selecione" selected>Selecione</option>
                                                   <%
                                                       ArrayList<Perfil> lista = new ArrayList();
                                                       Perfil p = new Perfil();

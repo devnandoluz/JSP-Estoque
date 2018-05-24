@@ -57,10 +57,16 @@ public class ClienteServlet extends HttpServlet {
                     
                     cliente.setNomeFantasia(request.getParameter("nome_fantasia"));
                     cliente.setCnpj(request.getParameter("cnpj"));
+                    cliente.setInscricaoEstadual(request.getParameter("ie"));
                     cliente.setServicoContratado(request.getParameter("servico_contratado"));
+                    cliente.setQuantidade(request.getParameter("quantidade"));
                     cliente.setValor_servico(Double.parseDouble(request.getParameter("valor")));
                     cliente.setData_adesao(sdf.parse(request.getParameter("data_adesao")));
+                    cliente.setCep(request.getParameter("cep"));
                     cliente.setEndereco(request.getParameter("endereco"));
+                    cliente.setBairro(request.getParameter("bairro"));
+                    cliente.setCidade(request.getParameter("cidade"));
+                    cliente.setEstado(request.getParameter("estado"));
                     cliente.setTelefone(request.getParameter("telefone"));
                     cliente.setEmail(request.getParameter("email"));
                     cliente.setDescricao(request.getParameter("descricao"));
@@ -84,10 +90,16 @@ public class ClienteServlet extends HttpServlet {
                     
                     cliente.setNomeFantasia(request.getParameter("nome_fantasia"));
                     cliente.setCnpj(request.getParameter("cnpj"));
+                    cliente.setInscricaoEstadual(request.getParameter("ie"));
                     cliente.setServicoContratado(request.getParameter("servico_contratado"));
+                    cliente.setQuantidade(request.getParameter("quantidade"));
                     cliente.setValor_servico(Double.parseDouble(request.getParameter("valor")));
                     cliente.setData_adesao(sdf.parse(request.getParameter("data_adesao")));
+                    cliente.setCep(request.getParameter("cep"));
                     cliente.setEndereco(request.getParameter("endereco"));
+                    cliente.setBairro(request.getParameter("bairro"));
+                    cliente.setCidade(request.getParameter("cidade"));
+                    cliente.setEstado(request.getParameter("estado"));
                     cliente.setTelefone(request.getParameter("telefone"));
                     cliente.setEmail(request.getParameter("email"));
                     cliente.setDescricao(request.getParameter("descricao"));

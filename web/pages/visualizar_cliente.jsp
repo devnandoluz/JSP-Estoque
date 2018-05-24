@@ -86,10 +86,25 @@
                                                 <th> Valor da Mensalidade: </th><td> R$ <%= cliente.getValor_servico() %></td>
                                             </tr>
                                             <tr>
+                                                <th> Quantidade: </th><td><%= cliente.getQuantidade() %></td>
+                                            </tr>
+                                            <tr>
                                                 <th> Telefone: </th><td><%= cliente.getTelefone()%></td>
                                             </tr>
                                             <tr>
+                                                <th> CEP: </th><td><%= cliente.getCep() %></td>
+                                            </tr>
+                                            <tr>
                                                 <th> Endereço: </th><td><%= cliente.getEndereco()%></td>
+                                            </tr>
+                                            <tr>
+                                                <th> Bairro: </th><td> <%= cliente.getBairro() %></td>
+                                            </tr>
+                                            <tr>
+                                                <th> Cidade: </th><td> <%= cliente.getCidade() %></td>
+                                            </tr>
+                                            <tr>
+                                                <th> UF: </th><td> <%= cliente.getEstado()%></td>
                                             </tr>
                                             <tr>
                                                 <th> E-mail: </th><td><%= cliente.getEmail()%></td>

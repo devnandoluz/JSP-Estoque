@@ -43,13 +43,6 @@
         </div>
         
         
-        
-        
-        
-        
-        
-        
-        
         <!--PÁGINA 1-->
             <page size="A4">
                 <div class="h5 text-center"><b><u>CONTRATO DE LINK DE DADOS CORPORATIVO<br>GT-BSB-000110012018</u></b></div>
@@ -388,21 +381,6 @@
                 </div>
             </page>
         <!--PÁGINA 4-->
-        <page size="A4">
-                <div class="h5 text-center"><b><u>GT-BSB-000110012018</u></b></div>
-                <div class="text-center"><b>CONTRATO DE CONCESSÃO DE BENEFÍCIOS E OUTRAS AVENÇAS</b></div>
-                <br>
-                
-                
-        </page>
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         <%@include file="rodape.jsp" %>

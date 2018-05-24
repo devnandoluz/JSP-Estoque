@@ -29,21 +29,27 @@ public class DAOcliente {
     public boolean save(Cliente cliente){
         
         String sql = "INSERT INTO cliente "
-                    + "(nome_fantasia, cnpj, servico_contratado, valor_servico, "
-                    + "data_adesao, telefone, endereco, email, descricao) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?);";
+                    + "(nome_fantasia, cnpj, inscricao_estadual, servico_contratado, quantidade, valor_servico, "
+                    + "data_adesao, telefone, cep, endereco, bairro, cidade, uf, email, descricao) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, cliente.getNomeFantasia());
             pstm.setString(2, cliente.getCnpj());
-            pstm.setString(3, cliente.getServicoContratado());
-            pstm.setDouble(4, cliente.getValor_servico());
-            pstm.setDate(5, new Date(cliente.getData_adesao().getTime()));
-            pstm.setString(6, cliente.getTelefone());
-            pstm.setString(7, cliente.getEndereco());
-            pstm.setString(8, cliente.getEmail());
-            pstm.setString(9, cliente.getDescricao());
+            pstm.setString(3, cliente.getInscricaoEstadual());
+            pstm.setString(4, cliente.getServicoContratado());
+            pstm.setString(5, cliente.getQuantidade());
+            pstm.setDouble(6, cliente.getValor_servico());
+            pstm.setDate(7, new Date(cliente.getData_adesao().getTime()));
+            pstm.setString(8, cliente.getTelefone());
+            pstm.setString(9, cliente.getCep());
+            pstm.setString(10, cliente.getEndereco());
+            pstm.setString(11, cliente.getBairro());
+            pstm.setString(12, cliente.getCidade());
+            pstm.setString(13, cliente.getEstado());
+            pstm.setString(14, cliente.getEmail());
+            pstm.setString(15, cliente.getDescricao());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -71,11 +77,17 @@ public class DAOcliente {
                 cliente.setId(rs.getInt("idCLIENTE"));
                 cliente.setNomeFantasia(rs.getString("NOME_FANTASIA"));
                 cliente.setCnpj(rs.getString("CNPJ"));
-                cliente.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));                
+                cliente.setInscricaoEstadual(rs.getString("INSCRICAO_ESTADUAL"));
+                cliente.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));  
+                cliente.setQuantidade(rs.getString("QUANTIDADE"));              
                 cliente.setValor_servico(rs.getDouble("VALOR_SERVICO"));
                 cliente.setData_adesao(rs.getDate("data_adesao"));
                 cliente.setTelefone(rs.getString("TELEFONE"));
-                cliente.setEndereco(rs.getString("ENDERECO"));
+                cliente.setCep(rs.getString("CEP"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setBairro(rs.getString("BAIRRO"));
+                cliente.setCidade(rs.getString("CIDADE"));
+                cliente.setEstado(rs.getString("UF"));
                 cliente.setEmail(rs.getString("EMAIL"));
                 cliente.setDescricao(rs.getString("DESCRICAO"));
                 
@@ -104,11 +116,17 @@ public class DAOcliente {
                 cliente.setId(rs.getInt("idCLIENTE"));
                 cliente.setNomeFantasia(rs.getString("NOME_FANTASIA"));
                 cliente.setCnpj(rs.getString("CNPJ"));
+                cliente.setInscricaoEstadual(rs.getString("INSCRICAO_ESTADUAL"));
                 cliente.setServicoContratado(rs.getString("SERVICO_CONTRATADO"));
+                cliente.setQuantidade(rs.getString("QUANTIDADE"));
                 cliente.setValor_servico(rs.getDouble("VALOR_SERVICO"));
                 cliente.setData_adesao(rs.getDate("data_adesao"));
                 cliente.setTelefone(rs.getString("TELEFONE"));
+                cliente.setCep(rs.getString("CEP"));
                 cliente.setEndereco(rs.getString("endereco"));
+                cliente.setBairro(rs.getString("BAIRRO"));
+                cliente.setCidade(rs.getString("CIDADE"));
+                cliente.setEstado(rs.getString("UF"));
                 cliente.setEmail(rs.getString("EMAIL"));
                 cliente.setDescricao(rs.getString("DESCRICAO"));
             }
@@ -126,11 +144,17 @@ public class DAOcliente {
         String sql = "UPDATE cliente SET "
                 + " nome_fantasia = ?,"
                 + " cnpj = ?,"
+                + " inscricao_estadual = ?,"
                 + " servico_contratado = ?,"
+                + " quantidade = ?,"
                 + " valor_servico = ?,"
                 + " data_adesao = ?,"
                 + " telefone = ?,"
+                + " cep = ?,"
                 + " endereco = ?,"
+                + " bairro = ?,"
+                + " cidade = ?,"
+                + " uf = ?,"
                 + " email = ?,"
                 + " descricao = ?"
                 + " WHERE idcliente = ?;";
@@ -138,14 +162,20 @@ public class DAOcliente {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, cliente.getNomeFantasia());
             pstm.setString(2, cliente.getCnpj());
-            pstm.setString(3, cliente.getServicoContratado());            
-            pstm.setDouble(4, cliente.getValor_servico());
-            pstm.setDate(5, new Date(cliente.getData_adesao().getTime()));
-            pstm.setString(6, cliente.getTelefone());
-            pstm.setString(7, cliente.getEndereco());
-            pstm.setString(8, cliente.getEmail());
-            pstm.setString(9, cliente.getDescricao());
-            pstm.setInt(10, cliente.getId());
+            pstm.setString(3, cliente.getInscricaoEstadual());
+            pstm.setString(4, cliente.getServicoContratado());
+            pstm.setString(5, cliente.getQuantidade());
+            pstm.setDouble(6, cliente.getValor_servico());
+            pstm.setDate(7, new Date(cliente.getData_adesao().getTime()));
+            pstm.setString(8, cliente.getTelefone());
+            pstm.setString(9, cliente.getCep());
+            pstm.setString(10, cliente.getEndereco());
+            pstm.setString(11, cliente.getBairro());
+            pstm.setString(12, cliente.getCidade());
+            pstm.setString(13, cliente.getEstado());
+            pstm.setString(14, cliente.getEmail());
+            pstm.setString(15, cliente.getDescricao());
+            pstm.setInt(16, cliente.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {

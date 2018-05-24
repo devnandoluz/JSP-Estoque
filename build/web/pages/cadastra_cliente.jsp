@@ -64,17 +64,21 @@
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME FANTASIA</label>
                             <input name="nome_fantasia"  type="text" class="form-control" placeholder="Nome fantasia da empresa." data-error="Este campo é necessário." autofocus required>
-                            <div class="help-block with-errors"></div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label class="form-label">CNPJ</label>
                             <input name="cnpj" type="text" placeholder="00.000.000/0000-00" class="form-control cnpj" data-error="Por favor, informe um CNPJ válido." data-minlength="18" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="form-label">INSCRIÇÃO ESTADUAL</label>
+                            <input name="ie" type="text" placeholder="0000000000000" class="form-control ie" data-error="Por favor, informe um I.E. válido." data-minlength="13" required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="row">
                           <!--select-->
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-3">
                               <label class="form-label">SERVIÇO CONTRATADO</label>
                               <select name="servico_contratado" class="form-control" data-error="Este campo é necessário." required>
                                   <option disabled selected>Selecione</option>
@@ -84,6 +88,11 @@
                                   <option>Outro</option>
                               </select>
                           </div>
+                          <div class="form-group col-md-3">
+                            <label class="form-label">QUANTIDADE</label>
+                            <input name="quantidade" type="text" class="form-control" placeholder="Ramal ou Mega" data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
                          <div class="form-group col-md-3">
                             <label class="form-label ">VALOR</label>
                             <div class="input-group">
@@ -105,11 +114,62 @@
                                 <div class="help-block with-errors"></div>
                           </div>
                     </div>
-                  
-                    <div class="form-group">
-                        <label class="form-label">ENDEREÇO</label>
-                        <input name="endereco" type="text" class="form-control" placeholder="Estado, cidade, rua..." data-error="Este campo é necessário." required>
-                        <div class="help-block with-errors"></div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label class="form-label">CEP</label>
+                            <input name="cep" type="text" class="form-control cep" placeholder="00000-000" data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-9">
+                            <label class="form-label">ENDEREÇO</label>
+                            <input name="endereco" type="text" class="form-control" data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label class="form-label">BAIRRO</label>
+                            <input name="bairro" type="text" class="form-control" data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="form-label">CIDADE</label>
+                            <input name="cidade" type="text" class="form-control" data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="form-label">ESTADO</label>
+                            <select name="estado" class="form-control" required>
+                                    <option disabled selected>Selecione</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                              </select>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -179,6 +239,8 @@
             $(".cnpj").mask("00.000.000/0000-00");
             $(".telefone").mask("(00) 00000-0000");
             $(".data").mask("00/00/0000");
+            $(".ie").mask("0000000000000");
+            $(".cep").mask("00000-000");
         });
         $('.datepicker').datepicker({
             format: 'dd/mm/yyyy',
