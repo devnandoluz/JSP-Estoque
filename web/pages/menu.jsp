@@ -63,12 +63,13 @@
                       <div class="card-body">
                           <!--aqui vai a tabela-->
                           <div class="table-responsive">
-                              <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                              <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                   <tr>
                                         <th>ID</th>
                                         <th>Nome</th>
                                         <th>Link</th>
+                                        <th>Icone</th>
                                         <th>Status</th>
                                         <th><center>Opção</center></th>
                                   </tr>
@@ -78,6 +79,7 @@
                                         <th>ID</th>
                                         <th>Nome</th>
                                         <th>Link</th>
+                                        <th>Icone</th>
                                         <th>Status</th>
                                         <th><center>Opção</center></th>
                                     </tr>
@@ -105,6 +107,9 @@
                                                       <center><%= menu.getLink() %></center>
                                                   </td>
                                                   <td>
+                                                    &nbsp;&nbsp;&nbsp;<i class="fa <%=menu.getIcone()%>"></i>&nbsp;&nbsp;&nbsp;<%= menu.getIcone()%>
+                                                  </td>
+                                                  <td>
                                                       <center>
                                                           <% 
                                                             if(menu.getStatus() == 1){
@@ -128,7 +133,7 @@
                                                           %>
                                                       </center>
                                                   </td>
-                                                  <td>
+                                                  <td class="text-center">
                                                       <a class="btn btn-primary col-md-3" href="alterar_menu.jsp?id=<%= menu.getId() %>" style=" margin: 2px;">
                                                           <span class="fa fa-pencil"></span>
                                                       </a>

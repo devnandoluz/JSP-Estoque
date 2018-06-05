@@ -82,8 +82,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">ICONE</label>
-                            <input value="<%= menu.getIcone() %>" name="link" type="text" class="form-control" placeholder="font-awesome(Ex: fa-icon)" data-error="Por favor, informe um CNPJ válido." required>
-                            <div class="help-block with-errors"></div>
+                            <input value="<%= menu.getIcone() %>" name="icone" type="text" class="form-control" placeholder="font-awesome(Ex: fa-icon)" >
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">LINK</label>

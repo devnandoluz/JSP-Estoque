@@ -83,13 +83,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseGerarContrato">
             <li>
-                <a href="contrato_voip.jsp">
+                <a href="gerar_contrato_voip.jsp">
                     <i class="fa fa-fw fa-file-text"></i>
                     VoIP
                 </a>
             </li>
             <li>
-                <a href="contrato_internet.jsp">
+                <a href="gerar_contrato_internet.jsp">
                     <i class="fa fa-fw fa-file-text"></i>
                     Internet
                 </a>

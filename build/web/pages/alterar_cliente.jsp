@@ -114,7 +114,7 @@
                                                 <%
                                                     SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
                                                 %>
-                                                <input value="<%= data.format(cliente2.getData_adesao()) %>" data-provide="datepicker" name="data_adesao" type="text" class="form-control datepicker" placeholder="00/00/0000" data-error="Este campo é necessário.">
+                                                <input value="<%= data.format(cliente2.getData_adesao()) %>" autocomplete="off" data-provide="datepicker" name="data_adesao" type="text" class="form-control datepicker" placeholder="00/00/0000" data-error="Este campo é necessário.">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>

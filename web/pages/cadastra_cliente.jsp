@@ -109,7 +109,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
                                         </div>
-                                    <input name="data_adesao" type="text" class="form-control data datepicker" data-provide="datepicker" placeholder="00/00/0000" data-error="Este campo é necessário." required>
+                                    <input name="data_adesao" type="text" autocomplete="off" class="form-control data datepicker" data-provide="datepicker" placeholder="00/00/0000" data-error="Este campo é necessário." required>
                                 </div>
                                 <div class="help-block with-errors"></div>
                           </div>

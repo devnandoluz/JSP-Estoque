@@ -137,7 +137,7 @@
                                     
                                 <div class="col-md-2" style="color: white;">
                                     <a class="btn btn-primary" onclick="moverItemSelecionado('menu', 'menudireita', 'menuesquerda', 'add' )" style="width: 90px; margin-top: 12%;">adicionar</a>
-                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menu', 'menuesquerda', 'menudireita', 'rmv' )" style="width: 90px; margin-top: 8px;">remover</a>
+                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menu', 'menuesquerda', 'menudireita', 'rmv' )" style="width: 90px; margin-top: 12%;">remover</a>
                                 </div>
                                     
                                     

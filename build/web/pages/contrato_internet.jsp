@@ -3,7 +3,10 @@
     Created on : 23/04/2018, 13:35:57
     Author     : Nando Luz
 --%>
-
+<%@page import="model.Cliente"%>
+<%
+    int idCliente = Integer.parseInt(request.getParameter("cliente"));
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,6 +29,49 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript">
+        function data(){
+            var data = new Date();
+            var dia = data.getDate();
+            var mes = data.getMonth() + 1;
+            var ano = data.getFullYear();
+            
+            //formatação do data
+            if(dia < 10){
+                dia = "0"+dia;
+            }
+            
+            switch(mes){
+                case 1: mes = "Janeiro";
+                break;
+                case 2: mes = "Fevereiro";
+                break;
+                case 3: mes = "Março";
+                break;
+                case 4: mes = "Abril";
+                break;
+                case 5: mes = "Maio";
+                break;
+                case 6: mes = "Junho";
+                break;
+                case 7: mes = "Julho";
+                break;
+                case 8: mes = "Agosto";
+                break;
+                case 9: mes = "Setembro";
+                break;
+                case 10: mes = "Outubro";
+                break;
+                case 11: mes = "Novembro";
+                break;
+                case 12: mes = "Dezembro";
+                break;
+            }
+            
+            document.getElementById("data").innerHTML = "Brasília, " + dia + " de " + mes + " de " + ano +".";
+        }
+        window.setInterval("data();",1000);
+    </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -42,6 +88,10 @@
             </ol>
         </div>
         
+        <%
+            Cliente buscar = new Cliente();
+            Cliente cliente = buscar.findForID(idCliente);
+        %>
         
         <!--PÁGINA 1-->
             <page size="A4">
@@ -126,34 +176,34 @@
                     <tbody>
                         <tr>
                             <td colspan="4">
-                                <b>NOME / RAZÃO SOCIAL:</b>
+                                <b>NOME / RAZÃO SOCIAL:</b> &nbsp;<%= cliente.getNomeFantasia() %>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <b>CPF / CNPJ:</b>
+                                <b>CPF / CNPJ:</b> &nbsp;<%= cliente.getCnpj()%>
                             </td>
                             <td colspan="2">
-                                <b>I.E.:</b>
+                                <b>I.E.:</b> &nbsp;<%= cliente.getInscricaoEstadual()%>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="4">
-                                <b>ENDEREÇO:</b>
+                                <b>ENDEREÇO:</b> &nbsp;<%= cliente.getEndereco()%>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <b>BAIRRO:</b>
+                                <b>BAIRRO:</b> &nbsp;<%= cliente.getBairro()%>
                             </td>
                             <td>
-                                <b>CEP:</b>
+                                <b>CEP:</b> &nbsp;<%= cliente.getCep()%>
                             </td>
                             <td>
-                                <b>CIDADE:</b>
+                                <b>CIDADE:</b> &nbsp;<%= cliente.getCidade()%>
                             </td>
                             <td>
-                                <b>UF:</b>
+                                <b>UF:</b> &nbsp;<%= cliente.getEstado()%>
                             </td>
                         </tr>
                     </tbody>
@@ -223,7 +273,7 @@
                             <td>
                                 <b>CUSTO MENSAL:</b>
                                 <br>
-                                R$
+                                R$ &nbsp;<%= cliente.getValor_servico() %>
                             </td>
                         </tr>
                         <tr>
@@ -266,34 +316,34 @@
                     <tbody>
                         <tr>
                             <td colspan="4">
-                                <b>NOME / RAZÃO SOCIAL:</b>
+                                <b>NOME / RAZÃO SOCIAL:</b> &nbsp;<%= cliente.getNomeFantasia() %>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <b>CPF / CNPJ:</b>
+                                <b>CPF / CNPJ:</b> &nbsp;<%= cliente.getCnpj() %>
                             </td>
                             <td colspan="2">
-                                <b>I.E.:</b>
+                                <b>I.E.:</b> &nbsp;<%= cliente.getInscricaoEstadual() %>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="4">
-                                <b>ENDEREÇO:</b>
+                                <b>ENDEREÇO:</b> &nbsp;<%= cliente.getEndereco() %>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <b>BAIRRO:</b>
+                                <b>BAIRRO:</b> &nbsp;<%= cliente.getBairro() %>
                             </td>
                             <td>
-                                <b>CEP:</b>
+                                <b>CEP:</b> &nbsp;<%= cliente.getCep() %>
                             </td>
                             <td>
-                                <b>CIDADE:</b>
+                                <b>CIDADE:</b> &nbsp;<%= cliente.getCidade() %>
                             </td>
                             <td>
-                                <b>UF:</b>
+                                <b>UF:</b> &nbsp;<%= cliente.getEstado() %>
                             </td>
                         </tr>
                     </tbody>
@@ -332,7 +382,7 @@
                         <tr>
                             <td>
                                 <b>TOTAL DO CUSTO MENSAL RECONRRENTE COM IMPOSTOS:</b>
-                                R$
+                                R$ &nbsp;<%= cliente.getValor_servico() %>
                             </td>
                         </tr>
                         <tr>
@@ -344,8 +394,7 @@
                     </tbody>
                 </table>
                 <br>
-                <p>
-                    Brasília, xx de xxxxxxx de xxxx.
+                <p id="data">
                 </p>
                 <br>
                 <br>

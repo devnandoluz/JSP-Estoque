@@ -129,7 +129,7 @@
                                                 <%
                                                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                                                 %>
-                                                <input name="data_de_nascimento" type="text" value="<%= sdf.format(funcionario.getDataDeNascimento())%>" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário." required>
+                                                <input name="data_de_nascimento" type="text" autocomplete="off" value="<%= sdf.format(funcionario.getDataDeNascimento())%>" class="form-control data datepicker" data-provide="datepicker"  placeholder="00/00/0000" data-error="Este campo é necessário." required>
                                             </div>
                                             <div class="help-block with-errors"></div>
                                         </div>

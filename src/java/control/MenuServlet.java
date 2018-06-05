@@ -46,6 +46,7 @@ public class MenuServlet extends HttpServlet {
                 case "insert":{
                     menu.setMenu(request.getParameter("nome"));
                     menu.setLink(request.getParameter("link"));
+                    menu.setIcone(request.getParameter("icone"));
                     menu.setStatus(Integer.parseInt(request.getParameter("status")));
                     menu.insert();
                     response.sendRedirect("menu.jsp");
@@ -54,6 +55,7 @@ public class MenuServlet extends HttpServlet {
                 case "update":{
                     menu.setMenu(request.getParameter("nome"));
                     menu.setLink(request.getParameter("link"));
+                    menu.setIcone(request.getParameter("icone"));
                     menu.setStatus(Integer.parseInt(request.getParameter("status")));
                     menu.setId(Integer.parseInt(request.getParameter("id")));
                     menu.update();

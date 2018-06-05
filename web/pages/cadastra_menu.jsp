@@ -70,16 +70,12 @@
                         <div class="form-group col-md-6">
                             <label class="form-label">STATUS</label>
                             <input name="status" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo é necessário." required>
-<!--                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
-                            Desativado
-                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
-                            Ativado-->
+
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">ICONE</label>
-                            <input name="link" type="text" class="form-control" placeholder="font-awesome(Ex: fa-icon)" data-error="Por favor, informe um CNPJ válido." required>
-                            <div class="help-block with-errors"></div>
+                            <input name="icone" type="text" class="form-control" placeholder="font-awesome(Ex: fa-icon)">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">LINK</label>
