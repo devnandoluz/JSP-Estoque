@@ -5,6 +5,7 @@ html {
 
 body {
   overflow-x: hidden;
+  
 }
 
 body.sticky-footer {
@@ -23,7 +24,23 @@ body.fixed-nav {
   min-height: calc(100vh - 56px);
   padding-top: 1rem;
 }
-
+#relogio{
+    font-family: arial;
+    font-size: 7vh;
+    color: #f58634;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 3vw;
+    margin-bottom: 6vw;
+}
+#dataHome{
+    font-family: arial;
+    font-size: 2vh;
+    color: #f58634;
+    text-align: right;
+    font-weight: bold;
+}
+        
 .scroll-to-top {
   position: fixed;
   right: 15px;

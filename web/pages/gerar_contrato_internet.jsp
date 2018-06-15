@@ -64,11 +64,11 @@
                             <select name="cliente" class="form-control form-control-lg">
                             <%
                                 for(Cliente cliente:lista){
+                                    if(cliente.getServicoContratado().equalsIgnoreCase("internet") || cliente.getServicoContratado().equalsIgnoreCase("voip e internet")){
                             %>
-
-                            <option value="<%=cliente.getId() %>"><%= cliente.getNomeFantasia()%></option>
-
+                                        <option value="<%=cliente.getId() %>"><%= cliente.getNomeFantasia()%></option>
                             <%
+                                    }
                                 }
                             %>
                             </select>

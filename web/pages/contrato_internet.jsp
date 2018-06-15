@@ -285,7 +285,7 @@
                         <tr>
                             <td colspan="4">
                                 <b>VELOCIDADE:</b>
-                                0 Mbps
+                                <%= cliente.getQuantidade() %>
                             </td>
                         </tr>
                         <tr>

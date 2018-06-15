@@ -22,7 +22,7 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-    
+        
     <script type="text/javascript">
         function relogio(){
             var data = new Date();
@@ -77,34 +77,15 @@
                 break;
             }
             
-            document.getElementById("data").innerHTML = "Dia " + dia + " do " + mes + " de " + ano;
+            document.getElementById("dataHome").innerHTML = "Dia " + dia + " de " + mes + " de " + ano;
             document.getElementById("relogio").innerHTML = hora + ":" + minuto + ":" + segundo;
         }
         window.setInterval("relogio();",1000);
     </script>
-    <style type="text/css">
-        #relogio{
-            font-family: arial;
-            font-size: 40pt;
-            color: #f58634;
-            text-align: center;
-            font-weight: bold;
-            margin-top: 10%;
-            margin-bottom: 12%;
-        }
-        #data{
-            font-family: arial;
-            font-size: 15pt;
-            color: #f58634;
-            text-align: right;
-            font-weight: bold;
-        }
-    </style>
-    
 </head>
 
-<body onload="relogio();" class="fixed-nav sticky-footer bg-dark" id="page-top">
-  <!-- Navigation-->
+<body onload="relogio(); OnLoad();" class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation 37.1vw-->
   <%@include file="menu/navigation.jsp" %>
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -185,7 +166,7 @@
       </div>
       <div class="row">
             <!-- Carousel -->
-            <div class="col-sm-6">
+            <div class="col-sm-6" id="carousel">
                   <div class="card mb-3">
                       <div class="card-header bg-dark" style="color: white;">
                           <i class="fa fa-image"></i>
@@ -219,20 +200,27 @@
                       </div>
                   </div>
             </div>
-            <div class="col-sm-6">
-                <!--relogio e data-->
-                <div class="card mb-3">
-                    <div class="card-header bg-dark" style="color: white;">
-                        <i class="fa fa-clock-o"></i>
-                        <strong>Relógio</strong>
-                    </div>                  
-                    <div class="card-body">
-                        <!--relogio-->
-                        <div class="navbar-nav container" id="relogio"></div>
-                        <hr>
-                        <div id="data"></div>
-                    </div>
-                </div>
+            <div class="col-sm-6" id="rel">
+                  <div class="card mb-3">
+                      <div class="card-header bg-dark" style="color: white;">
+                            <i class="fa fa-clock-o"></i>
+                            <strong>Relógio</strong>
+                      </div>
+                      <div class="card-body">
+                          <div id="carouselSlide" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                        <img src="../img/background/b_relogio.gif" class="img-fluid d-block b-rel">
+                                        <div class="carousel-caption">
+                                            <div id="dataHome"></div>
+                                            <hr>
+                                            <div class="navbar-nav container" id="relogio"></div>
+                                        </div>
+                                  </div>
+                              </div>                     
+                          </div>
+                      </div>
+                  </div>
             </div>
       </div>        
     </div>
@@ -242,6 +230,7 @@
           <i class="fa fa-angle-up"></i>
         </a>   
         <!--JavaScript-->
+        
         <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
         <script src="../resources/js/sb-admin.min.js"></script>
     </div>
