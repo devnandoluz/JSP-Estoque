@@ -93,10 +93,6 @@
                             <small id="Help" class="form-text text-muted">Não compartilhe seus dados de acesso.</small>
                             <div class="help-block with-errors"></div>
                         </div>
-<!--                        <div class="form-group form-check">
-                          <input type="checkbox" class="form-check-input" id="Check">
-                          <label class="form-check-label" for="Check">Lembre-se</label>
-                        </div>-->
                         <br>
                         <input type="hidden" name="id" value="0">
                         <center><button class="btn btn-primary" name="option" value="login" style="width: 50%;">Entrar</button></center>
