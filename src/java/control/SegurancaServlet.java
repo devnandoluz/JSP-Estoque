@@ -1,7 +1,9 @@
 package control;
 
+import dao.ConnectionDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -38,16 +40,26 @@ public class SegurancaServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             String option = request.getParameter("option");
+            
+                
+                        
                 switch(option){
                     
                     case "login":{
+                        Connection con = null;
+                        
+                        try{
+                            con = ConnectionDB.openConnection();
+                        }catch(Exception ex){
+                            out.print("<script>alert('Algo está funcionando de forma errada, tente novamente!');location.href='../index.jsp';</script>");
+                        }
                         try {
                             String username = (request.getParameter("username"));
                             String senha = (request.getParameter("senha"));
-                            
+
                             Usuario usuario = new Usuario();
                             Usuario usuarioLogado = usuario.validar(username, senha);
-                            
+
                             if(usuarioLogado != null){
                                 HttpSession sessao = request.getSession();
                                 sessao.setAttribute("usuario", usuarioLogado);
@@ -59,6 +71,7 @@ public class SegurancaServlet extends HttpServlet {
                             System.err.println("Erro ao validar!" + ex);
                         }
                     }
+                    
                     break;
 
                     case "logout":{

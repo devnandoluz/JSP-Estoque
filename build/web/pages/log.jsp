@@ -27,11 +27,20 @@
     <link href="../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!--styles-->
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
+    <script src="../resources/vendor/jquery/jquery.min.js" type="text/javascript"></script>
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript">
+    $(window).on('load', function(){
+        document.getElementById('loader').style.display = "none";
+        document.getElementById("corpo").style.display = "block";
+    });
+    </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <div id="loader"></div>
+  <div id="corpo">
   <!-- Navigation-->
   <%@include file="menu/navigation.jsp" %>
   <div class="content-wrapper">
@@ -107,10 +116,7 @@
         <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
         <!-- Custom scripts for this page-->
         <script src="../resources/js/sb-admin-datatables.min.js"></script>
-        <script>
-            
-            
-        </script>
+        </div>
   </div>
 </body>
 </html>

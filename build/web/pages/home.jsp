@@ -3,7 +3,9 @@
     Created on : 13/04/2018, 10:55:38
     Author     : Nando Luz
 --%>
-
+<%
+    String bv = request.getParameter("bemVindo");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,10 +22,17 @@
     <link href="../resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
+    <script src="../resources/vendor/jquery/jquery.min.js" type="text/javascript"></script>
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-        
     <script type="text/javascript">
+        $(window).on('load', function(){
+            document.getElementById('loader').style.display = "none";
+            document.getElementById("corpo").style.display = "block";
+        });
+    </script>
+    <script type="text/javascript">
+        
         function relogio(){
             var data = new Date();
             var hora = data.getHours();
@@ -48,8 +57,6 @@
             if(dia < 10){
                 dia = "0"+dia;
             }
-            
-            
             switch(mes){
                 case 1: mes = "Janeiro";
                 break;
@@ -76,15 +83,17 @@
                 case 12: mes = "Dezembro";
                 break;
             }
-            
             document.getElementById("dataHome").innerHTML = "Dia " + dia + " de " + mes + " de " + ano;
             document.getElementById("relogio").innerHTML = hora + ":" + minuto + ":" + segundo;
         }
         window.setInterval("relogio();",1000);
+        
     </script>
 </head>
 
-<body onload="relogio(); OnLoad();" class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body onload="relogio();" class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <div id="loader"></div>
+  <div id="corpo">
   <!-- Navigation 37.1vw-->
   <%@include file="menu/navigation.jsp" %>
   <div class="content-wrapper">
@@ -224,13 +233,16 @@
             </div>
       </div>        
     </div>
+      
         <%@include file="rodape.jsp"%>
         <!-- Top -->
         <a class="scroll-to-top rounded" href="#page-top">
           <i class="fa fa-angle-up"></i>
-        </a>   
-        <!--JavaScript-->
+        </a> 
+    </div>
         
+    </div> <!-- fim do corpo -->
+        <!--JavaScript-->
         <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
         <script src="../resources/js/sb-admin.min.js"></script>
     </div>
