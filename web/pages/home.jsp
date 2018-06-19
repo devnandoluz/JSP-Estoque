@@ -3,8 +3,9 @@
     Created on : 13/04/2018, 10:55:38
     Author     : Nando Luz
 --%>
-<%
-    String bv = request.getParameter("bemVindo");
+<% 
+    HttpSession sess = request.getSession();
+    long bv = ((System.currentTimeMillis() - sess.getCreationTime()));
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,10 +27,20 @@
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
     <script type="text/javascript">
-        $(window).on('load', function(){
-            document.getElementById('loader').style.display = "none";
-            document.getElementById("corpo").style.display = "block";
-        });
+        
+        if(<%=bv%> >= 10000){
+            $(window).on('load', function(){
+                document.getElementById('loader').style.display = "none";
+                document.getElementById("corpo").style.display = "block";
+            });
+        }else{
+            var intervalo = setInterval(function (){
+                clearInterval(intervalo);
+                document.getElementById('loader').style.display = "none";
+                document.getElementById("corpo").style.display = "block";
+            }, 2000
+            );
+        }
     </script>
     <script type="text/javascript">
         
