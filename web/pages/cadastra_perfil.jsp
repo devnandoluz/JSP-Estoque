@@ -56,7 +56,7 @@
 		}
 		else if (acao.toLowerCase() === 'rmv') {
                         
-			jQuery('.menu_' + fromel.val()).remove();
+                    jQuery('.menu_' + fromel.val()).remove();
                     
                     u = 1;
                     for(i = 1; i <= cont; i++){

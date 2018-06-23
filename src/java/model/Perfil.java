@@ -2,6 +2,7 @@ package model;
 
 import dao.DAOperfil;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -12,8 +13,7 @@ public class Perfil {
     private int id;
     private int status;
     private String perfil;
-    private int[] menu;
-    int i = 0;
+    private List<Menu> menu;
         
     public String getPerfil() {
         return perfil;
@@ -38,18 +38,13 @@ public class Perfil {
     public void setStatus(int status) {
         this.status = status;
     }
-    
-    public int[] getMenu() {
-        return menu;
+
+    public List<Menu> getMenu() {
+        return (List<Menu>) menu;
     }
 
-    public void setMenu(int menu) {
-        this.menu[i] = menu;
-        i++;
-    }
-    
-    public void adicionarMenu(int menu, int posicao){
-        this.menu[posicao] = menu;
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
     }
 
     /**
@@ -73,7 +68,7 @@ public class Perfil {
     //Read
     public Perfil findForName() throws Exception{   
         DAOperfil dao = new DAOperfil();
-        return dao.findForName(perfil);
+        return dao.findForName(getPerfil());
     }
     
     public Perfil findForID(int id) throws Exception{

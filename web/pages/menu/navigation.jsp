@@ -4,6 +4,8 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Menu"%>
 <%@page import="model.Perfil"%>
 <%@page import="model.Usuario"%>
 <!--
@@ -21,10 +23,6 @@
         usuario = new Usuario();
         usuario = (Usuario)sessao.getAttribute("usuario");
 %>
-
-
-
-
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <a class="navbar-brand" href="home.jsp"><img src="../img/logotipo.png"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,24 +30,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
-          <a class="nav-link" href="home.jsp">
-            <i class="fa fa-fw fa-home  "></i>
-            <span class="nav-link-text">Home</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Monitoramento">
-            <a class="nav-link" href="monitoramento.jsp">
-                <i class="fa fa-fw fa-dashboard"></i>
-                <span class="nav-link-text">Monitoramento</span>
-            </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instalacao">
-            <a class="nav-link" href="log.jsp">
-            <i class="fa fa-fw fa-history"></i>
-            <span class="nav-link-text">Log de Ações</span>
-          </a>
-        </li>
+        <%        
+            ArrayList<Menu> listaMenu = new ArrayList();
+              try{
+                    Menu buscarM = new Menu();
+                    listaMenu = buscarM.findForUse(10);
+              }catch(Exception e){
+                  out.print("Erro:"+e);
+              }                              
+            for(Menu menu12:listaMenu){ %>
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
+                <a class="nav-link" href="<%=menu12.getLink()%>">
+                  <i class="fa fa-fw <%=menu12.getIcone()%> "></i>
+                  <span class="nav-link-text"><%=menu12.getMenu()%></span>
+                </a>
+              </li>
+        <%
+            }
+        %>        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Adicionar">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAdicinar" data-parent="#collapseAdicinar">
             <i class="fa fa-fw fa-plus-square"></i>

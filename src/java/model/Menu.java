@@ -19,7 +19,6 @@ public class Menu {
     private String icone;
     private int status;
     
-    
     public String getMenu() {
         return menu;
     }
@@ -80,10 +79,16 @@ public class Menu {
         return dao.findAll();
     }
     
+    public ArrayList<Menu> findForUse(int id) throws Exception{   
+        DAOmenu dao = new DAOmenu();
+        return dao.findForUse(id);
+    }
+    
     public Menu findForID(int id) throws Exception{
         DAOmenu dao = new DAOmenu();
         return dao.findForID(id);
     }
+    
     //Update
     public void update() throws Exception{ 
         DAOmenu dao = new DAOmenu();

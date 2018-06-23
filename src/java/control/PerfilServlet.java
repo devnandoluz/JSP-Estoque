@@ -52,13 +52,15 @@ public class PerfilServlet extends HttpServlet {
             
             switch(option){
                 case "insert":{
-                    
+                    ArrayList<Menu> menu = new ArrayList<>();
+                    Menu m = new Menu();
                     int cont = (Integer.parseInt(request.getParameter("cont")));
-                    for(int i = 0; i <= cont; i++){
-                        if((Integer.parseInt((request.getParameter("'menu"+i+"'"))) != 0)){
-                            perfil.setMenu(Integer.parseInt(request.getParameter("menu"+i)));
+                    for(int i = 1; i <= cont; i++){
+                        if((Integer.parseInt((request.getParameter("menu"+i))) > 0)){
+                            menu.add(m.findForID(Integer.parseInt(request.getParameter("menu"+i))));
                         }
                     }
+                    perfil.setMenu(menu);
                     perfil.setPerfil(request.getParameter("perfil"));
                     perfil.setStatus(Integer.parseInt(request.getParameter("status")));
                     perfil.insert();

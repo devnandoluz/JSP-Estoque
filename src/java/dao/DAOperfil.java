@@ -38,13 +38,12 @@ public class DAOperfil {
             pstm.executeUpdate();
             pstm.close();
             try{
-                for(int i = 1; i < perfil.getMenu().length; i++){
+                for(int i = 0; i < perfil.getMenu().size(); i++){
                     pstm = con.prepareStatement(sqlMenuPerfil);
-                    pstm.setInt(1, perfil.getMenu()[i]);
+                    pstm.setInt(1, perfil.getMenu().get(i).getId());
                     pstm.setInt(2, perfil.findForName().getId());
                     pstm.executeUpdate();
-                    pstm.close();
-                    
+                    pstm.close();                    
                 }
             }catch(SQLException e){
                 System.err.println("erro ao salvar MENU " + e);

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Menu;
+import model.Usuario;
 
 /**
  *
@@ -70,16 +71,39 @@ public class DAOmenu {
         
         return listaDeMenu;
     }
-    
+    public ArrayList<Menu> findForUse(int id){         
+        ArrayList<Menu> listaDeMenu = new ArrayList();        
+        String sql = "SELECT * FROM `menu` INNER JOIN menu_perfil ON(menu.idmenu = menu_perfil.idmenu AND menu_perfil.idperfil = ?);";        
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setDouble(1, id);    
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                Menu menu2 = new Menu();        
+                int i = 1;
+                
+                menu2.setMenu(rs.getString("MENU"));
+                menu2.setLink(rs.getString("LINK"));
+                menu2.setIcone(rs.getString("icone"));
+                menu2.setStatus(rs.getInt("STATUS"));
+                
+                listaDeMenu.add(menu2);
+                
+                System.out.println("entrou" + i);
+            }
+            ConnectionDB.closeConnection(con, pstm, rs);
+        } catch (SQLException ex) {
+            System.err.println("Erro ao buscar MENU: " + ex);
+        }        
+        return listaDeMenu;
+    }
     public Menu findForID(int id){
         Menu menu = new Menu();
         String sql = "SELECT * FROM menu WHERE idMENU = ?;";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, id);
-            
-            ResultSet rs = pstm.executeQuery();
-            
+            pstm.setInt(1, id);            
+            ResultSet rs = pstm.executeQuery();            
             while(rs.next()){
                 menu.setId(rs.getInt("idMENU"));
                 menu.setMenu(rs.getString("MENU"));
