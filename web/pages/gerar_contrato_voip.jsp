@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cliente
-    Created on : 23/04/2018, 13:32:31
+    Document   : gerar_contrato_internet
+    Created on : 20/05/2018, 11:02:12
     Author     : Nando Luz
 --%>
 <%@page import="model.Cliente"%>
@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="Nando Luz" content="4I">
-        <title>Cliente - Gente Telecom</title>
+        <title>Gerar Contrato - Gente Telecom</title>
         <!-- Bootstrap core CSS-->
         <link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom fonts for this template-->
@@ -29,16 +29,6 @@
         <link href="../resources/css/sb-admin.css" rel="stylesheet">
         <!--icon-->
         <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-
-            <script type="text/javascript">
-                function excluir(nome,id){
-                    var url = "gerenciar_cliente.do?option=delete&id="+id+"&nome_fantasia="+nome;
-                        if(confirm("Tem certeza que deseja excluir o cliente: "+nome+"?")){
-                            window.open(url,"_self");
-                    }
-                }
-            </script>
-    
     </head>
 
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -51,90 +41,47 @@
           <li class="breadcrumb-item">
             <a href="home.jsp">Home</a>
           </li>
-          <li class="breadcrumb-item active">Cliente</li>
+          <li class="breadcrumb-item active">Gerar Contrato VoIP</li>
         </ol>
 
-        <div class="row">
-            <div class="col-sm-12">
-                  <div class="card mb-3">
-                      <div class="card-header bg-primary text-white form-inline">
-                              <i class="fa fa-users" style="margin-right: 4px"></i>
-                              CLIENTES CADASTRADOS
-                              <div class="navbar-nav ml-auto">
-                                  <a class="btn btn-success" style="width: 40px; height: 40px;" href="cadastra_cliente.jsp"><b>+</b></a>
-                              </div>
-                      </div>
-                      <div class="card-body">
-                          <!--aqui vai a tabela-->
-                          <div class="table-responsive">
-                              <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                  <tr>
-                                    <th>Nome</th>
-                                    <th>CNPJ</th>
-                                    <th><center>Opção</center></th>
-                                  </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>CNPJ</th>
-                                        <th><center>Opção</center></th>
-                                    </tr>
-                                </tfoot>
-                                <tbody class="">                                  
-                                      <% 
-                                          ArrayList<Cliente> lista = new ArrayList();
-                                              try{
-                                                  Cliente buscar = new Cliente();   
+            <div class="card mb-3 text-center">
+                <div class="card-header form-inline text-center bg-dark text-white">
+                    <i class="fa fa-file-text" style="margin-right: 4px"></i>
+                    &nbsp;&nbsp; GERAR NOVO CONTRATO
+                </div>
+                <form class="form" method="get" action="contrato_voip.jsp">
+                    <div class="card-body col-md-6 container-fluid" style="margin-top: 15%;">
+                            <% 
+                                ArrayList<Cliente> lista = new ArrayList();
+                                    try{
+                                        Cliente buscar = new Cliente();   
 
-                                                  lista = buscar.findAll();
-                                              }catch(Exception e){
-                                                  out.print("Erro:"+e);
-                                              }                                                
-                                          for(Cliente cliente:lista){
-                                      %>
-                                              <tr>
-                                                  <td>
-                                                      <center><%= cliente.getNomeFantasia() %></center>
-                                                  </td>
-                                                  <td>
-                                                      <center><%= cliente.getCnpj() %></center>
-                                                  </td>
-                                                  <td>
-                                                      <a class="btn btn-primary col-md-3" href="visualizar_cliente.jsp?id=<%= cliente.getId() %>&nome=<%= cliente.getNomeFantasia() %>" style="margin: 2px;">
-                                                          <span class="fa fa-eye"></span>
-                                                      </a>
-                                                      <a class="btn btn-primary col-md-3" href="alterar_cliente.jsp?id=<%= cliente.getId() %>" style=" margin: 2px;">
-                                                          <span class="fa fa-pencil"></span>
-                                                      </a>
-                                                      <a class="btn btn-danger col-md-3" href="#" onclick="excluir('<%= cliente.getNomeFantasia() %>', <%= cliente.getId() %>)" style="margin: 2px;">
-                                                          <span class="fa fa-trash"></span>
-                                                      </a>
-                                                  </td>
-                                              </tr>  
-                                      <%
-                                          }
-                                      %>
-                                </tbody>
-                              </table>
-                          </div>
-                      </div>
-                  </div>
+                                        lista = buscar.findAll();
+                                    }catch(Exception e){
+                                        out.print("Erro:"+e);
+                                    }                      
+                                    %>
+                            <select name="cliente" class="form-control form-control-lg">
+                            <%
+                                for(Cliente cliente:lista){
+                                    if(cliente.getServicoContratado().equalsIgnoreCase("VoIP") || cliente.getServicoContratado().equalsIgnoreCase("VoIP e Internet")){
+                            %>
+                                        <option value="<%=cliente.getId() %>"><%= cliente.getNomeFantasia()%></option>
+                            <%
+                                    }
+                                }
+                            %>
+                            </select>
+                            <button class="btn btn-primary col-md-3" href="perfil.jsp" style=" margin: 10%; margin-bottom: 28%; padding: 15px; font-size: 14pt;">
+                                <i class="fa fa-gear"></i>
+                                <strong>GERAR</strong>
+                            </button>
+                    </div>
+                    
+                </form>
             </div>
       </div>
-              <!-- /.content-wrapper-->
-              <footer class="sticky-footer">
-                <div class="container">
-                  <div class="text-center">
-                    <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                  </div>
-                </div>
-              </footer>
-              <!-- Scroll to Top Button-->
-              <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fa fa-angle-up"></i>
-              </a>
+            
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
             <!-- Page level plugin JavaScript-->

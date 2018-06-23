@@ -13,6 +13,7 @@ public class Perfil {
     private int status;
     private String perfil;
     private int[] menu;
+    int i = 0;
         
     public String getPerfil() {
         return perfil;
@@ -42,8 +43,9 @@ public class Perfil {
         return menu;
     }
 
-    public void setMenu(int[] menu) {
-        this.menu = menu;
+    public void setMenu(int menu) {
+        this.menu[i] = menu;
+        i++;
     }
     
     public void adicionarMenu(int menu, int posicao){
@@ -67,6 +69,11 @@ public class Perfil {
     public ArrayList<Perfil> findAll() throws Exception{   
         DAOperfil dao = new DAOperfil();
         return dao.findAll();
+    }
+    //Read
+    public Perfil findForName() throws Exception{   
+        DAOperfil dao = new DAOperfil();
+        return dao.findForName(perfil);
     }
     
     public Perfil findForID(int id) throws Exception{

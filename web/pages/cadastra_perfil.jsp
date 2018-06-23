@@ -10,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head> 
     <meta http-equiv="Content-Type" content="text/html;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,13 +30,12 @@
     
     <script>
         var cont = 0;
-        function moverItemSelecionado(objnome, de, para, acao) {
-	para = jQuery('#' + para);
-        
-	jQuery('#' + de).find('option:selected').each(function(i, fromel) {
+        function moverItemSelecionado(de, para, acao) {
+	para = jQuery('#' + para);        
+	jQuery('#' + de).find('option:selected').each(function(s, fromel) {
 		var notApp = true;
 		para.find('option').each(function(j, toel) {
-			if (toel.innerHTML.toLowerCase() > fromel.innerHTML.toLowerCase()) {
+			if (toel.innerHTML.toLowerCase() <= fromel.innerHTML.toLowerCase()) {
 				jQuery(toel).before(fromel);
 				notApp = false;
 				return false;
@@ -47,24 +46,37 @@
 		}
 		fromel = jQuery(fromel);
 		if (acao.toLowerCase() === 'add') {
-                        if(cont < fromel.val()){
-                            cont = fromel.val();
-                        }
+                        cont = cont + 1;
 			jQuery(this)
 				.closest('form')
-				.append("<input name='" + objnome + fromel.val() + "' id='" + objnome + '_' + fromel.val()
-					+ "' value='" + fromel.val() + "' type='hidden'>"
+				.append("<input name='menu" + cont + "' id='menu_" + cont
+					+ "' value='" + fromel.val() + "' type='hidden' class='menu_" + fromel.val() + "'>"
 				);
-                                document.getElementById('cont').value = cont;
+                                document.getElementById('cont').value = cont;                                
 		}
 		else if (acao.toLowerCase() === 'rmv') {
-			jQuery('#' + objnome + '_' + fromel.val()).remove();
+                        
+			jQuery('.menu_' + fromel.val()).remove();
+                    
+                    u = 1;
+                    for(i = 1; i <= cont; i++){
+                        name = "'menu"+(i)+"'";
+                        id = "'menu_"+(i)+"'";
+                        
+                        if($("#menu_" + u).val() !== null){
+                            jQuery("#menu_" + u).attr("name", name);
+                            jQuery("#menu_" + u).attr("id", id);
+                            u++;
+                        }else{
+                            i = i - 1;
+                        }
+                    };
+                    cont = cont - 1;  
+                    document.getElementById('cont').value = cont;
 		}
 	});
-
 	return true;
-}
-   
+    }
     </script>
     
 </head>
@@ -136,8 +148,8 @@
                                     
                                     
                                 <div class="col-md-2" style="color: white;">
-                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menu', 'menudireita', 'menuesquerda', 'add' )" style="width: 90px; margin-top: 12%;">adicionar</a>
-                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menu', 'menuesquerda', 'menudireita', 'rmv' )" style="width: 90px; margin-top: 12%;">remover</a>
+                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menudireita', 'menuesquerda', 'add' )" style="width: 90px; margin-top: 12%;">adicionar</a>
+                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menuesquerda', 'menudireita', 'rmv' )" style="width: 90px; margin-top: 12%;">remover</a>
                                 </div>
                                     
                                     

@@ -41,7 +41,7 @@ public class DAOperfil {
                 for(int i = 1; i < perfil.getMenu().length; i++){
                     pstm = con.prepareStatement(sqlMenuPerfil);
                     pstm.setInt(1, perfil.getMenu()[i]);
-                    pstm.setInt(2, perfil.getID(perfil.getPerfil()));
+                    pstm.setInt(2, perfil.findForName().getId());
                     pstm.executeUpdate();
                     pstm.close();
                     
@@ -103,6 +103,26 @@ public class DAOperfil {
             
         } catch (SQLException ex) {
             System.err.println("PERFIL Erro ao buscar por ID: " + ex);
+        }
+        return perfil;
+    }
+    public Perfil findForName(String name){
+        Perfil perfil = new Perfil();
+        String sql = "SELECT * FROM perfil WHERE perfil = ?;";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, name);
+            
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                perfil.setId(rs.getInt("idPerfil"));
+                perfil.setPerfil(rs.getString("PERFIL"));
+                perfil.setStatus(rs.getInt("STATUS"));
+            }
+            ConnectionDB.closeConnection(con, pstm, rs); //fecha
+            
+        } catch (SQLException ex) {
+            System.err.println("PERFIL Erro ao buscar por NOME: " + ex);
         }
         return perfil;
     }

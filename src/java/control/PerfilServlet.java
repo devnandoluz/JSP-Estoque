@@ -54,15 +54,11 @@ public class PerfilServlet extends HttpServlet {
                 case "insert":{
                     
                     int cont = (Integer.parseInt(request.getParameter("cont")));
-                    out.print(request.getParameter("menu"+1));//pagar
-                    int posicao = 0;
-                    int[] menu = new int[cont];
-                    for(int i = 1; i <= cont + 1; i++){
-                        if(((request.getParameter("menu"+i)) != null)){
-                            menu[posicao] = (Integer.parseInt(request.getParameter("menu"+i)));
+                    for(int i = 0; i <= cont; i++){
+                        if((Integer.parseInt((request.getParameter("'menu"+i+"'"))) != 0)){
+                            perfil.setMenu(Integer.parseInt(request.getParameter("menu"+i)));
                         }
                     }
-                    perfil.setMenu(menu);
                     perfil.setPerfil(request.getParameter("perfil"));
                     perfil.setStatus(Integer.parseInt(request.getParameter("status")));
                     perfil.insert();
