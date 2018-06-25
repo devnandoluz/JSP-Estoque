@@ -43,7 +43,7 @@ public class DAOperfil {
                     pstm.setInt(1, perfil.getMenu().get(i).getId());
                     pstm.setInt(2, perfil.findForName().getId());
                     pstm.executeUpdate();
-                    pstm.close();                    
+                    pstm.close();
                 }
             }catch(SQLException e){
                 System.err.println("erro ao salvar MENU " + e);
@@ -87,6 +87,7 @@ public class DAOperfil {
     
     public Perfil findForID(int id){
         Perfil perfil = new Perfil();
+        DAOmenu mp = new DAOmenu();
         String sql = "SELECT * FROM perfil WHERE idPERFIL = ?;";
         try {
             pstm = con.prepareStatement(sql);
@@ -97,12 +98,14 @@ public class DAOperfil {
                 perfil.setId(rs.getInt("idPerfil"));
                 perfil.setPerfil(rs.getString("PERFIL"));
                 perfil.setStatus(rs.getInt("STATUS"));
+                perfil.setMenu(mp.findForUse(id));
             }
             ConnectionDB.closeConnection(con, pstm, rs); //fecha
             
         } catch (SQLException ex) {
             System.err.println("PERFIL Erro ao buscar por ID: " + ex);
         }
+        
         return perfil;
     }
     public Perfil findForName(String name){

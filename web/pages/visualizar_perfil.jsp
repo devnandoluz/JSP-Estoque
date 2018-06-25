@@ -82,10 +82,39 @@
                                             <tr>
                                                 <th> Status: </th><td><%= perfil.getStatus()%></td>
                                             </tr>
+                                                                                
+                                </table>
+                                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="bg-primary text-white">
+                                    <tr>
+                                      <th>Menu</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot class="bg-primary text-white">
+                                      <tr>
+                                        <th>Menu</th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <%
+                                        ArrayList<Menu> listaMenu2 = new ArrayList();
+                                        try{
+                                            Menu buscarVisualizarMenu = new Menu();
+                                            listaMenu2 = buscarVisualizarMenu.findForUse(perfil.getId());
+                                        }catch(Exception e){
+                                            out.print("<script>alert('Erro:"+e+"')</script>");
+                                        }
+                                        for(Menu menu12:listaMenu2){
+                                              if(menu12.getStatus() != 0){
+                                    %>
                                             <tr>
-                                                <th> Menu: </th><td> <%= perfil.getMenu()%></td>
+                                                <td><%= menu12.getMenu() %></td>
                                             </tr>
-                                    
+                                    <%
+                                              }
+                                        }
+                                    %>
+                                    </tbody>
                                 </table>
                                             
                                             <div class="text-center">

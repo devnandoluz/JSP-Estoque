@@ -28,6 +28,56 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <script>
+        var cont = 0;
+        function moverItemSelecionado(de, para, acao) {
+	para = jQuery('#' + para);        
+	jQuery('#' + de).find('option:selected').each(function(s, fromel) {
+		var notApp = true;
+		para.find('option').each(function(j, toel) {
+			if (toel.innerHTML.toLowerCase() <= fromel.innerHTML.toLowerCase()) {
+				jQuery(toel).before(fromel);
+				notApp = false;
+				return false;
+			}
+		});
+		if (notApp) {
+			para.append(fromel);
+		}
+		fromel = jQuery(fromel);
+		if (acao.toLowerCase() === 'add') {
+                        cont = cont + 1;
+			jQuery(this)
+				.closest('form')
+				.append("<input name='menu" + cont + "' id='menu_" + cont
+					+ "' value='" + fromel.val() + "' type='hidden' class='menu_" + fromel.val() + "'>"
+				);
+                                document.getElementById('cont').value = cont;                                
+		}
+		else if (acao.toLowerCase() === 'rmv') {
+                        
+                    jQuery('.menu_' + fromel.val()).remove();
+                    
+                    u = 1;
+                    for(i = 1; i <= cont; i++){
+                        name = "'menu"+(i)+"'";
+                        id = "'menu_"+(i)+"'";
+                        
+                        if($("#menu_" + u).val() !== null){
+                            jQuery("#menu_" + u).attr("name", name);
+                            jQuery("#menu_" + u).attr("id", id);
+                            u++;
+                        }else{
+                            i = i - 1;
+                        }
+                    };
+                    cont = cont - 1;  
+                    document.getElementById('cont').value = cont;
+		}
+	});
+	return true;
+    }
+    </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -69,25 +119,75 @@
                         Perfil perfil = buscar.findForID(Integer.parseInt(id));
                     %>
                     <div class="row">
+                        
+                        
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME</label>
-                            <input value="<%= perfil.getPerfil() %>" name="perfil"  type="text" class="form-control" placeholder="Nome do PERFIL..." data-error="Este campo é necessário." required>
-                            <div class="help-block with-errors"></div>
+                            <input name="perfil" value="<%= perfil.getPerfil() %>" type="text" class="form-control" placeholder="Nome do PERFIL" autofocus required>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">STATUS</label>
-                            <input value="<%= perfil.getStatus() %>" name="status" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo é necessário." required>
-<!--                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
-                            Desativado
-                            <input name="servico_contratado" type="checkbox" class="form-control" value="0" data-error="Este campo é necessário." required>
-                            Ativado-->
-                            <div class="help-block with-errors"></div>
+                            <input name="status" value="<%= perfil.getStatus() %>" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo é necessário." required>
                         </div>
-                        <div class="form-group col-md-12">
-                            <label class="form-label">MENU</label>
-                            <input name="menu" type="text" class="form-control" placeholder="Nome do MENU...">
-                            <div class="help-block with-errors"></div>
-                        </div>
+                        <!-------------------------------- MENU ------------------------------------>
+                        <div class="col-md-12"><strong><i class="fa fa-link" style="margin-left: 14px"></i> MENU</strong></div>
+                            <div class="form-inline form-group col-md-12 text-center">
+                                <div class="form-group col-md-5">
+                                    <label class="form-label small">DISPONÍVEL</label>
+                                    <select class="form-control col-md-12" name="menudireita" id="menudireita" size="6" autocomplete="off" multiple="multiple">
+                                        <%
+                                            ArrayList<Menu> lista = new ArrayList();
+
+                                            Menu buscarm = new Menu();
+                                            lista = buscarm.findAll();
+                                            int i = 1;
+                                            
+                                            while( i < lista.size()){
+                                                Menu menulista = null;
+                                                while( i < perfil.getMenu().size()){
+                                                    %>
+                                                    <option value="<%= menulista.getId() %>"><%= menulista.getMenu() %></option>
+                                                    <%
+                                                    i++;
+                                                }
+                                                i++;
+                                            }
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            for(Menu menulista1:lista){
+                                                            %>
+                                                            <option value="<%= menulista1.getId() %>"><%= menulista1.getMenu() %></option>
+                                                            <%
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                                    
+                                    
+                                    
+                                <div class="col-md-2" style="color: white;">
+                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menudireita', 'menuesquerda', 'add' )" style="width: 90px; margin-top: 12%;">adicionar</a>
+                                    <a class="btn btn-primary" onclick="moverItemSelecionado('menuesquerda', 'menudireita', 'rmv' )" style="width: 90px; margin-top: 12%;">remover</a>
+                                </div>
+                                    
+                                    
+                                <div class="form-group col-md-5">
+                                    <label class="form-label small">ADICIONADO</label>
+                                    <select class="form-control  col-md-12" id="menuesquerda" size="6" autocomplete="off" multiple="multiple">
+                                        <%
+                                        for(Menu menu:perfil.getMenu()){
+                                            %>
+                                            <option value="<%= menu.getId() %>"><%= menu.getMenu() %></option>
+                                            <%
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                            </div>
+                        
                     </div>
                     
                     <div class="form-group align-content-center">

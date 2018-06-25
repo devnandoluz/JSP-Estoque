@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Menu;
-import model.Usuario;
 
 /**
  *
@@ -76,7 +75,7 @@ public class DAOmenu {
         String sql = "SELECT * FROM `menu` INNER JOIN menu_perfil ON(menu.idmenu = menu_perfil.idmenu AND menu_perfil.idperfil = ?);";        
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setDouble(1, id);    
+            pstm.setDouble(1, id);
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Menu menu2 = new Menu();        

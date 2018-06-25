@@ -34,17 +34,47 @@
             ArrayList<Menu> listaMenu = new ArrayList();
               try{
                     Menu buscarM = new Menu();
-                    listaMenu = buscarM.findForUse(10);
+                    listaMenu = buscarM.findForUse(usuario.getPerfil().getId());
               }catch(Exception e){
                   out.print("Erro:"+e);
               }                              
-            for(Menu menu12:listaMenu){ %>
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
-                <a class="nav-link" href="<%=menu12.getLink()%>">
-                  <i class="fa fa-fw <%=menu12.getIcone()%> "></i>
-                  <span class="nav-link-text"><%=menu12.getMenu()%></span>
-                </a>
-              </li>
+            for(Menu menu12:listaMenu){ 
+                if(menu12.getStatus() != 0){
+        %>
+            
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
+                      <a class="nav-link" href="<%=menu12.getLink()%>">
+                        <i class="fa fa-fw <%=menu12.getIcone()%> "></i>
+                        <span class="nav-link-text"><%=menu12.getMenu()%></span>
+                      </a>
+                    </li>
+        <%            
+            }
+        }
+        if(usuario.getPerfil().getId() == 1){
+        %>
+            
+                   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pagina Root">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRoot" data-parent="#collapseRoot">
+                      <i class="fa fa-fw fa-hashtag"></i>
+                      <span class="nav-link-text">Root</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseRoot">
+                      <li>
+                        <a href="menu.jsp">
+                            <i class="fa fa-fw fa-link"></i>
+                            Menu
+                        </a>
+                      </li>
+                      <li>
+                        <a href="perfil.jsp">
+                            <i class="fa fa-fw fa-vcard"></i>
+                            Perfil
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+              
         <%
             }
         %>        
@@ -94,26 +124,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pagina Root">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRoot" data-parent="#collapseRoot">
-            <i class="fa fa-fw fa-hashtag"></i>
-            <span class="nav-link-text">Root</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseRoot">
-            <li>
-              <a href="menu.jsp">
-                  <i class="fa fa-fw fa-link"></i>
-                  Menu
-              </a>
-            </li>
-            <li>
-              <a href="perfil.jsp">
-                  <i class="fa fa-fw fa-vcard"></i>
-                  Perfil
-              </a>
-            </li>
-          </ul>
-        </li>
+        
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

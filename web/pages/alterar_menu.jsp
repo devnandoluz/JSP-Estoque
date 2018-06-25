@@ -83,6 +83,7 @@
                         <div class="form-group col-md-6">
                             <label class="form-label">ICONE</label>
                             <input value="<%= menu.getIcone() %>" name="icone" type="text" class="form-control" placeholder="font-awesome(Ex: fa-icon)" >
+                            <a href="https://fontawesome.com/v4.7.0/icons/" target="_blank"><small id="Help" class="form-text text-muted"> Ver lista de icones.</small></a>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">LINK</label>
