@@ -20,11 +20,9 @@
     <title>Altera Perfil - Gente Telecom</title>
     <!-- Bootstrap core CSS-->
     <link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom fonts for this template-->
     <link href="../resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Page level plugin CSS-->
     <link href="../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    <!-- Custom styles for this template-->
+    
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
@@ -137,30 +135,33 @@
                                     <select class="form-control col-md-12" name="menudireita" id="menudireita" size="6" autocomplete="off" multiple="multiple">
                                         <%
                                             ArrayList<Menu> lista = new ArrayList();
-
                                             Menu buscarm = new Menu();
-                                            lista = buscarm.findAll();
-                                            int i = 1;
-                                            
-                                            while( i < lista.size()){
-                                                Menu menulista = null;
-                                                while( i < perfil.getMenu().size()){
-                                                    %>
-                                                    <option value="<%= menulista.getId() %>"><%= menulista.getMenu() %></option>
-                                                    <%
-                                                    i++;
-                                                }
-                                                i++;
-                                            }
-                                            
-                                            
-                                            
-                                            
-                                            
+                                            lista = buscarm.findAll();                             
                                             for(Menu menulista1:lista){
-                                                            %>
-                                                            <option value="<%= menulista1.getId() %>"><%= menulista1.getMenu() %></option>
-                                                            <%
+                                                
+                                                if(perfil.getMenu().size() != 0){
+                                                    int i = 0;
+                                                    int ex = 0;
+                                                    
+                                                    while(i < perfil.getMenu().size()){
+                                                        if(perfil.getMenu().get(i).getMenu().equalsIgnoreCase(menulista1.getMenu())){
+                                                            ex++;
+                                                        }
+                                                        i++;
+                                                    }
+                                                    if(ex != 0){
+                                                        //nada a fazer!
+                                                    }else{
+                                                        %>
+                                                        <option value="<%= menulista1.getId() %>"><%= menulista1.getMenu() %></option>
+                                                        <%
+                                                    }
+                                                    
+                                                }else{
+                                                    %>
+                                                    <option value="<%= menulista1.getId() %>"><%= menulista1.getMenu() %></option>
+                                                    <%
+                                                }
                                             }
                                         %>
                                     </select>

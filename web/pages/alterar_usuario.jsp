@@ -38,28 +38,24 @@
     <script>
         function MudarForm() {          
             var x = document.getElementById('divFuncionario');
-            if(x.className === 'col-md-10'){
-                x.className='col-md-7';
-                document.getElementById('divUsuario').style.display = 'block';
-                document.getElementById('foo').checked = true;
-                $('html, body').stop().animate({
-                  scrollTo: $('#page-top').offset().top
-                }, 1000, 'easeInOutExpo' );
-                document.getElementById('inputUsername').focus();
-            }else{
-                x.className='col-md-10';  
-                document.getElementById('divUsuario').style.display = 'none';                
-            }
+                if(x.className === 'col-md-10'){
+                    x.className='col-md-7';
+                    document.getElementById('divUsuario').style.display = 'block';
+                    document.getElementById('foo').checked = true;
+                    $('html, body').stop().animate({
+                      scrollTo: $('#page-top').offset().top
+                    }, 1000, 'easeInOutExpo' );
+                    document.getElementById('inputUsername').focus();
+                }else{
+                    x.className='col-md-10';  
+                    document.getElementById('divUsuario').style.display = 'none';                
+                }
         }
     </script>
-</head>
-<%
-    HttpSession sessao1 = request.getSession();
-    Funcionario buscar = new Funcionario();
-    Funcionario funcionario = buscar.findForUser((Usuario)sessao1.getAttribute("usuario"));
-%>
-<body  onload="MudarForm();"  class="fixed-nav sticky-footer bg-dark" id="page-top">
     
+</head>
+<body  onload="MudarForm();"  class="fixed-nav sticky-footer bg-dark" id="page-top">
+   
   <!-- Navigation-->
   <%@include file="menu/navigation.jsp" %>
     <div class="content-wrapper">
@@ -86,6 +82,12 @@
                 </div> 
                 <div class="card-body">
                     <div class="col-md-12">
+                        <%
+                            if(Integer.parseInt(id) != 1){
+                                HttpSession sessao1 = request.getSession();
+                                Funcionario buscar = new Funcionario();
+                                Funcionario funcionario = buscar.findForUser((Usuario)sessao1.getAttribute("usuario"));
+                        %>
                         <div>
                             <hr>
                             <center><h3 class="h5">ALTERE O FORMULARIO ABAIXO</h3></center>
@@ -229,6 +231,11 @@
                                 </center>
                             </div>
                         </form>
+                        <%
+                            }else{
+                                out.print("<script>alert('Algo está funcionando de forma errada, tente novamente!');location.href='../index.jsp';</script>");
+                            }
+                        %>
                     </div>
                 </div>          
             </div>

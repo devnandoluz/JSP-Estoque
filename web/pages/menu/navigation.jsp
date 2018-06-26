@@ -40,6 +40,61 @@
               }                              
             for(Menu menu12:listaMenu){ 
                 if(menu12.getStatus() != 0){
+                    if(menu12.getMenu().equalsIgnoreCase("Adicionar")){
+                        %>  
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Adicionar">
+                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAdicinar" data-parent="#collapseAdicinar">
+                            <i class="fa fa-fw fa-plus-square"></i>
+                            <span class="nav-link-text">Adicionar</span>
+                          </a>
+                          <ul class="sidenav-second-level collapse" id="collapseAdicinar">
+                            <li>
+                                <a href="cadastra_cliente.jsp">
+                                    <i class="fa fa-fw fa-user-plus"></i>
+                                    <span class="nav-link-text">Cliente</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="cadastra_funcionario.jsp">
+                                    <i class="fa fa-fw fa-plus-square-o"></i>
+                                    <span class="nav-link-text">Funcionário</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="cadastra_produto.jsp">
+                                    <i class="fa fa-fw fa-cart-plus"></i>
+                                    <span class="nav-link-text">Produto</span>
+                                </a>
+                            </li>
+                          </ul>
+                        </li>
+          
+          <%
+                    }else{
+                    if(menu12.getMenu().equalsIgnoreCase("Gerar")){
+                        %>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gerar Contrato">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseGerarContrato" data-parent="#collapseGerarContrato">
+                          <i class="fa fa-fw fa-file-text"></i>
+                          <span class="nav-link-text">Gerar Contrato</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseGerarContrato">
+                          <li>
+                              <a href="gerar_contrato_voip.jsp">
+                                  <i class="fa fa-fw fa-file-text"></i>
+                                  VoIP
+                              </a>
+                          </li>
+                          <li>
+                              <a href="gerar_contrato_internet.jsp">
+                                  <i class="fa fa-fw fa-file-text"></i>
+                                  Internet
+                              </a>
+                          </li>
+                        </ul>
+                      </li>
+                        <%
+                    }else{
         %>
             
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
@@ -48,7 +103,10 @@
                         <span class="nav-link-text"><%=menu12.getMenu()%></span>
                       </a>
                     </li>
+                    
         <%            
+                    }
+                }
             }
         }
         if(usuario.getPerfil().getId() == 1){
@@ -77,54 +135,8 @@
               
         <%
             }
-        %>        
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Adicionar">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAdicinar" data-parent="#collapseAdicinar">
-            <i class="fa fa-fw fa-plus-square"></i>
-            <span class="nav-link-text">Adicionar</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseAdicinar">
-            <li>
-                <a href="cadastra_cliente.jsp">
-                    <i class="fa fa-fw fa-user-plus"></i>
-                    <span class="nav-link-text">Cliente</span>
-                </a>
-            </li>
-            <li>
-                <a href="cadastra_funcionario.jsp">
-                    <i class="fa fa-fw fa-plus-square-o"></i>
-                    <span class="nav-link-text">Funcionário</span>
-                </a>
-            </li>
-            <li>
-                <a href="cadastra_produto.jsp">
-                    <i class="fa fa-fw fa-cart-plus"></i>
-                    <span class="nav-link-text">Produto</span>
-                </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gerar Contrato">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseGerarContrato" data-parent="#collapseGerarContrato">
-            <i class="fa fa-fw fa-file-text"></i>
-            <span class="nav-link-text">Gerar Contrato</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseGerarContrato">
-            <li>
-                <a href="gerar_contrato_voip.jsp">
-                    <i class="fa fa-fw fa-file-text"></i>
-                    VoIP
-                </a>
-            </li>
-            <li>
-                <a href="gerar_contrato_internet.jsp">
-                    <i class="fa fa-fw fa-file-text"></i>
-                    Internet
-                </a>
-            </li>
-          </ul>
-        </li>
-        
+        %> 
+                
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

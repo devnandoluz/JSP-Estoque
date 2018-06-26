@@ -38,7 +38,7 @@
                 clearInterval(intervalo);
                 document.getElementById('loader').style.display = "none";
                 document.getElementById("corpo").style.display = "block";
-            }, 3000
+            }, 2000
             );
         }
     </script>

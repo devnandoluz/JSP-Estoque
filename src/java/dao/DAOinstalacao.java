@@ -11,24 +11,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Servico;
+import model.Instalacao;
 
 /**
  *
  * @author Nando Luz
  */
-public class DAOservico {
+public class DAOinstalacao {
      private final Connection con;
         private PreparedStatement pstm = null;
     
-    public DAOservico(){
+    public DAOinstalacao(){
         con = ConnectionDB.openConnection();
     }
        
     //Create (Salvar)
-    public boolean save(Servico servico){
+    public boolean save(Instalacao servico){
         
-        String sql = "INSERT INTO servico (tipo, valor, data_inicial, data_final) VALUES (?,?,?,?);";
+        String sql = "INSERT INTO instalacao (tipo, valor, data_inicial, data_final, cliente_idcliente) VALUES (?,?,?,?,?);";
         
         try {
             pstm = con.prepareStatement(sql);
@@ -36,11 +36,12 @@ public class DAOservico {
             pstm.setDouble(2, servico.getValor());
             pstm.setDate(3, (Date) servico.getData_inicial());
             pstm.setDate(4, (Date) servico.getData_final());
+            pstm.setInt(5, servico.getCliente().getId());
            
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao salvar: " + ex);
+            System.err.println("INSTALAÇÃO Erro ao salvar: " + ex);
             return false;
         } finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -48,9 +49,9 @@ public class DAOservico {
     }
     
     //Read (Ler)
-    public ArrayList<Servico> findAll(){
+    public ArrayList<Instalacao> findAll(){
         
-        ArrayList<Servico> listaDeClientes = new ArrayList();
+        ArrayList<Instalacao> listaDeClientes = new ArrayList();
         
         String sql = "SELECT * FROM servico;";
         
@@ -59,7 +60,7 @@ public class DAOservico {
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
-                Servico servico = new Servico();
+                Instalacao servico = new Instalacao();
                 servico.setId(rs.getInt("idServico"));
                 servico.setTipo(rs.getString("tipo"));
                 servico.setValor(rs.getDouble("valor"));
@@ -75,8 +76,8 @@ public class DAOservico {
         return listaDeClientes;
     }
     
-    public Servico findForID(int id){
-        Servico servico = new Servico();
+    public Instalacao findForID(int id){
+        Instalacao servico = new Instalacao();
         String sql = "SELECT * FROM servico WHERE idServico = ?;";
         try {
             pstm = con.prepareStatement(sql);
@@ -100,7 +101,7 @@ public class DAOservico {
     }
     
     //Update (Alterar)
-    public boolean update(Servico servico){
+    public boolean update(Instalacao servico){
         String sql = "UPDATE servico SET "
                 + "tipo = ?,"
                 + "valor = ?,"
@@ -126,7 +127,7 @@ public class DAOservico {
     }
     
     //Delete (Apagar)
-    public boolean delete(Servico servico){
+    public boolean delete(Instalacao servico){
         String sql = "DELETE FROM servico WHERE idServico = ?;";
         try {
             pstm = con.prepareStatement(sql);
@@ -141,4 +142,5 @@ public class DAOservico {
         }
         
     }
+
 }

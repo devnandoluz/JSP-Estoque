@@ -25,12 +25,9 @@ public class DAOperfil {
     }
        
     //Create (Salvar)
-    public boolean save(Perfil perfil) throws Exception{
-        
+    public boolean save(Perfil perfil) throws Exception{        
         String sql = "INSERT INTO perfil (perfil, status) VALUES (?,?);";
-        String sqlMenuPerfil = "INSERT INTO menu_perfil (idmenu, idperfil) VALUES (?,?);";
-        
-        
+        String sqlMenuPerfil = "INSERT INTO menu_perfil (idmenu, idperfil) VALUES (?,?);";        
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, perfil.getPerfil());
@@ -58,12 +55,9 @@ public class DAOperfil {
     }
     
     //Read (Ler)
-    public ArrayList<Perfil> findAll(){
-        
-        ArrayList<Perfil> listaDePerfil = new ArrayList();
-        
-        String sql = "SELECT * FROM perfil;";
-        
+    public ArrayList<Perfil> findAll(){        
+        ArrayList<Perfil> listaDePerfil = new ArrayList();        
+        String sql = "SELECT * FROM perfil;";        
         try {
             pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
@@ -75,13 +69,11 @@ public class DAOperfil {
                 perfil.setPerfil(rs.getString("PERFIL"));
                 perfil.setStatus(rs.getInt("STATUS"));
                 listaDePerfil.add(perfil);
-            }
-            
+            }            
             ConnectionDB.closeConnection(con, pstm, rs);
         } catch (SQLException ex) {
             System.err.println("PERFIL Erro ao buscar todos: " + ex);
-        }
-        
+        }        
         return listaDePerfil;
     }
     
@@ -151,6 +143,7 @@ public class DAOperfil {
     //Update (Alterar)
     public boolean update(Perfil perfil){
         String sql = "UPDATE perfil SET PERFIL = ?, STATUS = ? WHERE idPERFIL = ?;";
+        String sqlMenuPerfil = "INSERT INTO menu_perfil (idmenu, idperfil) VALUES (?,?);";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, perfil.getPerfil());

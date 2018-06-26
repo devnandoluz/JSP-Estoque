@@ -38,15 +38,18 @@
           <a href="home.jsp">Home</a>
         </li>
         <li class="breadcrumb-item active">Instalação</li>
-      </ol>
-            
+      </ol>            
       <div class="row">
           <div class="col-sm-12">
                 <div class="card mb-3">
-                    <div class="card-header bg-danger text-white">
-                        <i class="fa fa-wrench"></i>
-                        Instalação
+                    <div class="card-header bg-danger text-white form-inline">
+                        <i class="fa fa-wrench" style="margin-right: 4px"></i>
+                        INSTALAÇÃO
+                        <div class="navbar-nav ml-auto">
+                            <a class="btn btn-success" style="width: 40px; height: 40px;" href="cadastra_instalacao.jsp"><b>+</b></a>
+                        </div>
                     </div>
+                    
                     <div class="card-body">
                         <!--aqui vai a tabela-->
                         <div class="table-responsive">
@@ -76,29 +79,18 @@
                         </div>
                     </div>
                 </div>
-          </div>
-        
-        </div>
-        
+          </div>        
+        </div>        
     </div>
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                </div>
-              </div>
-            </footer>
+            <%@include file="rodape.jsp" %>
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>
             </a>
             <!-- Core plugin JavaScript-->
             <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Page level plugin JavaScript-->
             <script src="../resources/vendor/datatables/jquery.dataTables.js"></script>
             <script src="../resources/vendor/datatables/dataTables.bootstrap4.js"></script>
-            <!-- Custom scripts for all pages-->
             <script src="../resources/js/sb-admin.min.js"></script>
             <!-- Custom scripts for this page-->
             <script src="../resources/js/sb-admin-datatables.min.js"></script>

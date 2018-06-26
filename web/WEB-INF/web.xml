@@ -22,12 +22,12 @@
         <servlet-class>control.PerfilServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProdutoServlet</servlet-name>
-        <servlet-class>control.ProdutoServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>SegurancaServlet</servlet-name>
         <servlet-class>control.SegurancaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InstalacaoServlet</servlet-name>
+        <servlet-class>control.InstalacaoServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
@@ -50,12 +50,12 @@
         <url-pattern>/pages/gerenciar_perfil.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProdutoServlet</servlet-name>
-        <url-pattern>/pages/gerenciar_produto.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>SegurancaServlet</servlet-name>
         <url-pattern>/pages/gerenciar_seguranca.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InstalacaoServlet</servlet-name>
+        <url-pattern>/pages/gerenciar_Instalacao.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

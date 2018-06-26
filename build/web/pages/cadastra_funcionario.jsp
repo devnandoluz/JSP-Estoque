@@ -41,7 +41,7 @@
                 }, 1000, 'easeInOutExpo' );
                 document.getElementById('inputUsername').focus();
             }else{
-                x.className='col-md-12';  
+                x.className='col-md-12';
                 document.getElementById('divUsuario').style.display = 'none';
             }
         }
@@ -248,7 +248,7 @@
         <script src="../resources/js/validator.min.js"></script>
         <!-- Custom scripts for all pages-->
         <script src="../resources/js/sb-admin.min.js"></script>
-        <script src="../resources/vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script src="../resources/vendor/jquery/jquery.min.js" type="text/javascript"></script>
         <script src="../resources/vendor/jquery/jquery.mask.min.js"></script>
         <!--datepicker-->
         <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>

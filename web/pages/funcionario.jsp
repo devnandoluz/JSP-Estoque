@@ -60,6 +60,7 @@
                             <a class="btn btn-success" style="width: 40px; height: 40px;" href="cadastra_funcionario.jsp"><b>+</b></a>
                         </div>
                     </div>
+                    
                     <div class="card-body">
                         <!--aqui vai a tabela-->
                         <div class="table-responsive">

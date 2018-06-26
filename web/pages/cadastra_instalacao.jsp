@@ -39,17 +39,69 @@
         </li>
         <li class="breadcrumb-item active">Adicionar > Instalação</li>
       </ol>
+      <div class="card mb-3">
+            <div class="card-header bg-danger text-white form-inline">
+                <div class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <i class="fa fa-wrench" style="margin-right: 4px"></i>
+                    <i class="fa fa-plus" style="margin-right: 4px"></i>
+                    NOVA INSTALAÇÃO
+                    <div class="navbar-nav ml-auto" style="width: 40px; height: 40px;">                                
+                    </div>
+                </div>                
+            </div> 
+        <div class="card-body">
+          <div class="col-md-12">
+              <div>
+                  <hr>
+                  <center><h3 class="h5">PREENCHA O FORMULARIO ABAIXO</h3></center>
+                  <hr>
+                  <br>
+              </div>                  
+              <form id="formCliente" data-toggle="validator" role="form" method="get" action="gerenciar_instalacao.do">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="form-label">TIPO</label>
+                            <input name="tipo"  type="text" class="form-control" placeholder="Tipo da instalação" data-error="Este campo é necessário." required>
+                            <div class="help-block with-errors"></div>
+                        </div>                       
+                        <div class="form-group col-md-4">
+                            <label class="form-label">VALOR</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </span>
+                                <input name="valor"  type="text" class="form-control" placeholder="0.00" data-error="Este campo é necessário.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="form-label">CLIENTE</label>
+                            <select name="cliente" class="form-control" required>
+                                <option value="Outro" selected disabled>Selecione</option>
+                                <option value="Construção"><%%></option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group align-content-center">
+                        <center>
+                            <button class="btn btn-success col-md-3" name="option" value="insert" style="margin: 2px;">
+                                <i class="fa fa-plus"></i> 
+                                CADASTRAR
+                            </button>
+                            <a class="btn btn-primary col-md-3" href="instalacao.jsp" style="margin: 2px;">
+                                <i class="fa fa-reply"></i>
+                                CANCELAR
+                            </a>
+                        </center>
+                    </div>
+                </form>
+          </div>
+      </div>
+    </div>
             
     </div>
-            <!-- /.container-fluid-->
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Gente Telecom do Brasil © 2018 Todos os Direitos Reservados</small>
-                </div>
-              </div>
-            </footer>
+            <%@include file="rodape.jsp" %>
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
               <i class="fa fa-angle-up"></i>
