@@ -78,17 +78,14 @@ public class DAOmenu {
             pstm.setDouble(1, id);
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
-                Menu menu2 = new Menu();        
-                int i = 1;
-                
+                Menu menu2 = new Menu();   
+                menu2.setId(rs.getInt("IDmenu"));
                 menu2.setMenu(rs.getString("MENU"));
                 menu2.setLink(rs.getString("LINK"));
                 menu2.setIcone(rs.getString("icone"));
                 menu2.setStatus(rs.getInt("STATUS"));
                 
                 listaDeMenu.add(menu2);
-                
-                System.out.println("entrou" + i);
             }
             ConnectionDB.closeConnection(con, pstm, rs);
         } catch (SQLException ex) {
@@ -101,7 +98,7 @@ public class DAOmenu {
         String sql = "SELECT * FROM menu WHERE idMENU = ?;";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, id);            
+            pstm.setInt(1, id);
             ResultSet rs = pstm.executeQuery();            
             while(rs.next()){
                 menu.setId(rs.getInt("idMENU"));

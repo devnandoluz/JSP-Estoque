@@ -64,13 +64,13 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label class="form-label">NOME</label>
-                            <input name="nome"  type="text" class="form-control" placeholder="Nome do PRODUTO..." data-error="Este campo é necessário." required>
+                            <input name="nome"  type="text" class="form-control" placeholder="Nome do PRODUTO" data-error="Este campo é necessário." autofocus required>
                             <div class="help-block with-errors"></div>
                         </div>
                         
                         <div class="form-group col-md-4">
                             <label class="form-label">QUANTIDADE</label>
-                            <input name="quantidade"  type="number" class="form-control" placeholder="Quantidade do PRODUTO..." data-error="Este campo é necessário." required>
+                            <input name="quantidade"  type="number" class="form-control" placeholder="Quantidade do PRODUTO" data-error="Este campo é necessário." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-4">

@@ -14,7 +14,7 @@ import model.Perfil;
 
 /**
  *
- * @author Nando Luzy
+ * @author Nando Luz
  */
 public class DAOperfil {
     private final Connection con;
@@ -141,15 +141,26 @@ public class DAOperfil {
     }
     
     //Update (Alterar)
-    public boolean update(Perfil perfil){
+    public boolean update(Perfil perfil) throws Exception{
         String sql = "UPDATE perfil SET PERFIL = ?, STATUS = ? WHERE idPERFIL = ?;";
         String sqlMenuPerfil = "INSERT INTO menu_perfil (idmenu, idperfil) VALUES (?,?);";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, perfil.getPerfil());
             pstm.setInt(2, perfil.getStatus());
-            pstm.setInt(3, perfil.getId());
+            pstm.setInt(3, perfil.getId());            
             pstm.executeUpdate();
+            try{
+                for(int i = 0; i < perfil.getMenu().size(); i++){
+                    pstm = con.prepareStatement(sqlMenuPerfil);
+                    pstm.setInt(1, perfil.getMenu().get(i).getId());
+                    pstm.setInt(2, perfil.findForName().getId());
+                    pstm.executeUpdate();
+                    pstm.close();
+                }
+            }catch(SQLException e){
+                System.err.println("erro ao salvar MENU " + e);
+            }
             return true;
         } catch (SQLException ex) {
             System.err.println("PERFIL Erro ao alterar: " + ex);

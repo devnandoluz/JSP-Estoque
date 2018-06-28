@@ -14,7 +14,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html id="pa1">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -32,18 +32,10 @@
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
     
-    <script type="text/javascript">
-        $(window).on('load', function(){
-            document.getElementById('loader').style.display = "none";
-            document.getElementById("corpo").style.display = "block";
-        });
-    </script>
+    
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-    
-  <div id="loader"></div>
-  <div id="corpo">
     <!-- Navigation-->
     <%@include file="menu/navigation.jsp" %>
     <div class="content-wrapper">
@@ -183,15 +175,13 @@
                       <div class="card-footer small text-muted">Atualizado: <%=dataFormatada%></div>
                   </div>
               </div>
-
-
               <!--  Gráfico de pizza Card-->
               <div class="col-lg-4">
                   <div class="card mb-3">
                     <div class="card-header">
                       <i class="fa fa-pie-chart"></i> Serviços Contratados </div>
                     <div class="card-body">
-                      <canvas id="ServicoContratado" width="100%" height="100"></canvas>
+                      <canvas id="ServicoContratado" width="100%" height="70"></canvas>
                     </div>
                     <div class="card-footer small text-muted">Atualizado: <%=dataFormatada%></div>
                   </div>
@@ -348,22 +338,12 @@
           }
         }
       });
-      
-      
-      
-      
-      
-      
       // -- Gráfico de pizza
       var ctx = document.getElementById("ServicoContratado");
-      
-      
       var internet = <%=internet%>;
       var voip = <%=voip%>;
       var voip_internet = <%=voip_internet%>;
       var cancelamento = <%=cancelamento%>;
-      
-      
       var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -375,6 +355,5 @@
         },
       });
   </script>
-  </div>
 </body>
 </html>

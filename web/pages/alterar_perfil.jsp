@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="model.Perfil"%>
-<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
     String id = request.getParameter("id");
@@ -125,13 +125,13 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">STATUS</label>
-                            <input name="status" value="<%= perfil.getStatus() %>" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo È necess·rio." required>
+                            <input name="status" value="<%= perfil.getStatus() %>" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo √© necess√°rio." required>
                         </div>
                         <!-------------------------------- MENU ------------------------------------>
                         <div class="col-md-12"><strong><i class="fa fa-link" style="margin-left: 14px"></i> MENU</strong></div>
                             <div class="form-inline form-group col-md-12 text-center">
                                 <div class="form-group col-md-5">
-                                    <label class="form-label small">DISPONÕVEL</label>
+                                    <label class="form-label small">DISPON√çVEL</label>
                                     <select class="form-control col-md-12" name="menudireita" id="menudireita" size="6" autocomplete="off" multiple="multiple">
                                         <%
                                             ArrayList<Menu> lista = new ArrayList();
@@ -181,7 +181,7 @@
                                         <%
                                         for(Menu menu:perfil.getMenu()){
                                             %>
-                                            <option value="<%= menu.getId() %>"><%= menu.getMenu() %></option>
+                                            <option value="<%=menu.getId() %>"><%= menu.getMenu() %></option>
                                             <%
                                             }
                                         %>
@@ -193,6 +193,8 @@
                     
                     <div class="form-group align-content-center">
                         <center>
+                            
+                            <input type="hidden" name="cont" id="cont" value="0">
                             <input name="id" type="hidden" value="<%=id%>">
                             <button class="btn btn-success col-md-3" name="option" value="update" style="margin: 2px;">
                                 <i class="fa fa-pencil"></i> 

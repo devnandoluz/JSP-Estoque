@@ -13,7 +13,6 @@
     Neste Menu está:
     *Bootstrap core JavaScript
 -->
-
 <%
     HttpSession sessao = request.getSession();
     Usuario usuario = null;
@@ -32,111 +31,109 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <%        
             ArrayList<Menu> listaMenu = new ArrayList();
-              try{
+                try{
                     Menu buscarM = new Menu();
                     listaMenu = buscarM.findForUse(usuario.getPerfil().getId());
-              }catch(Exception e){
-                  out.print("Erro:"+e);
-              }                              
-            for(Menu menu12:listaMenu){ 
-                if(menu12.getStatus() != 0){
-                    if(menu12.getMenu().equalsIgnoreCase("Adicionar")){
-                        %>  
-                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Adicionar">
-                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAdicinar" data-parent="#collapseAdicinar">
-                            <i class="fa fa-fw fa-plus-square"></i>
-                            <span class="nav-link-text">Adicionar</span>
-                          </a>
-                          <ul class="sidenav-second-level collapse" id="collapseAdicinar">
-                            <li>
-                                <a href="cadastra_cliente.jsp">
-                                    <i class="fa fa-fw fa-user-plus"></i>
-                                    <span class="nav-link-text">Cliente</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="cadastra_funcionario.jsp">
-                                    <i class="fa fa-fw fa-plus-square-o"></i>
-                                    <span class="nav-link-text">Funcionário</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="cadastra_produto.jsp">
-                                    <i class="fa fa-fw fa-cart-plus"></i>
-                                    <span class="nav-link-text">Produto</span>
-                                </a>
-                            </li>
-                          </ul>
-                        </li>
-          
-          <%
-                    }else{
-                    if(menu12.getMenu().equalsIgnoreCase("Gerar")){
-                        %>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gerar Contrato">
-                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseGerarContrato" data-parent="#collapseGerarContrato">
-                          <i class="fa fa-fw fa-file-text"></i>
-                          <span class="nav-link-text">Gerar Contrato</span>
-                        </a>
-                        <ul class="sidenav-second-level collapse" id="collapseGerarContrato">
-                          <li>
-                              <a href="gerar_contrato_voip.jsp">
-                                  <i class="fa fa-fw fa-file-text"></i>
-                                  VoIP
-                              </a>
-                          </li>
-                          <li>
-                              <a href="gerar_contrato_internet.jsp">
-                                  <i class="fa fa-fw fa-file-text"></i>
-                                  Internet
-                              </a>
-                          </li>
-                        </ul>
-                      </li>
-                        <%
-                    }else{
-        %>
-            
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
-                      <a class="nav-link" href="<%=menu12.getLink()%>">
-                        <i class="fa fa-fw <%=menu12.getIcone()%> "></i>
-                        <span class="nav-link-text"><%=menu12.getMenu()%></span>
-                      </a>
-                    </li>
+                }catch(Exception e){
+                    out.print("Erro:"+e);
+                }
+            for(Menu menu12:listaMenu){
+                if(menu12.getStatus() != 0 ){
+                    if(menu12.getLink().equalsIgnoreCase("cliente.jsp") || menu12.getLink().equalsIgnoreCase("funcionario.jsp") || menu12.getLink().equalsIgnoreCase("estoque.jsp") || menu12.getLink().equalsIgnoreCase("instalacao.jsp")){
                     
-        <%            
+                    }else{
+                        if(menu12.getMenu().equalsIgnoreCase("Adicionar")){
+                            %>  
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Adicionar">
+                              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAdicinar" data-parent="#collapseAdicinar">
+                                <i class="fa fa-fw fa-plus-square"></i>
+                                <span class="nav-link-text">Adicionar</span>
+                              </a>
+                              <ul class="sidenav-second-level collapse" id="collapseAdicinar">
+                                <li>
+                                    <a href="cadastra_cliente.jsp">
+                                        <i class="fa fa-fw fa-user-plus"></i>
+                                        <span class="nav-link-text">Cliente</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="cadastra_funcionario.jsp">
+                                        <i class="fa fa-fw fa-plus-square-o"></i>
+                                        <span class="nav-link-text">Funcionário</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="cadastra_produto.jsp">
+                                        <i class="fa fa-fw fa-cart-plus"></i>
+                                        <span class="nav-link-text">Produto</span>
+                                    </a>
+                                </li>
+                              </ul>
+                            </li>
+              <%
+                        }else{
+                        if(menu12.getMenu().equalsIgnoreCase("Gerar")){
+                            %>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gerar Contrato">
+                            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseGerarContrato" data-parent="#collapseGerarContrato">
+                              <i class="fa fa-fw fa-file-text"></i>
+                              <span class="nav-link-text">Gerar Contrato</span>
+                            </a>
+                            <ul class="sidenav-second-level collapse" id="collapseGerarContrato">
+                              <li>
+                                  <a href="gerar_contrato_voip.jsp">
+                                      <i class="fa fa-fw fa-file-text"></i>
+                                      VoIP
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="gerar_contrato_internet.jsp">
+                                      <i class="fa fa-fw fa-file-text"></i>
+                                      Internet
+                                  </a>
+                              </li>
+                            </ul>
+                          </li>
+                            <%
+                        }else{
+            %>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
+                              <a class="nav-link" href="<%=menu12.getLink()%>">
+                                <i class="fa fa-fw <%=menu12.getIcone()%> "></i>
+                                <span class="nav-link-text"><%=menu12.getMenu()%></span>
+                              </a>
+                            </li>
+            <%            
+                        }
                     }
                 }
             }
         }
         if(usuario.getPerfil().getId() == 1){
-        %>
-            
-                   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pagina Root">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRoot" data-parent="#collapseRoot">
-                      <i class="fa fa-fw fa-hashtag"></i>
-                      <span class="nav-link-text">Root</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="collapseRoot">
-                      <li>
-                        <a href="menu.jsp">
-                            <i class="fa fa-fw fa-link"></i>
-                            Menu
-                        </a>
-                      </li>
-                      <li>
-                        <a href="perfil.jsp">
-                            <i class="fa fa-fw fa-vcard"></i>
-                            Perfil
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-              
+        %>            
+           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pagina Root">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRoot" data-parent="#collapseRoot">
+              <i class="fa fa-fw fa-hashtag"></i>
+              <span class="nav-link-text">Root</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseRoot">
+              <li>
+                <a href="menu.jsp">
+                    <i class="fa fa-fw fa-link"></i>
+                    Menu
+                </a>
+              </li>
+              <li>
+                <a href="perfil.jsp">
+                    <i class="fa fa-fw fa-vcard"></i>
+                    Perfil
+                </a>
+              </li>
+            </ul>
+          </li>              
         <%
             }
-        %> 
-                
+        %>                
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -145,8 +142,7 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
-        
+      <ul class="navbar-nav ml-auto">        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-fw fa-user"></i>
@@ -167,8 +163,7 @@
                             <i class="fa fa-cog fa-fw"></i> Configurar
                         </strong>
                     </span>
-                </a>
-            
+                </a>            
             <div class="dropdown-divider"></div>
                 <a class="nav-link dropdown-item" data-toggle="modal" data-target="#Modal">
                     <span class="text-muted">
@@ -178,9 +173,7 @@
                     </span>
                 </a>
           </div>
-        </li>
-        
-        
+        </li>       
         <li class="nav-item">
             <form class="form-inline my-2 my-lg-0 mr-lg-2" method="get" action="http://www.google.com/search" target="_blank">
                 <div class="input-group">
@@ -217,8 +210,7 @@
     </div> 
     <!-- Bootstrap core JavaScript-->
     <script src="../resources/vendor/jquery/jquery.min.js"></script>
-    <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>    
             
 <%
     }

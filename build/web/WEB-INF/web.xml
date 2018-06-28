@@ -29,6 +29,10 @@
         <servlet-name>InstalacaoServlet</servlet-name>
         <servlet-class>control.InstalacaoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProdutoServlet</servlet-name>
+        <servlet-class>control.ProdutoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/pages/gerenciar_usuario.do</url-pattern>
@@ -55,7 +59,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>InstalacaoServlet</servlet-name>
-        <url-pattern>/pages/gerenciar_Instalacao.do</url-pattern>
+        <url-pattern>/pages/gerenciar_instalacao.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoServlet</servlet-name>
+        <url-pattern>/pages/gerenciar_produto.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

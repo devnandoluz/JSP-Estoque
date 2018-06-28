@@ -39,7 +39,7 @@ public class PerfilServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
-            out.println("<html pt-br>");
+            out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet PerfilServlet</title>");        
             out.println("</head>");
@@ -51,6 +51,15 @@ public class PerfilServlet extends HttpServlet {
             
             switch(option){
                 case "insert":{
+                    ArrayList<Menu> menu = new ArrayList<>();
+                    Menu m = new Menu();
+                    int cont = (Integer.parseInt(request.getParameter("cont")));
+                    for(int i = 1; i <= cont; i++){
+                        if((Integer.parseInt((request.getParameter("menu"+i))) > 0)){
+                            menu.add(m.findForID(Integer.parseInt(request.getParameter("menu"+i))));
+                        }
+                    }
+                    perfil.setMenu(menu);
                     perfil.setPerfil(request.getParameter("perfil"));
                     perfil.setStatus(Integer.parseInt(request.getParameter("status")));
                     perfil.insert();

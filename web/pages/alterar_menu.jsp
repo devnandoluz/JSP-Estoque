@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="model.Menu"%>
-<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
     String id = request.getParameter("id");
@@ -72,12 +72,12 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME</label>
-                            <input value="<%= menu.getMenu() %>" name="nome"  type="text" class="form-control" placeholder="Nome do MENU..." data-error="Este campo é necessário." required>
+                            <input value="<%= menu.getMenu() %>" name="nome"  type="text" class="form-control" placeholder="Nome do MENU..." data-error="Este campo Ã© necessÃ¡rio." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">STATUS</label>
-                            <input value="<%= menu.getStatus() %>" name="status" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo é necessário." required>
+                            <input value="<%= menu.getStatus() %>" name="status" type="text" class="form-control" placeholder="0 ou 1..." data-error="Este campo Ã© necessÃ¡rio." required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-6">
@@ -87,7 +87,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="form-label">LINK</label>
-                            <input value="<%= menu.getLink()%>" name="link" type="text" class="form-control" placeholder="pagina.jsp" data-error="Por favor, informe um CNPJ válido." required>
+                            <input value="<%= menu.getLink()%>" name="link" type="text" class="form-control" placeholder="pagina.jsp" data-error="Por favor, informe um CNPJ vÃ¡lido." required>
                             <div class="help-block with-errors"></div>
                         </div>
                             <input type="hidden" name="id" value="<%= id %>">

@@ -72,7 +72,8 @@
                                 }
                             %>
                             </select>
-                            <button class="btn btn-primary col-md-3" href="perfil.jsp" style=" margin: 10%; margin-bottom: 28%; padding: 15px; font-size: 14pt;">
+                            
+                            <button class="btn btn-primary col-md-3"  style=" margin: 10%; margin-bottom: 28%; padding: 15px; font-size: 14pt;">
                                 <i class="fa fa-gear"></i>
                                 <strong>GERAR</strong>
                             </button>

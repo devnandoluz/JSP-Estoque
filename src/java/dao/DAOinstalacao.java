@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.Cliente;
 import model.Instalacao;
 
 /**
@@ -34,8 +35,8 @@ public class DAOinstalacao {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, servico.getTipo());
             pstm.setDouble(2, servico.getValor());
-            pstm.setDate(3, (Date) servico.getData_inicial());
-            pstm.setDate(4, (Date) servico.getData_final());
+            pstm.setDate(3, new Date(servico.getData_inicial().getTime()));
+            pstm.setDate(4, new Date(servico.getData_final().getTime()));
             pstm.setInt(5, servico.getCliente().getId());
            
             pstm.executeUpdate();
@@ -53,7 +54,7 @@ public class DAOinstalacao {
         
         ArrayList<Instalacao> listaDeClientes = new ArrayList();
         
-        String sql = "SELECT * FROM servico;";
+        String sql = "SELECT * FROM instalacao;";
         
         try {
             pstm = con.prepareStatement(sql);
@@ -61,16 +62,22 @@ public class DAOinstalacao {
             
             while(rs.next()){
                 Instalacao servico = new Instalacao();
-                servico.setId(rs.getInt("idServico"));
+                Cliente cliente = new Cliente();
+                servico.setId(rs.getInt("idinstalacao"));
                 servico.setTipo(rs.getString("tipo"));
                 servico.setValor(rs.getDouble("valor"));
                 servico.setData_inicial(rs.getDate("data_inicial"));
                 servico.setData_final(rs.getDate("data_final"));
+                try {
+                    servico.setCliente(cliente.findForID(rs.getInt("cliente_idcliente")));
+                } catch (Exception ex) {
+                    System.err.println("INSTALAÇÃO erro ao buscar cliente" + ex);
+                }
                 
                 listaDeClientes.add(servico);
             }
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("Instalação erro ao buscar todas: " + ex);
         }
         ConnectionDB.closeConnection(con);
         return listaDeClientes;
@@ -78,21 +85,29 @@ public class DAOinstalacao {
     
     public Instalacao findForID(int id){
         Instalacao servico = new Instalacao();
-        String sql = "SELECT * FROM servico WHERE idServico = ?;";
+        String sql = "SELECT * FROM instalacao WHERE idinstalacao = ?;";
         try {
             pstm = con.prepareStatement(sql);
             
             pstm.setInt(1, id);
             
-            ResultSet rs = pstm.executeQuery();            
-                servico.setId(rs.getInt("idServico"));
+            ResultSet rs = pstm.executeQuery();   
+            while(rs.next()){
+                Cliente cliente = new Cliente();
+                servico.setId(rs.getInt("idinstalacao"));
                 servico.setTipo(rs.getString("tipo"));
                 servico.setValor(rs.getDouble("valor"));
                 servico.setData_inicial(rs.getDate("data_inicial"));
                 servico.setData_final(rs.getDate("data_final"));
+                try {
+                    servico.setCliente(cliente.findForID(rs.getInt("cliente_idcliente")));
+                } catch (Exception ex) {
+                    System.err.println("INSTALAÇÃO erro ao buscar cliente" + ex);
+                }
+        }
             
         } catch (SQLException ex) {
-            System.err.println("Erro ao buscar: " + ex);
+            System.err.println("INSTALACAO Erro ao buscar por ID: " + ex);
         }finally{
             ConnectionDB.closeConnection(con, pstm);
         }
@@ -102,24 +117,25 @@ public class DAOinstalacao {
     
     //Update (Alterar)
     public boolean update(Instalacao servico){
-        String sql = "UPDATE servico SET "
+        String sql = "UPDATE instalacao SET "
                 + "tipo = ?,"
                 + "valor = ?,"
                 + "data_inicial = ?,"
                 + "data_final = ?,"
-                + "email = ?,"
-                + "descricao = ?"
-                + "WHERE idcliente = ?;";
+                + "cliente_idcliente = ?"
+                + "WHERE idinstalacao = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, servico.getTipo());
             pstm.setDouble(2, servico.getValor());
             pstm.setDate(3, (Date) servico.getData_inicial());
             pstm.setDate(4, (Date) servico.getData_final());
+            pstm.setInt(5, servico.getCliente().getId());
+            pstm.setInt(6, servico.getId());
             pstm.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao alterar: " + ex);
+            System.err.println("Erro ao alterar instalacao: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);
@@ -128,14 +144,14 @@ public class DAOinstalacao {
     
     //Delete (Apagar)
     public boolean delete(Instalacao servico){
-        String sql = "DELETE FROM servico WHERE idServico = ?;";
+        String sql = "DELETE FROM instalacao WHERE idinstalacao = ?;";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, servico.getId());
             pstm.execute();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao deletar: " + ex);
+            System.err.println("Erro ao deletar instalacao: " + ex);
             return false;
         }finally{
             ConnectionDB.closeConnection(con, pstm);

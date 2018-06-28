@@ -155,7 +155,7 @@
                                     
                                 <div class="form-group col-md-5">
                                     <label class="form-label small">ADICIONADO</label>
-                                    <select class="form-control  col-md-12" id="menuesquerda" size="6" autocomplete="off" multiple="multiple">
+                                    <select class="form-control  col-md-12" id="menuesquerda" size="6" autocomplete="off" multiple="multiple" required>
                                     </select>
                                 </div>
                                     

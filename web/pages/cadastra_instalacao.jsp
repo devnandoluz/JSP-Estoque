@@ -4,6 +4,7 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="model.Cliente"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +26,8 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    
+    <link href="../resources/vendor/bootstrap/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -61,7 +64,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label class="form-label">TIPO</label>
-                            <input name="tipo"  type="text" class="form-control" placeholder="Tipo da instalação" data-error="Este campo é necessário." required>
+                            <input name="tipo"  type="text" class="form-control" placeholder="Tipo da instalação" data-error="Este campo é necessário." autofocus required>
                             <div class="help-block with-errors"></div>
                         </div>                       
                         <div class="form-group col-md-4">
@@ -75,10 +78,44 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
+                            <label class="form-label">DATA INICIAL</label>
+                            <div class="input-group" id="datetimepicker1">
+                                    <span class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                    </span>
+                                <input name="data_inicial" type="text" autocomplete="off" class="form-control data datepicker" data-provide="datepicker" placeholder="00/00/0000" data-error="Este campo é necessário." required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="form-label">DATA FINAL</label>
+                            <div class="input-group" id="datetimepicker1">
+                                    <span class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                    </span>
+                                <input name="data_final" type="text" autocomplete="off" class="form-control data datepicker" data-provide="datepicker" placeholder="00/00/0000">
+                            </div>
+                            <small id="Help" class="form-text text-muted">Este campo não é obrigatório.</small>
+                        </div>
+                        <div class="form-group col-md-12">
                             <label class="form-label">CLIENTE</label>
+                             <% 
+                                ArrayList<Cliente> lista = new ArrayList();
+                                    try{
+                                        Cliente buscar = new Cliente();   
+                                        lista = buscar.findAll();
+                                    }catch(Exception e){
+                                        out.print("Erro:"+e);
+                                    }                      
+                                    %>
                             <select name="cliente" class="form-control" required>
                                 <option value="Outro" selected disabled>Selecione</option>
-                                <option value="Construção"><%%></option>
+                                <%
+                                    for(Cliente cliente:lista){
+                                %>
+                                        <option value="<%=cliente.getId() %>"><%= cliente.getNomeFantasia()%></option>
+                                <%
+                                    }
+                                %>
                             </select>
                         </div>
                     </div>
@@ -101,16 +138,28 @@
     </div>
             
     </div>
-            <%@include file="rodape.jsp" %>
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-              <i class="fa fa-angle-up"></i>
-            </a>
-            <!-- Core plugin JavaScript-->
-            <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <script src="../resources/js/validator.min.js"></script>
-            <!-- Custom scripts for all pages-->
-            <script src="../resources/js/sb-admin.min.js"></script>
+    <%@include file="rodape.jsp" %>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Core plugin JavaScript-->
+    <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../resources/js/validator.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../resources/js/sb-admin.min.js"></script>
+    <!--datepicker-->
+    <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <script src="../resources/vendor/bootstrap/js/bootstrap-datepicker.pt-BR.min.js"></script>
     </div>
+    <script>
+        jQuery(document).ready(function (){
+            $(".data").mask("00/00/0000");
+        });
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            language: "pt-BR"
+        });
+    </script>
 </body>
 </html>

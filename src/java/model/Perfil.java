@@ -65,7 +65,7 @@ public class Perfil {
         DAOperfil dao = new DAOperfil();
         return dao.findAll();
     }
-    //Read
+    
     public Perfil findForName() throws Exception{   
         DAOperfil dao = new DAOperfil();
         return dao.findForName(getPerfil());

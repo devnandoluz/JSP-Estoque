@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html;">
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html;">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -155,10 +156,10 @@
                                             <div class="form-group col-md-3">
                                                 <label class="form-label">SERVIÇO CONTRATADO</label>
                                                 <select name="servico_contratado" class="form-control">
-                                                    <option <% if(cliente2.getServicoContratado().equals("VoIP")){ %> selected <% } %>> VoIP </option>
-                                                    <option <% if(cliente2.getServicoContratado().equals("Internet")){ %> selected <% } %>> Internet </option>
-                                                    <option <% if(cliente2.getServicoContratado().equals("VoIP e Internet")){ %> selected <% } %>> VoIP e Internet </option>
-                                                    <option <% if(cliente2.getServicoContratado().equals("Outros")){ %> selected <% } %>> Outro </option>
+                                                    <option <% if(cliente2.getServicoContratado().equals("VoIP")){ %> selected <% } %> value="VoIP"> VoIP </option>
+                                                    <option <% if(cliente2.getServicoContratado().equals("Internet")){ %> selected <% } %> value="Internet"> Internet </option>
+                                                    <option <% if(cliente2.getServicoContratado().equals("VoIP e Internet")){ %> selected <% } %> value="VoIP e Internet"> VoIP e Internet </option>
+                                                    <option <% if(cliente2.getServicoContratado().equals("Outros")){ %> selected <% } %> value="Outro"> Outro </option>
                                                 </select>
                                             </div>
                                           <div class="form-group col-md-3">

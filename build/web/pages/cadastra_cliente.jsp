@@ -123,7 +123,7 @@
                   <hr>
                   <br>
               </div>                  
-              <form id="formCliente" data-toggle="validator" role="form" method="post" action="gerenciar_cliente.do">
+              <form id="formCliente" role="form" data-toggle="validator" method="post" action="gerenciar_cliente.do">
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">NOME FANTASIA</label>
@@ -175,7 +175,6 @@
                                         </div>
                                     <input name="data_adesao" type="text" autocomplete="off" class="form-control data datepicker" data-provide="datepicker" placeholder="00/00/0000" data-error="Este campo é necessário." required>
                                 </div>
-                                <div class="help-block with-errors"></div>
                           </div>
                     </div>
                     <div class="row">
@@ -263,7 +262,7 @@
                     </div>
                     <div class="form-group align-content-center">
                         <center>
-                            <button class="btn btn-success col-md-3" name="option" value="insert" style="margin: 2px;"><i class="fa fa-plus"></i> CADASTRAR</button>
+                            <button type="submit" class="btn btn-success col-md-3" name="option" value="insert" style="margin: 2px;"><i class="fa fa-plus"></i> CADASTRAR</button>
                             <a class="btn btn-primary col-md-3" href="cliente.jsp" name="cancelar" style="margin: 2px;">
                                 <i class="fa fa-reply"></i>
                                 CANCELAR

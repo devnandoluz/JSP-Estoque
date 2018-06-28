@@ -4,6 +4,8 @@
     Author     : Nando Luz
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="model.Instalacao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +27,15 @@
     <link href="../resources/css/sb-admin.css" rel="stylesheet">
     <!--icon-->
     <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    
+            <script type="text/javascript">
+                function excluir(nome,id){
+                    var url = "gerenciar_cliente.do?option=delete&id="+id+"&nome_fantasia="+nome;
+                        if(confirm("Tem certeza que deseja excluir o cliente: "+nome+"?")){
+                            window.open(url,"_self");
+                    }
+                }
+            </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -56,23 +67,61 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                               <thead>
                                 <tr>
-                                  <th>Nome</th>
-                                  <th>CNPJ</th>
+                                  <th>TIPO</th>
+                                  <th>CLIENTE</th>
+                                  <th>DATA INICIAL</th>
                                   <th><center>Opção</center></th>
                                 </tr>
                               </thead>
                               <tfoot>
-                                  <tr>
-                                  <th>Nome</th>
-                                  <th>CNPJ</th>
-                                  <th><center>Opção</center></th>
+                                <tr>
+                                    <th>TIPO</th>
+                                    <th>CLIENTE</th>
+                                    <th>DATA INICIAL</th>
+                                    <th><center>Opção</center></th>
                                 </tr>
                               </tfoot>
                               <tbody>                                  
-                                    
-                                  
-                                  
-                                  
+                                    <% 
+                                          ArrayList<Instalacao> listaInstalacao = new ArrayList();
+                                              try{
+                                                  Instalacao buscarInstalacao = new Instalacao();   
+
+                                                  listaInstalacao = buscarInstalacao.findAll();
+                                              }catch(Exception e){
+                                                  out.print("Erro:"+e);
+                                              }                                                
+                                          for(Instalacao instalacao:listaInstalacao){
+                                      %>
+                                              <tr>
+                                                  <td>
+                                                      <center><%= instalacao.getTipo()%></center>
+                                                  </td>
+                                                  <td>
+                                                      <center><%= instalacao.getCliente().getNomeFantasia() %></center>
+                                                  </td>
+                                                  <td>
+                                                      
+                                                        <%
+                                                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                                        %>
+                                                  <center><%= sdf.format(instalacao.getData_inicial()) %></center>
+                                                  </td>
+                                                  <td>
+                                                      <a class="btn btn-primary col-md-3" href="visualizar_instalacao.jsp?id=<%= instalacao.getId() %>&nome=<%= instalacao.getTipo()%>" style="margin: 2px;">
+                                                          <span class="fa fa-eye"></span>
+                                                      </a>
+                                                      <a class="btn btn-primary col-md-3" href="alterar_instalacao.jsp?id=<%= instalacao.getId() %>" style=" margin: 2px;">
+                                                          <span class="fa fa-pencil"></span>
+                                                      </a>
+                                                      <a class="btn btn-danger col-md-3" href="#" onclick="excluir('<%= instalacao.getTipo()%>', <%= instalacao.getId() %>)" style="margin: 2px;">
+                                                          <span class="fa fa-trash"></span>
+                                                      </a>
+                                                  </td>
+                                              </tr>  
+                                      <%
+                                          }
+                                      %> 
                                   
                               </tbody>
                             </table>

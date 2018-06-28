@@ -46,8 +46,6 @@ public class FuncionarioServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-            //declaração de variaveis que recebem por parametro os valores.
-            
             //opção escolhida
             String option = request.getParameter("option");            
             
