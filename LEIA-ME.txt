@@ -1,0 +1,30 @@
+******************************************************************************
+
+ESTE SISTEMA FOI DESENVOLVIDO EM MEU PRIMEIRO TCC (2018) E TEM COMO FINALIDADE
+AJUDAR A EMPRESA GENTE TELECOM COM A GERENCIA INTERNA.
+
+******************************************************************************
+
+
+>>>>> Lembre-se de instalar o banco de dados que está localizado na pasta 
+"Banco de Dados" na sua máquina.
+
+
+
+USUARIO PADRAO:
+	user: admin
+	pass: admin
+>>>>> obs: O usuário padrão tem permissão de administrador no sistema e por 
+esse motivo deve ser alterado.
+
+
+MENU:
+>>>>> Ao cadastrar novos menus, o administrador deve seguir os formatos
+especificados na caixa de texto.
+>>>>> Os menus Estoque, Cliente, Funcionário e Instalação ficam localizado na
+Home.
+
+
+GRAFICO:
+>>>>> Para que os gráficos sejam gerados é necessário que haja clientes já 
+cadastrados.
